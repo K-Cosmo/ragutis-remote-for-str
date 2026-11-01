@@ -9,6 +9,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Accept future GitHub APKs named `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` and retain support for both published legacy naming patterns; update the local signed-release script's future output basename.
 - Update the centrally decoded optional-feedback recipient for the owner-provided Ragutis mailbox, shared by native About and SoundTouch model feedback. Preserve the reversible anti-harvesting encoding; no complete recipient literal is committed or secretly sent.
 - Replace the plain room `AlertDialog.setItems` list with WLAN-style two-line rounded selection cards, a clearly marked current room, accessible DE/EN row descriptions, a scroll limit, and custom-name prefill/blank-input validation. Preserve stored `RoomPreset` IDs and `RoomAssignment` format.
+- Improve the bilingual SoundTouch setup model dropdown: SoundTouch 10, SoundTouch 20 III, then Other; remove redundant tested/verified suffixes from selectable names. Keep the verified notice below the dropdown and show a concise unverified notice for Other, without changing setup protocol or saved model IDs.
 - Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
 
 ## 0.3.2 — 2026-10-31
