@@ -68,6 +68,7 @@
     <string name="bose_finish">Fertig</string>
     <string name="bose_cancel">Abbrechen</string>
     <string name="bose_model_checked">Die WLAN-Einrichtung wurde auf diesem Modell erfolgreich geprüft.</string>
+    <string name="bose_model_unverified">Für dieses Modell liegt noch kein bestätigter WLAN-Einrichtungstest vor.</string>
     <string name="bose_version_unknown">unbekannt</string>
     <string name="bose_email_chooser">E-Mail-Programm auswählen</string>
     <string name="bose_email_no_app">Kein E-Mail-Programm gefunden. Bitte einen Mailclient einrichten.</string>
@@ -146,10 +147,10 @@
     <string name="bose_technical_survey">WLAN-Suche:</string>
     <string name="bose_technical_lost">Bose-Setup-WLAN während der Übertragung getrennt.</string>
     <string name="bose_model_20_name">SoundTouch 20 Series III</string>
-    <string name="bose_model_20_option">SoundTouch 20 III · geprüft</string>
+    <string name="bose_model_20_option">SoundTouch 20 III</string>
     <string name="bose_model_20_hint">Die SoundTouch 20 III zeigt einen Countdown und anschließend „Setup“ im Display.</string>
     <string name="bose_model_10_name">SoundTouch 10</string>
-    <string name="bose_model_10_option">SoundTouch 10 · geprüft</string>
+    <string name="bose_model_10_option">SoundTouch 10</string>
     <string name="bose_model_10_hint">Die SoundTouch 10 besitzt kein Textdisplay. Achte auf die dauerhaft gelbe WLAN-LED.</string>
     <string name="bose_model_other_name">ein anderes SoundTouch-Modell</string>
     <string name="bose_model_other_option">Anderes SoundTouch-Modell</string>
