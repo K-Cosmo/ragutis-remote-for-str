@@ -27,6 +27,12 @@ internal enum class BoseSetupModel(
     );
 
     companion object {
+        // Presentation order only; stable enum IDs and saved selections are unchanged.
+        // Checked models are sorted by model number, the unverified option comes last.
+        val displayOrder: List<BoseSetupModel> = listOf(
+            SOUND_TOUCH_10, SOUND_TOUCH_20_III, OTHER_SOUND_TOUCH
+        )
+
         fun fromId(value: String?): BoseSetupModel =
             entries.firstOrNull { it.name == value } ?: SOUND_TOUCH_20_III
     }
