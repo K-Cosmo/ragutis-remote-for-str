@@ -2,7 +2,7 @@
 
 **Ragutis Remote for SoundTouch Reborn** (launcher **Ragutis STR**) is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
 
-**Latest public signed release (historical name Remote for STR):** 0.3.2 · [Download signed APK](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
+**Current release:** 0.3.2 (historical product name **Remote for STR**) · [Download signed APK](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
 
 > **In development:** Ragutis v0.3.3 restores native STR WebView safe-area spacing and replaces the launcher brand. Version 0.3.3 is **not released**; the public v0.3.2 APK still displays the previous product name.
 
