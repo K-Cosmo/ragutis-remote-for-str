@@ -37,3 +37,13 @@ The owner has now selected the **long full name `Ragutis Remote for SoundTouch R
 ## Status
 
 **IMPLEMENTED in a Draft PR, no device QA, no signed release, no Google Play upload and no upstream discussion posted.** Await exact CI, device screenshots and owner approval for merge or publication. Public v0.3.2 and Play signing configurations are unaffected.
+
+## Second-round 0.3.3 extension — owner request (2026-11-01)
+
+**Owner-reported first debug QA:** all seven requested categories PASS on the earlier Ragutis 0.3.3 debug head: name/About, top/bottom STR spacing, controls, system navigation, keyboard/orientation/themes and bilingual setup. This does **not** establish signed upgrade acceptance, legacy API coverage or acceptance of the subsequently changed code.
+
+**Follow-up implementation:** rotate the centrally and reversibly decoded project-feedback recipient for both opt-in mail drafts; retain the existing email privacy guard and require no full recipient literal in public source or documents. Reuse the existing WLAN picker two-line rounded selection-card design in the native room picker with current-selection highlights, scroll and accessible DE/EN labels. A pure `RoomPickerPolicy` preserves stored IDs, none/custom semantics and is unit-tested. Existing custom names are prefilled; invalid empty input leaves the editor open.
+
+**New QA required:** Compare both mail action recipients with the newly created owner mailbox, check that messages are only drafts, inspect the text and version. For rooms, validate all six presets, no room, custom names (including re-edit and long names), scroll/selection states and preservation across restart for STR and pending Bose devices. Existing Android 0.3.2→0.3.3 signed-upgrade gate remains open. Older phone/API validation also remains open where not verified.
+
+**Release control:** remain in the same unpublished 0.3.3 candidate; no merge, new GitHub tag/APK or Google Play AAB may occur without explicit owner authorization.
