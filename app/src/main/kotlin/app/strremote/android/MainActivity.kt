@@ -28,6 +28,7 @@ import android.text.style.ClickableSpan
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.graphics.Insets
 import android.view.WindowInsets
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceError
@@ -253,7 +254,7 @@ class MainActivity : Activity() {
         }
 
         val title = TextView(this).apply {
-            text = getString(R.string.app_name)
+            text = getString(R.string.toolbar_name)
             textSize = 19f
             includeFontPadding = false
             setTypeface(typeface, Typeface.BOLD)
@@ -565,8 +566,15 @@ class MainActivity : Activity() {
     private fun applySystemBarInsets(root: View) {
         root.setOnApplyWindowInsetsListener { view, insets ->
             if (Build.VERSION.SDK_INT >= 30) {
-                val systemBars = insets.getInsets(WindowInsets.Type.systemBars())
-                view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                // The native shell owns these system-bar/cutout dimensions.
+                // Zero only those types for children; keep IME updates flowing.
+                val handled = WindowInsets.Type.systemBars() or
+                    WindowInsets.Type.displayCutout()
+                val safe = insets.getInsets(handled)
+                view.setPadding(safe.left, safe.top, safe.right, safe.bottom)
+                WindowInsets.Builder(insets)
+                    .setInsets(handled, Insets.NONE)
+                    .build()
             } else {
                 @Suppress("DEPRECATION")
                 view.setPadding(
@@ -575,8 +583,15 @@ class MainActivity : Activity() {
                     insets.systemWindowInsetRight,
                     insets.systemWindowInsetBottom
                 )
+                @Suppress("DEPRECATION")
+                val remaining = insets.consumeSystemWindowInsets()
+                if (Build.VERSION.SDK_INT >= 28) {
+                    @Suppress("DEPRECATION")
+                    remaining.consumeDisplayCutout()
+                } else {
+                    remaining
+                }
             }
-            insets
         }
     }
 
@@ -620,13 +635,8 @@ class MainActivity : Activity() {
                     prefs.saveReachability(endpoint, true)
                     updateSavedRowReachability(endpoint, reachable = true)
                 }
-                if (isAllowedSpeakerNavigation(Uri.parse(url))) {
-                    // STR's PWA top safe area is already handled by Android's
-                    // native header. Keep all STR interactive controls intact.
-                    view.evaluateJavascript(
-                        StrWebViewHeader.compactTopPaddingScript, null
-                    )
-                }
+                // STR owns its normal CSS header; the native frame zeroes
+                // already handled system-bar insets before WebView dispatch.
                 showWebView()
             }
 
@@ -1134,6 +1144,7 @@ class MainActivity : Activity() {
             ))
         }
 
+        paragraph(getString(R.string.app_name), emphasized = true)
         paragraph(getString(R.string.about_version_format, version), emphasized = true)
         paragraph(getString(R.string.about_community_notice))
         paragraph(getString(R.string.about_trademark_notice))
