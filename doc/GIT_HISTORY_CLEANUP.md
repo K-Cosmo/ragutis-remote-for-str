@@ -2,7 +2,7 @@
 
 **State: ordinary branch and tag history rewrite COMPLETE.** The steps below are a historical runbook, **not** a command to rerun against the cleaned repository. See [verified provenance](GIT_HISTORY_PROVENANCE.md). GitHub-managed old PR refs remain.
 
-**Repository:** https://github.com/K-Cosmo/remote-for-str-android
+**Current repository:** https://github.com/K-Cosmo/ragutis-remote-for-str (formerly `K-Cosmo/remote-for-str-android`)
 
 ## Motivation and scope
 
@@ -56,7 +56,7 @@ cd "D:\remote-for-str-cleanup\CLEANED-preview.git"
 
 git remote -v
 # If origin was removed by git-filter-repo:
-git remote add origin https://github.com/K-Cosmo/remote-for-str-android.git
+git remote add origin https://github.com/K-Cosmo/ragutis-remote-for-str.git
 
 git for-each-ref --format="%(refname) %(objectname)" refs/heads refs/tags
 
