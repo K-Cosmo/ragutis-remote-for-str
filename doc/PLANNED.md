@@ -2,6 +2,10 @@
 
 **Latest released version:** see [Status](STATUS.md). The completed BUILD-0013 work, release notes and device tests are maintained in [BUILD-0013](work/BUILD-0013.md), [Changelog](CHANGELOG.md) and the [v0.3.1 release evidence](evidence/qa/2026-10-31-release-0.3.1.md), not duplicated in this plan.
 
+## Repository rename sequencing (2026-11-01)
+
+Because the published v0.3.2's fixed GitHub API request has HTTP redirect following disabled, performing GitHub's rename **before** publishing the next signed APK would stop its update notification if the old endpoint redirects. The 0.3.3 developer source has merged, but signed data-preserving upgrade and release remain open. A separate draft updater migration permits standard HTTPS redirects for future clients. **Safe sequence:** validate and merge this small fix → produce original-signer 0.3.3 APK from exact clean source → verify in-place 0.3.2→0.3.3 upgrade → publish v0.3.3 under the old repository name → only then manually rename GitHub repository and update canonical links/verify both old and new endpoints. Old v0.3.2 installs that did not update before rename may require manually opening the GitHub Releases URL.
+
 ## Current priorities
 
 | Item | Priority | Next action |
