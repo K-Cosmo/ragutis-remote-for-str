@@ -1683,7 +1683,7 @@ class MainActivity : Activity() {
 
     private fun assignRoomForRow(row: SpeakerRow) {
         if (row.pendingBose) {
-            showRoomPicker { room ->
+            showRoomPicker(row.pendingRoom) { room ->
                 pendingBose.setRoom(row.candidate.key, room)
                 val key = speakers.entries.firstOrNull { it.value.pendingBose &&
                     it.value.candidate.key == row.candidate.key }?.key ?: return@showRoomPicker
@@ -1697,7 +1697,7 @@ class MainActivity : Activity() {
             Toast.makeText(this, R.string.save_requires_reachable, Toast.LENGTH_LONG).show()
             return
         }
-        showRoomPicker { room -> saveSpeakerWithRoom(endpoint, room) }
+        showRoomPicker(row.saved?.room) { room -> saveSpeakerWithRoom(endpoint, room) }
     }
 
     private fun confirmRemoveSavedSpeaker(row: SpeakerRow) {
@@ -1713,7 +1713,10 @@ class MainActivity : Activity() {
             .show()
     }
 
-    private fun showRoomPicker(onSelected: (RoomAssignment?) -> Unit) {
+    private fun showRoomPicker(
+        currentRoom: RoomAssignment?,
+        onSelected: (RoomAssignment?) -> Unit
+    ) {
         val labels = arrayOf(
             getString(R.string.room_none),
             getString(R.string.room_living),
@@ -1724,42 +1727,121 @@ class MainActivity : Activity() {
             getString(R.string.room_garden),
             getString(R.string.room_custom)
         )
-        val presets = arrayOf(
-            RoomPreset.LIVING_ROOM, RoomPreset.BEDROOM, RoomPreset.KITCHEN,
-            RoomPreset.BATHROOM, RoomPreset.KIDS_ROOM, RoomPreset.GARDEN
-        )
-        AlertDialog.Builder(this)
+        val currentIndex = RoomPickerPolicy.selectedIndex(currentRoom)
+
+        // Match the established WLAN picker: scrollable, accessible cards with
+        // two text lines, a clear selected state, and large touch targets.
+        val list = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(12), dp(8), dp(12), dp(8))
+        }
+        val scroll = ScrollView(this).apply {
+            isFillViewport = false
+            addView(list)
+        }
+        val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.room_title)
-            .setItems(labels) { _, which ->
-                when {
-                    which == 0 -> onSelected(null)
-                    which in 1..6 -> onSelected(RoomAssignment(preset = presets[which - 1]))
-                    else -> showCustomRoomDialog(onSelected)
+            .setView(scroll)
+            .setNegativeButton(R.string.cancel, null)
+            .create()
+
+        labels.forEachIndexed { index, label ->
+            val selected = index == currentIndex
+            val hint = when (index) {
+                RoomPickerPolicy.NONE_INDEX -> getString(R.string.room_none_hint)
+                RoomPickerPolicy.CUSTOM_INDEX ->
+                    currentRoom?.customName?.takeIf { it.isNotBlank() }
+                        ?: getString(R.string.room_custom_row_hint)
+                else -> getString(R.string.room_preset_hint)
+            }
+
+            val row = LinearLayout(this).apply {
+                orientation = LinearLayout.VERTICAL
+                setPadding(dp(16), dp(12), dp(12), dp(12))
+                minimumHeight = dp(68)
+                background = GradientDrawable().apply {
+                    setColor(if (selected) Color.rgb(231, 243, 255) else Color.WHITE)
+                    cornerRadius = dp(10).toFloat()
+                    setStroke(dp(1), Color.rgb(199, 214, 228))
+                }
+                isClickable = true
+                isFocusable = true
+                isSelected = selected
+                contentDescription = if (selected) {
+                    getString(R.string.room_row_selected_accessibility, label, hint)
+                } else {
+                    getString(R.string.room_row_accessibility, label, hint)
+                }
+                setOnClickListener {
+                    dialog.dismiss()
+                    if (index == RoomPickerPolicy.CUSTOM_INDEX) {
+                        showCustomRoomDialog(currentRoom?.customName, onSelected)
+                    } else {
+                        onSelected(RoomPickerPolicy.assignmentAt(index))
+                    }
                 }
             }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+            row.addView(TextView(this).apply {
+                text = (if (selected) "✓  " else "") + label
+                textSize = 17f
+                setTypeface(typeface, Typeface.BOLD)
+                setTextColor(Color.rgb(23, 46, 67))
+                setSingleLine(true)
+                ellipsize = android.text.TextUtils.TruncateAt.END
+            })
+            row.addView(TextView(this).apply {
+                text = hint
+                textSize = 13f
+                setTextColor(Color.rgb(77, 100, 123))
+                setPadding(0, dp(4), 0, 0)
+                setSingleLine(true)
+                ellipsize = android.text.TextUtils.TruncateAt.END
+            })
+            list.addView(
+                row,
+                LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                ).apply { bottomMargin = dp(7) }
+            )
+        }
+        scroll.layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            minOf(dp(400), labels.size * dp(76) + dp(24))
+        )
+        dialog.show()
     }
 
-    private fun showCustomRoomDialog(onSelected: (RoomAssignment?) -> Unit) {
+    private fun showCustomRoomDialog(
+        existingName: String?,
+        onSelected: (RoomAssignment?) -> Unit
+    ) {
         val input = EditText(this).apply {
             hint = getString(R.string.room_custom_hint)
             inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
             setSingleLine(true)
+            setText(existingName.orEmpty())
+            setSelection(text?.length ?: 0)
         }
-        AlertDialog.Builder(this)
+        // Keep the dialog open on invalid input instead of dismissing it.
+        val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.room_custom_title)
             .setView(input)
-            .setPositiveButton(R.string.save) { _, _ ->
-                val room = input.text?.toString()?.trim().orEmpty()
-                if (room.isBlank()) {
+            .setPositiveButton(R.string.save, null)
+            .setNegativeButton(R.string.cancel, null)
+            .create()
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val name = input.text?.toString()?.trim().orEmpty()
+                if (name.isBlank()) {
                     Toast.makeText(this, R.string.room_custom_invalid, Toast.LENGTH_LONG).show()
                 } else {
-                    onSelected(RoomAssignment(customName = room.take(60)))
+                    onSelected(RoomAssignment(customName = name.take(60)))
+                    dialog.dismiss()
                 }
             }
-            .setNegativeButton(R.string.cancel, null)
-            .show()
+        }
+        dialog.show()
     }
 
     private fun saveSpeakerWithRoom(endpoint: SpeakerEndpoint, room: RoomAssignment?) {
