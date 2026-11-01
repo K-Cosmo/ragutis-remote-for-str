@@ -1,22 +1,22 @@
 # Status
 
-## Ragutis 0.3.3 — signed candidate QA completed; release not yet published (2026-11-01)
+## Ragutis 0.3.3 — RELEASED / ACCEPTED FOR VERIFIED SCOPE (2026-11-01)
 
 **Actual GitHub repository:** [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str), renamed by the owner on 2026-11-01. **Source merge completed:** PR #13 into `main` as `f821602e1b45172610a7735f6e0830de4bfdee79`, [post-merge CI PASS](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41315289069). This does not authorize or prove an APK publication.
 
-**Signed candidate status:** Latest public GitHub Release remains `v0.3.2` with its original signed APK. PR #14 completed the canonical repo migration: the 0.3.3 app uses the new release-API, About/source and Issues URLs and standard HTTPS redirects. **Local signed 0.3.3 APK exists according to the owner's final build output**, versionCode 14, with original release-signature script hard gate. Owner also reports **seven signed-device smoke tests PASS**; no v0.3.3 tag/release/asset has been published. Android package `app.strremote.android` and original signing identity are unchanged.
+**Public release confirmed via GitHub API:** [Ragutis v0.3.3](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3), stable `draft=false`, `prerelease=false`, published **2026-11-01T16:36:19Z** (**17:36:19 CET**), Release ID `430710031`; `releases/latest` points to v0.3.3. PR #14 completed canonical GitHub repository links. The Android ID `app.strremote.android`, original signer and saved data remain compatible with v0.3.2.
 
 **Unavoidable old-client limitation:** published 0.3.2 hardcodes the former GitHub Releases API URL and sets `instanceFollowRedirects=false`. Following rename, old-API redirects may prevent its update notification; these old APK bytes cannot be patched. The owner reports a successful **manual original-signer in-place** upgrade from v0.3.2 to v0.3.3 preserving data. This does **not** prove the old automatic update notification works.
 
 **Completed prepublication gates (owner-reported):** migration PR #14 merged, post-merge CI [41321518107](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41321518107) PASS, local original-signer-script build from exact `main` commit `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`, APK SHA-256 `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f`, and **7/7 signed device smoke categories PASS** (updated app, saved data, STR, rooms, Wi-Fi, feedback, DE/EN UI and GitHub links). See [signed QA record](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md). APK and checksum bytes were not independently provided for inspection.
 
-**Only remaining public-release gates:** separate explicit owner permission; Git tag `v0.3.3` to exact signed source commit; upload the exact signed APK and checksum; after publication verify public asset digest and `releases/latest`, update current-release documentation. No GitHub tag, GitHub Release, Google Play upload, upstream maintainer email or community thread has been created as part of this QA record.
+**Publication gates COMPLETE:** separate explicit owner authorization received, annotated Git tag `v0.3.3` (tag object `d0d0cc32c9fa899ac6fbdfe97c0e509b05faca47`) resolves to exact original-signed source `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`; [APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/download/v0.3.3/Ragutis-Remote-for-SoundTouch-Reborn-0.3.3.apk) asset ID `698874479`, 1,201,797 bytes, GitHub-reported SHA-256 `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f`, exactly matching owner-supplied original; [checksum file](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/download/v0.3.3/Ragutis-Remote-for-SoundTouch-Reborn-0.3.3.apk.sha256.txt) asset ID `698874480`, 114 bytes, own GitHub asset digest `c456d2de189eb560aa650e31b164978f2af66926824d35a575cf46ab76c30e65`. Owner reports separate successful `gh release download` and public hash comparison. GitHub tag is unsigned; this does **not** negate the Android APK signature. No Google Play upload, upstream maintainer email or community thread has been performed in this workflow. See [published release QA](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md).
 
-## Ragutis Remote for SoundTouch Reborn 0.3.3 — SIGNED QA PASSED / NOT RELEASED
+## Ragutis Remote for SoundTouch Reborn 0.3.3 — RELEASED / ACCEPTED
 
 **Development version:** 0.3.3
-**Latest public release:** 0.3.2 (historical brand **Remote for STR**)
-**Status:** OWNER-REPORTED SIGNED 7/7 DEVICE QA PASS / PUBLICATION BLOCKED
+**Latest public release:** 0.3.3 (prior version 0.3.2 was branded **Remote for STR**)
+**Status:** RELEASED / ACCEPTED FOR OWNER-REPORTED SIGNED 7/7 DEVICE SMOKE SCOPE
 **Date:** 2026-11-01
 
 **Owner-requested naming change:** full Android product identity **Ragutis Remote for SoundTouch Reborn**; launcher and native Devices toolbar **Ragutis STR**. About shows the full name; DE/EN helper/update/feedback texts are updated. The independent/unofficial disclosure and trademark statement remain in place.
@@ -25,7 +25,7 @@
 
 **Implementation:** the root owns native system-bar/display-cutout padding. On API 30+, the inset values already handled are **zeroed** with `WindowInsets.Builder` before forwarding, retaining IME updates; on API 26–29, legacy insets are consumed. Android's previous guarded private-DOM `10px` header CSS injection and its source/test have been removed. STR retains its original normal `16px + env(safe-area-inset-top)` behavior. No upstream CSS feature is claimed implemented or agreed.
 
-**Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data and immutable v0.3.2 APK. Only the active GitHub project/release/issue URLs change to the canonical renamed repository. Candidate `versionCode=14` / `versionName=0.3.3` was **signed and installed for owner-reported successful in-place device QA**, but **not published**. Device acceptance covers the seven reported smoke categories only. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
+**Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data and immutable v0.3.2 APK. Only the active GitHub project/release/issue URLs change to the canonical renamed repository. Candidate `versionCode=14` / `versionName=0.3.3` was **signed and installed for owner-reported successful in-place device QA, and publicly released on 2026-11-01**. Device acceptance covers the seven reported smoke categories only. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
 
 **User-reported first debug QA (2026-11-01):** all seven requested categories PASS on the Ragutis 0.3.3 *debug* build: product/launcher/About names, top/bottom STR WebView spacing, controls, system-bar navigation, keyboard/orientation/themes, and bilingual setup. This is owner-reported real-device QA of the **earlier** PR head, not an independently viewed screenshot, not API 26–29 certification and **not a signed 0.3.2→0.3.3 upgrade test**.
 
@@ -39,9 +39,9 @@
 
 **Current second-round CI evidence:** functional code head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`, [push CI 41310056025](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41310056025) and [PR CI 41310061181](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41310061181) both **PASS** with Android build/lint/unit and documentation/privacy checks. This evidence does not certify the new mail drafts/room UI on a real phone or signed in-place update.
 
-**Owner decision and actual state (2026-11-01):** PRs #13/#14 merged into `main`, GitHub repo renamed to `K-Cosmo/ragutis-remote-for-str`, user-reported local signed APK and in-place 0.3.2→0.3.3 phone QA 7/7 PASS. The **signed local acceptance is not a public GitHub release**. No tag/Release/asset upload, upstream email or Google Play track action has occurred. The owner explicitly **withheld publication authorization** until a separate instruction.
+**Owner decision and release (2026-11-01):** PRs #13/#14 merged into app source `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`, repo renamed, owner-reported signed in-place QA 7/7 PASS and then **separately approved the public GitHub release**. Stable `v0.3.3`, exact tag/source/asset/checksum and latest-release API were independently verified. The STR maintainer email, Google Play track and community announcement have **not** been sent/opened as a side effect.
 
-**Next release gates:** obtain **new explicit release approval**, create `v0.3.3` tag at **exact signed source** `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`, upload the owner-tested APK and checksum, verify public SHA-256 and latest release. Deeper compatibility/negative-path testing remains separately deferred, not converted into universal PASS. Upstream Show-and-tell and Play Store PRs #10/#12 are separate later workflows; #12's old version-only candidate is superseded.
+**Next work:** notify STR maintainer and request Community Apps listing update; prepare a Google Play testing AAB from the released Ragutis app source, using the **distinct** Play upload certificate, and coordinate separate Google Forms/closed-test tester onboarding and Show-and-tell. Deeper compatibility/negative-path testing remains separately deferred, not universal PASS. Old Play-only PR #12 is superseded and must not be uploaded.
 
 The sections below record previously published releases and intentionally retain their original historical product names and evidence.
 
