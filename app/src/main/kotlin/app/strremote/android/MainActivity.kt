@@ -63,6 +63,8 @@ class MainActivity : Activity() {
     private lateinit var prefs: PreferencesStore
     private val pendingBose by lazy { PendingBoseStore(this) }
     private var returningFromBoseSetup = false
+    // UI-thread flag: prevent duplicate automatic update dialogs during a manual check.
+    private var manualUpdateCheckActive = false
     private lateinit var discovery: StrDiscovery
     private lateinit var connectivityManager: ConnectivityManager
     private val probe = EndpointProbe()
@@ -1175,6 +1177,7 @@ class MainActivity : Activity() {
                     updateStatus.visibility = View.VISIBLE
                     return@setOnClickListener
                 }
+                manualUpdateCheckActive = true
                 isEnabled = false
                 updateStatus.setText(R.string.update_check_in_progress)
                 updateStatus.visibility = View.VISIBLE
@@ -1186,18 +1189,19 @@ class MainActivity : Activity() {
                             .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                     }
                     runOnUiThread {
+                        manualUpdateCheckActive = false
                         if (isFinishing || isDestroyed || aboutDialog?.isShowing != true) {
                             return@runOnUiThread
                         }
                         isEnabled = true
                         updateProgress.visibility = View.GONE
-                        when {
-                            result == null -> updateStatus.setText(R.string.update_check_failed)
-                            result.available == null -> updateStatus.text =
+                        when (updateStatusFor(result)) {
+                            AppUpdateStatus.FAILED -> updateStatus.setText(R.string.update_check_failed)
+                            AppUpdateStatus.CURRENT -> updateStatus.text =
                                 getString(R.string.update_already_current, installedVersion)
-                            else -> {
+                            AppUpdateStatus.UPDATE_AVAILABLE -> {
                                 updateStatus.setText(R.string.update_found)
-                                showAppUpdateDialog(result.available)
+                                result?.available?.let { showAppUpdateDialog(it) }
                             }
                         }
                     }
@@ -1279,7 +1283,7 @@ class MainActivity : Activity() {
                 checkPrefs.edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                 result.available?.let { update ->
                     runOnUiThread {
-                        showAppUpdateDialog(update)
+                        if (!manualUpdateCheckActive) showAppUpdateDialog(update)
                     }
                 }
             }
