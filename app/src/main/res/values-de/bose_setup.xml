@@ -4,7 +4,6 @@
     <string name="bose_step_1_of_4">Schritt 1 von 4</string>
     <string name="bose_prepare_title">Lautsprecher vorbereiten</string>
     <string name="bose_prepare_intro">Wähle zunächst dein SoundTouch-Modell. Danach zeigen wir dir die passenden Schritte.</string>
-    <string name="bose_model_heading">Lautsprecher-Modell</string>
     <string name="bose_model_select_desc">SoundTouch-Modell auswählen</string>
     <string name="bose_setup_wifi_explainer">Die Box öffnet dann ein eigenes Bose-WLAN. Du musst dessen Namen nicht eingeben.</string>
     <string name="bose_yellow_button">Die WLAN-Anzeige leuchtet gelb</string>
