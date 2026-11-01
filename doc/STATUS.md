@@ -1,10 +1,14 @@
 # Status
 
-## Release migration follow-up — GitHub repository rename
+## Ragutis 0.3.3 — merged development source, release not yet published (2026-11-01)
 
-**Source merged:** PR #13 merged into main as `f821602e1b45172610a7735f6e0830de4bfdee79` with source-only approval; latest public signed GitHub release remains 0.3.2. Post-merge CI is [PASS](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41315289069).
+**Actual GitHub repository:** [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str), renamed by the owner on 2026-11-01. **Source merge completed:** PR #13 into `main` as `f821602e1b45172610a7735f6e0830de4bfdee79`, [post-merge CI PASS](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41315289069). This does not authorize or prove an APK publication.
 
-**New migration risk:** published 0.3.2 uses the original `api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest` and explicitly disables redirect following; GitHub API issues HTTP 301/307 after repository renames. Existing 0.3.2 installations would then lose the best-effort update notification (manual GitHub installation remains possible). A separate draft repair allows documented HTTPS redirects on the fixed GET in the next 0.3.3 candidate, but **cannot retroactively fix 0.3.2**. Therefore stage/sign/test/publish 0.3.3 under the still-existing repository name *before* renaming, then rename and manually verify the redirected API and canonical links. Do not claim permanent upgrade notification coverage for users who remain on 0.3.2.
+**Signed release status:** Latest public GitHub Release remains `v0.3.2` with its original signed APK; v0.3.3 (`versionCode 14`) is source-only. A new migration PR changes the 0.3.3 release-API, About/source and Issues URLs to the **new canonical slug** and allows documented HTTPS redirects. This is a source/runtime link migration, not an Android package rename; `app.strremote.android` and original release-signing certificate remain unchanged.
+
+**Unavoidable old-client limitation:** published 0.3.2 hardcodes the former GitHub Releases API URL and sets `instanceFollowRedirects=false`. Following the repository rename, the old API may return HTTP 301/307 which 0.3.2 does not follow; therefore its update notification may fail. Manual download and **in-place** install from the new repository can still work if the new APK uses the same app-signing key and higher versionCode. This requires a real device test; never claim repaired 0.3.2 behavior.
+
+**Immediate release gates:** migration PR CI and merge, original-signer signed APK built from **final clean main**, SHA-256/zipalign/apksigner verification, signed v0.3.2→v0.3.3 device upgrade retaining rooms/speakers, and final DE/EN wizard/mail/room UX smoke checks. Then publish v0.3.3 under the already renamed GitHub repository and record release evidence. No APK signing/Google Play upload/STR-owner email has happened in this workflow.
 
 ## Ragutis Remote for SoundTouch Reborn 0.3.3 — DEVELOPMENT / NOT RELEASED
 
@@ -29,9 +33,9 @@
 
 **Latest wizard refinement (owner request, 2026-11-01):** initial selection is now **none** rather than silently preselecting SoundTouch 20 III. The former standalone model heading is replaced by the disabled placeholder **SoundTouch-Modell auswählen** (EN: **Select SoundTouch model**) within the spinner. The preparation action and model instructions remain disabled/hidden until an actual model choice. A deliberately chosen model persists through legitimate retry and configuration restoration, including the unchanged enum ID. The status hint beneath the dropdown gains 14dp side padding to align with both selector/card text. Unit checks for empty/invalid/restored choices and the spinner index shift are staged; **new on-phone QA is pending**.
 
-**CI evidence:** candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` passed [push CI 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) and [PR CI 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468), including documentation consistency, Android build and unit tests. This is static/build evidence only, not a signed device release.
+**CI evidence:** candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` passed [push CI 41306285299](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41306285299) and [PR CI 41306330468](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41306330468), including documentation consistency, Android build and unit tests. This is static/build evidence only, not a signed device release.
 
-**Current second-round CI evidence:** functional code head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`, [push CI 41310056025](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310056025) and [PR CI 41310061181](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310061181) both **PASS** with Android build/lint/unit and documentation/privacy checks. This evidence does not certify the new mail drafts/room UI on a real phone or signed in-place update.
+**Current second-round CI evidence:** functional code head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`, [push CI 41310056025](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41310056025) and [PR CI 41310061181](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41310061181) both **PASS** with Android build/lint/unit and documentation/privacy checks. This evidence does not certify the new mail drafts/room UI on a real phone or signed in-place update.
 
 **Owner decision (2026-11-01):** authorize merge of Ragutis PR #13 into `main`; thereafter rename repository and prepare a GitHub 0.3.3 release before informing the STR maintainer. The **source merge is distinct from signed APK release acceptance**. Signing/real 0.3.2→0.3.3 in-place upgrade, checksums, target URL verification and final device QA are still pending. No signed 0.3.3, GitHub tag/Release, repo rename, email to maintainer, or Google Play track upload is claimed.
 
@@ -48,19 +52,19 @@ The sections below record previously published releases and intentionally retain
 **Status:** RELEASED / ACCEPTED
 **Date:** 2026-10-31
 
-**Latest signed public version:** [Remote for STR 0.3.2](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2), published **2026-10-31 at 15:29:07 UTC (16:29:07 CET)**. GitHub Release ID `430018074`, `draft=false`, `prerelease=false`, returned by `releases/latest`. The prior public v0.3.1 release remains unchanged.
+**Latest signed public version:** [Remote for STR 0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2), published **2026-10-31 at 15:29:07 UTC (16:29:07 CET)**. GitHub Release ID `430018074`, `draft=false`, `prerelease=false`, returned by `releases/latest`. The prior public v0.3.1 release remains unchanged.
 
 ### Release provenance
 
 - **Exact signed and on-device-tested source:** `547fe4e52935bac03ddb0c3eb1f1ca4c7e517323`; annotated `v0.3.2` tag object `a076305a65f9207c2df36acfedf5ba94c6e576a9` resolves to that commit. The Git tag is **not cryptographically signed**; APK signing is separate.
-- **Merge and CI:** [PR #9](https://github.com/K-Cosmo/remote-for-str-android/pull/9) normal merge `d937365e6187fefe1d097aacb2d68b4ae8b393f6` preserved the tested source in history. The post-merge [main CI](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41214563587) passed.
+- **Merge and CI:** [PR #9](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/9) normal merge `d937365e6187fefe1d097aacb2d68b4ae8b393f6` preserved the tested source in history. The post-merge [main CI](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41214563587) passed.
 - **Version:** `versionName=0.3.2`, `versionCode=13`, production `applicationId=app.strremote.android` unchanged. Android launcher **Remote STR**; project name/native title **Remote for STR**.
-- **Public APK:** [`Remote-for-STR-0.3.2.apk`](https://github.com/K-Cosmo/remote-for-str-android/releases/download/v0.3.2/Remote-for-STR-0.3.2.apk), size **1,197,701 bytes**, GitHub Asset ID `695738568`, GitHub-reported SHA-256 `19b0cf987351fde11ad76c9c61d5334784dbeb5466f98e5b5602ea91549e10ec` exactly matches the local expected/tester-verified signed artifact.
-- **Companion checksum:** [`Remote-for-STR-0.3.2.apk.sha256.txt`](https://github.com/K-Cosmo/remote-for-str-android/releases/download/v0.3.2/Remote-for-STR-0.3.2.apk.sha256.txt), GitHub Asset ID `695738567`, 92 bytes, GitHub-reported asset digest `sha256:aac04dbe6760d4f7cb406b1feb429143f1fdf7b19afe45b9c854330dae97f645`. The user reports successfully re-downloading and checking both public assets.
+- **Public APK:** [`Remote-for-STR-0.3.2.apk`](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/download/v0.3.2/Remote-for-STR-0.3.2.apk), size **1,197,701 bytes**, GitHub Asset ID `695738568`, GitHub-reported SHA-256 `19b0cf987351fde11ad76c9c61d5334784dbeb5466f98e5b5602ea91549e10ec` exactly matches the local expected/tester-verified signed artifact.
+- **Companion checksum:** [`Remote-for-STR-0.3.2.apk.sha256.txt`](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/download/v0.3.2/Remote-for-STR-0.3.2.apk.sha256.txt), GitHub Asset ID `695738567`, 92 bytes, GitHub-reported asset digest `sha256:aac04dbe6760d4f7cb406b1feb429143f1fdf7b19afe45b9c854330dae97f645`. The user reports successfully re-downloading and checking both public assets.
 - **Local verification (tester-executed):** existing signed APK and checksum file PASS; `apksigner verify`, historic signer certificate SHA-256 `3cc2e7272d8c2d1433a57c4462df39adfe5e8c1931a4a924710c0e4087aa1e32`, and 16 KiB `zipalign` PASS. User also confirmed all **six** device QA scenarios, including 0.3.1→0.3.2 upgrade with retained speakers/rooms and STR controls. This is user-supplied verification output, not an independent APK binary inspection by the assistant.
 - **Changes:** compact launcher label, centralized runtime-decoded optional-feedback email recipient, deterministic source/docs guard against complete mailbox literals. Address obfuscation is not encryption.
 
-**Still not certified:** no-email-app fallback, denied WLAN permission, failures/timeouts, untested Bose firmware/hardware configurations, and a live positive update-alert test against the newly released version. These remain separately tracked under [STR-027](https://github.com/K-Cosmo/remote-for-str-android/issues/7), not recorded as PASS.
+**Still not certified:** no-email-app fallback, denied WLAN permission, failures/timeouts, untested Bose firmware/hardware configurations, and a live positive update-alert test against the newly released version. These remain separately tracked under [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7), not recorded as PASS.
 
 Detailed [0.3.2 publication evidence](evidence/qa/2026-10-31-release-0.3.2.md), [release gates](RELEASE_GATES.md) and [BUILD-0014](work/BUILD-0014.md).
 
@@ -69,19 +73,19 @@ Detailed [0.3.2 publication evidence](evidence/qa/2026-10-31-release-0.3.2.md), 
 
 **Release date:** 2026-10-31
 
-BUILD-0013 was merged via [PR #6](https://github.com/K-Cosmo/remote-for-str-android/pull/6) and publicly released as **[Remote for STR 0.3.1](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.1)** on 2026-10-31 at **09:56:33 UTC** (10:56:33 CET). GitHub Release ID `429849089`, `draft=false`, `prerelease=false`, currently returned by `releases/latest`.
+BUILD-0013 was merged via [PR #6](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/6) and publicly released as **[Remote for STR 0.3.1](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.1)** on 2026-10-31 at **09:56:33 UTC** (10:56:33 CET). GitHub Release ID `429849089`, `draft=false`, `prerelease=false`, currently returned by `releases/latest`.
 
 ### Release provenance
 
 - **Signed-source commit:** `0e6bab9d9e1bcac19b542755b7a1774c69d2776a` (distinct from the later merge/docs commits); `v0.3.1` is an **annotated tag** with tag-object `dd0480df720d805b0c6b76fd20757b59d0ee5cfe`, verified to target the exact signed source.
 - **Version:** `0.3.1` / versionCode `12`; production `applicationId=app.strremote.android` unchanged.
-- **Published APK:** [`Remote-for-STR-0.3.1.apk`](https://github.com/K-Cosmo/remote-for-str-android/releases/download/v0.3.1/Remote-for-STR-0.3.1.apk), 1,197,701 bytes, GitHub Asset ID `694988694`.
+- **Published APK:** [`Remote-for-STR-0.3.1.apk`](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/download/v0.3.1/Remote-for-STR-0.3.1.apk), 1,197,701 bytes, GitHub Asset ID `694988694`.
 - **Published APK SHA-256:** `8100334f067346c9987a68969bdebd9065455bfe73c21a0634f0dba42ddbd759`, matching the signed local build and GitHub's independent reported asset digest.
 - **Checksum asset:** `Remote-for-STR-0.3.1.apk.sha256.txt`, GitHub Asset ID `694988695`, published and uploaded.
 - **Signer:** the release script enforces the historic production certificate SHA-256 `3cc2e7272d8c2d1433a57c4462df39adfe5e8c1931a4a924710c0e4087aa1e32` and signature/zipalign verification.
-- **CI:** exact signed-source [push 41146044403](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41146044403) and [PR 41146049240](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41146049240) passed; final PR runs `41189139487` and `41189143522` passed; post-merge `main` runs `41189328176` and `41189408057` passed. Normal merge commit `ed7652783a9752e107449a572c5b6f2dff624922` preserved signed-source ancestry.
+- **CI:** exact signed-source [push 41146044403](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41146044403) and [PR 41146049240](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41146049240) passed; final PR runs `41189139487` and `41189143522` passed; post-merge `main` runs `41189328176` and `41189408057` passed. Normal merge commit `ed7652783a9752e107449a572c5b6f2dff624922` preserved signed-source ancestry.
 - **Device acceptance (tester-reported):** six defined checks passed, including the signed v0.3.0 → v0.3.1 in-place update with stored speakers/rooms, control, DE/EN wizard, email composer and restart.
-- **Explicitly untested/deferred:** no-email-handler, denied WLAN permission, network failures, unverified Bose configurations and positive future-version update notification; tracked under [STR-027](https://github.com/K-Cosmo/remote-for-str-android/issues/7). **Deferral is not test success.**
+- **Explicitly untested/deferred:** no-email-handler, denied WLAN permission, network failures, unverified Bose configurations and positive future-version update notification; tracked under [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7). **Deferral is not test success.**
 - **Privacy provenance:** ordinary branch/tag historical rewrite completed earlier; GitHub-managed legacy PR refs/caches remain a separate cleanup item. Historic signed release assets were not rewritten.
 
 See [0.3.1 publication evidence](evidence/qa/2026-10-31-release-0.3.1.md), [signed-device candidate evidence](evidence/qa/2026-10-31-release-candidate-0.3.1.md), and [release gates](RELEASE_GATES.md).
@@ -95,15 +99,15 @@ Release identity:
 - version: `0.3.0` / versionCode `11`; package `app.strremote.android`;
 - historical APK was signed from pre-rewrite source (original identity retained in encrypted offline mirror); rewritten tag source: `edc64cd5468e60edff355ec1dd1fd73c338004af` (the signed APK was not rebuilt);
 - current rewritten annotated tag `v0.3.0` object: `2e0c29414f71ae711b410b8bfe0b1e370b0aa14b`; this is **not** the original signing-time tag identity;
-- public [GitHub Release 0.3.0](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.0), release ID `429390125`, published 2026-10-30T19:03:45Z;
+- public [GitHub Release 0.3.0](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.0), release ID `429390125`, published 2026-10-30T19:03:45Z;
 - signed APK `STR-Remote-0.3.0.apk`, size 1,156,741 bytes, SHA-256 `c4b1989e00ba21915e34192b2f4e0b73695416c93397e4f0c4d3cc6617a18290`;
 - companion checksum asset `STR-Remote-0.3.0.apk.sha256.txt`;
 - original release-signing certificate SHA-256 `3cc2e7272d8c2d1433a57c4462df39adfe5e8c1931a4a924710c0e4087aa1e32`.
 
 Acceptance:
 
-- exact release-source `main` CI: success, run [41108758228](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41108758228);
-- exact release-source `v0.3.0` tag CI: success, run [41111993535](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41111993535);
+- exact release-source `main` CI: success, run [41108758228](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41108758228);
+- exact release-source `v0.3.0` tag CI: success, run [41111993535](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41111993535);
 - local signing script reported matching original signing certificate, signature verification and alignment checks;
 - user confirmed that the signed production APK passed the planned smartphone acceptance test;
 - public APK asset SHA-256 is an exact match to the locally signed SHA-256;
