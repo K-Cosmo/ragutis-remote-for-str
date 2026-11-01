@@ -4,7 +4,7 @@
 
 **Development version:** 0.3.3
 **Latest public release:** 0.3.2 (historical brand **Remote for STR**)
-**Status:** IMPLEMENTED / PHONE QA PENDING
+**Status:** IMPLEMENTED / SECOND-ROUND PHONE QA PENDING
 **Date:** 2026-11-01
 
 **Owner-requested naming change:** full Android product identity **Ragutis Remote for SoundTouch Reborn**; launcher and native Devices toolbar **Ragutis STR**. About shows the full name; DE/EN helper/update/feedback texts are updated. The independent/unofficial disclosure and trademark statement remain in place.
@@ -14,6 +14,10 @@
 **Implementation:** the root owns native system-bar/display-cutout padding. On API 30+, the inset values already handled are **zeroed** with `WindowInsets.Builder` before forwarding, retaining IME updates; on API 26–29, legacy insets are consumed. Android's previous guarded private-DOM `10px` header CSS injection and its source/test have been removed. STR retains its original normal `16px + env(safe-area-inset-top)` behavior. No upstream CSS feature is claimed implemented or agreed.
 
 **Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data, existing URLs and immutable v0.3.2 APK. New candidate `versionCode=14` / `versionName=0.3.3` is **not signed, published, or installed as a verified release**. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
+
+**User-reported first debug QA (2026-11-01):** all seven requested categories PASS on the Ragutis 0.3.3 *debug* build: product/launcher/About names, top/bottom STR WebView spacing, controls, system-bar navigation, keyboard/orientation/themes, and bilingual setup. This is owner-reported real-device QA of the **earlier** PR head, not an independently viewed screenshot, not API 26–29 certification and **not a signed 0.3.2→0.3.3 upgrade test**.
+
+**Second-round 0.3.3 development:** the project feedback recipient is changed centrally to a new owner-provided mailbox using the existing reversible character-code construction (no complete address in public source/docs). Both native About and SoundTouch model-feedback drafts use this value. The room picker now adopts the wizard's scrollable, two-line rounded card presentation, blue selected-row background and accessible row labels; existing room assignments are highlighted and custom room editing is retained. A testable `RoomPickerPolicy` preserves preset order and `null`/custom mapping. These **new changes require fresh CI and device QA**, particularly both email actions, preset/custom assignment and persistence. No backend, permission, saved-data schema or original app-signing change.
 
 **CI evidence:** candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` passed [push CI 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) and [PR CI 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468), including documentation consistency, Android build and unit tests. This is static/build evidence only, not a signed device release.
 
