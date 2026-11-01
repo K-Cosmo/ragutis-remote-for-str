@@ -2,9 +2,11 @@
 
 **Latest released version:** see [Status](STATUS.md). The completed BUILD-0013 work, release notes and device tests are maintained in [BUILD-0013](work/BUILD-0013.md), [Changelog](CHANGELOG.md) and the [v0.3.1 release evidence](evidence/qa/2026-10-31-release-0.3.1.md), not duplicated in this plan.
 
-## Repository rename sequencing (2026-11-01)
+## GitHub repository rename and 0.3.3 release sequencing (2026-11-01)
 
-Because the published v0.3.2's fixed GitHub API request has HTTP redirect following disabled, performing GitHub's rename **before** publishing the next signed APK would stop its update notification if the old endpoint redirects. The 0.3.3 developer source has merged, but signed data-preserving upgrade and release remain open. A separate draft updater migration permits standard HTTPS redirects for future clients. **Safe sequence:** validate and merge this small fix → produce original-signer 0.3.3 APK from exact clean source → verify in-place 0.3.2→0.3.3 upgrade → publish v0.3.3 under the old repository name → only then manually rename GitHub repository and update canonical links/verify both old and new endpoints. Old v0.3.2 installs that did not update before rename may require manually opening the GitHub Releases URL.
+**Owner completed the rename first:** the canonical repository is now [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The former repository slug remains a historical identifier; GitHub offers redirects, but published **0.3.2 disables redirect following for its fixed GitHub API GET**, so its automatic update check may not discover newer releases. We cannot retrofit that old signed APK.
+
+The new 0.3.3 source adopts the canonical repository URLs (About, Issues, release URLs and API) and standard HTTPS redirect handling. **Before releasing**: merge and test the migration PR, sign a clean final `main` checkout with the original GitHub release key, verify real 0.3.2→0.3.3 upgrade (no uninstall), check versionCode 14, signer and SHA-256, and run final DE/EN user flows. Then publish the signed APK and checksum in [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases). Ensure release notification is not falsely marked PASS for old clients or for a nonexistent future version.
 
 ## Current priorities
 
@@ -36,7 +38,7 @@ References: [Android root inset implementation](../app/src/main/kotlin/app/strre
 
 The maintainer's second response (2026-11-01) acknowledges the 0.3.1/0.3.2 prior compliance and says he intends to list the older Android app as an early GitHub version for Android 8+. However, the adjacent iOS **STR Remote** listing is too easy to confuse with **Remote for STR**. The owner selected the distinct active name **Ragutis Remote for SoundTouch Reborn** and short launcher label **Ragutis STR**. The maintainer said he can update the Community Apps entry after the naming decision; **no completed website update or published discussion has been confirmed**.
 
-Once 0.3.3 device QA and owner approval are complete, prepare a separate upstream [Show-and-tell thread](https://github.com/JRpersonal/streborn/discussions/categories/show-and-tell) with the new name, verified Android versions, clear unofficial attribution, actual release link and inset test result. The maintainer asks for app/integration discussion there so community support is discoverable. Specific bug reports may still be tracked in this repository's [Issues](https://github.com/K-Cosmo/remote-for-str-android/issues); opt-in email remains available without GitHub login. Do not claim upstream endorsement.
+Once 0.3.3 device QA and owner approval are complete, prepare a separate upstream [Show-and-tell thread](https://github.com/JRpersonal/streborn/discussions/categories/show-and-tell) with the new name, verified Android versions, clear unofficial attribution, actual release link and inset test result. The maintainer asks for app/integration discussion there so community support is discoverable. Specific bug reports may still be tracked in this repository's [Issues](https://github.com/K-Cosmo/ragutis-remote-for-str/issues); opt-in email remains available without GitHub login. Do not claim upstream endorsement.
 
 ## Later candidates
 
