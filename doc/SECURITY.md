@@ -67,6 +67,10 @@ The released optional version checker only accesses the fixed `https://api.githu
 Public 0.3.2 used a guarded `10px` header-spacing override against private upstream STR DOM; that is historical. Unreleased Ragutis 0.3.3 removes the injection and zeroes already-applied native system-bar/cutout insets before forwarding them to WebView (API 30+, preserving IME updates); older APIs consume handled legacy insets. No new JavaScript bridge or cross-origin capability. The maintainer's optional `--str-safe-top` / `--str-safe-bottom` proposal is **not shipped**. See [STR-022](PLANNED.md#str-022--maintainer-confirmed-inset-root-cause-upstream-css-fallback-only-if-needed).
 
 
+## GitHub repository rename and updater redirects (0.3.3 migration candidate)
+
+The public 0.3.2 build explicitly disables automatic HTTP redirects on its fixed HTTPS GitHub `/releases/latest` GET. GitHub returns 301/307 for a repository that has been renamed, so 0.3.2 cannot be assumed to discover new releases after a rename. The 0.3.3 candidate restores the platform's standard redirect following **only for the pre-existing fixed GitHub API GET**; it still requires a stable, official release tag, expected APK filename, bounded body and timeouts, and constructs release browser URLs from a fixed repository path rather than release JSON. No new remote endpoint, app privilege or sensitive request data is added. Keep the old repository name until a signed 0.3.3 APK is published and verified to maximize update notification reach; migration QA remains open.
+
 ## Optional community email feedback boundaries (BUILD-0013)
 
 The unknown model option uses the same single-attempt Bose WLAN transfer as the tested models, but an identical setup shortcut or interface is not presumed. User feedback never automatically changes the known-good model list.
