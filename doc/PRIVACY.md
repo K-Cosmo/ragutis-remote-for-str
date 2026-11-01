@@ -49,3 +49,9 @@ Published 0.3.2 centralized the project-feedback recipient for both About and So
 ## Ragutis branding and WebView insets (0.3.3 candidate, not released)
 
 The planned Ragutis name and native WebView inset correction do **not** introduce additional analytics, server data collection, tracking or a new account. The same existing update-check GitHub endpoint and optional user-triggered email flow remain. Version 0.3.3 changes the future public APK asset basename and keeps historical naming compatibility. Native layout propagation is corrected without injecting private upstream CSS selectors. Platform-level Android backup remains governed by the device's backup policies; changing the display name does not reset app-private data.
+
+## 0.3.3 new optional feedback recipient and room presentation (not released)
+
+The owner has replaced the dedicated feedback mailbox used by the app. The in-development Ragutis 0.3.3 candidate changes the *same centralized, reversible runtime-decoded recipient* for both user-triggered About and SoundTouch model-feedback drafts. The chosen mail application shows the resolved recipient and sends **only after a user confirms**; no new network endpoint, telemetry or backend has been added. The complete mailbox is intentionally not printed in public documentation or committed code. Historical APKs cannot be retroactively changed.
+
+The new room picker is presentation-only: preset and custom room assignments remain in the same Android app-private storage and are not transmitted by the picker. The design now highlights the current selection and adds accessible DE/EN text; it does not change speaker identity, STR remote behavior or network permissions. The existing Android platform-backup caveat still applies.
