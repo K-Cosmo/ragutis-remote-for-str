@@ -38,6 +38,12 @@ The owner has now selected the **long full name `Ragutis Remote for SoundTouch R
 
 Owner-supplied three wizard screenshots show SoundTouch 20 III and SoundTouch 10 carrying „geprüft“ in the *dropdown* although an explicit verified status is already shown below; selecting **Anderes SoundTouch-Modell** hides the status view, leaving the card too close to the dropdown. Change **presentation only**: display order SoundTouch 10, SoundTouch 20 III, then Other; no extra verified/checked text in option labels; keep the existing verified notice for both tested models and render a short localized unverified notice for Other in the same position. Leave detailed caution in the instruction card. Preserve enum IDs, default 20 III, current selected model, model-dependent instructions, verification semantics and protocol. Unit test covers order/mapping; require DE/EN device screenshots and simple model-switch regression before acceptance. The user has **not** yet reported testing this change.
 
+## Fourth UI adjustment — explicit SoundTouch model selection (2026-11-01)
+
+The owner requests that choosing the SoundTouch model be an **explicit prerequisite**, not an implicit 20 III default. Show **SoundTouch-Modell auswählen** / **Select SoundTouch model** directly in the native spinner, replacing the redundant standalone heading. A disabled placeholder at spinner index 0 maps to a `null` model; the model-specific help/status card is initially hidden and the Next button remains disabled. Stable model IDs, visual order (10 / 20 III / Other) and selected model restoration after an explicit choice (rotation/fresh-network retry) are preserved. The status message below the selector now uses 14dp horizontal text padding to align with the content inside the selector and instruction card. No changes to Bose Wi-Fi protocol or confirmed model status.
+
+Pure JVM tests: no-model/unknown `fromId` -> `null`, index 0 -> no model, each real model -> indices 1–3 and back, and model ID restoration. **Manual QA still open** for fresh selection, dropdown dismissal, language variants, visual alignment and retry. Owner has not yet confirmed this iteration on-device.
+
 ## Status
 
 **IMPLEMENTED in a Draft PR, no device QA, no signed release, no Google Play upload and no upstream discussion posted.** Await exact CI, device screenshots and owner approval for merge or publication. Public v0.3.2 and Play signing configurations are unaffected.
