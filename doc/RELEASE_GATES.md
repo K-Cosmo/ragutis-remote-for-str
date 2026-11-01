@@ -2,6 +2,22 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## 0.3.3 — RAGUTIS / NATIVE WEBVIEW INSETS (UNRELEASED)
+
+- [x] Code staged with full **Ragutis Remote for SoundTouch Reborn** identity, launcher/native toolbar **Ragutis STR**, existing `app.strremote.android` identity and original signer expectation.
+- [x] Static code removes the private STR header CSS override; native root zeroes already-handled system bars/cutouts (API 30+) and consumes legacy system window insets (API 26–29).
+- [x] Version staged `0.3.3` / `14`; new and two historical GitHub APK asset names are recognized by update checker; new basename used for future APK creation.
+- [ ] Final exact-source Android CI build, lint, unit tests, documentation drift and anti-harvest gates **PASS**.
+- [ ] Real device reports: native root + STR remote layout **no duplicate top/bottom padding**, normal upstream 16px header, no clipped header/buttons, functional scrolling, clicks, keyboard/IME and both light/dark modes, landscape, status/nav bars, API 26–29 and current API 30+ device.
+- [ ] **Original-signature signed APK** upgrade over public v0.3.2 retains speakers, rooms, control and startup behavior. No uninstall/data reset.
+- [ ] DE/EN phone checks: launcher and toolbar **Ragutis STR**, full About product identity, independent/trademark notice, model-feedback version and both wizard languages.
+- [ ] Owner reviews Show-and-tell post and asks upstream maintainer to change Community Apps label only after confirmed release; upstream documented CSS variables are **fallback if needed, not claimed API**.
+- [ ] Explicit owner authorization before **merge** or **GitHub/Google Play publication**. No release/AAB upload so far.
+
+Do not reuse old Play-only PR #12 candidate without reconciling the new code, name and version. Historical 0.3.2 remains RELEASED / ACCEPTED.
+
+---
+
 ## 0.3.2 — RELEASED / ACCEPTED (STR-028 / BUILD-0014)
 
 - [x] Original signed/tested source `547fe4e52935bac03ddb0c3eb1f1ca4c7e517323`: Android build/lint/tests plus anti-harvest doc gate CI PASS ([push](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41203798614), [PR](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41203849504)).
