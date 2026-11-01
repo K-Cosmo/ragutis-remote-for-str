@@ -10,8 +10,8 @@ Because the published v0.3.2's fixed GitHub API request has HTTP redirect follow
 
 | Item | Priority | Next action |
 |---|---|---|
-| **STR-035 / STR-036** | P0 | First-round debug QA reported 7/7 PASS; signed upgrade and final current-head device QA remain open |
-| **STR-037 / STR-038** | P0 | Verify new project-feedback recipient in both opt-in email drafts and WLAN-style room-card UX (preset/custom/pending/STR) on real device; no merge/publication yet |
+| **STR-035 / STR-036** | P0 | PR #13 merged into main; signed upgrade and complete device QA remain open |
+| **STR-037 / STR-038** | P0 | Verify new project-feedback recipient in both opt-in drafts and room-card UX (preset/custom/pending/STR); APK publication still blocked, source merge completed |
 | **STR-022** | P1 | Test native inset zeroing first; request documented upstream `--str-safe-top` / `--str-safe-bottom` only if still needed |
 | **STR-025** | P1 | Notify upstream maintainer of the accepted **Ragutis** release for his promised Community Apps label change; verify listing before claiming it live |
 | **STR-023** | P1 | Set up federated community support: upstream discovery thread, app Issues and optional email |
