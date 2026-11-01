@@ -12,7 +12,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Require explicit SoundTouch model selection at the start of Wi-Fi setup: localized selector placeholder replaces the redundant heading, the preparation action stays disabled and model instructions stay hidden until a model is chosen; previous selected models survive legitimate retry/rotation. Indent the model test notice 14dp to align with the selector/card text.
 - Improve the bilingual SoundTouch setup model dropdown: SoundTouch 10, SoundTouch 20 III, then Other; remove redundant tested/verified suffixes from selectable names. Keep the verified notice below the dropdown and show a concise unverified notice for Other, without changing setup protocol or saved model IDs.
 - Migrate app's canonical GitHub Releases API, release-page, About/source and Issues URLs to **K-Cosmo/ragutis-remote-for-str** following the owner's repository rename. Keep standard HTTPS release-API redirects enabled. The published 0.3.2 cannot be retroactively repaired.
-- Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
+- Build a local **original-signer** v0.3.3 / versionCode 14 candidate from source `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` and record owner's signed 7/7 smoke-test PASS ([evidence](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md)). **No GitHub v0.3.3 tag, public APK/checksum, or Google Play rollout yet; explicit owner publication approval remains required.**
 
 ## 0.3.2 — 2026-10-31
 
