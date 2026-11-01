@@ -70,4 +70,4 @@ The script runs locally **and in GitHub Android CI** before compilation. CI veri
 
 ## Public AI transparency
 
-Remote for STR is intentionally AI-assisted during development. Public project material must distinguish development assistance from runtime behavior: AI may help implement, analyze, debug, review and document the project, but acceptance remains evidence-based and human-directed. The shipped Android app has no AI/LLM runtime or AI-service data path unless a future explicit product decision changes that boundary.
+Ragutis Remote for SoundTouch Reborn is intentionally AI-assisted during development. Public project material must distinguish development assistance from runtime behavior: AI may help implement, analyze, debug, review and document the project, but acceptance remains evidence-based and human-directed. The shipped Android app has no AI/LLM runtime or AI-service data path unless a future explicit product decision changes that boundary.
