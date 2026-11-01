@@ -289,7 +289,7 @@ internal class BoseSetupProbeActivity : Activity() {
             getString(R.string.bose_prepare_intro)
         ))
         preparationPage.addView(heading(getString(R.string.bose_model_heading)))
-        val models = BoseSetupModel.entries
+        val models = BoseSetupModel.displayOrder
         val modelSelection = Spinner(this).apply {
             minimumHeight = dp(58)
             background = card(Color.rgb(126, 148, 169))
@@ -959,11 +959,13 @@ internal class BoseSetupProbeActivity : Activity() {
         modelInstructionSteps.text =
             getString(R.string.bose_setup_button_steps)
         modelInstructionHint.text = getString(selectedModel.setupHintRes)
-        // The model-specific instructions already warn about untested
-        // devices. Avoid a second large warning that pushes the action below
-        // the fold on ordinary phones.
-        modelTestNotice.visibility = if (other) View.GONE else View.VISIBLE
-        modelTestNotice.text = if (other) "" else getString(R.string.bose_model_checked)
+        // Keep one concise, model-specific notice between the dropdown and
+        // the instructions. The detailed unverified setup caution stays in
+        // the card without growing the wizard into another page.
+        modelTestNotice.visibility = View.VISIBLE
+        modelTestNotice.text = getString(
+            if (other) R.string.bose_model_unverified else R.string.bose_model_checked
+        )
         if (::earlyFeedbackPrepButton.isInitialized) {
             earlyFeedbackPrepButton.visibility = if (other) View.VISIBLE else View.GONE
         }
