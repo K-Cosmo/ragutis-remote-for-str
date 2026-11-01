@@ -44,6 +44,10 @@ The owner requests that choosing the SoundTouch model be an **explicit prerequis
 
 Pure JVM tests: no-model/unknown `fromId` -> `null`, index 0 -> no model, each real model -> indices 1–3 and back, and model ID restoration. **Manual QA still open** for fresh selection, dropdown dismissal, language variants, visual alignment and retry. Owner has not yet confirmed this iteration on-device.
 
+## Owner authorization and release sequencing (2026-11-01)
+
+Owner authorizes the tested development PR's source merge and proposes: merge → rename repository → create/verify signed GitHub 0.3.3 release → email STR maintainer → await reply → resume Google Play test onboarding and later Show-and-tell tester recruitment. **Only the source merge is authorized for immediate execution; publication remains dependent on successful original-signer APK and in-place-upgrade verification and canonical URL review.** The repo rename requires a separate GitHub administration action and must not silently change the Android `applicationId` or GitHub update-check behavior. User reports the latest dropdown change as visually well implemented but has not reported full second-round mail/room persistence tests or signed upgrade.
+
 ## Status
 
 **IMPLEMENTED in a Draft PR, no device QA, no signed release, no Google Play upload and no upstream discussion posted.** Await exact CI, device screenshots and owner approval for merge or publication. Public v0.3.2 and Play signing configurations are unaffected.
