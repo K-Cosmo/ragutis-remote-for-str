@@ -63,8 +63,10 @@ class MainActivity : Activity() {
     private lateinit var prefs: PreferencesStore
     private val pendingBose by lazy { PendingBoseStore(this) }
     private var returningFromBoseSetup = false
-    // UI-thread flag: prevent duplicate automatic update dialogs during a manual check.
+    // UI-thread flags: prevent a late automatic response from duplicating a
+    // manually requested update dialog, including when the manual request finishes first.
     private var manualUpdateCheckActive = false
+    private var manualUpdateCheckRequested = false
     private lateinit var discovery: StrDiscovery
     private lateinit var connectivityManager: ConnectivityManager
     private val probe = EndpointProbe()
@@ -1166,17 +1168,14 @@ class MainActivity : Activity() {
             text = getString(R.string.update_check_now)
             isAllCaps = false
             setOnClickListener {
-                if (packageName != "app.strremote.android") {
-                    updateStatus.setText(R.string.update_release_only)
-                    updateStatus.visibility = View.VISIBLE
-                    return@setOnClickListener
-                }
+                val signedRelease = packageName == "app.strremote.android"
                 val installedVersion = version
                 if (installedVersion == "?") {
                     updateStatus.setText(R.string.update_check_failed)
                     updateStatus.visibility = View.VISIBLE
                     return@setOnClickListener
                 }
+                manualUpdateCheckRequested = true
                 manualUpdateCheckActive = true
                 isEnabled = false
                 updateStatus.setText(R.string.update_check_in_progress)
@@ -1184,7 +1183,7 @@ class MainActivity : Activity() {
                 updateProgress.visibility = View.VISIBLE
                 Thread({
                     val result = AppUpdateChecker.fetch(installedVersion)
-                    if (result != null) {
+                    if (result != null && signedRelease) {
                         getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
                             .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                     }
@@ -1200,8 +1199,14 @@ class MainActivity : Activity() {
                             AppUpdateStatus.CURRENT -> updateStatus.text =
                                 getString(R.string.update_already_current, installedVersion)
                             AppUpdateStatus.UPDATE_AVAILABLE -> {
-                                updateStatus.setText(R.string.update_found)
-                                result?.available?.let { showAppUpdateDialog(it) }
+                                if (!signedRelease) {
+                                    // Debug QA may inspect real GitHub status but must not
+                                    // offer an incompatible production APK as an upgrade.
+                                    updateStatus.setText(R.string.update_release_only)
+                                } else {
+                                    updateStatus.setText(R.string.update_found)
+                                    result?.available?.let { showAppUpdateDialog(it) }
+                                }
                             }
                         }
                     }
@@ -1283,7 +1288,7 @@ class MainActivity : Activity() {
                 checkPrefs.edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                 result.available?.let { update ->
                     runOnUiThread {
-                        if (!manualUpdateCheckActive) showAppUpdateDialog(update)
+                        if (!manualUpdateCheckRequested) showAppUpdateDialog(update)
                     }
                 }
             }
