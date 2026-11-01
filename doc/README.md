@@ -1,6 +1,6 @@
 # Project documentation
 
-`/doc` is the single normative source of truth for Remote for STR. Root-level files may provide public or tooling entry points, but they must not duplicate normative project rules.
+`/doc` is the single normative source of truth for Ragutis Remote for SoundTouch Reborn. Root-level files may provide public or tooling entry points, but they must not duplicate normative project rules.
 
 ## Release status and verification
 
