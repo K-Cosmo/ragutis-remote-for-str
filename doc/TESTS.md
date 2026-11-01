@@ -115,6 +115,7 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 
 ## 0.3.3 Ragutis / STR WebView insets — release candidate device gates
 
+- CI for exact candidate source must confirm build/lint/JVM tests and doc-consistency/anti-harvesting, but does not constitute real-device acceptance. Source `08ca3d5c3025fbce7df5130fa8961a00713fa954`: push and PR runs passed on 2026-11-01.
 - Verify DE and EN launcher label **Ragutis STR**, compact Devices toolbar **Ragutis STR** next to tappable About, and **full Ragutis Remote for SoundTouch Reborn** in About. Check bilingual trademark/unofficial statement, update dialog and feedback draft version label.
 - Confirm original `app.strremote.android` package, original APK signer, preferences and stored speaker/room entries after signed 0.3.2 → 0.3.3 in-place update; never uninstall/data-clear during acceptance.
 - On the STR WebView, compare top/bottom spacing before/after, verify **normal upstream 16px header** and no double safe-area padding, working play/pause, device and preset buttons. Include WebView navigation/back and cold restart.
