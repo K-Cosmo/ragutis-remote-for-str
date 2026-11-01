@@ -60,4 +60,4 @@ Owner authorizes the tested development PR's source merge and proposes: merge �
 
 **New QA required:** Compare both mail action recipients with the newly created owner mailbox, check that messages are only drafts, inspect the text and version. For rooms, validate all six presets, no room, custom names (including re-edit and long names), scroll/selection states and preservation across restart for STR and pending Bose devices. Existing Android 0.3.2→0.3.3 signed-upgrade gate remains open. Older phone/API validation also remains open where not verified.
 
-**Release control:** remain in the same unpublished 0.3.3 candidate; no merge, new GitHub tag/APK or Google Play AAB may occur without explicit owner authorization.
+**Release control (as of 2026-11-01):** Owner approved and completed the **source merge** via PR #13, but no 0.3.3 APK/tag/Play AAB exists. Owner renamed the repository to `K-Cosmo/ragutis-remote-for-str`. Next: canonical URL migration, protected local original-signer APK build, signed 0.3.2→0.3.3 in-place device acceptance, and only then a verified public release; Play remains paused.
