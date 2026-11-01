@@ -2,7 +2,7 @@
 
 ## Scope
 
-Remote for STR remains a thin Android integration layer around the web remote served by SoundTouch Reborn. STR owns playback/business behavior; Remote for STR owns Android discovery, endpoint selection, local UI metadata, persistence, permission/network handling and WebView integration.
+Ragutis Remote for SoundTouch Reborn remains a thin Android integration layer around the web remote served by SoundTouch Reborn. STR owns playback/business behavior; Ragutis STR owns Android discovery, endpoint selection, local UI metadata, persistence, permission/network handling and WebView integration.
 
 ## Components
 
@@ -46,11 +46,11 @@ Persistence is deliberately small and app-private:
 - explicitly saved speakers support durable device management;
 - room metadata is presentation-only;
 - the dismissed-help preference is UI-only;
-- none of this data is uploaded or synchronized by Remote for STR.
+- none of this data is uploaded or synchronized by Ragutis STR.
 
 ## Dependency direction
 
-The Android wrapper depends on STR's local contracts. STR does not depend on the Android wrapper. There is no hosted Remote for STR service.
+The Android wrapper depends on STR's local contracts. STR does not depend on the Android wrapper. There is no hosted Ragutis service.
 
 ## Native shell geometry
 
@@ -85,6 +85,12 @@ The signed 0.3.1 APK passed the agreed six on-device acceptance checks and the c
 - Remote for STR version comes from the installed package, Android version/API from the OS. Neither is sent in the background. No GitHub login, GitHub API feedback call, app-level SMTP, privileged permissions or new runtime library.
 - The configured-mail-client draft flow passed the agreed on-device check. The **no-mail-client negative path** was explicitly deferred and remains [NOT TESTED](https://github.com/K-Cosmo/remote-for-str-android/issues/7). Manual review of incoming mail remains required before an additional SoundTouch model can be marked as verified.
 
-## In development — 0.3.2 compact Android launcher label and feedback recipient
+## Released 0.3.2 — historical launcher label and feedback hygiene
 
-The public project name, native Devices toolbar and About/community attribution remain **Remote for STR**. Only the Android application/launcher label shortens to **Remote STR**. The `applicationId`, signing identity and stored user data must not change. `BoseCommunityFeedback` becomes the single recipient source for WLAN-model and About email drafts. It reconstructs the mailbox at runtime from reversible numeric character encoding solely to discourage elementary literal harvesting; it is **not encryption or a secrecy guarantee**. Real-device upgrade QA remains required for the future 0.3.2 release.
+Public GitHub v0.3.2 used the product name **Remote for STR**, launcher **Remote STR**. It preserved the app ID, signer and local data, and centrally decoded the voluntary feedback recipient only when needed. Obfuscation is anti-harvesting, not encryption; the historical accepted release stays unchanged.
+
+## In development — 0.3.3 Ragutis and native safe-area ownership
+
+Full Android product/Info identity **Ragutis Remote for SoundTouch Reborn**; launcher and compact Devices toolbar **Ragutis STR**. Keep `app.strremote.android`, preferences, release signer, fixed GitHub updater URLs and STR networking behavior intact. Update DE/EN helper texts, Wi-Fi wizard and voluntary feedback version labels. Preserve two legacy GitHub APK asset names alongside the Ragutis release basename.
+
+The maintainer traced the previous top/bottom spacing to system insets forwarded twice. Android root now applies native system-bar/cutout padding and zeroes the handled types for children on API 30+, preserving IME notifications. API 26–29 uses the legacy consume path. The old private `body > header` JavaScript/CSS injection was removed; STR retains normal 16px header styling. No new JavaScript bridge or assumed upstream CSS contract. Real-device verification remains pending.
