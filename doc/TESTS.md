@@ -124,6 +124,13 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
 - Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
 
+## 0.3.3 explicit model selection and hint alignment (pending device QA)
+
+- On fresh wizard open in DE and EN, **no SoundTouch model is implicitly selected**. The spinner itself displays the localized `bose_model_select_desc` prompt and the separate model heading is absent. The placeholder must be non-selectable from the opened menu, the model-specific instruction card and status note remain hidden, and the Next action is visibly disabled.
+- Open and close the dropdown without selection: nothing progresses. Select SoundTouch 10, SoundTouch 20 III or Other: the correct notice/instruction appears and Next becomes enabled. Check model-specific failure-feedback remains only for Other.
+- After an explicit selection, navigation back, device rotation and fresh-network retry must retain the chosen enum ID, never replace it with a hidden default. Check unrecognized/absent model IDs resolve to no selection; pure policy unit tests enforce placeholder index 0 and valid models at indices 1–3.
+- Confirm model status hint has balanced 14dp horizontal insets and visually aligns with selector and instruction card **text**, without clipping/overlap on narrow displays/large font sizes.
+
 ## 0.3.3 wizard model dropdown clarification (pending device QA)
 
 - Pure model-policy test: presentation order is **SoundTouch 10, SoundTouch 20 III, Other last**, while stable `BoseSetupModel.name` IDs and default 20 III are untouched. No order inferred by replacing persistent IDs.
