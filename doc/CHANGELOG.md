@@ -2,6 +2,13 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
+## Unreleased — 0.3.3 Ragutis branding and WebView insets
+
+- Adopt **Ragutis Remote for SoundTouch Reborn** as the full Android product name and **Ragutis STR** for the launcher and compact native toolbar. Surface the full name in About; update DE/EN notices, app update dialogs, model-feedback version labels and both Wi-Fi wizard languages without changing the application ID or original signing key.
+- Fix native-to-WebView duplicate safe-area padding by zeroing the system-bar/display-cutout insets handled by the Android root on API 30+, consuming legacy insets on API 26–29, while preserving IME propagation. Remove the 10px private-upstream-DOM header CSS injector and its obsolete assertion test; let STR use normal CSS header spacing.
+- Accept future GitHub APKs named `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` and retain support for both published legacy naming patterns; update the local signed-release script's future output basename.
+- Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
+
 ## 0.3.2 — 2026-10-31
 
 - Released `versionName=0.3.2` and `versionCode=13` as signed [GitHub v0.3.2](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2); the existing app identity and stored speakers/rooms remain compatible with in-place upgrades.
