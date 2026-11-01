@@ -4,7 +4,6 @@
     <string name="bose_step_1_of_4">Step 1 of 4</string>
     <string name="bose_prepare_title">Prepare your speaker</string>
     <string name="bose_prepare_intro">First select your SoundTouch model. Then we will show you how to get started.</string>
-    <string name="bose_model_heading">Speaker model</string>
     <string name="bose_model_select_desc">Select SoundTouch model</string>
     <string name="bose_setup_wifi_explainer">The speaker opens its own Bose Wi-Fi network. You do not need to enter its name.</string>
     <string name="bose_yellow_button">The Wi-Fi light is amber</string>
