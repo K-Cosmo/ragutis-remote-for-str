@@ -133,7 +133,7 @@ try {
         throw "Working tree is not clean. Commit/stash/restore all changes before building a release artifact."
     }
 
-    Write-Host "== Remote for STR $($appVersion.Name) final build =="
+    Write-Host "== Ragutis Remote for SoundTouch Reborn $($appVersion.Name) final build =="
     Write-Host "Version code: $($appVersion.Code)"
     Write-Host "Git commit:   $gitHead"
     Write-Host "Project:      $ProjectRoot"
@@ -160,7 +160,7 @@ try {
     $distDir = Join-Path $ProjectRoot "dist"
     New-Item -ItemType Directory -Path $distDir -Force | Out-Null
 
-    $baseName = "Remote-for-STR-$($appVersion.Name)"
+    $baseName = "Ragutis-Remote-for-SoundTouch-Reborn-$($appVersion.Name)"
     $alignedApk = Join-Path $distDir "$baseName-aligned-unsigned.apk"
     $signedApk = Join-Path $distDir "$baseName.apk"
     $hashFile = Join-Path $distDir "$baseName.apk.sha256.txt"
@@ -206,7 +206,7 @@ try {
     $verifyText = (@($verificationOutput | ForEach-Object { $_.ToString() })) -join "`n"
     $actualCertificate = Get-ApkSignerCertificateDigest -OutputText $verifyText
     if ($actualCertificate -ne $expectedCertificate) {
-        throw "Wrong release-signing certificate ($actualCertificate): APK cannot update STR Remote 0.2.1."
+        throw "Wrong release-signing certificate ($actualCertificate): APK cannot update existing signed installations."
     }
     Write-Host "Release signer matches the v0.2.1 update identity."
 
