@@ -54,7 +54,7 @@ The sections below record previously published releases and intentionally retain
 **Status:** RELEASED / ACCEPTED
 **Date:** 2026-10-31
 
-**Latest signed public version:** [Remote for STR 0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2), published **2026-10-31 at 15:29:07 UTC (16:29:07 CET)**. GitHub Release ID `430018074`, `draft=false`, `prerelease=false`, returned by `releases/latest`. The prior public v0.3.1 release remains unchanged.
+**Historical v0.3.2 signed public release:** [Remote for STR 0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2), published **2026-10-31 at 15:29:07 UTC (16:29:07 CET)**. GitHub Release ID `430018074`, `draft=false`, `prerelease=false`, was returned by `releases/latest` until v0.3.3 became the latest stable release on 2026-11-01. The prior public v0.3.1 release remains unchanged.
 
 ### Release provenance
 
