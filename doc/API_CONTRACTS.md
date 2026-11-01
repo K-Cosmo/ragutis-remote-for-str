@@ -34,9 +34,9 @@ These contracts describe what the Android wrapper currently relies on. They are 
 
 ## Embedded STR WebUI layout
 
-As of release 0.3.1, **STR has no agreed, documented Android embedding CSS contract**. The wrapper recognizes the current private DOM structure (`body > header`, `#dev`, `#powerBtn`) and injects a guarded `padding-top: 10px` override. STR currently defines its normal sticky header padding as `calc(16px + env(safe-area-inset-top))`.
+The **published 0.3.1/0.3.2 wrapper** recognized private DOM selectors (`body > header`, `#dev`, `#powerBtn`) and injected a guarded `10px` header override. The upstream STR WebUI normally defines `calc(16px + env(safe-area-inset-top))`. The maintainer's 2026-11-01 diagnosis found the native Android root had already used system insets but forwarded them to WebView, producing duplicate CSS safe-area padding. The **unreleased 0.3.3 implementation** removes the DOM/CSS override and instead zeroes native-handled insets before reaching WebView, retaining WebView IME delivery.
 
-This is a **compatibility workaround**, not an upstream API. On unexpected markup, the wrapper must not forcibly rearrange or hide controls. A stable upstream-owned custom property or embedding mode is proposed in [STR-022](PLANNED.md#str-022--stable-str-webui-embedding-interface-proposal); it is not adopted until the STR maintainer agrees, ships and documents the contract.
+STR has **no agreed, released, documented Android embedding CSS contract** for this client. The maintainer offered possible future variables `--str-safe-top` and `--str-safe-bottom`, defaulting to `env()`, only if native-only insets do not prove sufficient on real devices. Do not inject undocumented CSS properties or private DOM overrides. See [STR-022](PLANNED.md#str-022--maintainer-confirmed-inset-root-cause-upstream-css-fallback-only-if-needed) and [D-047](DECISIONS.md).
 
 ## Compatibility rule
 
