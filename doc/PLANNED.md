@@ -6,14 +6,14 @@
 
 **Owner completed the rename first:** the canonical repository is now [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The former repository slug remains a historical identifier; GitHub offers redirects, but published **0.3.2 disables redirect following for its fixed GitHub API GET**, so its automatic update check may not discover newer releases. We cannot retrofit that old signed APK.
 
-The new 0.3.3 source adopts the canonical repository URLs (About, Issues, release URLs and API) and standard HTTPS redirect handling. **Before releasing**: merge and test the migration PR, sign a clean final `main` checkout with the original GitHub release key, verify real 0.3.2→0.3.3 upgrade (no uninstall), check versionCode 14, signer and SHA-256, and run final DE/EN user flows. Then publish the signed APK and checksum in [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases). Ensure release notification is not falsely marked PASS for old clients or for a nonexistent future version.
+The new 0.3.3 source already adopts canonical GitHub URLs and standard HTTPS redirects; migration PR #14 and main CI passed. **Owner locally built the signed candidate from exact source commit `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` and reports seven signed 0.3.2→0.3.3 phone smoke cases PASS**, including saved data, STR, room picker, Wi-Fi wizard, feedback, DE/EN UI and GitHub links. See [QA evidence](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md). **Release is explicitly blocked until separate owner approval**; tag, public signed APK/checksum, post-upload digest verification and current-release documentation update are open. Do not claim v0.3.2's old updater behavior was fixed.
 
 ## Current priorities
 
 | Item | Priority | Next action |
 |---|---|---|
-| **STR-035 / STR-036** | P0 | PR #13 merged into main; signed upgrade and complete device QA remain open |
-| **STR-037 / STR-038** | P0 | Verify new project-feedback recipient in both opt-in drafts and room-card UX (preset/custom/pending/STR); APK publication still blocked, source merge completed |
+| **STR-035 / STR-036** | P0 | Source merged, owner-reported signed 7/7 smoke QA PASS; publication approval, tag and asset verification OPEN. Exhaustive edge-case QA separately deferred |
+| **STR-037 / STR-038** | P1 | Signed smoke includes feedback and room picker PASS; granular negative paths, TalkBack and full model/room permutations not separately certified |
 | **STR-022** | P1 | Test native inset zeroing first; request documented upstream `--str-safe-top` / `--str-safe-bottom` only if still needed |
 | **STR-025** | P1 | Notify upstream maintainer of the accepted **Ragutis** release for his promised Community Apps label change; verify listing before claiming it live |
 | **STR-023** | P1 | Set up federated community support: upstream discovery thread, app Issues and optional email |
@@ -28,7 +28,7 @@ For details and current states, see [Backlog](BACKLOG.md) and [Findings](FINDING
 
 **Released 0.3.2 (historical):** Android forwarded root system insets unchanged to WebView and compensated for STR's `calc(16px + env(safe-area-inset-top))` with a guarded private DOM `10px` CSS override. This created fragile top/bottom spacing. The STR maintainer diagnosed duplicate padding in his second response (2026-11-01).
 
-**In-development 0.3.3:** Native Android root owns the safe-area padding and zeroes already applied system-bar/display-cutout insets for WebView on API 30+; legacy APIs consume handled insets. The DOM and CSS override code has been removed. STR keeps its **normal 16px CSS header padding** and its own PWA/browser behavior. No change to STR source is proposed in the primary implementation. Real-device verification of top/bottom insets, WebView controls, rotation and keyboard/IME is **mandatory**.
+**Signed candidate 0.3.3 (not publicly released):** Native Android root owns the safe-area padding and zeroes already applied system-bar/display-cutout insets for WebView on API 30+; legacy APIs consume handled insets. The DOM and CSS override code has been removed. STR keeps its **normal 16px CSS header padding** and its own PWA/browser behavior. No change to STR source is proposed in the primary implementation. Real-device verification of top/bottom insets, WebView controls, rotation and keyboard/IME is **mandatory**.
 
 **If the native-only fix fails on tested devices:** The maintainer offered a future upstream-documented pair `--str-safe-top` and `--str-safe-bottom` on `:root`, with normal `env()` fallbacks. Treat these as **proposed**, not current available CSS API, until his implementation/versioned documentation exists. Ask via [STR Show and tell](https://github.com/JRpersonal/streborn/discussions/categories/show-and-tell) after test evidence; do not again target private `#dev`, `#powerBtn`, or `body > header` selectors.
 
