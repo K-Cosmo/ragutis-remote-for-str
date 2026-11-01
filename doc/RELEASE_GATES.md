@@ -7,7 +7,7 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [x] Code staged with full **Ragutis Remote for SoundTouch Reborn** identity, launcher/native toolbar **Ragutis STR**, existing `app.strremote.android` identity and original signer expectation.
 - [x] Static code removes the private STR header CSS override; native root zeroes already-handled system bars/cutouts (API 30+) and consumes legacy system window insets (API 26–29).
 - [x] Version staged `0.3.3` / `14`; new and two historical GitHub APK asset names are recognized by update checker; new basename used for future APK creation.
-- [ ] Final exact-source Android CI build, lint, unit tests, documentation drift and anti-harvest gates **PASS**.
+- [x] Candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` GitHub CI: [push 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) **PASS** and [PR 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468) **PASS**; documentation drift/anti-harvest and Android build/lint/unit tests PASS. These CI results do **not** replace on-device QA.
 - [ ] Real device reports: native root + STR remote layout **no duplicate top/bottom padding**, normal upstream 16px header, no clipped header/buttons, functional scrolling, clicks, keyboard/IME and both light/dark modes, landscape, status/nav bars, API 26–29 and current API 30+ device.
 - [ ] **Original-signature signed APK** upgrade over public v0.3.2 retains speakers, rooms, control and startup behavior. No uninstall/data reset.
 - [ ] DE/EN phone checks: launcher and toolbar **Ragutis STR**, full About product identity, independent/trademark notice, model-feedback version and both wizard languages.
