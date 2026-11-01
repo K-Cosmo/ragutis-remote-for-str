@@ -1146,6 +1146,71 @@ class MainActivity : Activity() {
 
         paragraph(getString(R.string.app_name), emphasized = true)
         paragraph(getString(R.string.about_version_format, version), emphasized = true)
+
+        // A user-initiated check is never throttled by the automatic 24h cache.
+        // Show a clear result even when the installed version is already current
+        // or GitHub is unavailable on a local-only speaker Wi-Fi network.
+        var aboutDialog: AlertDialog? = null
+        val updateStatus = TextView(this).apply {
+            textSize = 14f
+            setPadding(0, dp(4), 0, dp(12))
+            visibility = View.GONE
+        }
+        val updateProgress = ProgressBar(this).apply {
+            isIndeterminate = true
+            visibility = View.GONE
+        }
+        val checkUpdatesButton = Button(this).apply {
+            text = getString(R.string.update_check_now)
+            isAllCaps = false
+            setOnClickListener {
+                if (packageName != "app.strremote.android") {
+                    updateStatus.setText(R.string.update_release_only)
+                    updateStatus.visibility = View.VISIBLE
+                    return@setOnClickListener
+                }
+                val installedVersion = version
+                if (installedVersion == "?") {
+                    updateStatus.setText(R.string.update_check_failed)
+                    updateStatus.visibility = View.VISIBLE
+                    return@setOnClickListener
+                }
+                isEnabled = false
+                updateStatus.setText(R.string.update_check_in_progress)
+                updateStatus.visibility = View.VISIBLE
+                updateProgress.visibility = View.VISIBLE
+                Thread({
+                    val result = AppUpdateChecker.fetch(installedVersion)
+                    if (result != null) {
+                        getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
+                            .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
+                    }
+                    runOnUiThread {
+                        if (isFinishing || isDestroyed || aboutDialog?.isShowing != true) {
+                            return@runOnUiThread
+                        }
+                        isEnabled = true
+                        updateProgress.visibility = View.GONE
+                        when {
+                            result == null -> updateStatus.setText(R.string.update_check_failed)
+                            result.available == null -> updateStatus.text =
+                                getString(R.string.update_already_current, installedVersion)
+                            else -> {
+                                updateStatus.setText(R.string.update_found)
+                                showAppUpdateDialog(result.available)
+                            }
+                        }
+                    }
+                }, "RagutisUpdateCheckManual").start()
+            }
+        }
+        layout.addView(checkUpdatesButton, LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        ))
+        layout.addView(updateProgress, LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, dp(24)
+        ).apply { gravity = Gravity.CENTER_HORIZONTAL })
+        layout.addView(updateStatus)
         paragraph(getString(R.string.about_community_notice))
         paragraph(getString(R.string.about_trademark_notice))
         paragraph(getString(R.string.about_support_heading), emphasized = true)
@@ -1172,10 +1237,22 @@ class MainActivity : Activity() {
             isFillViewport = false
             addView(layout)
         }
-        AlertDialog.Builder(this)
+        aboutDialog = AlertDialog.Builder(this)
             .setTitle(R.string.about_title)
             .setView(scrollView)
             .setPositiveButton(R.string.about_close, null)
+            .show()
+    }
+
+    private fun showAppUpdateDialog(update: AvailableAppUpdate) {
+        if (isFinishing || isDestroyed) return
+        AlertDialog.Builder(this)
+            .setTitle(R.string.update_available_title)
+            .setMessage(getString(R.string.update_available_message, update.version))
+            .setPositiveButton(R.string.update_view_release) { _, _ ->
+                openExternalUri(Uri.parse(update.releaseUrl))
+            }
+            .setNegativeButton(R.string.update_later, null)
             .show()
     }
 
@@ -1202,15 +1279,7 @@ class MainActivity : Activity() {
                 checkPrefs.edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                 result.available?.let { update ->
                     runOnUiThread {
-                        if (isFinishing || isDestroyed) return@runOnUiThread
-                        AlertDialog.Builder(this@MainActivity)
-                            .setTitle(R.string.update_available_title)
-                            .setMessage(getString(R.string.update_available_message, update.version))
-                            .setPositiveButton(R.string.update_view_release) { _, _ ->
-                                openExternalUri(Uri.parse(update.releaseUrl))
-                            }
-                            .setNegativeButton(R.string.update_later, null)
-                            .show()
+                        showAppUpdateDialog(update)
                     }
                 }
             }
