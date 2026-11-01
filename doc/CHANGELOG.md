@@ -7,6 +7,8 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Adopt **Ragutis Remote for SoundTouch Reborn** as the full Android product name and **Ragutis STR** for the launcher and compact native toolbar. Surface the full name in About; update DE/EN notices, app update dialogs, model-feedback version labels and both Wi-Fi wizard languages without changing the application ID or original signing key.
 - Fix native-to-WebView duplicate safe-area padding by zeroing the system-bar/display-cutout insets handled by the Android root on API 30+, consuming legacy insets on API 26–29, while preserving IME propagation. Remove the 10px private-upstream-DOM header CSS injector and its obsolete assertion test; let STR use normal CSS header spacing.
 - Accept future GitHub APKs named `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` and retain support for both published legacy naming patterns; update the local signed-release script's future output basename.
+- Update the centrally decoded optional-feedback recipient for the owner-provided Ragutis mailbox, shared by native About and SoundTouch model feedback. Preserve the reversible anti-harvesting encoding; no complete recipient literal is committed or secretly sent.
+- Replace the plain room `AlertDialog.setItems` list with WLAN-style two-line rounded selection cards, a clearly marked current room, accessible DE/EN row descriptions, a scroll limit, and custom-name prefill/blank-input validation. Preserve stored `RoomPreset` IDs and `RoomAssignment` format.
 - Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
 
 ## 0.3.2 — 2026-10-31
