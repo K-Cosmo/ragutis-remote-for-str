@@ -66,6 +66,11 @@
     <string name="room_kids">Kinderzimmer</string>
     <string name="room_garden">Garten</string>
     <string name="room_custom">Eigener Raum…</string>
+    <string name="room_none_hint">Raumzuordnung entfernen</string>
+    <string name="room_preset_hint">Vorgegebener Raum</string>
+    <string name="room_custom_row_hint">Eigenen Raumnamen eingeben</string>
+    <string name="room_row_accessibility">%1$s, %2$s</string>
+    <string name="room_row_selected_accessibility">%1$s, %2$s, ausgewählt</string>
     <string name="room_custom_title">Eigener Raum</string>
     <string name="room_custom_hint">z. B. Arbeitszimmer</string>
     <string name="room_custom_invalid">Bitte einen Raumnamen eingeben.</string>
