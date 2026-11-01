@@ -1,5 +1,26 @@
 # Status
 
+## Ragutis Remote for SoundTouch Reborn 0.3.3 — DEVELOPMENT / NOT RELEASED
+
+**Development version:** 0.3.3
+**Latest public release:** 0.3.2 (historical brand **Remote for STR**)
+**Status:** IMPLEMENTED / PHONE QA PENDING
+**Date:** 2026-11-01
+
+**Owner-requested naming change:** full Android product identity **Ragutis Remote for SoundTouch Reborn**; launcher and native Devices toolbar **Ragutis STR**. About shows the full name; DE/EN helper/update/feedback texts are updated. The independent/unofficial disclosure and trademark statement remain in place.
+
+**STR maintainer's second response (2026-11-01):** acknowledged the previously fulfilled requirements and intended a Community Apps listing; asked for a differentiated name because the former **Remote for STR** was visually confused with the iOS **STR Remote**. The maintainer identified double forwarding of native system-bar insets to the embedded WebView, and proposed consuming handled insets to avoid duplicate CSS `env(safe-area-inset-*)` padding. The maintainer offered future documented `--str-safe-top` / `--str-safe-bottom` variables if still needed.
+
+**Implementation:** the root owns native system-bar/display-cutout padding. On API 30+, the inset values already handled are **zeroed** with `WindowInsets.Builder` before forwarding, retaining IME updates; on API 26–29, legacy insets are consumed. Android's previous guarded private-DOM `10px` header CSS injection and its source/test have been removed. STR retains its original normal `16px + env(safe-area-inset-top)` behavior. No upstream CSS feature is claimed implemented or agreed.
+
+**Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data, existing URLs and immutable v0.3.2 APK. New candidate `versionCode=14` / `versionName=0.3.3` is **not signed, published, or installed as a verified release**. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
+
+**Next gates:** exact commit CI/lint/unit tests, native header and WebView device testing (API 26–29 / 30+, Android 16/17, status/navigation bars, cutout, keyboard/IME, rotation and STR control clicks), signed in-place upgrade from GitHub 0.3.2 keeping speakers/rooms, DE/EN brand/feedback About checks, upstream Show-and-tell communication, and explicit owner approval for merge/publication. Play planning PR #10 and the old Play-only version candidate PR #12 are **on hold**; an AAB must be based on this renamed/tested code, not the outdated Play-only candidate.
+
+The sections below record previously published releases and intentionally retain their original historical product names and evidence.
+
+---
+
 ## Remote for STR 0.3.2 — RELEASED / ACCEPTED
 
 **Development version:** 0.3.2
