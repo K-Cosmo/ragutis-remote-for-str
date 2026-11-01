@@ -11,9 +11,9 @@ class AppUpdateCheckerTest {
         assertEquals(true, AppUpdateChecker.FOLLOW_REPOSITORY_REDIRECTS)
     }
 
-    @Test fun checksOnlyCanonicalRenamedRepository() {
+    @Test fun checksCurrentCanonicalRagutisRepository() {
         assertEquals(
-            "https://api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest",
+            "https://api.github.com/repos/K-Cosmo/ragutis-remote-for-str/releases/latest",
             AppUpdateChecker.API_URL
         )
     }
