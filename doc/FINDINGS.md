@@ -176,7 +176,7 @@
 **Evidence:** physical Android test report from 2026-10-30: email application chooser appeared, selected mail client opened, recipient was present, but subject and body were blank.
 **Observed:** the draft formatter generated the subject and body correctly but `ACTION_SENDTO` relied solely on `Intent.EXTRA_SUBJECT` and `Intent.EXTRA_TEXT`, which did not work with the tested client.
 **Action:** retain `ACTION_SENDTO` and existing extras, additionally encode `subject` and `body` in an RFC 6068 `mailto:` URI using UTF-8 percent encoding and CRLF; add unit regression coverage and explicit on-device client QA. No automatic send, SMTP, credential or device identifier collection.
-**State (2026-10-31):** CLOSED in signed 0.3.1 on-device acceptance; recipient, subject and body were confirmed. The no-email-client negative case remains [NOT TESTED / deferred](https://github.com/K-Cosmo/remote-for-str-android/issues/7).
+**State (2026-10-31):** CLOSED in signed 0.3.1 on-device acceptance; recipient, subject and body were confirmed. The no-email-client negative case remains [NOT TESTED / deferred](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7).
 
 ## F-028 — BUILD-0013 WebView CSS relies on private upstream STR DOM
 
