@@ -15,7 +15,9 @@
 
 **Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data, existing URLs and immutable v0.3.2 APK. New candidate `versionCode=14` / `versionName=0.3.3` is **not signed, published, or installed as a verified release**. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
 
-**Next gates:** exact commit CI/lint/unit tests, native header and WebView device testing (API 26–29 / 30+, Android 16/17, status/navigation bars, cutout, keyboard/IME, rotation and STR control clicks), signed in-place upgrade from GitHub 0.3.2 keeping speakers/rooms, DE/EN brand/feedback About checks, upstream Show-and-tell communication, and explicit owner approval for merge/publication. Play planning PR #10 and the old Play-only version candidate PR #12 are **on hold**; an AAB must be based on this renamed/tested code, not the outdated Play-only candidate.
+**CI evidence:** candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` passed [push CI 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) and [PR CI 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468), including documentation consistency, Android build and unit tests. This is static/build evidence only, not a signed device release.
+
+**Next gates:** native header and WebView device testing (API 26–29 / 30+, Android 16/17, status/navigation bars, cutout, keyboard/IME, rotation and STR control clicks), signed in-place upgrade from GitHub 0.3.2 keeping speakers/rooms, DE/EN brand/feedback About checks, upstream Show-and-tell communication, and explicit owner approval for merge/publication. Play planning PR #10 and the old Play-only version candidate PR #12 are **on hold**; an AAB must be based on this renamed/tested code, not the outdated Play-only candidate.
 
 The sections below record previously published releases and intentionally retain their original historical product names and evidence.
 
