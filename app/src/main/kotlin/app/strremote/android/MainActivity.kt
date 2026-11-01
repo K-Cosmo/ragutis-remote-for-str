@@ -63,9 +63,7 @@ class MainActivity : Activity() {
     private lateinit var prefs: PreferencesStore
     private val pendingBose by lazy { PendingBoseStore(this) }
     private var returningFromBoseSetup = false
-    // UI-thread flags: prevent a late automatic response from duplicating a
-    // manually requested update dialog, including when the manual request finishes first.
-    private var manualUpdateCheckActive = false
+    // UI-thread flag: suppress a late automatic prompt after a manual request.
     private var manualUpdateCheckRequested = false
     private lateinit var discovery: StrDiscovery
     private lateinit var connectivityManager: ConnectivityManager
@@ -1176,7 +1174,6 @@ class MainActivity : Activity() {
                     return@setOnClickListener
                 }
                 manualUpdateCheckRequested = true
-                manualUpdateCheckActive = true
                 isEnabled = false
                 updateStatus.setText(R.string.update_check_in_progress)
                 updateStatus.visibility = View.VISIBLE
@@ -1188,7 +1185,6 @@ class MainActivity : Activity() {
                             .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                     }
                     runOnUiThread {
-                        manualUpdateCheckActive = false
                         if (isFinishing || isDestroyed || aboutDialog?.isShowing != true) {
                             return@runOnUiThread
                         }
