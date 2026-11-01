@@ -8,6 +8,12 @@
 
 The new 0.3.3 source already adopts canonical GitHub URLs and standard HTTPS redirects; migration PR #14 and main CI passed. **Owner locally built the signed candidate from exact source commit `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` and reports seven signed 0.3.2→0.3.3 phone smoke cases PASS**, including saved data, STR, room picker, Wi-Fi wizard, feedback, DE/EN UI and GitHub links. See [QA evidence](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md). **Separate owner approval was subsequently granted**, and stable GitHub [v0.3.3](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3) is publicly available. The annotated tag targets the exact signed source, APK asset's GitHub SHA-256 equals the locally tested digest, and `releases/latest` resolves to v0.3.3. No Google Play release or community publication has been performed. Do not claim v0.3.2's old updater behavior was fixed.
 
+## Updater diagnostics / manual check (0.3.4 development)
+
+The published Ragutis v0.3.3 has a silent automatic GitHub release check on application startup, with a 24h success throttle. The latest GitHub v0.3.3 **equals the current installed production v0.3.3**, so no update prompt should appear. This is not conclusive evidence that a genuinely newer release can be discovered. Since v0.3.2 used an old non-redirecting API URL, old installations after the repository rename may need manual update.
+
+A separate 0.3.4 draft introduces user-controlled About update checks with progress and explicit `current / request failed / newer` results, using the same fixed official HTTPS GitHub API and parser, without automatic APK install. Real-device QA must verify when no newer release is available, the no-network case (e.g. local-only STR Wi-Fi), and a future real public newer release when one exists. This does not block local STR operation or change package/signing identity.
+
 ## Current priorities
 
 | Item | Priority | Next action |
