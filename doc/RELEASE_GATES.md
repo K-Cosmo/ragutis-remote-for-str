@@ -2,6 +2,17 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## 0.3.3 GitHub repository rename / updater compatibility — RELEASE BLOCKER
+
+- [x] PR #13 **source merged** as `f821602e1b45172610a7735f6e0830de4bfdee79`, post-merge [CI 41315289069](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41315289069) PASS. This is not proof of a signed/public 0.3.3 APK.
+- [x] Identified public 0.3.2 update-check limitation: fixed old GitHub API URL with `instanceFollowRedirects=false`, while GitHub responds to renamed repository API requests with HTTP 301/307.
+- [ ] Confirm current candidate's normal HTTPS redirect following for the fixed GitHub API endpoint (draft fix PR; verify Android behavior rather than relying on a constant-only unit assertion).
+- [ ] Build/sign/test original-key v0.3.3 APK and publish it under the **existing repo name**, so 0.3.2's update checker can discover it before a rename. No APK has been created or uploaded by the assistant.
+- [ ] Only **after** that release, rename repository in GitHub Settings; test old→new web and API redirects, on-device 0.3.3 update-check behavior, and update canonical About, README, Privacy, Security, tests and documentation links in a separate change. Existing v0.3.2 installs that missed the pre-rename update may need manual download.
+- [ ] Record exact signed source/tag/APK SHA-256 and on-device data-preserving upgrade. Historical 0.3.2 releases must remain untouched.
+
+---
+
 ## 0.3.3 — RAGUTIS / NATIVE WEBVIEW INSETS (UNRELEASED)
 
 - [x] Code staged with full **Ragutis Remote for SoundTouch Reborn** identity, launcher/native toolbar **Ragutis STR**, existing `app.strremote.android` identity and original signer expectation.
