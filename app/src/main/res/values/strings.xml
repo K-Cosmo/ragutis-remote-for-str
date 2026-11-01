@@ -66,6 +66,11 @@
     <string name="room_kids">Kids\' room</string>
     <string name="room_garden">Garden</string>
     <string name="room_custom">Custom room…</string>
+    <string name="room_none_hint">Remove room assignment</string>
+    <string name="room_preset_hint">Built-in room</string>
+    <string name="room_custom_row_hint">Enter a custom room name</string>
+    <string name="room_row_accessibility">%1$s, %2$s</string>
+    <string name="room_row_selected_accessibility">%1$s, %2$s, selected</string>
     <string name="room_custom_title">Custom room</string>
     <string name="room_custom_hint">e.g. Office</string>
     <string name="room_custom_invalid">Please enter a room name.</string>
