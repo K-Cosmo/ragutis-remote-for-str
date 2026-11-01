@@ -1,5 +1,11 @@
 # Status
 
+## Release migration follow-up — GitHub repository rename
+
+**Source merged:** PR #13 merged into main as `f821602e1b45172610a7735f6e0830de4bfdee79` with source-only approval; latest public signed GitHub release remains 0.3.2. Post-merge CI is [PASS](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41315289069).
+
+**New migration risk:** published 0.3.2 uses the original `api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest` and explicitly disables redirect following; GitHub API issues HTTP 301/307 after repository renames. Existing 0.3.2 installations would then lose the best-effort update notification (manual GitHub installation remains possible). A separate draft repair allows documented HTTPS redirects on the fixed GET in the next 0.3.3 candidate, but **cannot retroactively fix 0.3.2**. Therefore stage/sign/test/publish 0.3.3 under the still-existing repository name *before* renaming, then rename and manually verify the redirected API and canonical links. Do not claim permanent upgrade notification coverage for users who remain on 0.3.2.
+
 ## Ragutis Remote for SoundTouch Reborn 0.3.3 — DEVELOPMENT / NOT RELEASED
 
 **Development version:** 0.3.3
