@@ -124,6 +124,12 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
 - Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
 
+## 0.3.3 wizard model dropdown clarification (pending device QA)
+
+- Pure model-policy test: presentation order is **SoundTouch 10, SoundTouch 20 III, Other last**, while stable `BoseSetupModel.name` IDs and default 20 III are untouched. No order inferred by replacing persistent IDs.
+- DE and EN spinner values contain no „geprüft“/“verified” suffix; the existing checked-status note remains below the spinner for SoundTouch 10/20 III. For Other, a newly localized unverified-test note occupies the same area; detailed specific caution remains inside the preparation card.
+- Test switching each of the three models, instructions and status notice, optional Other feedback action, phones with small display/large fonts. No WLAN-protocol/compatibility certifications added by the UI change.
+
 ## 0.3.3 second-round regression — feedback and room UI
 
 - **Recipient:** Unit test new feedback recipient constructed from separate fragments (never a complete public mailbox literal). Verify the *same* central recipient powers native About and SoundTouch feedback and is shown by the external mail application; neither path sends automatically. Check DE/EN subject/body, app/Android version, no SSID/password or diagnostics, and no mail client negative path if available.
