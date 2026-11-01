@@ -27,6 +27,8 @@
 
 **Current second-round CI evidence:** functional code head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`, [push CI 41310056025](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310056025) and [PR CI 41310061181](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310061181) both **PASS** with Android build/lint/unit and documentation/privacy checks. This evidence does not certify the new mail drafts/room UI on a real phone or signed in-place update.
 
+**Owner decision (2026-11-01):** authorize merge of Ragutis PR #13 into `main`; thereafter rename repository and prepare a GitHub 0.3.3 release before informing the STR maintainer. The **source merge is distinct from signed APK release acceptance**. Signing/real 0.3.2→0.3.3 in-place upgrade, checksums, target URL verification and final device QA are still pending. No signed 0.3.3, GitHub tag/Release, repo rename, email to maintainer, or Google Play track upload is claimed.
+
 **Next gates:** native header and WebView device testing (API 26–29 / 30+, Android 16/17, status/navigation bars, cutout, keyboard/IME, rotation and STR control clicks), signed in-place upgrade from GitHub 0.3.2 keeping speakers/rooms, DE/EN brand/feedback About checks, upstream Show-and-tell communication, and explicit owner approval for merge/publication. Play planning PR #10 and the old Play-only version candidate PR #12 are **on hold**; an AAB must be based on this renamed/tested code, not the outdated Play-only candidate.
 
 The sections below record previously published releases and intentionally retain their original historical product names and evidence.
