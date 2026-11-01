@@ -84,8 +84,8 @@
     <string name="speaker_management_hide">Hinweis ausblenden</string>
     <string name="update_check_now">Auf Updates prüfen</string>
     <string name="update_check_in_progress">Suche nach einer neuen Version auf GitHub …</string>
-    <string name="update_already_current">Du verwendest bereits die aktuelle veröffentlichte Version (%1$s).</string>
-    <string name="update_check_failed">GitHub konnte nicht erreicht werden. Bitte prüfe die Internetverbindung und versuche es erneut.</string>
+    <string name="update_already_current">Kein neuerer GitHub-Release verfügbar (installiert: %1$s).</string>
+    <string name="update_check_failed">Die Updateprüfung ist fehlgeschlagen. Bitte Internetverbindung prüfen oder später erneut versuchen.</string>
     <string name="update_release_only">Die Updateprüfung steht nur in der signierten Release-App zur Verfügung.</string>
     <string name="update_found">Eine neuere Version wurde gefunden.</string>
     <string name="update_available_title">Ragutis STR: Update verfügbar</string>
