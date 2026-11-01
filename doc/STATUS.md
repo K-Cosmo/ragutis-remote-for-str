@@ -1,5 +1,40 @@
 # Status
 
+## Ragutis Remote for SoundTouch Reborn 0.3.3 — DEVELOPMENT / NOT RELEASED
+
+**Development version:** 0.3.3
+**Latest public release:** 0.3.2 (historical brand **Remote for STR**)
+**Status:** IMPLEMENTED / SECOND-ROUND PHONE QA PENDING
+**Date:** 2026-11-01
+
+**Owner-requested naming change:** full Android product identity **Ragutis Remote for SoundTouch Reborn**; launcher and native Devices toolbar **Ragutis STR**. About shows the full name; DE/EN helper/update/feedback texts are updated. The independent/unofficial disclosure and trademark statement remain in place.
+
+**STR maintainer's second response (2026-11-01):** acknowledged the previously fulfilled requirements and intended a Community Apps listing; asked for a differentiated name because the former **Remote for STR** was visually confused with the iOS **STR Remote**. The maintainer identified double forwarding of native system-bar insets to the embedded WebView, and proposed consuming handled insets to avoid duplicate CSS `env(safe-area-inset-*)` padding. The maintainer offered future documented `--str-safe-top` / `--str-safe-bottom` variables if still needed.
+
+**Implementation:** the root owns native system-bar/display-cutout padding. On API 30+, the inset values already handled are **zeroed** with `WindowInsets.Builder` before forwarding, retaining IME updates; on API 26–29, legacy insets are consumed. Android's previous guarded private-DOM `10px` header CSS injection and its source/test have been removed. STR retains its original normal `16px + env(safe-area-inset-top)` behavior. No upstream CSS feature is claimed implemented or agreed.
+
+**Compatibility:** keep `applicationId=app.strremote.android`, original signing certificate, local device/room data, existing URLs and immutable v0.3.2 APK. New candidate `versionCode=14` / `versionName=0.3.3` is **not signed, published, or installed as a verified release**. GitHub APK update matching accepts new `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` plus both previous exact release naming conventions.
+
+**User-reported first debug QA (2026-11-01):** all seven requested categories PASS on the Ragutis 0.3.3 *debug* build: product/launcher/About names, top/bottom STR WebView spacing, controls, system-bar navigation, keyboard/orientation/themes, and bilingual setup. This is owner-reported real-device QA of the **earlier** PR head, not an independently viewed screenshot, not API 26–29 certification and **not a signed 0.3.2→0.3.3 upgrade test**.
+
+**Second-round 0.3.3 development:** the project feedback recipient is changed centrally to a new owner-provided mailbox using the existing reversible character-code construction (no complete address in public source/docs). Both native About and SoundTouch model-feedback drafts use this value. The room picker now adopts the wizard's scrollable, two-line rounded card presentation, blue selected-row background and accessible row labels; existing room assignments are highlighted and custom room editing is retained. A testable `RoomPickerPolicy` preserves preset order and `null`/custom mapping. These **new changes require fresh CI and device QA**, particularly both email actions, preset/custom assignment and persistence. No backend, permission, saved-data schema or original app-signing change.
+
+**Wizard UX follow-up from owner screenshots (2026-11-01):** the three screenshots show duplicated „geprüft“ suffixes for checked models and no intermediate status text for Other; this is targeted UI evidence, not full process QA. Development now orders the model dropdown as **SoundTouch 10 → SoundTouch 20 III → Anderes SoundTouch-Modell**, removes tested qualifiers from dropdown labels, retains the approved test notice below the selector and adds a concise unverified-model notice at the same location for Other. The detailed unverified instructions stay in the existing card and optional failure-feedback button remains. DE/EN screenshot validation of this **new** change is pending. The previously reported 7/7 first-round QA and later Room/Email code CI are historical to earlier commits, not proof of this new source.
+
+**Latest wizard refinement (owner request, 2026-11-01):** initial selection is now **none** rather than silently preselecting SoundTouch 20 III. The former standalone model heading is replaced by the disabled placeholder **SoundTouch-Modell auswählen** (EN: **Select SoundTouch model**) within the spinner. The preparation action and model instructions remain disabled/hidden until an actual model choice. A deliberately chosen model persists through legitimate retry and configuration restoration, including the unchanged enum ID. The status hint beneath the dropdown gains 14dp side padding to align with both selector/card text. Unit checks for empty/invalid/restored choices and the spinner index shift are staged; **new on-phone QA is pending**.
+
+**CI evidence:** candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` passed [push CI 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) and [PR CI 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468), including documentation consistency, Android build and unit tests. This is static/build evidence only, not a signed device release.
+
+**Current second-round CI evidence:** functional code head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`, [push CI 41310056025](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310056025) and [PR CI 41310061181](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310061181) both **PASS** with Android build/lint/unit and documentation/privacy checks. This evidence does not certify the new mail drafts/room UI on a real phone or signed in-place update.
+
+**Owner decision (2026-11-01):** authorize merge of Ragutis PR #13 into `main`; thereafter rename repository and prepare a GitHub 0.3.3 release before informing the STR maintainer. The **source merge is distinct from signed APK release acceptance**. Signing/real 0.3.2→0.3.3 in-place upgrade, checksums, target URL verification and final device QA are still pending. No signed 0.3.3, GitHub tag/Release, repo rename, email to maintainer, or Google Play track upload is claimed.
+
+**Next gates:** native header and WebView device testing (API 26–29 / 30+, Android 16/17, status/navigation bars, cutout, keyboard/IME, rotation and STR control clicks), signed in-place upgrade from GitHub 0.3.2 keeping speakers/rooms, DE/EN brand/feedback About checks, upstream Show-and-tell communication, and explicit owner approval for merge/publication. Play planning PR #10 and the old Play-only version candidate PR #12 are **on hold**; an AAB must be based on this renamed/tested code, not the outdated Play-only candidate.
+
+The sections below record previously published releases and intentionally retain their original historical product names and evidence.
+
+---
+
 ## Remote for STR 0.3.2 — RELEASED / ACCEPTED
 
 **Development version:** 0.3.2

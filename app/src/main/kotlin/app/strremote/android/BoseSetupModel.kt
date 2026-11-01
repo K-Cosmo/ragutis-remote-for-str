@@ -27,7 +27,22 @@ internal enum class BoseSetupModel(
     );
 
     companion object {
-        fun fromId(value: String?): BoseSetupModel =
-            entries.firstOrNull { it.name == value } ?: SOUND_TOUCH_20_III
+        // Presentation order only; stable enum IDs and saved selections are unchanged.
+        // Index 0 is a non-selectable prompt, never a SoundTouch model.
+        val displayOrder: List<BoseSetupModel> = listOf(
+            SOUND_TOUCH_10, SOUND_TOUCH_20_III, OTHER_SOUND_TOUCH
+        )
+
+        fun fromId(value: String?): BoseSetupModel? =
+            entries.firstOrNull { it.name == value }
+
+        fun pickerIndex(model: BoseSetupModel?): Int {
+            if (model == null) return 0
+            val index = displayOrder.indexOf(model)
+            return if (index < 0) 0 else index + 1
+        }
+
+        fun pickerModel(index: Int): BoseSetupModel? =
+            displayOrder.getOrNull(index - 1)
     }
 }

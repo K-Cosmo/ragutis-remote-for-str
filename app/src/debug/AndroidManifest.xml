@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Distinct debug application can still be installed beside the signed app. -->
     <application
-        android:label="Remote STR (Debug)"
+        android:label="Ragutis STR (Debug)"
         tools:replace="android:label" />
 </manifest>

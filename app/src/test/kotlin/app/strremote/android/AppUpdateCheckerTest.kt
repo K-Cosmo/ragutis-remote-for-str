@@ -18,6 +18,15 @@ class AppUpdateCheckerTest {
         assertEquals("0.4.0", AppUpdateChecker.parsePublicRelease(json, "0.3.0")?.version)
     }
 
+    @Test fun acceptsRagutisApkNameAndRejectsMismatchedVersion() {
+        val json = """{"tag_name":"v0.3.3","draft":false,"prerelease":false,
+            "assets":[{"name":"Ragutis-Remote-for-SoundTouch-Reborn-0.3.3.apk"}]}"""
+        assertEquals("0.3.3", AppUpdateChecker.parsePublicRelease(json, "0.3.2")?.version)
+        assertNull(AppUpdateChecker.parsePublicRelease(
+            """{"tag_name":"v0.3.3","draft":false,"prerelease":false,
+            "assets":[{"name":"Ragutis-Remote-for-SoundTouch-Reborn-0.3.4.apk"}]}""", "0.3.2"))
+    }
+
     @Test fun acceptsLegacyApkNameDuringBrandMigration() {
         val json = """{"tag_name":"v0.4.0","draft":false,"prerelease":false,
             "assets":[{"name":"STR-Remote-0.4.0.apk"}]}"""

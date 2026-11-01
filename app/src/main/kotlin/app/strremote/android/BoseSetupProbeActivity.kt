@@ -135,8 +135,9 @@ internal class BoseSetupProbeActivity : Activity() {
     private lateinit var modelInstructionTitle: TextView
     private lateinit var modelInstructionSteps: TextView
     private lateinit var modelInstructionHint: TextView
+    private lateinit var modelInstructionCard: LinearLayout
     private lateinit var modelTestNotice: TextView
-    private var selectedModel = BoseSetupModel.SOUND_TOUCH_20_III
+    private var selectedModel: BoseSetupModel? = null
     private var passwordVisible = false
     private var setupPhase = BoseSetupPhase.PREPARING
     private lateinit var ssidField: EditText
@@ -228,7 +229,7 @@ internal class BoseSetupProbeActivity : Activity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(EXTRA_MODEL_ID, selectedModel.name)
+        selectedModel?.let { outState.putString(EXTRA_MODEL_ID, it.name) }
         super.onSaveInstanceState(outState)
     }
 
@@ -288,8 +289,7 @@ internal class BoseSetupProbeActivity : Activity() {
         preparationPage.addView(text(
             getString(R.string.bose_prepare_intro)
         ))
-        preparationPage.addView(heading(getString(R.string.bose_model_heading)))
-        val models = BoseSetupModel.entries
+        val models = BoseSetupModel.displayOrder
         val modelSelection = Spinner(this).apply {
             minimumHeight = dp(58)
             background = card(Color.rgb(126, 148, 169))
@@ -297,17 +297,22 @@ internal class BoseSetupProbeActivity : Activity() {
         }
         val modelAdapter = object : ArrayAdapter<String>(
             this, android.R.layout.simple_spinner_item,
-            models.map { getString(it.selectionLabelRes) }
+            listOf(getString(R.string.bose_model_select_desc)) +
+                models.map { getString(it.selectionLabelRes) }
         ) {
+            // Placeholder stays visible until the user explicitly selects a model.
+            // Do not allow the prompt itself to be picked from the opened menu.
+            override fun isEnabled(position: Int): Boolean = position != 0
+
             override fun getView(position: Int, convertView: View?, parent: ViewGroup): View =
                 (super.getView(position, convertView, parent) as TextView).apply {
-                    setTextColor(ink)
+                    setTextColor(if (position == 0) muted else ink)
                     textSize = 16f
                     setPadding(dp(16), dp(12), dp(12), dp(12))
                 }
             override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View =
                 (super.getDropDownView(position, convertView, parent) as TextView).apply {
-                    setTextColor(ink)
+                    setTextColor(if (position == 0) muted else ink)
                     setBackgroundColor(Color.WHITE)
                     textSize = 16f
                     minHeight = dp(54)
@@ -316,13 +321,13 @@ internal class BoseSetupProbeActivity : Activity() {
         }
         modelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         modelSelection.adapter = modelAdapter
-        modelSelection.setSelection(models.indexOf(selectedModel).coerceAtLeast(0))
+        modelSelection.setSelection(BoseSetupModel.pickerIndex(selectedModel))
         modelSelection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) = Unit
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
-                selectedModel = models[position]
+                selectedModel = BoseSetupModel.pickerModel(position)
                 renderModelInstructions()
             }
         }
@@ -344,27 +349,30 @@ internal class BoseSetupProbeActivity : Activity() {
         ))
         preparationPage.addView(dropdownFrame)
         modelTestNotice = text("", 14f, muted).apply {
-            setPadding(0, dp(10), 0, dp(14))
+            setPadding(dp(14), dp(10), dp(14), dp(14))
         }
         preparationPage.addView(modelTestNotice)
-        val instructionCard = LinearLayout(this).apply {
+        modelInstructionCard = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             background = card()
             setPadding(dp(14), dp(12), dp(14), dp(6))
         }
         modelInstructionTitle = heading("")
-        instructionCard.addView(modelInstructionTitle)
+        modelInstructionCard.addView(modelInstructionTitle)
         modelInstructionSteps = text("")
-        instructionCard.addView(modelInstructionSteps)
+        modelInstructionCard.addView(modelInstructionSteps)
         modelInstructionHint = text("", 14f, muted)
-        instructionCard.addView(modelInstructionHint)
-        preparationPage.addView(instructionCard)
+        modelInstructionCard.addView(modelInstructionHint)
+        preparationPage.addView(modelInstructionCard)
         renderModelInstructions()
         nextButton = Button(this).apply {
             text = getString(R.string.bose_yellow_button)
             isAllCaps = false
             minHeight = dp(54)
-            setOnClickListener { showPage(2) }
+            isEnabled = selectedModel != null && Build.VERSION.SDK_INT >= 29
+            setOnClickListener {
+                if (selectedModel != null) showPage(2)
+            }
         }
         preparationPage.addView(nextButton)
         earlyFeedbackPrepButton = Button(this).apply {
@@ -871,7 +879,7 @@ internal class BoseSetupProbeActivity : Activity() {
         // Initial Spinner selection may be restored before the two optional
         // feedback actions exist; synchronize their visibility after all views.
         renderModelInstructions()
-        showPage(if (resumeWithFreshSearch) 2 else 1)
+        showPage(if (resumeWithFreshSearch && selectedModel != null) 2 else 1)
     }
 
     private fun showPage(page: Int) {
@@ -954,16 +962,26 @@ internal class BoseSetupProbeActivity : Activity() {
 
     private fun renderModelInstructions() {
         if (!::modelInstructionTitle.isInitialized) return
-        val other = selectedModel == BoseSetupModel.OTHER_SOUND_TOUCH
-        modelInstructionTitle.text = getString(R.string.bose_model_instruction_title, getString(selectedModel.modelLabelRes))
-        modelInstructionSteps.text =
-            getString(R.string.bose_setup_button_steps)
-        modelInstructionHint.text = getString(selectedModel.setupHintRes)
-        // The model-specific instructions already warn about untested
-        // devices. Avoid a second large warning that pushes the action below
-        // the fold on ordinary phones.
-        modelTestNotice.visibility = if (other) View.GONE else View.VISIBLE
-        modelTestNotice.text = if (other) "" else getString(R.string.bose_model_checked)
+        val model = selectedModel
+        val other = model == BoseSetupModel.OTHER_SOUND_TOUCH
+
+        // Neither the guidance nor the action may imply that an untouched
+        // placeholder represents a confirmed selection of the default device.
+        if (::nextButton.isInitialized) {
+            nextButton.isEnabled = model != null && Build.VERSION.SDK_INT >= 29
+        }
+        modelInstructionCard.visibility = if (model == null) View.GONE else View.VISIBLE
+        modelTestNotice.visibility = if (model == null) View.GONE else View.VISIBLE
+        if (model != null) {
+            modelInstructionTitle.text = getString(
+                R.string.bose_model_instruction_title, getString(model.modelLabelRes)
+            )
+            modelInstructionSteps.text = getString(R.string.bose_setup_button_steps)
+            modelInstructionHint.text = getString(model.setupHintRes)
+            modelTestNotice.text = getString(
+                if (other) R.string.bose_model_unverified else R.string.bose_model_checked
+            )
+        }
         if (::earlyFeedbackPrepButton.isInitialized) {
             earlyFeedbackPrepButton.visibility = if (other) View.VISIBLE else View.GONE
         }
@@ -1154,17 +1172,19 @@ internal class BoseSetupProbeActivity : Activity() {
      * Do not delay or otherwise modify the proven FIRST requestNetwork() path.
      */
     private fun restartWizardForFreshSearch() {
+        val model = selectedModel ?: return
         trace("retry_new_activity")
         closeSession()
         val restart = Intent(this, BoseSetupProbeActivity::class.java).apply {
             putExtra(EXTRA_RESTART_AND_SEARCH, true)
-            putExtra(EXTRA_MODEL_ID, selectedModel.name)
+            putExtra(EXTRA_MODEL_ID, model.name)
         }
         startActivity(restart)
         finish()
     }
 
     private fun startOrRequestPermission() {
+        if (selectedModel == null) return
         trace("start_pressed")
         if (Build.VERSION.SDK_INT < 29) return
 

@@ -2,6 +2,33 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## 0.3.3 — RAGUTIS / NATIVE WEBVIEW INSETS (UNRELEASED)
+
+- [x] Code staged with full **Ragutis Remote for SoundTouch Reborn** identity, launcher/native toolbar **Ragutis STR**, existing `app.strremote.android` identity and original signer expectation.
+- [x] Static code removes the private STR header CSS override; native root zeroes already-handled system bars/cutouts (API 30+) and consumes legacy system window insets (API 26–29).
+- [x] Version staged `0.3.3` / `14`; new and two historical GitHub APK asset names are recognized by update checker; new basename used for future APK creation.
+- [x] Candidate source `08ca3d5c3025fbce7df5130fa8961a00713fa954` GitHub CI: [push 41306285299](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306285299) **PASS** and [PR 41306330468](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41306330468) **PASS**; documentation drift/anti-harvest and Android build/lint/unit tests PASS. These CI results do **not** replace on-device QA.
+- [x] **Owner-reported first-round debug QA (2026-11-01):** seven requested categories PASS for the earlier Ragutis 0.3.3 debug build, including names, STR top/bottom insets, control use, navigation, keyboard/orientation/themes and DE/EN wizard. This does **not** verify the subsequent new feedback recipient/room picker, older API 26–29 devices or signed upgrade.
+- [x] New recipient staged as reversible numeric codes and both opt-in email paths still use one `BoseCommunityFeedback.RECIPIENT`; new unit expectation avoids committing a full mailbox literal.
+- [x] WLAN-style room cards implemented; existing selected preset/custom state is highlighted, accessibility labels localized, text-entry blank validation preserved, and mapping unit tests staged.
+- [x] **New functional source head `37b93dc38e971d51d9c8d9af1b2e3aff0077b12d`** CI after recipient/room changes: [push 41310056025](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310056025) **PASS**, [PR 41310061181](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41310061181) **PASS**; document consistency, Android build/lint, unit tests and debug artifact upload passed. UI/mailbox device validation remains separate.
+- [x] SoundTouch wizard dropdown changed to 10, 20 III, Other (last), without „geprüft“/“verified” label suffix; model-specific verified and unverified notes render immediately beneath the selector. Saved enum names/IDs, model-specific setup instructions, verification flags and Bose protocol remain unchanged. Test explicitly covers display order and stable mapping.
+- [x] Wizard now uses a **non-selectable placeholder** at dropdown index 0 with no automatic SoundTouch 20 III choice; continue/next is disabled and instructional card/verified notice are hidden until explicit selection. Existing chosen model ID can be restored for rotation/retry. Status notice has 14dp side inset for alignment.
+- [ ] **Latest wizard on-phone QA:** fresh opening shows placeholder **SoundTouch-Modell auswählen** (EN: Select SoundTouch model), no selected model and disabled Next, no model instruction card; opening then dismissing dropdown without selecting cannot progress; selecting each supported model enables Next and displays correct help; back/retry/rotation preserve *chosen* model. Check hint text alignment in DE/EN at normal and large font.
+- [ ] **New wizard UI phone QA:** in DE and EN verify dropdown order, no redundant verified suffixes, checked hint for both tested models, brief unverified hint for Other and readable spacing before the instruction card. Confirm switching 10 ↔ 20 III ↔ Other updates hint and instructions, feedback button only for Other, and wizard pages remain usable without clipping.
+- [ ] DE/EN on-device regression: About email and WLAN-model feedback open user-controlled mail drafts addressed to **new project mailbox**; version/Android fields, consent, no plaintext old/new mailbox in public source/docs.
+- [ ] Room picker DE/EN phone QA: current assigned room highlighted, none clears, six presets persist, custom name and re-edit persist, cancellation leaves data untouched, long names/small screen accessible and scrollable, TalkBack label correct; pending Bose device and STR-connected device both work.
+- [ ] Real device reports: native root + STR remote layout **no duplicate top/bottom padding**, normal upstream 16px header, no clipped header/buttons, functional scrolling, clicks, keyboard/IME and both light/dark modes, landscape, status/nav bars, API 26–29 and current API 30+ device.
+- [ ] **Original-signature signed APK** upgrade over public v0.3.2 retains speakers, rooms, control and startup behavior. No uninstall/data reset.
+- [ ] DE/EN phone checks: launcher and toolbar **Ragutis STR**, full About product identity, independent/trademark notice, model-feedback version and both wizard languages.
+- [ ] Owner reviews Show-and-tell post and asks upstream maintainer to change Community Apps label only after confirmed release; upstream documented CSS variables are **fallback if needed, not claimed API**.
+- [x] **Owner explicitly authorizes merging PR #13** (2026-11-01) and plans an initial GitHub release of Ragutis 0.3.3 after code integration. This is approval to **merge source only**, not evidence of a signed release being built, installed, tested or published.
+- [ ] **Before any GitHub APK publication:** build exact clean merged source with the **original GitHub app-signing certificate** (NOT Google Play's upload key); verify APK signature, checksums, versionCode=14; perform and record signed in-place 0.3.2→0.3.3 device upgrade preserving data and STR controls; verify future canonical repository/release URLs after rename. Public release is BLOCKED until these gates pass. Google Play AAB/track rollout remains separately gated.
+
+Do not reuse old Play-only PR #12 candidate without reconciling the new code, name and version. Historical 0.3.2 remains RELEASED / ACCEPTED.
+
+---
+
 ## 0.3.2 — RELEASED / ACCEPTED (STR-028 / BUILD-0014)
 
 - [x] Original signed/tested source `547fe4e52935bac03ddb0c3eb1f1ca4c7e517323`: Android build/lint/tests plus anti-harvest doc gate CI PASS ([push](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41203798614), [PR](https://github.com/K-Cosmo/remote-for-str-android/actions/runs/41203849504)).

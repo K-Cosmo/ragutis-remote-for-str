@@ -1,8 +1,10 @@
-# Remote for STR
+# Ragutis Remote for SoundTouch Reborn
 
-**Remote for STR** is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
+**Ragutis Remote for SoundTouch Reborn** (launcher **Ragutis STR**) is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
 
-**Current release:** 0.3.2 · [Download signed APK](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
+**Current release:** 0.3.2 (historical product name **Remote for STR**) · [Download signed APK](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
+
+> **In development:** Ragutis v0.3.3 restores native STR WebView safe-area spacing and replaces the launcher brand. Version 0.3.3 is **not released**; the public v0.3.2 APK still displays the previous product name.
 
 ## Features
 
@@ -18,19 +20,19 @@
 1. For remote control, [install STR](https://st-reborn.de) on the speaker. If the speaker still runs original Bose firmware, the Android 10+ Wi-Fi assistant can help prepare its network connection; **it does not install STR**.
 2. Connect the phone to the same Wi-Fi network as the STR-enabled speaker.
 3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/remote-for-str-android/releases/latest). Existing installations update in place; do not uninstall first.
-4. Open Remote for STR and select a discovered speaker. Manual host entry is available if discovery does not find it.
+4. Open the installed app and select a discovered speaker. Manual host entry is available if discovery does not find it.
 
 ## Privacy and safety
 
-Remote for STR does not require an account, collect analytics or operate its own backend. Speaker and room settings remain in Android's app-private storage. The optional update check contacts GitHub; sending community feedback requires opening and explicitly sending an email in your mail app.
+Ragutis STR does not require an account, collect analytics or operate its own backend. Speaker and room settings remain in Android's app-private storage. The optional update check contacts GitHub; sending community feedback requires opening and explicitly sending an email in your mail app.
 
-**Wi-Fi setup warning:** Original Bose firmware receives the Wi-Fi password over **unencrypted HTTP** on its temporary setup network. Use only a trusted setup environment. Remote for STR does not store or log the password.
+**Wi-Fi setup warning:** Original Bose firmware receives the Wi-Fi password over **unencrypted HTTP** on its temporary setup network. Use only a trusted setup environment. Ragutis STR does not store or log the password.
 
 See [Privacy](doc/PRIVACY.md), [Security](doc/SECURITY.md) and [tested compatibility / open cases](doc/STATUS.md).
 
 ## Community and attribution
 
-**Unofficial community app.** Remote for STR is independently developed and is **not affiliated with or endorsed by Bose Corporation or the SoundTouch Reborn (STR) project**. **Bose** and **SoundTouch** are trademarks of Bose Corporation.
+**Unofficial community app.** Ragutis Remote for SoundTouch Reborn is independently developed and is **not affiliated with or endorsed by Bose Corporation or the SoundTouch Reborn (STR) project**. **Bose** and **SoundTouch** are trademarks of Bose Corporation.
 
 For bugs and feature requests, use [GitHub Issues](https://github.com/K-Cosmo/remote-for-str-android/issues). For unverified SoundTouch Wi-Fi setups, you can prepare an optional feedback email directly in the app and send it through your email client. No GitHub account is needed.
 

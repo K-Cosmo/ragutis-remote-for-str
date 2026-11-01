@@ -54,10 +54,10 @@ internal object AppUpdateChecker {
 
         // Do not announce incomplete releases without a downloadable official APK.
         val assets = release.optJSONArray("assets") ?: return null
-        // New releases use the adopted product name. Accept the legacy asset
-        // format too, so existing historical release naming is not confused
-        // with an incomplete release during the migration.
+        // Recognize Ragutis releases while preserving the exact historical
+        // APK names already used by public signed GitHub releases.
         val allowedApkNames = setOf(
+            "Ragutis-Remote-for-SoundTouch-Reborn-${candidate.version}.apk",
             "Remote-for-STR-${candidate.version}.apk",
             "STR-Remote-${candidate.version}.apk"
         )

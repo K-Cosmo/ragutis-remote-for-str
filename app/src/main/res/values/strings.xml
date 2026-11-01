@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Remote for STR</string>
-    <string name="launcher_name">Remote STR</string>
+    <string name="app_name">Ragutis Remote for SoundTouch Reborn</string>
+    <string name="launcher_name">Ragutis STR</string>
+    <string name="toolbar_name">Ragutis STR</string>
     <string name="devices">Devices</string>
     <string name="searching">Searching for SoundTouch Reborn speakers…</string>
     <string name="found_devices">Found devices</string>
@@ -32,7 +33,7 @@
     <string name="str_unreachable">A speaker was discovered, but its SoundTouch Reborn web remote is not reachable. Check that STR is installed and running.</string>
     <string name="saved_unreachable">The saved speaker is currently not reachable. Check Wi-Fi and SoundTouch Reborn, then try again.</string>
     <string name="permission_title">Local network access required</string>
-    <string name="permission_body">Remote for STR needs local network access to discover and open the web remote served by your speaker.</string>
+    <string name="permission_body">Ragutis STR needs local network access to discover and open the web remote served by your speaker.</string>
     <string name="grant_permission">Allow local network</string>
     <string name="discovery_failed">Discovery failed (error %1$d).</string>
     <string name="manual_invalid">Please enter a valid host name or IP address.</string>
@@ -65,6 +66,11 @@
     <string name="room_kids">Kids\' room</string>
     <string name="room_garden">Garden</string>
     <string name="room_custom">Custom room…</string>
+    <string name="room_none_hint">Remove room assignment</string>
+    <string name="room_preset_hint">Built-in room</string>
+    <string name="room_custom_row_hint">Enter a custom room name</string>
+    <string name="room_row_accessibility">%1$s, %2$s</string>
+    <string name="room_row_selected_accessibility">%1$s, %2$s, selected</string>
     <string name="room_custom_title">Custom room</string>
     <string name="room_custom_hint">e.g. Office</string>
     <string name="room_custom_invalid">Please enter a room name.</string>
@@ -76,7 +82,7 @@
     <string name="selected_speaker_room">%1$s · %2$s</string>
     <string name="speaker_room_title">%1$s · %2$s</string>
     <string name="speaker_management_hide">Hide this hint</string>
-    <string name="update_available_title">Remote for STR update available</string>
+    <string name="update_available_title">Ragutis STR update available</string>
     <string name="update_available_message">Version %1$s is available on GitHub. Open the release page to download and install the update?</string>
     <string name="update_view_release">View release</string>
     <string name="update_later">Later</string>

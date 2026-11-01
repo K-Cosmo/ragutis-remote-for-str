@@ -12,8 +12,8 @@ import java.nio.charset.StandardCharsets
 class BoseCommunityFeedbackTest {
     // Construct expected behavior without a harvestable full mailbox literal.
     private fun expectedRecipient(): String =
-        listOf("remote", "for", "str", "android").joinToString("-") +
-            "@" + "gmx" + "." + "org"
+        listOf("ragutis", "remote", "for", "str").joinToString("-") +
+            "@" + "gmx" + "." + "eu"
 
     @Test fun onlyExplicitModelAndOutcomeProduceDraft() {
         assertNull(BoseCommunityFeedback.compose("", BoseCommunityOutcome.SUCCESS, "0.3.0", "16 (API 36)"))
@@ -38,7 +38,7 @@ class BoseCommunityFeedbackTest {
         )
         assertTrue(mail.body.contains("SoundTouch Portable"))
         assertTrue(mail.body.contains("WLAN-Einrichtung erfolgreich: Ja"))
-        assertTrue(mail.body.contains("Remote for STR Version: 0.3.0 (Debug)"))
+        assertTrue(mail.body.contains("Ragutis STR Version: 0.3.0 (Debug)"))
         assertTrue(mail.body.contains("Android-Version: 16 (API 36)"))
         assertTrue(mail.body.startsWith("SoundTouch WLAN-Einrichtung – Community-Feedback\n\nLautsprecher\n"))
         assertTrue(mail.body.contains("WLAN-Einrichtung erfolgreich: Ja\n\nSoftware\n"))

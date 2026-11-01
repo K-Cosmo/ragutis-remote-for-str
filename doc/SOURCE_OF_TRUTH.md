@@ -2,14 +2,14 @@
 
 ## Product
 
-Remote for STR is a thin Android integration layer around the web remote already served by SoundTouch Reborn (STR). The Android app discovers STR speakers on the local network, resolves a reachable STR endpoint and displays the existing STR web UI in a constrained WebView.
+Ragutis Remote for SoundTouch Reborn is a thin Android integration layer around the web remote already served by SoundTouch Reborn (STR). The Android app discovers STR speakers on the local network, resolves a reachable STR endpoint and displays the existing STR web UI in a constrained WebView.
 
 ## Architectural boundaries
 
 1. STR owns playback/business logic and the phone-remote web application.
-2. Remote for STR owns Android discovery, endpoint selection, local persistence, permission handling and WebView integration.
+2. Ragutis Remote for SoundTouch Reborn owns Android discovery, endpoint selection, local persistence, permission handling and WebView integration.
 3. Do not duplicate STR playback/business logic natively without an explicit recorded decision.
-4. No analytics, tracking, account system or hosted Remote for STR backend.
+4. No analytics, tracking, account system or hosted Ragutis Remote for SoundTouch Reborn backend.
 5. Prefer Android platform APIs. A new dependency requires a documented reason and decision.
 6. STR discovery uses DNS-SD/mDNS service types `_streborn._tcp.` and legacy `_soundtouchstick._tcp.`.
 7. Endpoint probing accepts STR web ports 8888 and 17008; 8888 is preferred when reachable.
@@ -23,3 +23,7 @@ Remote for STR is a thin Android integration layer around the web remote already
 `/doc` is the only normative project documentation. Spec Kit files orchestrate work but cannot silently change product policy or architecture.
 
 Runtime/build evidence can prove that this documentation has drifted. Such evidence does not create an undocumented new rule: the drift is recorded as a finding and `/doc` must be converged to verified reality before acceptance.
+
+## Brand and embedding (unreleased 0.3.3)
+
+The full independent product identity is **Ragutis Remote for SoundTouch Reborn**, while the Android launcher and compact Devices toolbar show **Ragutis STR**. The public GitHub 0.3.2 and earlier historical releases retain their original names. The Android package and signing identity never change solely for branding. The native root applies safe-area padding once and forwards zeroed handled inset types to WebView; leave upstream STR's normal header CSS untouched. Hardware QA is required before release. See [D-046/D-047](DECISIONS.md).

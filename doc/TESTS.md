@@ -107,8 +107,40 @@ A successful compile alone is not functional evidence.
 
 The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for unexpected RFC1918 host addresses, allowing only the explicitly documented Bose setup alternate endpoint. New screenshots, user-supplied logs and test reports must be sanitized before committing: use RFC 5737 example addresses and remove SSIDs, MAC/serial numbers, tokens, usernames, account identifiers and unnecessary personal paths. This preventive check only covers current Markdown; historical commits require a separately coordinated `git-filter-repo` cleanup. See `GIT_HISTORY_CLEANUP.md`.
 
-## Compact launcher and feedback recipient QA (next version)
+## Historical 0.3.2 compact launcher and feedback recipient QA (accepted scope)
 
 - JVM-test deterministic recipient reconstruction and user-consented draft creation for both German and English, without a complete mailbox literal anywhere in source or tests.
 - Ensure native About and the SoundTouch feedback action both use the same `BoseCommunityFeedback.RECIPIENT` value.
 - Upgrade the **exact newly signed 0.3.2 APK** in place over public 0.3.1 on a device. Check launcher icon label **Remote STR**, in-app Devices title **Remote for STR**, About trademark/community disclosure, existing speakers/rooms, and actual email-client destination for both paths. Compilation or unit tests alone do not clear these device gates.
+
+## 0.3.3 Ragutis / STR WebView insets — release candidate device gates
+
+- CI for exact candidate source must confirm build/lint/JVM tests and doc-consistency/anti-harvesting, but does not constitute real-device acceptance. Source `08ca3d5c3025fbce7df5130fa8961a00713fa954`: push and PR runs passed on 2026-11-01.
+- Verify DE and EN launcher label **Ragutis STR**, compact Devices toolbar **Ragutis STR** next to tappable About, and **full Ragutis Remote for SoundTouch Reborn** in About. Check bilingual trademark/unofficial statement, update dialog and feedback draft version label.
+- Confirm original `app.strremote.android` package, original APK signer, preferences and stored speaker/room entries after signed 0.3.2 → 0.3.3 in-place update; never uninstall/data-clear during acceptance.
+- On the STR WebView, compare top/bottom spacing before/after, verify **normal upstream 16px header** and no double safe-area padding, working play/pause, device and preset buttons. Include WebView navigation/back and cold restart.
+- Test Android API 30+ on current physical device with both gesture and 3-button navigation, portrait/landscape, screen cutout, light/dark; toggle keyboard/IME repeatedly and ensure no ghost bottom inset. Test API 26–29 legacy inset dispatch separately or document device unavailability as **NOT TESTED**, not PASS.
+- Verify no dependency on `#dev`, `#powerBtn` or a forced `10px` header injection remains. CI Android build/lint/unit checks do not certify physical-device layout.
+- Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
+- Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
+
+## 0.3.3 explicit model selection and hint alignment (pending device QA)
+
+- On fresh wizard open in DE and EN, **no SoundTouch model is implicitly selected**. The spinner itself displays the localized `bose_model_select_desc` prompt and the separate model heading is absent. The placeholder must be non-selectable from the opened menu, the model-specific instruction card and status note remain hidden, and the Next action is visibly disabled.
+- Open and close the dropdown without selection: nothing progresses. Select SoundTouch 10, SoundTouch 20 III or Other: the correct notice/instruction appears and Next becomes enabled. Check model-specific failure-feedback remains only for Other.
+- After an explicit selection, navigation back, device rotation and fresh-network retry must retain the chosen enum ID, never replace it with a hidden default. Check unrecognized/absent model IDs resolve to no selection; pure policy unit tests enforce placeholder index 0 and valid models at indices 1–3.
+- Confirm model status hint has balanced 14dp horizontal insets and visually aligns with selector and instruction card **text**, without clipping/overlap on narrow displays/large font sizes.
+
+## 0.3.3 wizard model dropdown clarification (pending device QA)
+
+- Pure model-policy test: presentation order is **SoundTouch 10, SoundTouch 20 III, Other last**, while stable `BoseSetupModel.name` IDs and default 20 III are untouched. No order inferred by replacing persistent IDs.
+- DE and EN spinner values contain no „geprüft“/“verified” suffix; the existing checked-status note remains below the spinner for SoundTouch 10/20 III. For Other, a newly localized unverified-test note occupies the same area; detailed specific caution remains inside the preparation card.
+- Test switching each of the three models, instructions and status notice, optional Other feedback action, phones with small display/large fonts. No WLAN-protocol/compatibility certifications added by the UI change.
+
+## 0.3.3 second-round regression — feedback and room UI
+
+- **Recipient:** Unit test new feedback recipient constructed from separate fragments (never a complete public mailbox literal). Verify the *same* central recipient powers native About and SoundTouch feedback and is shown by the external mail application; neither path sends automatically. Check DE/EN subject/body, app/Android version, no SSID/password or diagnostics, and no mail client negative path if available.
+- **Card design:** Check that room picker matches established WLAN popup: white 10dp corners / thin blue-gray outline, pale blue selected state with check mark, two-line text, 68dp minimum touch height and a scrollable maximum-height dialog.
+- **Room semantics:** Current saved preset/custom room is preselected; all six presets, `No room`, and `Custom room` map to unchanged `RoomAssignment` values. Selecting a preset saves; removing assignment clears only room; custom entry and re-edit (up to 60 chars) work; invalid blank custom input leaves editor open, cancellation makes no mutation.
+- **Coverage:** Run on one reachable STR device and one pending Bose device if available; DE/EN, dark/light, narrow display, larger fonts and TalkBack. Unit-test `RoomPickerPolicy` with missing, preset, custom and invalid index behavior.
+- **Evidence split:** The owner reported seven first-round debug tests PASS **before** this additional code; do not import those passes as acceptance for the new recipient and room selector. The signed upgrade from 0.3.2 and API 26–29 remain separate gates.

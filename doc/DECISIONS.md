@@ -2,7 +2,7 @@
 
 ## Reading chronological decisions
 
-Entries preserve the **decision and reasoning from their original date**; old alternatives are not current policy. D-038 supersedes D-037's GitHub-Issue feedback channel with a voluntary email draft. D-042 finalizes the app name after D-041's alternatives, and D-043 confirms the canonical GitHub slug after D-042's proposed name. Current product policy lives in [Source of Truth](SOURCE_OF_TRUTH.md), [Architecture](ARCHITECTURE.md), and [Status](STATUS.md); open proposals in [Planned](PLANNED.md), release proof in [QA evidence](evidence/qa/2026-10-31-release-0.3.1.md).
+Entries preserve the **decision and reasoning from their original date**; old alternatives are not current policy. D-038 supersedes D-037's GitHub-Issue feedback channel with a voluntary email draft. D-042 finalizes the app name after D-041's alternatives, and D-043 confirms the canonical GitHub slug after D-042's proposed name. D-046 supersedes the name/launcher policy of D-042/D-044 for **future** versions, while D-047 supersedes D-036's Android CSS spacing workaround. Historical entries and releases remain as written. Current product policy lives in [Source of Truth](SOURCE_OF_TRUTH.md), [Architecture](ARCHITECTURE.md), and [Status](STATUS.md); open proposals in [Planned](PLANNED.md), release proof in [QA evidence](evidence/qa/2026-10-31-release-0.3.1.md).
 
 
 ## D-001 — Thin-wrapper architecture
@@ -208,3 +208,38 @@ Do not change Android `applicationId=app.strremote.android`, the original signin
 ## D-045 — Runtime recipient decoding and non-harvestable public documentation
 
 **Decision (2026-10-31, 0.3.2 development):** The user updated the project's dedicated feedback mailbox. Do not print either the previous or new complete email address in public documentation (including dated work/evidence), source strings or tests. Both opt-in mail paths must use the same centrally configured recipient, decoded on demand from a simple reversible numeric representation. Do **not** use MD5 (one-way hash), a build-time plaintext substitution or a new hosted backend. This provides protection only from **simple plaintext harvesters**, not determined reverse engineers; the mail client necessarily reveals the recipient before sending. Add a CI test rejecting complete mailbox literals in documentation and Android source. Earlier commits and published signed APKs are not rendered private by editing current files.
+
+
+## D-046 — Adopt Ragutis as the distinct Android brand (2026-11-01)
+
+**Decision:** At the owner's request, replace the *active* Android product name **Remote for STR** with **Ragutis Remote for SoundTouch Reborn**; the Android launcher and compact native Devices toolbar use **Ragutis STR** so the About affordance remains accessible on narrow screens. About displays the **full name** and retains the bilingual independent/unofficial relationship statement plus Bose/SoundTouch trademark notice. Feedback/version labels, DE/EN wizard and update text must use the new brand. Earlier versions, decision records and signed releases keep their original historic branding.
+
+**Rationale:** The STR maintainer explicitly requested an independent name different from the adjacent iOS **STR Remote** listing. The owner selected Ragutis after a separate candidate and public-trademark-hint review; this is not a legal guarantee of exhaustive clearance. Preserve technical `applicationId=app.strremote.android`, existing release-signing certificate, user data, GitHub repo URL/API and original release artifacts. Do not rename the package or repository automatically. Preserve legacy APK asset naming recognition and give newly signed future APKs their own Ragutis basename. Any future Play Store listing must separately satisfy Google's current title-length limit (the full project name is longer than Play's normal 30-character listing field).
+
+## D-047 — Native inset ownership; remove the STR private DOM spacing hack (2026-11-01)
+
+**Decision:** Based on the STR maintainer's diagnosis, apply system-bar/display-cutout padding **once** to the Android root, then forward the modern `WindowInsets` with the handled types **zeroed** (API 30+) while keeping IME updates. On API 26–29 consume legacy handled insets. Remove the private-DOM-dependent `body > header { padding-top: 10px !important; }` injector and test; let STR's original `16px + env(safe-area-inset-top)` apply to WebView content.
+
+**Reason for zeroing instead of always returning `WindowInsets.CONSUMED`:** The STR maintainer's proposed consumption addresses double-padding, but current official Android WebView documentation specifically recommends zeroing handled types to preserve downstream changes such as keyboard/IME insets and prevent stale padding. This is an equivalent fix of the identified cause with a safer propagation contract. No undocumented upstream DOM selectors, new JS bridge or remote UI duplication. The maintainer offered future documented `--str-safe-top` / `--str-safe-bottom` CSS variables only if genuinely required by verified device layout; those variables do not yet constitute a shipped STR contract.
+
+**Evidence/acceptance:** unit/build/lint checks do not establish visual correctness. Test real devices under gesture/3-button navigation, IME opened/closed, cutout/rotation, both app languages and STR controls; retain a bounded fallback issue if tests fail. References: [official Android WebView insets handling](https://developer.android.com/develop/ui/views/layout/webapps/understand-window-insets), [Chromium WebView insets behavior](https://chromium.googlesource.com/chromium/src/+/HEAD/android_webview/docs/insets.md).
+
+## D-048 — Central Ragutis feedback mailbox rotation (2026-11-01)
+
+**Decision:** The owner replaced the project's optional feedback mailbox. Update only the existing central `BoseCommunityFeedback.RECIPIENT` reversible numeric representation, never embed the complete mailbox in checked-in source, tests, logs or public Markdown. Both the native About mail action and SoundTouch model-feedback draft must resolve to the **same new address** when explicitly requested by the user. This remains anti-harvesting rather than encryption, with no new backend, analytics or automatic email. The email client reveals the recipient before user sends. Negative paths are not assumed tested.
+
+**Acceptance:** JVM unit tests construct the expected recipient from separated fragments (not one full literal), check DE/EN body/version and RFC 6068 mailto; real-device tests inspect both user-triggered drafts and confirm they target the new mailbox.
+
+## D-049 — Room picker visual parity with WLAN selection (2026-11-01)
+
+**Decision:** Replace `AlertDialog.setItems` for room selection with the same native design vocabulary as the existing WLAN picker: white rounded cards with outlined borders, compact two-line labels, pale-blue current selection, clear touch area, scrollable dialog and localized accessibility descriptions. Room selection remains optional local presentation metadata. Highlight previously assigned preset/custom room, keep `No room` and user-defined custom names, and prefill the existing name in the custom editor. Invalid empty custom input must not silently close the editor.
+
+**Compatibility:** Keep the existing `RoomPreset.storageId`, `RoomAssignment` structure, persistence behavior and both pending Bose / STR speaker paths. No new network requests, permissions, automatic room inference or device counting. The pure `RoomPickerPolicy` tests map selected and clicked indices to the prior saved values. Screen appearance, scrolling, TalkBack and persistence require real-device evidence.
+
+## D-050 — Explicit speaker model selection in Bose Wi-Fi wizard (2026-11-01)
+
+**Decision:** The Wi-Fi setup wizard must not silently select a model on first entry. Replace the redundant standalone speaker-model heading with a localized, disabled spinner placeholder at index 0 (`SoundTouch-Modell auswählen` / `Select SoundTouch model`). Valid models follow as **SoundTouch 10, SoundTouch 20 III, Other**. Model-specific instructions and verified/unverified notices are hidden until a model is explicitly selected, and Next remains disabled until then. After the explicit selection, retain the chosen model during back-navigation, configuration restoration and fresh-network retry; never infer a model from an absent or invalid ID. Keep model enum IDs and provisioning behavior unchanged.
+
+**Layout:** Give the existing verified/unverified status notice 14dp horizontal padding so its text aligns with the selector and instruction-card text, without introducing a new warning panel.
+
+**Validation:** Pure `BoseSetupModel` tests cover nullable parsing and spinner index 0/1–3 mapping; on-phone checks must establish disabled initial state, dismissed-dropdown behavior, model selection, retry/restoration and DE/EN accessibility and layout. No user/owner device acceptance of this new iteration has been claimed.

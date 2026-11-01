@@ -2,6 +2,17 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
+## Unreleased — 0.3.3 Ragutis branding and WebView insets
+
+- Adopt **Ragutis Remote for SoundTouch Reborn** as the full Android product name and **Ragutis STR** for the launcher and compact native toolbar. Surface the full name in About; update DE/EN notices, app update dialogs, model-feedback version labels and both Wi-Fi wizard languages without changing the application ID or original signing key.
+- Fix native-to-WebView duplicate safe-area padding by zeroing the system-bar/display-cutout insets handled by the Android root on API 30+, consuming legacy insets on API 26–29, while preserving IME propagation. Remove the 10px private-upstream-DOM header CSS injector and its obsolete assertion test; let STR use normal CSS header spacing.
+- Accept future GitHub APKs named `Ragutis-Remote-for-SoundTouch-Reborn-<version>.apk` and retain support for both published legacy naming patterns; update the local signed-release script's future output basename.
+- Update the centrally decoded optional-feedback recipient for the owner-provided Ragutis mailbox, shared by native About and SoundTouch model feedback. Preserve the reversible anti-harvesting encoding; no complete recipient literal is committed or secretly sent.
+- Replace the plain room `AlertDialog.setItems` list with WLAN-style two-line rounded selection cards, a clearly marked current room, accessible DE/EN row descriptions, a scroll limit, and custom-name prefill/blank-input validation. Preserve stored `RoomPreset` IDs and `RoomAssignment` format.
+- Require explicit SoundTouch model selection at the start of Wi-Fi setup: localized selector placeholder replaces the redundant heading, the preparation action stays disabled and model instructions stay hidden until a model is chosen; previous selected models survive legitimate retry/rotation. Indent the model test notice 14dp to align with the selector/card text.
+- Improve the bilingual SoundTouch setup model dropdown: SoundTouch 10, SoundTouch 20 III, then Other; remove redundant tested/verified suffixes from selectable names. Keep the verified notice below the dropdown and show a concise unverified notice for Other, without changing setup protocol or saved model IDs.
+- Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
+
 ## 0.3.2 — 2026-10-31
 
 - Released `versionName=0.3.2` and `versionCode=13` as signed [GitHub v0.3.2](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2); the existing app identity and stored speakers/rooms remain compatible with in-place upgrades.

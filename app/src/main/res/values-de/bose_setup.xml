@@ -4,7 +4,6 @@
     <string name="bose_step_1_of_4">Schritt 1 von 4</string>
     <string name="bose_prepare_title">Lautsprecher vorbereiten</string>
     <string name="bose_prepare_intro">Wähle zunächst dein SoundTouch-Modell. Danach zeigen wir dir die passenden Schritte.</string>
-    <string name="bose_model_heading">Lautsprecher-Modell</string>
     <string name="bose_model_select_desc">SoundTouch-Modell auswählen</string>
     <string name="bose_setup_wifi_explainer">Die Box öffnet dann ein eigenes Bose-WLAN. Du musst dessen Namen nicht eingeben.</string>
     <string name="bose_yellow_button">Die WLAN-Anzeige leuchtet gelb</string>
@@ -68,6 +67,7 @@
     <string name="bose_finish">Fertig</string>
     <string name="bose_cancel">Abbrechen</string>
     <string name="bose_model_checked">Die WLAN-Einrichtung wurde auf diesem Modell erfolgreich geprüft.</string>
+    <string name="bose_model_unverified">Für dieses Modell liegt noch kein bestätigter WLAN-Einrichtungstest vor.</string>
     <string name="bose_version_unknown">unbekannt</string>
     <string name="bose_email_chooser">E-Mail-Programm auswählen</string>
     <string name="bose_email_no_app">Kein E-Mail-Programm gefunden. Bitte einen Mailclient einrichten.</string>
@@ -96,7 +96,7 @@
     <string name="bose_choose_intro">Wähle das WLAN aus, in dem du die SoundTouch verwenden möchtest. Die Liste zeigt die Netze, die die Box selbst empfängt.</string>
     <string name="bose_password_security_note">Die SoundTouch benötigt ein kompatibles WPA2-WLAN. Bose überträgt das Passwort im temporären Einrichtungs-WLAN per unverschlüsseltem HTTP. Verwende diese Funktion nur in einer vertrauenswürdigen Umgebung.</string>
     <string name="bose_verify_intro">Android stellt das normale WLAN wieder her. Wir prüfen die SoundTouch automatisch und zeigen danach das Ergebnis.</string>
-    <string name="bose_str_explainer">Für die Steuerung mit Remote for STR muss SoundTouch Reborn (STR) noch auf dem Lautsprecher eingerichtet sein. Ohne STR bleibt das Gerät in der Liste grau.</string>
+    <string name="bose_str_explainer">Für die Steuerung mit Ragutis STR muss SoundTouch Reborn (STR) noch auf dem Lautsprecher eingerichtet sein. Ohne STR bleibt das Gerät in der Liste grau.</string>
     <string name="bose_feedback_email_intro">Freiwillig: Dein Mailprogramm öffnet einen Entwurf mit Modell, Ergebnis, App- und Android-Version. Prüfe Empfänger und Inhalt vor dem Senden. Keine WLAN-Daten.</string>
     <string name="bose_cancel_confirm_message">Die WLAN-Daten könnten bereits gesendet worden sein. Bitte prüfe die Box vor einem weiteren Versuch.</string>
     <string name="bose_setup_button_steps">1. Schalte den Lautsprecher ein.\n2. Halte Preset 2 und Leiser (−) gleichzeitig etwa fünf Sekunden gedrückt.\n3. Warte, bis die WLAN-Anzeige dauerhaft gelb leuchtet.</string>
@@ -146,10 +146,10 @@
     <string name="bose_technical_survey">WLAN-Suche:</string>
     <string name="bose_technical_lost">Bose-Setup-WLAN während der Übertragung getrennt.</string>
     <string name="bose_model_20_name">SoundTouch 20 Series III</string>
-    <string name="bose_model_20_option">SoundTouch 20 III · geprüft</string>
+    <string name="bose_model_20_option">SoundTouch 20 III</string>
     <string name="bose_model_20_hint">Die SoundTouch 20 III zeigt einen Countdown und anschließend „Setup“ im Display.</string>
     <string name="bose_model_10_name">SoundTouch 10</string>
-    <string name="bose_model_10_option">SoundTouch 10 · geprüft</string>
+    <string name="bose_model_10_option">SoundTouch 10</string>
     <string name="bose_model_10_hint">Die SoundTouch 10 besitzt kein Textdisplay. Achte auf die dauerhaft gelbe WLAN-LED.</string>
     <string name="bose_model_other_name">ein anderes SoundTouch-Modell</string>
     <string name="bose_model_other_option">Anderes SoundTouch-Modell</string>

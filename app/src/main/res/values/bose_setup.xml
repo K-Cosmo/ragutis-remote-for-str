@@ -4,7 +4,6 @@
     <string name="bose_step_1_of_4">Step 1 of 4</string>
     <string name="bose_prepare_title">Prepare your speaker</string>
     <string name="bose_prepare_intro">First select your SoundTouch model. Then we will show you how to get started.</string>
-    <string name="bose_model_heading">Speaker model</string>
     <string name="bose_model_select_desc">Select SoundTouch model</string>
     <string name="bose_setup_wifi_explainer">The speaker opens its own Bose Wi-Fi network. You do not need to enter its name.</string>
     <string name="bose_yellow_button">The Wi-Fi light is amber</string>
@@ -68,6 +67,7 @@
     <string name="bose_finish">Done</string>
     <string name="bose_cancel">Cancel</string>
     <string name="bose_model_checked">Wi-Fi setup has been tested successfully with this model.</string>
+    <string name="bose_model_unverified">Wi-Fi setup has not yet been confirmed by testing for this model.</string>
     <string name="bose_version_unknown">unknown</string>
     <string name="bose_email_chooser">Choose email app</string>
     <string name="bose_email_no_app">No email app found. Please set up an email client.</string>
@@ -96,7 +96,7 @@
     <string name="bose_choose_intro">Select the network you want your SoundTouch to use. These networks were detected by the speaker.</string>
     <string name="bose_password_security_note">Your SoundTouch needs compatible WPA2 Wi-Fi. Bose transfers the password over unencrypted HTTP on the temporary setup network. Only use this in a trusted environment.</string>
     <string name="bose_verify_intro">Android will restore your regular Wi-Fi. We will check your SoundTouch and show the result.</string>
-    <string name="bose_str_explainer">SoundTouch Reborn (STR) must be installed on the speaker before you can control it with Remote for STR. Until then, it stays grey in the device list.</string>
+    <string name="bose_str_explainer">SoundTouch Reborn (STR) must be installed on the speaker before you can control it with Ragutis STR. Until then, it stays grey in the device list.</string>
     <string name="bose_feedback_email_intro">Optional: Open an email draft with your model, result, app and Android versions. Review the recipient and content before sending. No Wi-Fi data.</string>
     <string name="bose_cancel_confirm_message">Wi-Fi credentials may already have been sent. Check your speaker before trying again.</string>
     <string name="bose_setup_button_steps">1. Turn on the speaker.\n2. Hold preset 2 and Volume Down (−) together for about five seconds.\n3. Wait for the Wi-Fi light to turn solid amber.</string>
@@ -146,10 +146,10 @@
     <string name="bose_technical_survey">Wi-Fi scan:</string>
     <string name="bose_technical_lost">Bose setup Wi-Fi disconnected during transfer.</string>
     <string name="bose_model_20_name">SoundTouch 20 Series III</string>
-    <string name="bose_model_20_option">SoundTouch 20 III · verified</string>
+    <string name="bose_model_20_option">SoundTouch 20 III</string>
     <string name="bose_model_20_hint">The SoundTouch 20 III shows a countdown followed by Setup on its display.</string>
     <string name="bose_model_10_name">SoundTouch 10</string>
-    <string name="bose_model_10_option">SoundTouch 10 · verified</string>
+    <string name="bose_model_10_option">SoundTouch 10</string>
     <string name="bose_model_10_hint">The SoundTouch 10 has no text display. Look for a solid amber Wi-Fi light.</string>
     <string name="bose_model_other_name">another SoundTouch model</string>
     <string name="bose_model_other_option">Other SoundTouch model</string>
