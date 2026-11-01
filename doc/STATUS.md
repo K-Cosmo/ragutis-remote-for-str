@@ -16,7 +16,7 @@
 
 **Development version:** 0.3.3
 **Latest public release:** 0.3.3 (prior version 0.3.2 was branded **Remote for STR**)
-**Status:** RELEASED / ACCEPTED FOR OWNER-REPORTED SIGNED 7/7 DEVICE SMOKE SCOPE
+**Status:** RELEASED / SIGNED 7/7 OWNER-REPORTED DEVICE SMOKE PASS (DEFERRED QA TRACKED)
 **Date:** 2026-11-01
 
 **Owner-requested naming change:** full Android product identity **Ragutis Remote for SoundTouch Reborn**; launcher and native Devices toolbar **Ragutis STR**. About shows the full name; DE/EN helper/update/feedback texts are updated. The independent/unofficial disclosure and trademark statement remain in place.
