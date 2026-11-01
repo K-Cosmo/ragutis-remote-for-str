@@ -21,7 +21,7 @@ A separate 0.3.4 draft introduces user-controlled About update checks with progr
 | **STR-035 / STR-036** | P0 | **GitHub v0.3.3 released and independently verified**; signed 7/7 smoke PASS; exhaustive edge-case and legacy-device QA separately deferred |
 | **STR-037 / STR-038** | P1 | Signed smoke includes feedback and room picker PASS; granular negative paths, TalkBack and full model/room permutations not separately certified |
 | **STR-022** | P1 | Test native inset zeroing first; request documented upstream `--str-safe-top` / `--str-safe-bottom` only if still needed |
-| **STR-025** | P1 | Send the prepared German email with the now-verified [v0.3.3 GitHub Release](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3); request upstream Community Apps label update. No email claimed sent |
+| **STR-025** | P1 | Send the prepared German email with the now-verified [v0.3.3 GitHub Release](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3); request upstream Community Apps label update. Owner confirms the release email was sent on 2026-11-01; await upstream response and verify listing before claiming it changed |
 | **STR-023** | P1 | Set up federated community support: upstream discovery thread, app Issues and optional email |
 | **STR-027** | P1 | Run explicitly deferred negative-path QA and validate future positive release-update notification |
 | **STR-024** | P1 | Follow up on residual GitHub-managed historical PR references and caches |
