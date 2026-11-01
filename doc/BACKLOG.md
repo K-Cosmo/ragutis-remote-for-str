@@ -38,7 +38,7 @@ The historical public release `v0.3.0` remains unchanged. **Remote for STR `v0.3
 | STR-027 | [Follow-up QA after 0.3.1](https://github.com/K-Cosmo/remote-for-str-android/issues/7): absent email app, denied Wi-Fi permission, failure/timeout recovery, unverified Bose/router/firmware combinations and future-version update alert | P1 | **OWNER-APPROVED DEFERRED from 0.3.1 on 2026-10-31; NOT TESTED**. Track explicitly and avoid general compatibility claims |
 | STR-028 | Android display label **Remote STR**, centralized runtime-decoded feedback recipient and CI mailbox-harvesting guard | P1 | **RELEASED / ACCEPTED in 0.3.2**; 6/6 signed-device PASS, local artifact integrity PASS, PR #9 merge, CI and public APK checksum PASS |
 
-| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | IMPLEMENTED in 0.3.3 draft; CI / device / signed-upgrade QA pending |
+| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | IMPLEMENTED in 0.3.3 draft; source CI PASS; device / signed-upgrade QA pending |
 | STR-036 | Fix double native/WebView safe-area insets, remove 10px private STR DOM CSS injector; retain IME and old-Android behavior | P0 | IMPLEMENTED in 0.3.3 draft; CI / device QA pending |
 
 ## Owner follow-up and distribution sequence (2026-11-01)
