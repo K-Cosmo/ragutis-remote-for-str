@@ -34,6 +34,10 @@ The owner has now selected the **long full name `Ragutis Remote for SoundTouch R
 - Describe tested Android versions, exact signed release link, device models and user-visible caveats **only after QA**. Ask whether `--str-safe-top`/`--str-safe-bottom` are still necessary based on actual evidence.
 - Route general usage/support discussion here; link specific bug reports to the app repository Issues. No statement that upstream endorsed or trademark-cleared the Android app.
 
+## Third small UI adjustment — SoundTouch model selection (2026-11-01)
+
+Owner-supplied three wizard screenshots show SoundTouch 20 III and SoundTouch 10 carrying „geprüft“ in the *dropdown* although an explicit verified status is already shown below; selecting **Anderes SoundTouch-Modell** hides the status view, leaving the card too close to the dropdown. Change **presentation only**: display order SoundTouch 10, SoundTouch 20 III, then Other; no extra verified/checked text in option labels; keep the existing verified notice for both tested models and render a short localized unverified notice for Other in the same position. Leave detailed caution in the instruction card. Preserve enum IDs, default 20 III, current selected model, model-dependent instructions, verification semantics and protocol. Unit test covers order/mapping; require DE/EN device screenshots and simple model-switch regression before acceptance. The user has **not** yet reported testing this change.
+
 ## Status
 
 **IMPLEMENTED in a Draft PR, no device QA, no signed release, no Google Play upload and no upstream discussion posted.** Await exact CI, device screenshots and owner approval for merge or publication. Public v0.3.2 and Play signing configurations are unaffected.
