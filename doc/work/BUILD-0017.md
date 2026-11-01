@@ -1,6 +1,6 @@
-# BUILD-0017 — Ragutis 0.3.3: GitHub rename, original-signer release preparation
+# BUILD-0017 — Ragutis 0.3.3: GitHub rename, original-signer signed release and verification
 
-**Scope:** Release engineering and reproducible owner-local build, not a shipped binary. GitHub repository is **already renamed** to [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The historical public **v0.3.2** remains the latest signed release until actual GitHub Release evidence says otherwise.
+**Scope:** Record the reproducible original-signer local build, completed owner-reported 7/7 signed device QA and **confirmed stable GitHub v0.3.3 publication**. Repository: [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). Public [v0.3.3 Release](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3). Historical v0.3.2 artifacts remain unchanged.
 
 ## Fixed identities / hard release requirements
 
@@ -97,7 +97,7 @@ if ($LASTEXITCODE -ne 0) { throw "Signed in-place upgrade failed" }
 
 **Manual acceptance:** Confirm package `app.strremote.android` is v0.3.3/code 14, original saved speakers and room names survive, STR playback/presets/navigation work, both DE/EN feedback paths point to the new mailbox without sending automatically, the WLAN model selector requires an explicit choice and shows correctly aligned hints, the updated room cards preserve all choices, and About opens canonical GitHub and Issue URLs. Record `PASS / FAIL / NOT TESTED` precisely per scenario. Recheck after restart. A successful Gradle build alone is insufficient.
 
-## GitHub Release publication — only after owner confirms signed QA
+## GitHub Release publication — sequence performed after separate owner approval
 
 1. Verify *exact* `$ReleaseHead` matches the finalized clean `main`, and no additional changes landed since signing.
 2. Create **`v0.3.3` tag pointing to that exact source**; do not rebase or replace prior tags.
@@ -105,8 +105,22 @@ if ($LASTEXITCODE -ne 0) { throw "Signed in-place upgrade failed" }
 4. Upload the signed APK and SHA-256 companion listed above. Use release notes summarizing the UI/inset fixes and manual-update limitation, and the unofficial/non-Bose affiliation. Mark stable, not prerelease, only after successful QA and owner approval.
 5. Download both public assets again; verify published APK digest equals the local signed APK and released source/tag equals `$ReleaseHead`; check public `/releases/latest` is `v0.3.3`. Then update README/status/changelog evidence in a subsequent documentation commit, without changing the signed source tag.
 
-## Status and prohibitions
+## Signed candidate evidence and completed public release (2026-11-01)
 
-**Preparation only.** No owner-private keystore, signed 0.3.3 APK, signed upgrade result, GitHub tag, GitHub Release, Google Play AAB or email is available to the assistant. Never claim publication or success without user-supplied signing/test evidence plus actual GitHub Release verification.
+The owner supplied successful local output from the original-signer build script:
+
+- Signed source commit: `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` (**same as GitHub `main`** at this review).
+- Local APK file: `Ragutis-Remote-for-SoundTouch-Reborn-0.3.3.apk`.
+- Local APK SHA-256: `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f`.
+- Corresponding local `.apk.sha256.txt` file reported by the script.
+- Original APK release certificate is enforced by the script (do not confuse with Play upload signer). Private key and APK bytes were not provided to the assistant.
+
+**Owner confirms all seven signed device smoke categories PASS**: update/data preservation, STR control, room selection, Wi-Fi wizard, project feedback, DE/EN UI and correct GitHub links. This is **the owner's real-device QA report**, not raw ADB/keystore/bin-level evidence independently inspected by the assistant. Read [QA record](../evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md) and [Release gates](../RELEASE_GATES.md) for precise limitations.
+
+**Signed candidate state: ACCEPTED for 7/7 reported smoke categories. Public GitHub v0.3.3 release: COMPLETED after separate express owner approval.** The owner then ran the `gh` publication and independent download/verification commands. This is not approval or evidence of Google Play publication, an upstream maintainer email, or a community announcement.
+
+**Publication independently verified via GitHub API:** release [v0.3.3](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3) ID `430710031`, published 2026-11-01T16:36:19Z, stable and latest. Annotated Git tag object `d0d0cc32c9fa899ac6fbdfe97c0e509b05faca47` targets **exact signed source commit** `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`. APK asset `698874479`, size 1,201,797 bytes, GitHub-reported SHA-256 `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f` matches locally tested original. Checksum companion asset `698874480`, size 114 bytes, own GitHub digest `c456d2de189eb560aa650e31b164978f2af66926824d35a575cf46ab76c30e65`. Owner reports successful fresh public download/checksum comparison; private APK bytes were not independently available to assistant. The historical v0.3.2 and key remain untouched.
+
+GitHub `releases/latest` now resolves to public stable `v0.3.3`. Broader hardware compatibility, older Android API and negative-path coverage remain deferred/not certified; downstream Google Play/STR maintainer email/community recruitment are separate workflows.
 
 References: [Release gates](../RELEASE_GATES.md), [Decision log](../DECISIONS.md), [Building script](../../tools/build-signed-release.ps1), [Public v0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2).

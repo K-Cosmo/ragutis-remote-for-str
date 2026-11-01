@@ -2,9 +2,9 @@
 
 **Ragutis Remote for SoundTouch Reborn** (launcher **Ragutis STR**) is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
 
-**Current release:** 0.3.2 (historical product name **Remote for STR**) · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
+**Current release:** 0.3.3 · **Ragutis Remote for SoundTouch Reborn** · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
 
-> **Coming next:** Ragutis v0.3.3 source is merged, but its **signed APK has not yet been published**. The public v0.3.2 still uses the earlier product name. Existing users can update in place once the original-key-signed APK is released; they should not uninstall the old app.
+> **Released on 2026-11-01:** v0.3.3 is signed with the original GitHub APK signing identity and passed the owner's seven-case in-place upgrade smoke test. The previous public release v0.3.2 was named **Remote for STR**; existing users can install the new signed APK over it without uninstalling.
 
 ## Features
 
@@ -21,7 +21,7 @@
 2. Connect the phone to the same Wi-Fi network as the STR-enabled speaker.
 3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/latest). Existing installations update in place **when signed by the same original key**; do not uninstall first.
 
-> **Existing v0.3.2 users:** The old app may stop showing GitHub update notifications after the repository rename because it does not follow the old API URL's redirect. Check the new Releases page manually for later signed versions; install over the existing app, without uninstalling it. **Ragutis 0.3.3 is not yet a published APK.**
+> **Existing v0.3.2 users:** The old app may stop showing GitHub update notifications after the repository rename because it does not follow the old API URL's redirect. Check the new Releases page manually for later signed versions; install over the existing app, without uninstalling it. **Ragutis 0.3.3 is published and available to download manually.**
 4. Open the installed app and select a discovered speaker. Manual host entry is available if discovery does not find it.
 
 ## Privacy and safety

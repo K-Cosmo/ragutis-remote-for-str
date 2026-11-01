@@ -2,7 +2,7 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
-## Unreleased — 0.3.3 Ragutis branding and WebView insets
+## 0.3.3 — 2026-11-01 (Ragutis public GitHub release)
 
 - Adopt **Ragutis Remote for SoundTouch Reborn** as the full Android product name and **Ragutis STR** for the launcher and compact native toolbar. Surface the full name in About; update DE/EN notices, app update dialogs, model-feedback version labels and both Wi-Fi wizard languages without changing the application ID or original signing key.
 - Fix native-to-WebView duplicate safe-area padding by zeroing the system-bar/display-cutout insets handled by the Android root on API 30+, consuming legacy insets on API 26–29, while preserving IME propagation. Remove the 10px private-upstream-DOM header CSS injector and its obsolete assertion test; let STR use normal CSS header spacing.
@@ -12,7 +12,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Require explicit SoundTouch model selection at the start of Wi-Fi setup: localized selector placeholder replaces the redundant heading, the preparation action stays disabled and model instructions stay hidden until a model is chosen; previous selected models survive legitimate retry/rotation. Indent the model test notice 14dp to align with the selector/card text.
 - Improve the bilingual SoundTouch setup model dropdown: SoundTouch 10, SoundTouch 20 III, then Other; remove redundant tested/verified suffixes from selectable names. Keep the verified notice below the dropdown and show a concise unverified notice for Other, without changing setup protocol or saved model IDs.
 - Migrate app's canonical GitHub Releases API, release-page, About/source and Issues URLs to **K-Cosmo/ragutis-remote-for-str** following the owner's repository rename. Keep standard HTTPS release-API redirects enabled. The published 0.3.2 cannot be retroactively repaired.
-- Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
+- Published original-signer [GitHub v0.3.3](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3) after separate owner authorization and 7/7 signed in-place upgrade smoke PASS. Annotated tag points to exact signed source `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65`; public APK SHA-256 `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f` matches tested original. [Complete QA and release evidence](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md). **Google Play AAB/track has not been published.**
 
 ## 0.3.2 — 2026-10-31
 

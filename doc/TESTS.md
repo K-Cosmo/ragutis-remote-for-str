@@ -124,16 +124,16 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
 - Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
 
-## 0.3.3 explicit model selection and hint alignment (pending device QA)
+## 0.3.3 explicit model selection and hint alignment (owner-signed-smoke PASS; granular cases pending)
 
 - On fresh wizard open in DE and EN, **no SoundTouch model is implicitly selected**. The spinner itself displays the localized `bose_model_select_desc` prompt and the separate model heading is absent. The placeholder must be non-selectable from the opened menu, the model-specific instruction card and status note remain hidden, and the Next action is visibly disabled.
 - Open and close the dropdown without selection: nothing progresses. Select SoundTouch 10, SoundTouch 20 III or Other: the correct notice/instruction appears and Next becomes enabled. Check model-specific failure-feedback remains only for Other.
 - After an explicit selection, navigation back, device rotation and fresh-network retry must retain the chosen enum ID, never replace it with a hidden default. Check unrecognized/absent model IDs resolve to no selection; pure policy unit tests enforce placeholder index 0 and valid models at indices 1–3.
 - Confirm model status hint has balanced 14dp horizontal insets and visually aligns with selector and instruction card **text**, without clipping/overlap on narrow displays/large font sizes.
 
-## 0.3.3 wizard model dropdown clarification (pending device QA)
+## 0.3.3 wizard model dropdown clarification (owner-signed-smoke PASS; granular cases pending)
 
-- Pure model-policy test: presentation order is **SoundTouch 10, SoundTouch 20 III, Other last**, while stable `BoseSetupModel.name` IDs and default 20 III are untouched. No order inferred by replacing persistent IDs.
+- Pure model-policy test: presentation order is **SoundTouch 10, SoundTouch 20 III, Other last**, while stable `BoseSetupModel.name` IDs are untouched. **There is deliberately no default model**; the picker starts on a disabled placeholder and requires explicit selection. No order inferred by replacing persistent IDs.
 - DE and EN spinner values contain no „geprüft“/“verified” suffix; the existing checked-status note remains below the spinner for SoundTouch 10/20 III. For Other, a newly localized unverified-test note occupies the same area; detailed specific caution remains inside the preparation card.
 - Test switching each of the three models, instructions and status notice, optional Other feedback action, phones with small display/large fonts. No WLAN-protocol/compatibility certifications added by the UI change.
 
@@ -143,4 +143,4 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - **Card design:** Check that room picker matches established WLAN popup: white 10dp corners / thin blue-gray outline, pale blue selected state with check mark, two-line text, 68dp minimum touch height and a scrollable maximum-height dialog.
 - **Room semantics:** Current saved preset/custom room is preselected; all six presets, `No room`, and `Custom room` map to unchanged `RoomAssignment` values. Selecting a preset saves; removing assignment clears only room; custom entry and re-edit (up to 60 chars) work; invalid blank custom input leaves editor open, cancellation makes no mutation.
 - **Coverage:** Run on one reachable STR device and one pending Bose device if available; DE/EN, dark/light, narrow display, larger fonts and TalkBack. Unit-test `RoomPickerPolicy` with missing, preset, custom and invalid index behavior.
-- **Evidence split:** The owner reported seven first-round debug tests PASS **before** this additional code; do not import those passes as acceptance for the new recipient and room selector. The signed upgrade from 0.3.2 and API 26–29 remain separate gates.
+- **Evidence split:** Earlier debug tests predate the final code. The owner later reports **signed v0.3.2→v0.3.3 device smoke 7/7 PASS on exact final source** for update/data, STR control, room selection, WLAN wizard, feedback, DE/EN UI, and GitHub links. See [signed QA record](evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md). This covers the reported smoke scope but does not certify every enumerated negative, legacy API 26–29 or accessibility/permutation scenario. Do not promote unreported subcases to PASS.
