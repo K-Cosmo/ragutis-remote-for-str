@@ -68,6 +68,7 @@
     <string name="bose_finish">Done</string>
     <string name="bose_cancel">Cancel</string>
     <string name="bose_model_checked">Wi-Fi setup has been tested successfully with this model.</string>
+    <string name="bose_model_unverified">Wi-Fi setup has not yet been confirmed by testing for this model.</string>
     <string name="bose_version_unknown">unknown</string>
     <string name="bose_email_chooser">Choose email app</string>
     <string name="bose_email_no_app">No email app found. Please set up an email client.</string>
@@ -146,10 +147,10 @@
     <string name="bose_technical_survey">Wi-Fi scan:</string>
     <string name="bose_technical_lost">Bose setup Wi-Fi disconnected during transfer.</string>
     <string name="bose_model_20_name">SoundTouch 20 Series III</string>
-    <string name="bose_model_20_option">SoundTouch 20 III · verified</string>
+    <string name="bose_model_20_option">SoundTouch 20 III</string>
     <string name="bose_model_20_hint">The SoundTouch 20 III shows a countdown followed by Setup on its display.</string>
     <string name="bose_model_10_name">SoundTouch 10</string>
-    <string name="bose_model_10_option">SoundTouch 10 · verified</string>
+    <string name="bose_model_10_option">SoundTouch 10</string>
     <string name="bose_model_10_hint">The SoundTouch 10 has no text display. Look for a solid amber Wi-Fi light.</string>
     <string name="bose_model_other_name">another SoundTouch model</string>
     <string name="bose_model_other_option">Other SoundTouch model</string>
