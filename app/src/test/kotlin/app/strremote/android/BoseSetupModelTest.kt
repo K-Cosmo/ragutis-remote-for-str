@@ -1,6 +1,7 @@
 package app.strremote.android
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -20,11 +21,23 @@ class BoseSetupModelTest {
             BoseSetupModel.fromId(BoseSetupModel.SOUND_TOUCH_20_III.name))
     }
 
-    @Test fun verifiedReferenceModelIsDefault() {
-        assertEquals(BoseSetupModel.SOUND_TOUCH_20_III, BoseSetupModel.fromId(null))
+    @Test fun freshWizardRequiresConsciousModelSelection() {
+        assertNull(BoseSetupModel.fromId(null))
+        assertNull(BoseSetupModel.fromId(""))
+        assertNull(BoseSetupModel.fromId("not-supported"))
+        assertEquals(0, BoseSetupModel.pickerIndex(null))
+        assertNull(BoseSetupModel.pickerModel(0))
+        assertNull(BoseSetupModel.pickerModel(-1))
+        assertNull(BoseSetupModel.pickerModel(4))
         assertTrue(BoseSetupModel.SOUND_TOUCH_20_III.protocolVerifiedOnDevice)
-        assertEquals(BoseSetupModel.SOUND_TOUCH_20_III,
-            BoseSetupModel.fromId("not-supported"))
+    }
+
+    @Test fun chosenModelSurvivesExplicitIdRoundTripAndSpinnerOrder() {
+        BoseSetupModel.displayOrder.forEachIndexed { index, model ->
+            assertEquals(index + 1, BoseSetupModel.pickerIndex(model))
+            assertEquals(model, BoseSetupModel.pickerModel(index + 1))
+            assertEquals(model, BoseSetupModel.fromId(model.name))
+        }
     }
 
     @Test fun soundTouch10HasVerifiedTestWifiProfile() {
