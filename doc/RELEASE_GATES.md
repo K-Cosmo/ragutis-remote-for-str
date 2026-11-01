@@ -2,6 +2,18 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## 0.3.4 updater status/UX — DEVELOPMENT GATES (NOT RELEASED)
+
+- [x] Root-cause source review: v0.3.3 calls the GitHub updater only on startup, caches successful checks 24h, and shows UI only for a strictly **newer** public stable release with a recognized APK. The v0.3.3 GitHub latest tag equals installed v0.3.3, so silence is expected; failures are also silent. No evidence of an actual positive-update failure on v0.3.3 yet.
+- [x] Manual About check implemented in code: visible loading, no-newer-release or failure status, bypasses success cache, no install or new permissions; original 24h automatic update check preserved. Android version staged 0.3.4/code 15; debug/test package does not offer installing production updates.
+- [ ] Exact candidate CI Android build/lint/unit and documentation anti-harvest checks PASS.
+- [ ] Signed v0.3.3→v0.3.4 test with the existing GitHub **app** signer; About manual check uses canonical GitHub API and shows **no newer GitHub release** while v0.3.3 is latest; Android 8+ compatibility unchanged.
+- [ ] DE/EN visible loading and final status, no internet/local-only Wi-Fi failure+retry, repeated manual checks bypass 24h automatic cache; pressing release link works if future newer public stable APK exists.
+- [ ] Distinguish real positive-update notification from source/unit-only verification; do not manufacture a future release to force a positive test. Document deferred future-release gate.
+- [ ] Explicit owner approval for merge and (separately) signing/publication; **no v0.3.4 tag, GitHub Release, Google Play upload, or Play-track modification**.
+
+---
+
 ## 0.3.3 repository rename and signed GitHub publication — COMPLETED
 
 - [x] Owner renamed the repository to [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str) on 2026-11-01. Previous repository remains the historical 0.3.2 hardcoded endpoint.
