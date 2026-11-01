@@ -24,6 +24,6 @@ Ragutis Remote for SoundTouch Reborn is a thin Android integration layer around 
 
 Runtime/build evidence can prove that this documentation has drifted. Such evidence does not create an undocumented new rule: the drift is recorded as a finding and `/doc` must be converged to verified reality before acceptance.
 
-## Brand and embedding (unreleased 0.3.3)
+## Brand and embedding (released since 0.3.3)
 
 The full independent product identity is **Ragutis Remote for SoundTouch Reborn**, while the Android launcher and compact Devices toolbar show **Ragutis STR**. The public GitHub 0.3.2 and earlier historical releases retain their original names. The Android package and signing identity never change solely for branding. The native root applies safe-area padding once and forwards zeroed handled inset types to WebView; leave upstream STR's normal header CSS untouched. Hardware QA is required before release. See [D-046/D-047](DECISIONS.md).

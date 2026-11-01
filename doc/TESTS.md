@@ -113,6 +113,14 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Ensure native About and the SoundTouch feedback action both use the same `BoseCommunityFeedback.RECIPIENT` value.
 - Upgrade the **exact newly signed 0.3.2 APK** in place over public 0.3.1 on a device. Check launcher icon label **Remote STR**, in-app Devices title **Remote for STR**, About trademark/community disclosure, existing speakers/rooms, and actual email-client destination for both paths. Compilation or unit tests alone do not clear these device gates.
 
+## 0.3.4 manual app updater – targeted regression (QA pending)
+
+- Unit test classification `null HTTP/API result` → failure, HTTP 200 parsed with same/older stable release → no newer update, newer fully published release with matching APK → update available. Verify exact canonical new repository and reject drafts/prereleases/malformed release names as existing policy does.
+- Real **signed release APK** (`app.strremote.android`): About → `Auf Updates prüfen`/Check for updates, visible in-progress indication; when GitHub latest still `v0.3.3` and test candidate version `0.3.4`, display **no newer release**, not falsely claim 0.3.4 is already published. Click again without waiting 24h; it must initiate another network request.
+- Disable Internet while staying on a local STR WLAN: manual request must report failure, remain retryable and not affect speaker discovery or STR controls. Re-enable internet, retry, and get an explicit status. No crash, hang, spinner left behind or silent error.
+- Production release check still runs at app start, at most once per successful 24h window, without surfacing an error dialog automatically. The manual check suppresses late duplicate automatic prompts during the current Activity lifetime, even when manual check finishes first. Debug `.poc` builds can verify GitHub status manually but never offer a signed production APK as a debug upgrade. Native About should not create a view after destruction.
+- The existing `update available` dialog should link to the exact canonical GitHub Release when a truly **newer stable** published release with expected signed APK asset exists. No fake release is to be published solely for QA; defer positive device-path verification until an actual newer release.
+
 ## 0.3.3 Ragutis / STR WebView insets — release candidate device gates
 
 - CI for exact candidate source must confirm build/lint/JVM tests and doc-consistency/anti-harvesting, but does not constitute real-device acceptance. Source `08ca3d5c3025fbce7df5130fa8961a00713fa954`: push and PR runs passed on 2026-11-01.

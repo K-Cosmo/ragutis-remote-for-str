@@ -8,6 +8,14 @@ import javax.net.ssl.HttpsURLConnection
 
 /** Optional best-effort check against the official public GitHub release API. */
 internal data class AppUpdateCheckResult(val available: AvailableAppUpdate?)
+internal enum class AppUpdateStatus { FAILED, CURRENT, UPDATE_AVAILABLE }
+
+/** Distinguish a reachable GitHub API with no newer release from a failed request. */
+internal fun updateStatusFor(result: AppUpdateCheckResult?): AppUpdateStatus = when {
+    result == null -> AppUpdateStatus.FAILED
+    result.available == null -> AppUpdateStatus.CURRENT
+    else -> AppUpdateStatus.UPDATE_AVAILABLE
+}
 
 internal object AppUpdateChecker {
     internal const val API_URL =

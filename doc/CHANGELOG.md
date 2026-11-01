@@ -2,6 +2,12 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
+## Unreleased — 0.3.4 manual update check UX
+
+- Add manual **Check for updates / Auf Updates prüfen** to About, with visible progress, separate no-new-version and failed-request feedback, and localized DE/EN messages. Manual check bypasses the 24-hour success cache; background automatic check retains its existing best-effort schedule. A newer stable release opens a GitHub Release dialog in the signed production app; debug builds allow status-only checks, never an incompatible production upgrade. There is no automatic installer.
+- Stage `versionName=0.3.4` / `versionCode=15` on a separate **unreleased** branch. Production v0.3.3 APK/annotated tag/asset and app ID are unchanged. Existing v0.3.2 redirect limitation cannot be repaired retrospectively.
+- Add JVM regression tests for failed/current/newer outcomes and identical installed vs published GitHub v0.3.3. On-device DE/EN result/failure QA and a future actual newer-release notification test remain open; no new GitHub APK or Play release is claimed.
+
 ## 0.3.3 — 2026-11-01 (Ragutis public GitHub release)
 
 - Adopt **Ragutis Remote for SoundTouch Reborn** as the full Android product name and **Ragutis STR** for the launcher and compact native toolbar. Surface the full name in About; update DE/EN notices, app update dialogs, model-feedback version labels and both Wi-Fi wizard languages without changing the application ID or original signing key.
