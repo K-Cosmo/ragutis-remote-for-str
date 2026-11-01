@@ -1,5 +1,18 @@
 # Status
 
+## Ragutis 0.3.4 — manual update checker usability (IN DEVELOPMENT / UNRELEASED)
+
+**Development version:** 0.3.4
+**Latest public release:** 0.3.3
+**Status:** IN DEVELOPMENT / DEVICE QA PENDING
+**Date:** 2026-11-01
+
+**Observed/report:** Owner reports that the update checker in the signed v0.3.3 does not appear to work. Source review finds an **automatic-only** startup check (24-hour successful-result throttle), no manual check and no UI feedback if GitHub returns the installed version or the request fails. On 2026-11-01 GitHub `releases/latest` is stable v0.3.3, identical to signed installed v0.3.3, so **no automatic prompt is expected**. This does **not** prove the future-version path on a physical device. Published old v0.3.2 cannot follow redirects after the repo rename; manual install is its recovery path.
+
+**0.3.4 candidate:** Add a visible user-initiated **Check for updates / Auf Updates prüfen** action near version information in About. It bypasses the 24h background throttle and gives distinct localized progress, **no newer GitHub release** and **request failed** messages; newer complete public stable release still opens the existing confirm-to-open-release dialog. A manual check does not install APKs or change trust/network permissions. Debug `.poc` builds show that this update action is only available to original signed release identity. Preserve the existing background auto-check and its 24h throttle. Release identity remains `app.strremote.android`, next candidate `0.3.4/15` (no release signed or authorized).
+
+**Evidence gate:** JVM tests of failure/current/newer classification, GitHub 0.3.3 latest parsing and strict APK-name matching; CI; physical signed upgrade from v0.3.3 with original GitHub signer; DE/EN manual check status when no later release exists; offline/local-only Wi-Fi error and retry; future positive notification/redirect path NOT TESTED until a real newer public release exists. No tag/Release/Play upload without explicit approval.
+
 ## Ragutis 0.3.3 — RELEASED / ACCEPTED FOR VERIFIED SCOPE (2026-11-01)
 
 **Actual GitHub repository:** [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str), renamed by the owner on 2026-11-01. **Source merge completed:** PR #13 into `main` as `f821602e1b45172610a7735f6e0830de4bfdee79`, [post-merge CI PASS](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41315289069). This does not authorize or prove an APK publication.
