@@ -22,9 +22,9 @@ internal object BoseCommunityFeedback {
      */
     val RECIPIENT: String by lazy {
         val encoded = intArrayOf(
-            40, 63, 55, 53, 46, 63, 119, 60, 53, 40,
-            119, 41, 46, 40, 119, 59, 52, 62, 40, 53,
-            51, 62, 26, 61, 55, 34, 116, 53, 40, 61
+            40, 59, 61, 47, 46, 51, 41, 119, 40, 63,
+            55, 53, 46, 63, 119, 60, 53, 40, 119, 41,
+            46, 40, 26, 61, 55, 34, 116, 63, 47
         )
         buildString(encoded.size) {
             encoded.forEach { append((it xor 0x5A).toChar()) }
