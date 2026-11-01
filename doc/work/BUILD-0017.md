@@ -1,6 +1,6 @@
 # BUILD-0017 — Ragutis 0.3.3: GitHub rename, original-signer release preparation
 
-**Scope:** Release engineering and reproducible owner-local build, not a shipped binary. GitHub repository is **already renamed** to [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The historical public **v0.3.2** remains the latest signed release until actual GitHub Release evidence says otherwise.
+**Scope:** Release engineering, reproducible owner-local build and **completed owner-reported signed candidate QA**; not a shipped public GitHub Release. GitHub repository is **already renamed** to [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The historical public **v0.3.2** remains the latest signed release until actual GitHub Release evidence says otherwise.
 
 ## Fixed identities / hard release requirements
 
@@ -105,8 +105,22 @@ if ($LASTEXITCODE -ne 0) { throw "Signed in-place upgrade failed" }
 4. Upload the signed APK and SHA-256 companion listed above. Use release notes summarizing the UI/inset fixes and manual-update limitation, and the unofficial/non-Bose affiliation. Mark stable, not prerelease, only after successful QA and owner approval.
 5. Download both public assets again; verify published APK digest equals the local signed APK and released source/tag equals `$ReleaseHead`; check public `/releases/latest` is `v0.3.3`. Then update README/status/changelog evidence in a subsequent documentation commit, without changing the signed source tag.
 
-## Status and prohibitions
+## Signed candidate evidence and publication hold (2026-11-01)
 
-**Preparation only.** No owner-private keystore, signed 0.3.3 APK, signed upgrade result, GitHub tag, GitHub Release, Google Play AAB or email is available to the assistant. Never claim publication or success without user-supplied signing/test evidence plus actual GitHub Release verification.
+The owner supplied successful local output from the original-signer build script:
+
+- Signed source commit: `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` (**same as GitHub `main`** at this review).
+- Local APK file: `Ragutis-Remote-for-SoundTouch-Reborn-0.3.3.apk`.
+- Local APK SHA-256: `045c5e8e6b521f92c398a3051deffd4b997bad78214b9337e149492e36d2de3f`.
+- Corresponding local `.apk.sha256.txt` file reported by the script.
+- Original APK release certificate is enforced by the script (do not confuse with Play upload signer). Private key and APK bytes were not provided to the assistant.
+
+**Owner confirms all seven signed device smoke categories PASS**: update/data preservation, STR control, room selection, Wi-Fi wizard, project feedback, DE/EN UI and correct GitHub links. This is **the owner's real-device QA report**, not raw ADB/keystore/bin-level evidence independently inspected by the assistant. Read [QA record](../evidence/qa/2026-11-01-ragutis-0.3.3-signed-qa.md) and [Release gates](../RELEASE_GATES.md) for precise limitations.
+
+**Signed candidate state: ACCEPTED for 7/7 reported smoke categories. Public release: BLOCKED.** The owner explicitly requested **no publication until separate approval**. Do not create the `v0.3.3` tag, draft/publish the release, attach any APK/sha256, update the public latest-release label, send mail to STR maintainer, submit a Google Play AAB or open a community promotion as a consequence of this report. New release approval must be explicit and distinct.
+
+**Publication verification when expressly authorized:** tag the exact **signed source** `44bc6d0c518c9c0dbb01bf109589f3b5cbd29d65` (not a later documentation-only commit); upload the owner's **unchanged** local signed APK and hash companion; verify external GitHub asset digest and re-download hash; confirm `releases/latest` reports `v0.3.3`; only afterward update public release status/docs. Historical v0.3.2 and key remain untouched.
+
+No GitHub `v0.3.3` release/tag is visible at time of evidence capture; latest public release is `v0.3.2`. Unverified model/Android 8-9/negative-path coverage remains deferred, not PASS.
 
 References: [Release gates](../RELEASE_GATES.md), [Decision log](../DECISIONS.md), [Building script](../../tools/build-signed-release.ps1), [Public v0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2).
