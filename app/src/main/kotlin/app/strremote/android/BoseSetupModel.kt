@@ -37,6 +37,7 @@ internal enum class BoseSetupModel(
             entries.firstOrNull { it.name == value }
 
         fun pickerIndex(model: BoseSetupModel?): Int {
+            if (model == null) return 0
             val index = displayOrder.indexOf(model)
             return if (index < 0) 0 else index + 1
         }
