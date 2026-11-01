@@ -19,7 +19,9 @@
 
 1. For remote control, [install STR](https://st-reborn.de) on the speaker. If the speaker still runs original Bose firmware, the Android 10+ Wi-Fi assistant can help prepare its network connection; **it does not install STR**.
 2. Connect the phone to the same Wi-Fi network as the STR-enabled speaker.
-3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/latest). Existing installations update in place; do not uninstall first.
+3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/latest). Existing installations update in place **when signed by the same original key**; do not uninstall first.
+
+> **Existing v0.3.2 users:** The old app may stop showing GitHub update notifications after the repository rename because it does not follow the old API URL's redirect. Check the new Releases page manually for later signed versions; install over the existing app, without uninstalling it. **Ragutis 0.3.3 is not yet a published APK.**
 4. Open the installed app and select a discovered speaker. Manual host entry is available if discovery does not find it.
 
 ## Privacy and safety
