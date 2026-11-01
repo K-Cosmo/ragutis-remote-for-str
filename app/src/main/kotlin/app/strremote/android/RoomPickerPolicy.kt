@@ -16,7 +16,8 @@ internal object RoomPickerPolicy {
     fun selectedIndex(current: RoomAssignment?): Int {
         if (current == null) return NONE_INDEX
         if (!current.customName.isNullOrBlank()) return CUSTOM_INDEX
-        val index = presets.indexOf(current.preset)
+        val preset = current.preset ?: return NONE_INDEX
+        val index = presets.indexOf(preset)
         return if (index >= 0) index + 1 else NONE_INDEX
     }
 
