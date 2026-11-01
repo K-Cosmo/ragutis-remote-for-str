@@ -2,7 +2,7 @@
 
 ## Trust boundary
 
-STR currently serves the phone UI over plain HTTP on the local network. Remote for STR therefore permits the cleartext access needed for local STR endpoints. The LAN is the current trust boundary.
+STR currently serves the phone UI over plain HTTP on the local network. Ragutis STR therefore permits the cleartext access needed for local STR endpoints. The LAN is the current trust boundary.
 
 Because speakers can receive dynamic DHCP addresses, Android Network Security Configuration cannot practically enumerate the single permitted host ahead of time. The wrapper combines the required cleartext base configuration with runtime WebView navigation restrictions.
 
@@ -62,14 +62,14 @@ Bose device identity, optional LAN IP, setup-verification state and room label a
 
 ## GitHub release notification (released in 0.3.1)
 
-The released optional version checker only accesses the fixed `https://api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest` over TLS, with bounded read size and timeouts. Only a strictly parsed `vMAJOR.MINOR.PATCH` newer than installed is eligible; GitHub draft/prerelease versions, incomplete releases without matching named APK asset and malformed tags are ignored. Any displayed release link is synthesized from the validated tag and fixed `github.com/K-Cosmo/remote-for-str-android` path, not taken from arbitrary remote JSON fields. User decides whether to open the external browser. No automatic APK download, package installation, new Android permission or sensitive network data is introduced.
+The released optional version checker only accesses the fixed `https://api.github.com/repos/K-Cosmo/ragutis-remote-for-str/releases/latest` over TLS, with bounded read size and timeouts. Only a strictly parsed `vMAJOR.MINOR.PATCH` newer than installed is eligible; GitHub draft/prerelease versions, incomplete releases without matching named APK asset and malformed tags are ignored. Any displayed release link is synthesized from the validated tag and fixed `github.com/K-Cosmo/ragutis-remote-for-str` path, not taken from arbitrary remote JSON fields. User decides whether to open the external browser. No automatic APK download, package installation, new Android permission or sensitive network data is introduced.
 
 Public 0.3.2 used a guarded `10px` header-spacing override against private upstream STR DOM; that is historical. Unreleased Ragutis 0.3.3 removes the injection and zeroes already-applied native system-bar/cutout insets before forwarding them to WebView (API 30+, preserving IME updates); older APIs consume handled legacy insets. No new JavaScript bridge or cross-origin capability. The maintainer's optional `--str-safe-top` / `--str-safe-bottom` proposal is **not shipped**. See [STR-022](PLANNED.md#str-022--maintainer-confirmed-inset-root-cause-upstream-css-fallback-only-if-needed).
 
 
 ## GitHub repository rename and updater redirects (0.3.3 migration candidate)
 
-The public 0.3.2 build explicitly disables automatic HTTP redirects on its fixed HTTPS GitHub `/releases/latest` GET. GitHub returns 301/307 for a repository that has been renamed, so 0.3.2 cannot be assumed to discover new releases after a rename. The 0.3.3 candidate restores the platform's standard redirect following **only for the pre-existing fixed GitHub API GET**; it still requires a stable, official release tag, expected APK filename, bounded body and timeouts, and constructs release browser URLs from a fixed repository path rather than release JSON. No new remote endpoint, app privilege or sensitive request data is added. Keep the old repository name until a signed 0.3.3 APK is published and verified to maximize update notification reach; migration QA remains open.
+The public 0.3.2 build explicitly disables automatic HTTP redirects on its fixed HTTPS GitHub `/releases/latest` GET. GitHub returns 301/307 for a repository that has been renamed, so 0.3.2 cannot be assumed to discover new releases after a rename. The in-development 0.3.3 candidate permits standard HTTPS redirects for the canonical GitHub API URL **only for the pre-existing fixed GitHub API GET**; it still requires a stable, official release tag, expected APK filename, bounded body and timeouts, and constructs release browser URLs from a fixed repository path rather than release JSON. No new remote endpoint, app privilege or sensitive request data is added. The repository was already renamed by the owner on 2026-11-01. Published 0.3.2 clients may no longer get update notifications; direct installation remains available. Migration QA remains open.
 
 ## Optional community email feedback boundaries (BUILD-0013)
 
