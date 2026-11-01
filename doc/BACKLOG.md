@@ -38,4 +38,13 @@ The historical public release `v0.3.0` remains unchanged. **Remote for STR `v0.3
 | STR-027 | [Follow-up QA after 0.3.1](https://github.com/K-Cosmo/remote-for-str-android/issues/7): absent email app, denied Wi-Fi permission, failure/timeout recovery, unverified Bose/router/firmware combinations and future-version update alert | P1 | **OWNER-APPROVED DEFERRED from 0.3.1 on 2026-10-31; NOT TESTED**. Track explicitly and avoid general compatibility claims |
 | STR-028 | Android display label **Remote STR**, centralized runtime-decoded feedback recipient and CI mailbox-harvesting guard | P1 | **RELEASED / ACCEPTED in 0.3.2**; 6/6 signed-device PASS, local artifact integrity PASS, PR #9 merge, CI and public APK checksum PASS |
 
+| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | IMPLEMENTED in 0.3.3 draft; CI / device / signed-upgrade QA pending |
+| STR-036 | Fix double native/WebView safe-area insets, remove 10px private STR DOM CSS injector; retain IME and old-Android behavior | P0 | IMPLEMENTED in 0.3.3 draft; CI / device QA pending |
+
+## Owner follow-up and distribution sequence (2026-11-01)
+
+The STR maintainer reports previous 0.3.1/0.3.2 compliance and intends a Community Apps listing. He requests a **distinct Android name** to avoid confusion with the iOS **STR Remote** and invites an upstream **Show-and-tell** thread. Actual website listing under the new name and a published discussion are **not independently confirmed**. The maintainer traced the header problem to **system insets forwarded twice**, offering `--str-safe-top` and `--str-safe-bottom` as future optional documented CSS fallback. Source: owner's second reply (2026-11-01), recorded in BUILD-0016.
+
+**On hold:** Play Console preparations in drafts PR #10/#12 must be reconciled after the Ragutis release. The old Play-only PR #12 also stages version 0.3.3 / code 14; it must **not** be merged or uploaded as an independent competing build.
+
 Do not conflate optional user-reported Wi-Fi feedback with certified compatibility. Do not rename the Android `applicationId`, reset app data, alter published release tags or add automatic email/network telemetry.
