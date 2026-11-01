@@ -123,3 +123,11 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Verify no dependency on `#dev`, `#powerBtn` or a forced `10px` header injection remains. CI Android build/lint/unit checks do not certify physical-device layout.
 - Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
 - Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
+
+## 0.3.3 second-round regression — feedback and room UI
+
+- **Recipient:** Unit test new feedback recipient constructed from separate fragments (never a complete public mailbox literal). Verify the *same* central recipient powers native About and SoundTouch feedback and is shown by the external mail application; neither path sends automatically. Check DE/EN subject/body, app/Android version, no SSID/password or diagnostics, and no mail client negative path if available.
+- **Card design:** Check that room picker matches established WLAN popup: white 10dp corners / thin blue-gray outline, pale blue selected state with check mark, two-line text, 68dp minimum touch height and a scrollable maximum-height dialog.
+- **Room semantics:** Current saved preset/custom room is preselected; all six presets, `No room`, and `Custom room` map to unchanged `RoomAssignment` values. Selecting a preset saves; removing assignment clears only room; custom entry and re-edit (up to 60 chars) work; invalid blank custom input leaves editor open, cancellation makes no mutation.
+- **Coverage:** Run on one reachable STR device and one pending Bose device if available; DE/EN, dark/light, narrow display, larger fonts and TalkBack. Unit-test `RoomPickerPolicy` with missing, preset, custom and invalid index behavior.
+- **Evidence split:** The owner reported seven first-round debug tests PASS **before** this additional code; do not import those passes as acceptance for the new recipient and room selector. The signed upgrade from 0.3.2 and API 26–29 remain separate gates.
