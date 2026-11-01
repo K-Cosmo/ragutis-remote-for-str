@@ -83,7 +83,7 @@ The signed 0.3.1 APK passed the agreed six on-device acceptance checks and the c
 - `BoseSoundTouchCatalog` provides a static local list of historic SoundTouch-app model names, including different generations and equipment that uses SoundTouch adapters. It is a hint-only catalog, not an approved WLAN provisioning set; the user may freely enter any other plausible model.
 - `BoseCommunityFeedback` is a pure model/yes-no/version draft composer; one centrally configured runtime-decoded feedback recipient (not a plaintext source literal) and strict label validation. `BoseSetupProbeActivity` creates an Android `ACTION_SENDTO` mail intent only following explicit user action.
 - Remote for STR version comes from the installed package, Android version/API from the OS. Neither is sent in the background. No GitHub login, GitHub API feedback call, app-level SMTP, privileged permissions or new runtime library.
-- The configured-mail-client draft flow passed the agreed on-device check. The **no-mail-client negative path** was explicitly deferred and remains [NOT TESTED](https://github.com/K-Cosmo/remote-for-str-android/issues/7). Manual review of incoming mail remains required before an additional SoundTouch model can be marked as verified.
+- The configured-mail-client draft flow passed the agreed on-device check. The **no-mail-client negative path** was explicitly deferred and remains [NOT TESTED](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7). Manual review of incoming mail remains required before an additional SoundTouch model can be marked as verified.
 
 ## Released 0.3.2 — historical launcher label and feedback hygiene
 
