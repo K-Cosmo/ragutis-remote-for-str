@@ -84,8 +84,8 @@
     <string name="speaker_management_hide">Hide this hint</string>
     <string name="update_check_now">Check for updates</string>
     <string name="update_check_in_progress">Checking GitHub for a newer version …</string>
-    <string name="update_already_current">You are running the latest published version (%1$s).</string>
-    <string name="update_check_failed">Could not reach GitHub. Check your Internet connection and try again.</string>
+    <string name="update_already_current">No newer GitHub release is available (installed: %1$s).</string>
+    <string name="update_check_failed">Could not check for updates. Check your connection or try again later.</string>
     <string name="update_release_only">Update checks are available only in the signed release app.</string>
     <string name="update_found">A newer version is available.</string>
     <string name="update_available_title">Ragutis STR update available</string>
