@@ -46,7 +46,7 @@ Pure JVM tests: no-model/unknown `fromId` -> `null`, index 0 -> no model, each r
 
 ## Owner authorization and release sequencing (2026-11-01)
 
-Owner authorizes the tested development PR's source merge and proposes: merge → rename repository → create/verify signed GitHub 0.3.3 release → email STR maintainer → await reply → resume Google Play test onboarding and later Show-and-tell tester recruitment. **Only the source merge is authorized for immediate execution; publication remains dependent on successful original-signer APK and in-place-upgrade verification and canonical URL review.** The repo rename requires a separate GitHub administration action and must not silently change the Android `applicationId` or GitHub update-check behavior. User reports the latest dropdown change as visually well implemented but has not reported full second-round mail/room persistence tests or signed upgrade.
+Owner approved the tested development PR #13 merge and **has already completed** the repository rename to `K-Cosmo/ragutis-remote-for-str`. The next steps are canonical URL migration → sign/verify 0.3.3 APK → on-device in-place upgrade QA → GitHub release → email STR maintainer → await reply → resume Google Play test onboarding and later Show-and-tell tester recruitment. **Only the source merge is authorized for immediate execution; publication remains dependent on successful original-signer APK and in-place-upgrade verification and canonical URL review.** The repo rename requires a separate GitHub administration action and must not silently change the Android `applicationId` or GitHub update-check behavior. User reports the latest dropdown change as visually well implemented but has not reported full second-round mail/room persistence tests or signed upgrade.
 
 ## Status
 
@@ -60,4 +60,4 @@ Owner authorizes the tested development PR's source merge and proposes: merge �
 
 **New QA required:** Compare both mail action recipients with the newly created owner mailbox, check that messages are only drafts, inspect the text and version. For rooms, validate all six presets, no room, custom names (including re-edit and long names), scroll/selection states and preservation across restart for STR and pending Bose devices. Existing Android 0.3.2→0.3.3 signed-upgrade gate remains open. Older phone/API validation also remains open where not verified.
 
-**Release control:** remain in the same unpublished 0.3.3 candidate; no merge, new GitHub tag/APK or Google Play AAB may occur without explicit owner authorization.
+**Release control (as of 2026-11-01):** Owner approved and completed the **source merge** via PR #13, but no 0.3.3 APK/tag/Play AAB exists. Owner renamed the repository to `K-Cosmo/ragutis-remote-for-str`. Next: canonical URL migration, protected local original-signer APK build, signed 0.3.2→0.3.3 in-place device acceptance, and only then a verified public release; Play remains paused.

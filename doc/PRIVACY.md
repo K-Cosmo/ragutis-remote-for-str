@@ -27,7 +27,7 @@ After the attempt, this app may locally retain a Bose device identifier, verifie
 
 ## GitHub release update check (released in 0.3.1)
 
-The released Android app can query GitHub's **public** `api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest` endpoint over HTTPS on app start, at most once per 24 h after a successful response. This requires a direct request to GitHub: GitHub can observe the requesting IP address, standard network information and the minimal `STR-Remote-Android` User-Agent. The app sends no speaker identifier, Wi-Fi SSID, password, usage analytics, account ID or device telemetry. The result is only used to show a local release notification; the last successful check timestamp is kept in app-private preferences. The app does not fetch or install APK files automatically.
+The released Android app can query GitHub's **public** `api.github.com/repos/K-Cosmo/ragutis-remote-for-str/releases/latest` endpoint over HTTPS on app start, at most once per 24 h after a successful response. This requires a direct request to GitHub: GitHub can observe the requesting IP address, standard network information and the minimal `STR-Remote-Android` User-Agent. The app sends no speaker identifier, Wi-Fi SSID, password, usage analytics, account ID or device telemetry. The result is only used to show a local release notification; the last successful check timestamp is kept in app-private preferences. The app does not fetch or install APK files automatically.
 
 
 ## Optional model feedback by email (released in 0.3.1)
@@ -40,7 +40,7 @@ No Wi-Fi SSID or password, Bose device ID, IP/MAC address, diagnostic trace, att
 
 ## Scope and deferred cases
 
-The public 0.3.1 release contains the update checker and voluntary feedback functionality described above. No-email-client handling, WLAN-permission refusal and network-failure paths were not included in the six positive signed-APK acceptance checks; they remain [explicitly deferred](https://github.com/K-Cosmo/remote-for-str-android/issues/7), **not verified**. See [Release status](STATUS.md) for current evidence.
+The public 0.3.1 release contains the update checker and voluntary feedback functionality described above. No-email-client handling, WLAN-permission refusal and network-failure paths were not included in the six positive signed-APK acceptance checks; they remain [explicitly deferred](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7), **not verified**. See [Release status](STATUS.md) for current evidence.
 
 ## Released in 0.3.2 — historic recipient handling
 

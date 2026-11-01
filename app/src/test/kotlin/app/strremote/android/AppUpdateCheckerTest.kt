@@ -5,9 +5,15 @@ import org.junit.Assert.assertNull
 import org.junit.Test
 
 class AppUpdateCheckerTest {
-    @Test fun checksOnlyCanonicalRenamedRepository() {
+    @Test fun githubApiRedirectsRemainEnabledForRepositoryRename() {
+        // GitHub serves 301/307 after repository renames. Older 0.3.2 APKs
+        // disabled redirects and cannot be changed retrospectively.
+        assertEquals(true, AppUpdateChecker.FOLLOW_REPOSITORY_REDIRECTS)
+    }
+
+    @Test fun checksCurrentCanonicalRagutisRepository() {
         assertEquals(
-            "https://api.github.com/repos/K-Cosmo/remote-for-str-android/releases/latest",
+            "https://api.github.com/repos/K-Cosmo/ragutis-remote-for-str/releases/latest",
             AppUpdateChecker.API_URL
         )
     }

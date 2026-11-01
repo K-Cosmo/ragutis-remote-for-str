@@ -2,12 +2,18 @@
 
 **Latest released version:** see [Status](STATUS.md). The completed BUILD-0013 work, release notes and device tests are maintained in [BUILD-0013](work/BUILD-0013.md), [Changelog](CHANGELOG.md) and the [v0.3.1 release evidence](evidence/qa/2026-10-31-release-0.3.1.md), not duplicated in this plan.
 
+## GitHub repository rename and 0.3.3 release sequencing (2026-11-01)
+
+**Owner completed the rename first:** the canonical repository is now [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). The former repository slug remains a historical identifier; GitHub offers redirects, but published **0.3.2 disables redirect following for its fixed GitHub API GET**, so its automatic update check may not discover newer releases. We cannot retrofit that old signed APK.
+
+The new 0.3.3 source adopts the canonical repository URLs (About, Issues, release URLs and API) and standard HTTPS redirect handling. **Before releasing**: merge and test the migration PR, sign a clean final `main` checkout with the original GitHub release key, verify real 0.3.2→0.3.3 upgrade (no uninstall), check versionCode 14, signer and SHA-256, and run final DE/EN user flows. Then publish the signed APK and checksum in [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases). Ensure release notification is not falsely marked PASS for old clients or for a nonexistent future version.
+
 ## Current priorities
 
 | Item | Priority | Next action |
 |---|---|---|
-| **STR-035 / STR-036** | P0 | First-round debug QA reported 7/7 PASS; signed upgrade and final current-head device QA remain open |
-| **STR-037 / STR-038** | P0 | Verify new project-feedback recipient in both opt-in email drafts and WLAN-style room-card UX (preset/custom/pending/STR) on real device; no merge/publication yet |
+| **STR-035 / STR-036** | P0 | PR #13 merged into main; signed upgrade and complete device QA remain open |
+| **STR-037 / STR-038** | P0 | Verify new project-feedback recipient in both opt-in drafts and room-card UX (preset/custom/pending/STR); APK publication still blocked, source merge completed |
 | **STR-022** | P1 | Test native inset zeroing first; request documented upstream `--str-safe-top` / `--str-safe-bottom` only if still needed |
 | **STR-025** | P1 | Notify upstream maintainer of the accepted **Ragutis** release for his promised Community Apps label change; verify listing before claiming it live |
 | **STR-023** | P1 | Set up federated community support: upstream discovery thread, app Issues and optional email |
@@ -32,7 +38,7 @@ References: [Android root inset implementation](../app/src/main/kotlin/app/strre
 
 The maintainer's second response (2026-11-01) acknowledges the 0.3.1/0.3.2 prior compliance and says he intends to list the older Android app as an early GitHub version for Android 8+. However, the adjacent iOS **STR Remote** listing is too easy to confuse with **Remote for STR**. The owner selected the distinct active name **Ragutis Remote for SoundTouch Reborn** and short launcher label **Ragutis STR**. The maintainer said he can update the Community Apps entry after the naming decision; **no completed website update or published discussion has been confirmed**.
 
-Once 0.3.3 device QA and owner approval are complete, prepare a separate upstream [Show-and-tell thread](https://github.com/JRpersonal/streborn/discussions/categories/show-and-tell) with the new name, verified Android versions, clear unofficial attribution, actual release link and inset test result. The maintainer asks for app/integration discussion there so community support is discoverable. Specific bug reports may still be tracked in this repository's [Issues](https://github.com/K-Cosmo/remote-for-str-android/issues); opt-in email remains available without GitHub login. Do not claim upstream endorsement.
+Once 0.3.3 device QA and owner approval are complete, prepare a separate upstream [Show-and-tell thread](https://github.com/JRpersonal/streborn/discussions/categories/show-and-tell) with the new name, verified Android versions, clear unofficial attribution, actual release link and inset test result. The maintainer asks for app/integration discussion there so community support is discoverable. Specific bug reports may still be tracked in this repository's [Issues](https://github.com/K-Cosmo/ragutis-remote-for-str/issues); opt-in email remains available without GitHub login. Do not claim upstream endorsement.
 
 ## Later candidates
 

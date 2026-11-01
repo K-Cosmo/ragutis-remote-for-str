@@ -11,11 +11,12 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Replace the plain room `AlertDialog.setItems` list with WLAN-style two-line rounded selection cards, a clearly marked current room, accessible DE/EN row descriptions, a scroll limit, and custom-name prefill/blank-input validation. Preserve stored `RoomPreset` IDs and `RoomAssignment` format.
 - Require explicit SoundTouch model selection at the start of Wi-Fi setup: localized selector placeholder replaces the redundant heading, the preparation action stays disabled and model instructions stay hidden until a model is chosen; previous selected models survive legitimate retry/rotation. Indent the model test notice 14dp to align with the selector/card text.
 - Improve the bilingual SoundTouch setup model dropdown: SoundTouch 10, SoundTouch 20 III, then Other; remove redundant tested/verified suffixes from selectable names. Keep the verified notice below the dropdown and show a concise unverified notice for Other, without changing setup protocol or saved model IDs.
+- Migrate app's canonical GitHub Releases API, release-page, About/source and Issues URLs to **K-Cosmo/ragutis-remote-for-str** following the owner's repository rename. Keep standard HTTPS release-API redirects enabled. The published 0.3.2 cannot be retroactively repaired.
 - Stage `versionName=0.3.3` / `versionCode=14` for device acceptance; no public GitHub or Play publication is claimed.
 
 ## 0.3.2 — 2026-10-31
 
-- Released `versionName=0.3.2` and `versionCode=13` as signed [GitHub v0.3.2](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.2); the existing app identity and stored speakers/rooms remain compatible with in-place upgrades.
+- Released `versionName=0.3.2` and `versionCode=13` as signed [GitHub v0.3.2](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.2); the existing app identity and stored speakers/rooms remain compatible with in-place upgrades.
 - Shorten the Android launcher label to **Remote STR** while keeping **Remote for STR** as project, toolbar and About identity.
 - Share one updated project-feedback recipient between WLAN model feedback and the native About link. Decode it at runtime instead of committing a complete mailbox plaintext literal; this is **not** secrecy against APK reverse engineering.
 - Redact public Markdown contact strings and add a deterministic CI anti-harvest gate for docs and Android source/resources.
@@ -28,7 +29,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 - Released Android `versionName=0.3.1` and `versionCode=12` after six on-device acceptance checks and an in-place signed upgrade from 0.3.0 preserving saved speakers/rooms.
 - Left production Android application ID `app.strremote.android` and original signing certificate untouched, preserving update compatibility.
 - Added documentation/version consistency verification to GitHub CI and sanitized the current files for two historical QA logs using reserved documentation IP addresses.
-- GitHub repository was renamed to `K-Cosmo/remote-for-str-android` and direct API/release/source/support URLs were updated; added a regression assertion for the canonical Releases API URL. Published signed GitHub Release [`v0.3.1`](https://github.com/K-Cosmo/remote-for-str-android/releases/tag/v0.3.1) without modifying the historic v0.3.0 release assets.
+- GitHub repository was renamed to `K-Cosmo/remote-for-str-android` and direct API/release/source/support URLs were updated; added a regression assertion for the canonical Releases API URL. Published signed GitHub Release [`v0.3.1`](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.1) without modifying the historic v0.3.0 release assets.
 
 
 ## 0.3.0 — 2026-10-30

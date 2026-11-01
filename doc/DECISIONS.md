@@ -243,3 +243,11 @@ Do not change Android `applicationId=app.strremote.android`, the original signin
 **Layout:** Give the existing verified/unverified status notice 14dp horizontal padding so its text aligns with the selector and instruction-card text, without introducing a new warning panel.
 
 **Validation:** Pure `BoseSetupModel` tests cover nullable parsing and spinner index 0/1–3 mapping; on-phone checks must establish disabled initial state, dismissed-dropdown behavior, model selection, retry/restoration and DE/EN accessibility and layout. No user/owner device acceptance of this new iteration has been claimed.
+
+## D-051 — Canonical Ragutis GitHub repository after owner rename (2026-11-01)
+
+**Decision:** Owner renamed the project to [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str). All **active** app/update-checker, public source, Issue, README, support and security URLs are now based on this exact slug, with stable Android application ID `app.strremote.android`, the original APK signing certificate and historic release artifacts retained. Do not alter old decision entries that truthfully record the repository's previous name at the time.
+
+**Compatibility:** GitHub's old API endpoint may redirect after a rename. Public v0.3.2 had `instanceFollowRedirects=false` and therefore cannot be guaranteed to detect future releases; do not pretend it can be fixed retroactively. The pending 0.3.3 fixes include canonical URLs and standard HTTPS redirect behavior, but only signed in-place upgrade QA can establish installed-app compatibility. Use the manually downloaded signed APK as a safe alternative for 0.3.2 users who receive no automatic prompt.
+
+**Release gate:** The owner's 0.3.3 publication request is conditional on local original-key signature verification, SHA-256, signed device upgrade preserving saved data, and final smoke QA. Google Play upload key is **not** the GitHub release signer. Do not claim a public 0.3.3 release before real GitHub tag/asset evidence is recorded. The original v0.3.2 source and certificate history remain immutable.

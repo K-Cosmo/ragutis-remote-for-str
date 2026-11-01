@@ -1109,7 +1109,7 @@ class MainActivity : Activity() {
     /**
      * Native, always-accessible project identity and support information.
      * No network request occurs until the user taps an external link.
-     * Public project branding stays Remote for STR, while the device launcher
+     * Public project branding is Ragutis Remote for SoundTouch Reborn; the launcher
      * can use a shorter label. Preserve applicationId and signing identity.
      */
     private fun showAboutDialog() {
@@ -1151,10 +1151,10 @@ class MainActivity : Activity() {
         paragraph(getString(R.string.about_support_heading), emphasized = true)
 
         linkButton(R.string.about_source_link) {
-            openExternalUri(Uri.parse("https://github.com/K-Cosmo/remote-for-str-android"))
+            openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str"))
         }
         linkButton(R.string.about_issues_link) {
-            openExternalUri(Uri.parse("https://github.com/K-Cosmo/remote-for-str-android/issues"))
+            openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str/issues"))
         }
         linkButton(R.string.about_email_link) {
             val uri = Uri.parse(
