@@ -22,7 +22,8 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [ ] **Original-signature signed APK** upgrade over public v0.3.2 retains speakers, rooms, control and startup behavior. No uninstall/data reset.
 - [ ] DE/EN phone checks: launcher and toolbar **Ragutis STR**, full About product identity, independent/trademark notice, model-feedback version and both wizard languages.
 - [ ] Owner reviews Show-and-tell post and asks upstream maintainer to change Community Apps label only after confirmed release; upstream documented CSS variables are **fallback if needed, not claimed API**.
-- [ ] Explicit owner authorization before **merge** or **GitHub/Google Play publication**. No release/AAB upload so far.
+- [x] **Owner explicitly authorizes merging PR #13** (2026-11-01) and plans an initial GitHub release of Ragutis 0.3.3 after code integration. This is approval to **merge source only**, not evidence of a signed release being built, installed, tested or published.
+- [ ] **Before any GitHub APK publication:** build exact clean merged source with the **original GitHub app-signing certificate** (NOT Google Play's upload key); verify APK signature, checksums, versionCode=14; perform and record signed in-place 0.3.2→0.3.3 device upgrade preserving data and STR controls; verify future canonical repository/release URLs after rename. Public release is BLOCKED until these gates pass. Google Play AAB/track rollout remains separately gated.
 
 Do not reuse old Play-only PR #12 candidate without reconciling the new code, name and version. Historical 0.3.2 remains RELEASED / ACCEPTED.
 
