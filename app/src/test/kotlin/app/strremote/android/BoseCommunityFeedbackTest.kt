@@ -12,8 +12,8 @@ import java.nio.charset.StandardCharsets
 class BoseCommunityFeedbackTest {
     // Construct expected behavior without a harvestable full mailbox literal.
     private fun expectedRecipient(): String =
-        listOf("remote", "for", "str", "android").joinToString("-") +
-            "@" + "gmx" + "." + "org"
+        listOf("ragutis", "remote", "for", "str").joinToString("-") +
+            "@" + "gmx" + "." + "eu"
 
     @Test fun onlyExplicitModelAndOutcomeProduceDraft() {
         assertNull(BoseCommunityFeedback.compose("", BoseCommunityOutcome.SUCCESS, "0.3.0", "16 (API 36)"))
