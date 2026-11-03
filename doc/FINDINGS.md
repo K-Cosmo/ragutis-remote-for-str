@@ -183,7 +183,7 @@
 **Evidence:** upstream STR maintainer review of draft PR #5 on 2026-10-30.
 **Observed:** `body > header`, `#dev` and `#powerBtn` are internal markup selectors and not a stable extension API. The visible 10px spacing was approved on device but future STR markup can break injection.
 **Action:** discuss the desired safe-area adjustment with STR maintainer and prefer an explicit supported hook; retain compatibility regression testing until resolved. Track in STR-022.
-**State (2026-10-31):** OPEN upstream compatibility risk in *published 0.3.1*, not a defect reproduced in the tested setup. See [STR-022](PLANNED.md#str-022--stable-str-webui-embedding-interface-proposal).
+**State (2026-10-31):** OPEN upstream compatibility risk in *published 0.3.1*, not a defect reproduced in the tested setup. This was the historical 2026-10-31 state; current [STR-022 disposition](BACKLOG.md#closed-upstream-integration-items) supersedes it.
 
 ## F-029 — 0.3.0 accepted release status contradicted by legacy tail line
 
@@ -213,4 +213,14 @@
 
 **Action:** Shorten root README to public essentials, correct current canonical documents, retain dated QA/work notes and decision chronology, document upstream CSS hook only as a STR-022 proposal, and broaden current-doc link/ID consistency checks. See [dated review matrix](evidence/qa/2026-10-31-documentation-review.md).
 
-**State:** REVIEW IMPLEMENTED on documentation-only branch; final CI verification required before acceptance.
+**State:** HISTORICAL REVIEW COMPLETED; the follow-up release and documentation CI were accepted. New 2026-11-03 drift is independently tracked in F-033. This is not an open gate for the current release.
+
+## F-033 — November documentation convergence: stale state and overlapping ownership
+
+**Observed (2026-11-03):** Despite the accepted GitHub v0.3.4 release, the current `BLOCKERS.md` called 0.3.1 the active release and the old CSS workaround current; `ARCHITECTURE.md` and `API_CONTRACTS.md` still called the shipped 0.3.3 fix unreleased. `PLANNED.md` repeated completed release evidence, `BACKLOG.md` duplicated the changelog and kept STR-025/listing and STR-022/CSS hook open. The root README included a dated per-release change summary and `STATUS.md` duplicated its 0.3.3 publication narrative. The Play runbook treated already-corrected privacy content and upstream owner consent/listing as missing.
+
+**External evidence:** On 2026-11-03 the owner supplied the STR maintainer's explicit acceptance of the native embedding solution and Ragutis name. The official [STR FAQ](https://st-reborn.de/de/#faq-q48) independently lists Ragutis under Community Apps. This does **not** constitute Google Play approval or Bose trademark licensing.
+
+**Resolution proposed:** Restore one topic per normative document, cross-link authoritative state/history/quality records, retain immutable published release/source identity and historical QA, and correct outdated consent/privacy wording. No Android code or Play deployment changes. [Dated convergence review](evidence/qa/2026-11-03-documentation-convergence-str-owner.md).
+
+**State:** REMEDIATION STAGED in [PR #22](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/22). Exact-head CI and semantic-review evidence are maintained on that PR; final acceptance/merge requires separate owner approval. This finding is not an unresolved Android runtime defect.
