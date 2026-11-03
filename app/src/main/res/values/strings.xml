@@ -98,6 +98,7 @@
     <string name="about_community_notice">An independent, unofficial community app for SoundTouch Reborn. This app is not affiliated with or endorsed by Bose Corporation or the SoundTouch Reborn (STR) project.</string>
     <string name="about_trademark_notice">Bose and SoundTouch are trademarks of Bose Corporation.</string>
     <string name="about_support_heading">Source code and support</string>
+    <string name="about_privacy_link">Privacy policy</string>
     <string name="about_source_link">Source code on GitHub</string>
     <string name="about_issues_link">Report a bug or suggest a feature (GitHub)</string>
     <string name="about_email_link">Contact by email (no GitHub account needed)</string>
