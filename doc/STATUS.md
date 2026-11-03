@@ -17,6 +17,8 @@
 
 **Merged release manifest QA (2026-11-03):** Owner executed both Gradle release-manifest processing tasks successfully and provided the parsed `githubRelease` / `playRelease` manifests. Both had identical `app.strremote.android`, 9 permissions, backup/cleartext/security configuration and exactly the two expected activity export settings. **Scoped manifest consistency PASS**, with [dated evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md). Source review separately confirms local speaker/room preferences may participate in Android backup and runtime LAN permission is requested on Android 17; these are **not** final backup/Data safety or real device test acceptance.
 
+**Unsigned Play bundle build (2026-11-03):** Owner ran `:app:bundlePlayRelease` locally and reported `BUILD SUCCESSFUL in 19s` (49 actionable tasks: 38 executed, 8 cached, 3 up-to-date). This is **an unsigned Gradle build PASS**, not independent inspection or verification of its output path/content/hash, not production signing, and not a Play Console upload. Bundle inspection and remaining privacy/real-device gates remain OPEN.
+
 **Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks and merged-manifest consistency are now PASS; backup/Data safety audit, packaged signed AAB and Play-delivered in-place update remain separate OPEN gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
 
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
@@ -34,7 +36,7 @@
 
 ## Google Play Console — PREPARATION ONLY (2026-11-03)
 
-**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **No Google Play AAB has been built or uploaded**, and no internal/closed/production track rollout has been verified. Play Console account/package and both **live** certificate fingerprints were reconfirmed by the owner on 2026-11-03, not accessed directly through a Console integration.
+**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **An unsigned Google Play AAB build has now been reported successful; no signed Play AAB has been verified or uploaded**, and no internal/closed/production track rollout has been verified. Play Console account/package and both **live** certificate fingerprints were reconfirmed by the owner on 2026-11-03, not accessed directly through a Console integration.
 
 **Current work:** [Play Store preparation](PLAY_STORE_PREPARATION.md) is the sole operational runbook. The distinct 0.3.5/code16 privacy-link candidate is staged **only** in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21); no device acceptance, merge, signed AAB or Play upload is implied. Current release/deployment gates are in [Release gates](RELEASE_GATES.md).
 
