@@ -1,5 +1,18 @@
 # Status
 
+## Ragutis 0.3.5 — Play internal candidate: privacy link / versionCode 16 (UNRELEASED)
+
+**Development version:** 0.3.5
+**Latest public release:** 0.3.4
+**Status:** IN DEVELOPMENT / PLAY QA AND UPLOAD APPROVAL PENDING
+**Date:** 2026-11-03
+
+**Source candidate:** Separate Play preparation branch based on published v0.3.4 docs; only production `app.strremote.android` metadata advances to `versionName=0.3.5`, `versionCode=16`. The native About screen gains a DE/EN **Datenschutzhinweise / Privacy policy** link to [public project privacy policy](PRIVACY.md) rendered on GitHub. No backend, new Android permission, JavaScript bridge, app ID or signing certificate change.
+
+**Purpose:** Play requires an in-app privacy link. A higher `versionCode=16` also allows a real Play-managed in-place update over public GitHub v0.3.4/code15. The app-signing and separate Play-upload fingerprints were owner-reported previously and must be rechecked in the Play Console. AAB signing, merged manifest, policy/backup/WebView audit, internal Play rollout and delivered APK signer/data-preservation tests are **all still open**.
+
+**Current release remains** [GitHub v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4), exact signed source `c68f65f12902e4c484745e004c6af8af87cd85bd`. **No 0.3.5 tag, APK/AAB publication, Google Play upload, internal testers or closed-test rollout authorized by this source candidate.** Full [Play runbook](PLAY_STORE_PREPARATION.md).
+
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
 
 **Development version:** 0.3.4
