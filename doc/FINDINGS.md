@@ -214,3 +214,13 @@
 **Action:** Shorten root README to public essentials, correct current canonical documents, retain dated QA/work notes and decision chronology, document upstream CSS hook only as a STR-022 proposal, and broaden current-doc link/ID consistency checks. See [dated review matrix](evidence/qa/2026-10-31-documentation-review.md).
 
 **State:** REVIEW IMPLEMENTED on documentation-only branch; final CI verification required before acceptance.
+
+## F-033 — November documentation convergence: stale state and overlapping ownership
+
+**Observed (2026-11-03):** Despite the accepted GitHub v0.3.4 release, the current `BLOCKERS.md` called 0.3.1 the active release and the old CSS workaround current; `ARCHITECTURE.md` and `API_CONTRACTS.md` still called the shipped 0.3.3 fix unreleased. `PLANNED.md` repeated completed release evidence, `BACKLOG.md` duplicated the changelog and kept STR-025/listing and STR-022/CSS hook open. The root README included a dated per-release change summary and `STATUS.md` duplicated its 0.3.3 publication narrative. The Play runbook treated already-corrected privacy content and upstream owner consent/listing as missing.
+
+**External evidence:** On 2026-11-03 the owner supplied the STR maintainer's explicit acceptance of the native embedding solution and Ragutis name. The official [STR FAQ](https://st-reborn.de/de/#faq-q48) independently lists Ragutis under Community Apps. This does **not** constitute Google Play approval or Bose trademark licensing.
+
+**Resolution proposed:** Restore one topic per normative document, cross-link authoritative state/history/quality records, retain immutable published release/source identity and historical QA, and correct outdated consent/privacy wording. No Android code or Play deployment changes. [Dated convergence review](evidence/qa/2026-11-03-documentation-convergence-str-owner.md).
+
+**State:** DOC FIXES STAGED IN REVIEW; CI/semantic acceptance pending. Close only after exact-head CI and release-gate consistency review.
