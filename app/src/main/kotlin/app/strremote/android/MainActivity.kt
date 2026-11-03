@@ -1223,6 +1223,13 @@ class MainActivity : Activity() {
         linkButton(R.string.about_source_link) {
             openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str"))
         }
+        // Public Play privacy policy link: visible inside the app, opens a
+        // rendered, readable public webpage rather than an APK/file download.
+        linkButton(R.string.about_privacy_link) {
+            openExternalUri(Uri.parse(
+                "https://github.com/K-Cosmo/ragutis-remote-for-str/blob/main/doc/PRIVACY.md"
+            ))
+        }
         linkButton(R.string.about_issues_link) {
             openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str/issues"))
         }
