@@ -57,7 +57,7 @@ The Android wrapper depends on STR's local contracts. STR does not depend on the
 The native root owns Android system-bar insets. Toolbar/device-list spacing is component-local. The WebView fills the remaining content rectangle and the upstream STR web application owns layout inside that WebView.
 
 
-## Bose setup (0.3.0)
+## Original Bose-firmware setup
 
 - `BoseSetupProbeActivity`: Android 10+ four-step, model-aware setup wizard plus separate verification and result views.
 - `BoseWirelessSiteSurvey`, `BoseWirelessProfileXml`, `BoseWirelessProfilePost`, `BoseSupportedUrlsProbe`: bounded, network-scoped interactions with Bose original firmware. State-changing `addWirelessProfile` runs only once after the explicit user action, with no automatic retry.
@@ -68,29 +68,25 @@ The native root owns Android system-bar insets. Toolbar/device-list spacing is c
 The production APK shares the original `app.strremote.android` package ID to permit upgrades from 0.2.1. Android 8/9 continue to use the existing STR features, while the Bose setup activity is only reachable from Android 10+. Browser installation guidance opens the upstream STR website.
 
 
-## Release 0.3.1 — optional update checker and STR WebView compact header
+## Update checking and release channel
 
-- `AppUpdatePolicy`: JVM-testable stable version comparison for `vMAJOR.MINOR.PATCH`, release link composed solely from a fixed official GitHub host.
-- `AppUpdateChecker`: asynchronous, bounded GitHub latest-release metadata request; returns a valid candidate only with a matching APK asset; no third-party runtime service or build-time code generation. Only the original production Android package is eligible, not the separately installable `.poc` debug APK.
-- `MainActivity.checkForAppUpdate`: at most one successful request per 24 h, asynchronous, nonblocking, localized native `AlertDialog`; no service or OS notification. Network failures are invisible to STR playback.
-- `StrWebViewHeader`: guarded, static, one-time CSS removal of upstream PWA top safe-area padding in recognized STR pages; the native frame already handles system insets. No upstream header elements or controls removed.
+- `AppUpdatePolicy` compares stable GitHub version numbers and matches recognized release APK filenames, including legacy names.
+- `AppUpdateChecker` makes a bounded HTTPS request to the canonical Ragutis GitHub Releases API. The production app checks in the background on startup with a 24-hour throttle after successful checks.
+- The native About dialog also permits an explicit, immediate manual check with a visible progress/current-version/failure result, regardless of that throttle. A newer stable signed GitHub release can be opened through a confirmation dialog; no APK is silently downloaded or installed.
+- Separately installable `.poc` debug builds may check metadata read-only but must not offer a production upgrade.
 
-The signed 0.3.1 APK passed the agreed six on-device acceptance checks and the code was merged normally via PR #6. A positive notification for a **future newer** GitHub release and the stability of upstream CSS/DOM dependencies remain [deferred follow-ups](PLANNED.md#str-022--stable-str-webui-embedding-interface-proposal), not validated integration contracts.
+The **Play-specific distribution-channel updater UX** is not yet decided; see [Play preparation](PLAY_STORE_PREPARATION.md).
 
+## Optional feedback and model lookup
 
-## Release 0.3.1 — optional model email feedback and offline suggestions
+- `BoseSoundTouchCatalog` offers a local suggestion list of historic Bose SoundTouch models. Selection is not hardware certification; free-form model entry remains possible.
+- `BoseCommunityFeedback` builds an optional user-initiated email draft including the selected model/outcome and app/Android versions. A single runtime-decoded project recipient is reused without a complete address literal in public source or docs. Reversible obfuscation limits casual harvesting, not extraction by a motivated party.
+- An Android `ACTION_SENDTO` intent opens the mail client; the app neither sends messages in the background nor uses a server. The no-email-client negative case remains deferred under [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7).
 
-- `BoseSoundTouchCatalog` provides a static local list of historic SoundTouch-app model names, including different generations and equipment that uses SoundTouch adapters. It is a hint-only catalog, not an approved WLAN provisioning set; the user may freely enter any other plausible model.
-- `BoseCommunityFeedback` is a pure model/yes-no/version draft composer; one centrally configured runtime-decoded feedback recipient (not a plaintext source literal) and strict label validation. `BoseSetupProbeActivity` creates an Android `ACTION_SENDTO` mail intent only following explicit user action.
-- Remote for STR version comes from the installed package, Android version/API from the OS. Neither is sent in the background. No GitHub login, GitHub API feedback call, app-level SMTP, privileged permissions or new runtime library.
-- The configured-mail-client draft flow passed the agreed on-device check. The **no-mail-client negative path** was explicitly deferred and remains [NOT TESTED](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7). Manual review of incoming mail remains required before an additional SoundTouch model can be marked as verified.
+## Ragutis branding and embedded WebView layout
 
-## Released 0.3.2 — historical launcher label and feedback hygiene
+The released product name is **Ragutis Remote for SoundTouch Reborn**, with compact launcher/device title **Ragutis STR**. Android package identity `app.strremote.android`, signing continuity and local preferences are retained.
 
-Public GitHub v0.3.2 used the product name **Remote for STR**, launcher **Remote STR**. It preserved the app ID, signer and local data, and centrally decoded the voluntary feedback recipient only when needed. Obfuscation is anti-harvesting, not encryption; the historical accepted release stays unchanged.
+The upstream STR maintainer diagnosed duplicate system insets in the earlier wrapper and accepted the **released v0.3.3+ native-only fix**. Android applies system-bar/cutout padding at the native root; on API 30+ it zeroes only already-handled inset types for WebView while retaining IME updates, and on API 26–29 it consumes legacy handled insets. No private STR DOM/CSS injection or JavaScript bridge remains.
 
-## In development — 0.3.3 Ragutis and native safe-area ownership
-
-Full Android product/Info identity **Ragutis Remote for SoundTouch Reborn**; launcher and compact Devices toolbar **Ragutis STR**. Keep `app.strremote.android`, preferences, release signer, fixed GitHub updater URLs and STR networking behavior intact. Update DE/EN helper texts, Wi-Fi wizard and voluntary feedback version labels. Preserve two legacy GitHub APK asset names alongside the Ragutis release basename.
-
-The maintainer traced the previous top/bottom spacing to system insets forwarded twice. Android root now applies native system-bar/cutout padding and zeroes the handled types for children on API 30+, preserving IME notifications. API 26–29 uses the legacy consume path. The old private `body > header` JavaScript/CSS injection was removed; STR retains normal 16px header styling. No new JavaScript bridge or assumed upstream CSS contract. Real-device verification remains pending.
+The STR site owns its own CSS; no upstream `--str-safe-top` / `--str-safe-bottom` extension is required or advertised as existing. See [API contracts](API_CONTRACTS.md), [D-047](DECISIONS.md) and [external acceptance in Status](STATUS.md).
