@@ -21,7 +21,7 @@
 
 ## Post-0.3.1 development and community integration (2026-10-31)
 
-The historical public release `v0.3.0` remains unchanged. **Remote for STR `v0.3.2` is now the latest published signed release**, with exactly matching APK digest and six device checks passed. PR #6 was merged normally with green CI. The owner explicitly deferred untested negative cases to STR-027: they are **not certified**. Refer to [Planned](PLANNED.md) and [BUILD-0013](work/BUILD-0013.md).
+The historical public release `v0.3.0` remains unchanged. **At the date of this 2026-10-31 workstream, Remote for STR `v0.3.2` was the latest published signed release** with six owner-reported device checks passed; see [Status](STATUS.md) for current v0.3.4. PR #6 was merged normally with green CI. The owner explicitly deferred untested negative cases to STR-027: they are **not certified**. Refer to [Planned](PLANNED.md) and [BUILD-0013](work/BUILD-0013.md).
 
 | ID | Item | Priority | State |
 |---|---|---:|---|
@@ -37,15 +37,25 @@ The historical public release `v0.3.0` remains unchanged. **Remote for STR `v0.3
 | STR-026 | Extend **original Bose-firmware WLAN provisioning** evidence for untested SoundTouch models; crowd reports remain unverified | P2 | BACKLOG; distinct from STR remote/control compatibility (STR-012) |
 | STR-027 | [Follow-up QA after 0.3.1](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7): absent email app, denied Wi-Fi permission, failure/timeout recovery, unverified Bose/router/firmware combinations and future-version update alert | P1 | **OWNER-APPROVED DEFERRED from 0.3.1 on 2026-10-31; NOT TESTED**. Track explicitly and avoid general compatibility claims |
 | STR-028 | Android display label **Remote STR**, centralized runtime-decoded feedback recipient and CI mailbox-harvesting guard | P1 | **RELEASED / ACCEPTED in 0.3.2**; 6/6 signed-device PASS, local artifact integrity PASS, PR #9 merge, CI and public APK checksum PASS |
-| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | IMPLEMENTED in 0.3.3 draft; source CI PASS; device / signed-upgrade QA pending |
-| STR-036 | Fix double native/WebView safe-area insets, remove 10px private STR DOM CSS injector; retain IME and old-Android behavior | P0 | First-round debug device QA owner-reported PASS; exact latest-head/signed-upgrade and old-Android tests still pending |
-| STR-037 | Rotate central optional feedback recipient to the new Ragutis project mailbox without a complete source/doc literal; both opt-in drafts share it | P0 | IMPLEMENTED in 0.3.3 Draft; current-head CI and both mail-client device tests pending |
-| STR-038 | Replace room setItems list with WLAN-style accessible scrollable selection cards; preserve room data mapping and custom editing | P1 | IMPLEMENTED in 0.3.3 Draft; mapping tests and device QA pending |
+| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | **RELEASED in v0.3.3**, maintained in v0.3.4; signed upgrade/data QA PASS by owner |
+| STR-036 | Fix double native/WebView safe-area insets, remove 10px private STR DOM CSS injector; retain IME and old-Android behavior | P0 | **RELEASED in v0.3.3** with signed-device smoke PASS; exhaustive older Android permutations deferred |
+| STR-037 | Rotate central optional feedback recipient to the new Ragutis project mailbox without a complete source/doc literal; both opt-in drafts share it | P0 | **RELEASED in v0.3.3**, final signed feedback smoke PASS by owner |
+| STR-038 | Replace room setItems list with WLAN-style accessible scrollable selection cards; preserve room data mapping and custom editing | P1 | **RELEASED in v0.3.3**, room picker and saved data signed QA owner-reported PASS |
 
 ## Owner follow-up and distribution sequence (2026-11-01)
 
 The STR maintainer reports previous 0.3.1/0.3.2 compliance and intends a Community Apps listing. He requests a **distinct Android name** to avoid confusion with the iOS **STR Remote** and invites an upstream **Show-and-tell** thread. Actual website listing under the new name and a published discussion are **not independently confirmed**. The maintainer traced the header problem to **system insets forwarded twice**, offering `--str-safe-top` and `--str-safe-bottom` as future optional documented CSS fallback. Source: owner's second reply (2026-11-01), recorded in BUILD-0016.
 
-**On hold:** Play Console preparations in drafts PR #10/#12 must be reconciled after the Ragutis release. The old Play-only PR #12 also stages version 0.3.3 / code 14; it must **not** be merged or uploaded as an independent competing build.
+**Superseded:** The historic Play drafts PR #10/#12 predate the confirmed Ragutis v0.3.4 release; **do not merge or upload** the old Play-only 0.3.3/code14 candidate. See [current Play preparation guide](PLAY_STORE_PREPARATION.md), which carries forward owner-reported app-signing/upload certificate evidence and makes the next candidate versionCode, privacy-link and WebView-policy gates explicit.
 
 Do not conflate optional user-reported Wi-Fi feedback with certified compatibility. Do not rename the Android `applicationId`, reset app data, alter published release tags or add automatic email/network telemetry.
+
+## Google Play launch (current planning, 2026-11-03)
+
+| ID | Work item | Priority | State |
+|---|---|---:|---|
+| PLAY-001 | Confirm Play Console `app.strremote.android`, registered app-signing and separate upload fingerprints | P0 | PRIOR OWNER-REPORTED MATCH; recheck live console before upload |
+| PLAY-002 | In-app privacy policy link + current public policy, data-safety/backup/STR WebView audit | P0 | OPEN — required before Play upload/review |
+| PLAY-003 | Create coherent versionCode **16+** internal candidate after GitHub v0.3.4/code15; sign AAB with Play upload JKS | P0 | PLANNED — no AAB created |
+| PLAY-004 | Internal-track GitHub-to-Play in-place test, preserve speaker/room data, cert match | P0 | PLANNED — separate owner authorization |
+| PLAY-005 | Screenshots, app icon, feature graphic, DE/EN listing, policy forms, closed tester recruitment | P1 | PLANNED; owner confirms personal account testing requirement |
