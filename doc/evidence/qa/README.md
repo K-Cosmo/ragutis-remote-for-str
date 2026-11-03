@@ -4,6 +4,8 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current unreleased Play candidate — certificate, merged manifest and debug evidence
 
+- [2026-11-03 unsigned Play AAB basic ZIP structure — owner-reported 4/4 PASS](2026-11-03-play-aab-zip-structure-qa.md) — packaged protobuf manifest and file SHA-256 not yet reported.
+
 - [2026-11-03 githubRelease/playRelease merged-manifest comparison — owner-reported PASS](2026-11-03-merged-release-manifest-qa.md) — packages, permissions, cleartext/backup, activities; signed AAB/Data safety still open.
 
 - [2026-11-03 Play certificate enrollment — both owner-reported live PASS](2026-11-03-play-signing-acceptance.md) — PLAY-001 closed; AAB/release/upgrade QA remains OPEN.
