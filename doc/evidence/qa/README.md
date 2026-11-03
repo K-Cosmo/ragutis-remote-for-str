@@ -4,7 +4,7 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current unreleased signed build evidence
 
-- [2026-11-03 Ragutis 0.3.4 original-signer local APK build](2026-11-03-ragutis-0.3.4-local-signed-build.md) — source commit and SHA-256 owner-reported; signed upgrade and public release not yet accepted.
+- [2026-11-03 Ragutis 0.3.4 signed build and 6/6 device smoke PASS](2026-11-03-ragutis-0.3.4-local-signed-build.md) — original-signer/source/SHA-256 and six-case QA reported by owner; **public release still BLOCKED pending separate approval**, future positive update notification untested.
 
 ## Current signed release evidence
 
