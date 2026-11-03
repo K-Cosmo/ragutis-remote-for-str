@@ -1307,6 +1307,9 @@ class MainActivity : Activity() {
             startActivity(Intent(Intent.ACTION_VIEW, uri))
             true
         } catch (_: Exception) {
+            // A disallowed WebView navigation must remain handled even when no
+            // external browser is available; explain the failure instead.
+            Toast.makeText(this, R.string.external_link_unavailable, Toast.LENGTH_LONG).show()
             true
         }
     }

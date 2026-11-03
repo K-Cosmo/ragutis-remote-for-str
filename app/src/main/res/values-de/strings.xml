@@ -99,6 +99,7 @@
     <string name="about_trademark_notice">Bose und SoundTouch sind Marken der Bose Corporation.</string>
     <string name="about_support_heading">Quellcode und Unterstützung</string>
     <string name="about_privacy_link">Datenschutzhinweise</string>
+    <string name="external_link_unavailable">Link kann nicht geöffnet werden. Bitte einen Browser installieren oder aktivieren.</string>
     <string name="about_source_link">Quellcode auf GitHub</string>
     <string name="about_issues_link">Fehler melden oder Funktion vorschlagen (GitHub)</string>
     <string name="about_email_link">Kontakt per E-Mail (ohne GitHub-Konto)</string>

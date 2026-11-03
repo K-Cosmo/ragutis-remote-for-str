@@ -6,6 +6,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 
 - Advance `versionName` to `0.3.5` and `versionCode` to `16` for a future Google-Play-managed in-place upgrade over public GitHub 0.3.4/code15, without changing the `app.strremote.android` identity.
 - Add an explicit DE/EN **Datenschutzhinweise / Privacy policy** action to native About that opens the [public bilingual privacy document](PRIVACY.md) in the external browser. No new Android permissions, SDKs or backend.
+- Show a localized failure message when Android cannot launch an external link; blocked WebView navigation stays blocked.
 
 ## 0.3.4 — 2026-11-03 (Ragutis public GitHub release)
 
