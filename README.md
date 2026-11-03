@@ -20,8 +20,9 @@
 2. Connect the phone to the same Wi-Fi network as the STR-enabled speaker.
 3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/latest). Existing installations update in place **when signed by the same original key**; do not uninstall first.
 
-> **Upgrading an older release:** If the in-app update check does not find the current version, download it directly from GitHub Releases and install it **over the existing app without uninstalling**. See [known legacy update limitations](doc/STATUS.md).
 4. Open the installed app and select a discovered speaker. Manual host entry is available if discovery does not find it.
+
+> **Upgrading an older release:** If the in-app update check does not find the current version, download it directly from GitHub Releases and install it **over the existing app without uninstalling**. See [known legacy update limitations](doc/STATUS.md).
 
 ## Privacy and safety
 
