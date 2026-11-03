@@ -1,61 +1,24 @@
 # Backlog
 
-| ID | Item | Priority | State |
+This register contains **unfinished or explicitly deferred work**. Completed release changes live in [Changelog](CHANGELOG.md), accepted release evidence in [Release gates](RELEASE_GATES.md), and current release status in [Status](STATUS.md). Execution order and dependencies: [Planned](PLANNED.md).
+
+| ID | Work item | Priority | State / next gate |
 |---|---|---:|---|
-| STR-001 | Verify debug build + lint on real Android toolchain | P0 | ACCEPTED in 0.1.0 |
-| STR-002 | Real-device STR discovery + WebView smoke test | P0 | ACCEPTED in 0.1.0 |
-| STR-008 | Converge status-bar/discovery/WebView layout from device screenshots | P0 | ACCEPTED in 0.1.0 |
-| STR-009 | Modern/legacy back navigation behavior | P1 | ACCEPTED in 0.1.0 |
-| STR-003 | Generate and commit trusted Gradle Wrapper 9.7.1 | P0 | ACCEPTED in 0.1.0 |
-| STR-007 | Capture real Gradle JVM and Daemon JVM criteria | P0 | ACCEPTED in 0.1.0 |
-| STR-004 | GitHub release signing/publication pipeline | P0 | ACCEPTED in 0.1.0 |
-| STR-010 | Verify restart reconnect/back/permission/control smoke tests | P0 | ACCEPTED in 0.1.0 |
-| STR-011 | Public GitHub README/repository presentation | P1 | ACCEPTED; simplified post-release |
-| STR-013 | Discovery/network resilience: no-Wi-Fi, timeout, no-device/STR-unreachable guidance, retry | P0 | ACCEPTED in 0.1.1 |
-| STR-005 | Persistent speaker picker / saved speakers / favorites / quick switching / room assignment | P1 | ACCEPTED in 0.2.0 |
-| STR-015 | Compact remote banner + saved-speaker online/offline highlighting | P1 | ACCEPTED in 0.2.1 |
-| STR-016 | Bose SoundTouch WLAN-Einrichtung (Android 10+), reference model ST20 III | P1 | ACCEPTED in 0.3.0; ST10 separate test WLAN confirmed afterwards |
-| STR-014 | Evaluate Gradle 9.8.x maintenance upgrade | P2 | DEFERRED — eligible post-0.2.0; schedule separately |
-| STR-012 | Additional **STR remote/control compatibility** evidence for other SoundTouch hardware | P2 | BACKLOG; distinct from original Bose-firmware WLAN provisioning (STR-026) |
-| STR-006 | Evaluate STR authentication changes when upstream provides them | P2 | BACKLOG |
+| PLAY-001 | Confirm live Play Console app record, app-signing and separate upload fingerprints | P0 | OPEN — verify in the Console before upload |
+| PLAY-002 | Validate the in-app privacy link, merged manifest, backups, STR WebView traffic and Data safety | P0 | PARTIAL — privacy content corrected; DE/EN link + code16 staged in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), device QA/merge and audits open |
+| PLAY-003 | Produce and verify first signed Play internal-test AAB | P0 | PENDING — code16/0.3.5 staged in draft PR #21; separate upload key and approval required |
+| PLAY-004 | Internal Play GitHub-to-Play in-place update, original signer and data preservation | P0 | PENDING — no track upload/test yet; owner authorization required |
+| PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |
+| STR-023 | Publish STR upstream Show-and-tell thread and maintain independent GitHub Issues/voluntary email support | P1 | OPEN — maintainer requested thread; no published discussion verified |
+| STR-027 | [Deferred negative-path QA and future positive version alert](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7) | P1 | DEFERRED, NOT TESTED; do not infer coverage |
+| STR-024 | Review residual GitHub-managed old PR refs/caches after historical address cleanup | P1 | PARTIALLY RESOLVED — see [Git history provenance](GIT_HISTORY_PROVENANCE.md) |
+| STR-012 | Additional STR remote/control compatibility across other hardware | P2 | BACKLOG; separate from Bose provisioning |
+| STR-026 | Bose original-firmware Wi-Fi provisioning on unverified models/firmware/router combinations | P2 | BACKLOG; community reports are not certification |
+| STR-014 / BUILD-0008 | Evaluate Gradle 9.8.x as isolated maintenance | P2 | DEFERRED — no toolchain change authorized |
+| STR-006 | Evaluate upstream STR authentication changes if introduced | P2 | CONDITIONAL |
 
-## Post-0.3.1 development and community integration (2026-10-31)
+## Closed upstream integration items
 
-The historical public release `v0.3.0` remains unchanged. **At the date of this 2026-10-31 workstream, Remote for STR `v0.3.2` was the latest published signed release** with six owner-reported device checks passed; see [Status](STATUS.md) for current v0.3.4. PR #6 was merged normally with green CI. The owner explicitly deferred untested negative cases to STR-027: they are **not certified**. Refer to [Planned](PLANNED.md) and [BUILD-0013](work/BUILD-0013.md).
+**STR-022 / STR-025:** The maintainer accepted the native inset/WebView embedding solution and current Ragutis naming on 2026-11-03; the official [STR Community Apps FAQ](https://st-reborn.de/de/#faq-q48) publicly lists the canonical project. A future CSS hook is **not required**, and no undocumented STR selector contract is assumed. These items are no longer open development blockers. The independent Play policy/declaration checks remain in PLAY-002.
 
-| ID | Item | Priority | State |
-|---|---|---:|---|
-| STR-017 | BUILD-0013: GitHub update checker + compact STR WebView header | P1 | **RELEASED in 0.3.1**; positive newer-version alert and upstream CSS contract remain deferred/follow-up |
-| STR-018 | Three-model wizard, offline suggestions, optional feedback, DE/EN strings | P1 | **RELEASED / phone QA PASS in 0.3.1**; deferred negative paths STR-027 |
-| STR-019 | Email composer: voluntary user-triggered feedback, prefill recipient/subject/body | P0 | **RELEASED / phone QA PASS in 0.3.1** with mail client; no-client path not tested, deferred STR-027 |
-| STR-020 | Product branding **Remote for STR**; preserve package and original signing identity | P0 | **RELEASED / ACCEPTED in 0.3.1**, upgrade over 0.3.0 preserved speakers/rooms |
-| STR-021 | Bilingual native independent-community Info/About notice next to Devices title | P0 | **RELEASED / phone QA PASS in 0.3.1**; extended accessibility/negative paths not certified |
-| STR-022 | Propose documented upstream STR WebUI embedding CSS hook instead of private `body > header`, `#dev`, `#powerBtn` dependency | P1 | OPEN — [proposal](PLANNED.md#str-022--stable-str-webui-embedding-interface-proposal); current released workaround is not an upstream API |
-| STR-023 | Federated community support: own STR upstream Show-and-tell thread; link to project's GitHub Discussions/Issues + optional email feedback (no GitHub account needed) | P1 | PLANNED |
-| STR-024 | Sanitize historical LAN information in Git refs, remove stale branches | P0 | **NORMAL REFS DONE:** 2 branches/5 tags rewritten, six stale branches deleted. **RESIDUAL:** GitHub-managed old PR refs and caches |
-| STR-025 | Request listing on upstream STR Community Apps page after brand, About notice, EN wizard QA | P1 | **READY TO REQUEST**; naming/Info/EN release requirements met in v0.3.1. Actual upstream listing not yet confirmed |
-| STR-026 | Extend **original Bose-firmware WLAN provisioning** evidence for untested SoundTouch models; crowd reports remain unverified | P2 | BACKLOG; distinct from STR remote/control compatibility (STR-012) |
-| STR-027 | [Follow-up QA after 0.3.1](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7): absent email app, denied Wi-Fi permission, failure/timeout recovery, unverified Bose/router/firmware combinations and future-version update alert | P1 | **OWNER-APPROVED DEFERRED from 0.3.1 on 2026-10-31; NOT TESTED**. Track explicitly and avoid general compatibility claims |
-| STR-028 | Android display label **Remote STR**, centralized runtime-decoded feedback recipient and CI mailbox-harvesting guard | P1 | **RELEASED / ACCEPTED in 0.3.2**; 6/6 signed-device PASS, local artifact integrity PASS, PR #9 merge, CI and public APK checksum PASS |
-| STR-035 | Rename active Android brand to **Ragutis Remote for SoundTouch Reborn**, launcher/toolbar **Ragutis STR**; preserve signer, applicationId, saved data and legacy GitHub updater assets | P0 | **RELEASED in v0.3.3**, maintained in v0.3.4; signed upgrade/data QA PASS by owner |
-| STR-036 | Fix double native/WebView safe-area insets, remove 10px private STR DOM CSS injector; retain IME and old-Android behavior | P0 | **RELEASED in v0.3.3** with signed-device smoke PASS; exhaustive older Android permutations deferred |
-| STR-037 | Rotate central optional feedback recipient to the new Ragutis project mailbox without a complete source/doc literal; both opt-in drafts share it | P0 | **RELEASED in v0.3.3**, final signed feedback smoke PASS by owner |
-| STR-038 | Replace room setItems list with WLAN-style accessible scrollable selection cards; preserve room data mapping and custom editing | P1 | **RELEASED in v0.3.3**, room picker and saved data signed QA owner-reported PASS |
-
-## Owner follow-up and distribution sequence (2026-11-01)
-
-The STR maintainer reports previous 0.3.1/0.3.2 compliance and intends a Community Apps listing. He requests a **distinct Android name** to avoid confusion with the iOS **STR Remote** and invites an upstream **Show-and-tell** thread. Actual website listing under the new name and a published discussion are **not independently confirmed**. The maintainer traced the header problem to **system insets forwarded twice**, offering `--str-safe-top` and `--str-safe-bottom` as future optional documented CSS fallback. Source: owner's second reply (2026-11-01), recorded in BUILD-0016.
-
-**Superseded:** The historic Play drafts PR #10/#12 predate the confirmed Ragutis v0.3.4 release; **do not merge or upload** the old Play-only 0.3.3/code14 candidate. See [current Play preparation guide](PLAY_STORE_PREPARATION.md), which carries forward owner-reported app-signing/upload certificate evidence and makes the next candidate versionCode, privacy-link and WebView-policy gates explicit.
-
-Do not conflate optional user-reported Wi-Fi feedback with certified compatibility. Do not rename the Android `applicationId`, reset app data, alter published release tags or add automatic email/network telemetry.
-
-## Google Play launch (current planning, 2026-11-03)
-
-| ID | Work item | Priority | State |
-|---|---|---:|---|
-| PLAY-001 | Confirm Play Console `app.strremote.android`, registered app-signing and separate upload fingerprints | P0 | PRIOR OWNER-REPORTED MATCH; recheck live console before upload |
-| PLAY-002 | In-app privacy policy link + current public policy, data-safety/backup/STR WebView audit | P0 | OPEN — required before Play upload/review |
-| PLAY-003 | Create coherent versionCode **16+** internal candidate after GitHub v0.3.4/code15; sign AAB with Play upload JKS | P0 | PLANNED — no AAB created |
-| PLAY-004 | Internal-track GitHub-to-Play in-place test, preserve speaker/room data, cert match | P0 | PLANNED — separate owner authorization |
-| PLAY-005 | Screenshots, app icon, feature graphic, DE/EN listing, policy forms, closed tester recruitment | P1 | PLANNED; owner confirms personal account testing requirement |
+Historical decisions and completed STR-001…038 implementation work are preserved under [Decisions](DECISIONS.md), [Changelog](CHANGELOG.md) and [dated QA](evidence/qa/README.md), not repeated as an active-task list.
