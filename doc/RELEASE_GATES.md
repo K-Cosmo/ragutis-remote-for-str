@@ -2,17 +2,19 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
-## 0.3.4 updater status/UX — DEVELOPMENT GATES (NOT RELEASED)
+## 0.3.4 updater status/UX — SIGNED DEVICE SMOKE ACCEPTED; NOT RELEASED
 
 - [x] Root-cause source review: v0.3.3 calls the GitHub updater only on startup, caches successful checks 24h, and shows UI only for a strictly **newer** public stable release with a recognized APK. The v0.3.3 GitHub latest tag equals installed v0.3.3, so silence is expected; failures are also silent. No evidence of an actual positive-update failure on v0.3.3 yet.
 - [x] Manual About check implemented in code: visible loading, no-newer-release or failure status, bypasses success cache, no install or new permissions; original 24h automatic update check preserved. Android version staged 0.3.4/code 15; debug `.poc` package supports manual **read-only status QA** but never offers installing a production APK as a debug update.
 - [x] Exact 0.3.4 application candidate merged to `main` at `74a94150999492ad097659e537fec61c1b84f2db`; [post-merge Android build/lint/unit/documentation CI 41340497573](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41340497573) **PASS**.
 - [x] **Owner-reported focused 0.3.4 debug-device QA (2026-11-01):** manual update control is visible and displays the expected result on device. [Scoped evidence](evidence/qa/2026-11-01-ragutis-0.3.4-manual-updater.md). This does NOT certify a signed 0.3.4 upgrade, offline retry, repeated check or both languages.
 - [x] **Owner-reported signed 0.3.4 APK built (2026-11-03)** from exact main source `c68f65f12902e4c484745e004c6af8af87cd85bd`, filename `Ragutis-Remote-for-SoundTouch-Reborn-0.3.4.apk`, SHA-256 `7563764c09fe15f5bfe122a05d37964929cb905f7c1a92bf05e896775a5f17f7`, with companion checksum. Script enforces original GitHub APK signer/zipalign and runs Gradle checks; local binary bytes not independently inspected. [Build evidence](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md).
-- [ ] Signed v0.3.3→v0.3.4 **on-device in-place upgrade** test with the existing GitHub **app** signer; About manual check uses canonical GitHub API and shows **no newer GitHub release** while v0.3.3 is latest; Android 8+ compatibility unchanged.
-- [ ] DE/EN visible loading and final status, no internet/local-only Wi-Fi failure+retry, repeated manual checks bypass 24h automatic cache; pressing release link works if future newer public stable APK exists.
+- [x] **Owner-reported signed v0.3.3→v0.3.4 on-device in-place upgrade: PASS**, with saved-data continuity, on exact signed source `c68f65f12902e4c484745e004c6af8af87cd85bd` and APK SHA-256 `7563764c09fe15f5bfe122a05d37964929cb905f7c1a92bf05e896775a5f17f7`. Manual GitHub check shows the expected result while latest public stable release is `v0.3.3`. Raw `adb`/package certificate transcript not independently provided. [Owner signed-QA report](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md).
+- [x] **Owner-reported six-case signed-device smoke PASS (2026-11-03):** Update/data; manual online check; immediate repeat bypassing 24h throttle; offline failure/recovery; German and English; STR control. This does **not** establish exhaustive negative-path, all-device, accessibility, Android API or future positive-newer-release coverage. [Scoped evidence](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md).
+- [ ] Future **newer-than-installed release link** and automatic positive notification: not on-device verifiable while GitHub `releases/latest=v0.3.3` and the signed QA candidate is `0.3.4`; preserve as future gate, no dummy public version.
 - [ ] Distinguish real positive-update notification from source/unit-only verification; do not manufacture a future release to force a positive test. Document deferred future-release gate.
-- [ ] Explicit owner approval for merge and (separately) signing/publication; **no v0.3.4 tag, GitHub Release, Google Play upload, or Play-track modification**.
+- [x] **Owner approved source implementation and PR #16 merge**; merged at `74a94150999492ad097659e537fec61c1b84f2db`. The owner then authorized a separate local **signing/device QA**, not publication.
+- [ ] **Separate express owner approval to publish** `v0.3.4`: only then tag the exact signed **app source** `c68f65f12902e4c484745e004c6af8af87cd85bd` (not later documentation commits), publish the owner-tested APK and checksum, independently verify public asset digest, latest-release API and tag. No tag, GitHub Release, APK asset upload or Google Play action authorized yet.
 
 ---
 
