@@ -41,7 +41,7 @@ Documentation-only changes do not require a new Android APK when they do not cha
 
 ## Google Play internal candidate — separate distribution QA (OPEN)
 
-The unreleased 0.3.5/code16 source candidate additionally requires a DE/EN real-device About test: open **Privacy policy / Datenschutzhinweise**, verify the intended live public HTML-rendered [project privacy document](PRIVACY.md) is reachable without login and that back-navigation returns to the app; verify no regressions in source/feedback links or saved STR devices. On a Play-distributed build the link must still work and show the updated, truthful backup/WebView notice.
+**PR #21 / 0.3.5-code16 focused QA:** On an actual Android device, verify native About shows **Datenschutzhinweise** in DE and **Privacy policy** in EN; the action must open the correct readable public [privacy policy](PRIVACY.md) in an external browser without authentication, and Android Back must return to Ragutis without data loss. Reopen About and verify source/issues/email actions still behave normally. Preserve and exercise STR connection, stored speaker/room data and normal playback. A debug `.poc` build verifies UI/navigation only; a distinct original-signer signed production candidate is needed for real installed upgrade/data preservation QA. Browser unavailable/offline behavior must not be incorrectly recorded as successful navigation.
 
 Before a first Play test-track AAB upload, re-check live **app signing** and **upload** certificate fingerprints against the original GitHub signer and recorded separate Play upload key; verify the signed AAB using `jarsigner` and `keytool -printcert -jarfile`, not `apksigner`. Inspect merged Play manifest permissions, Android backups, embedded STR WebView, public/privacy link in About and data-safety declarations.
 
@@ -121,15 +121,17 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Ensure native About and the SoundTouch feedback action both use the same `BoseCommunityFeedback.RECIPIENT` value.
 - Upgrade the **exact newly signed 0.3.2 APK** in place over public 0.3.1 on a device. Check launcher icon label **Remote STR**, in-app Devices title **Remote for STR**, About trademark/community disclosure, existing speakers/rooms, and actual email-client destination for both paths. Compilation or unit tests alone do not clear these device gates.
 
-## 0.3.4 manual app updater – targeted regression (QA pending)
+## Manual GitHub update checker — ongoing regression criteria
 
-- Unit test classification `null HTTP/API result` → failure, HTTP 200 parsed with same/older stable release → no newer update, newer fully published release with matching APK → update available. Verify exact canonical new repository and reject drafts/prereleases/malformed release names as existing policy does.
-- Real **signed release APK** (`app.strremote.android`): About → `Auf Updates prüfen`/Check for updates, visible in-progress indication; when GitHub latest still `v0.3.3` and test candidate version `0.3.4`, display **no newer release**, not falsely claim 0.3.4 is already published. Click again without waiting 24h; it must initiate another network request.
-- Disable Internet while staying on a local STR WLAN: manual request must report failure, remain retryable and not affect speaker discovery or STR controls. Re-enable internet, retry, and get an explicit status. No crash, hang, spinner left behind or silent error.
-- Production release check still runs at app start, at most once per successful 24h window, without surfacing an error dialog automatically. The manual check suppresses late duplicate automatic prompts during the current Activity lifetime, even when manual check finishes first. Debug `.poc` builds can verify GitHub status manually but never offer a signed production APK as a debug upgrade. Native About should not create a view after destruction.
-- The existing `update available` dialog should link to the exact canonical GitHub Release when a truly **newer stable** published release with expected signed APK asset exists. No fake release is to be published solely for QA; defer positive device-path verification until an actual newer release.
+- Unit tests: failed/empty API response -> failure status, same/older stable release -> no newer update, valid newer public stable release with matching APK asset -> update available; exclude malformed tags, drafts, prereleases and mismatched assets.
+- Signed production app: About -> **Auf Updates prüfen / Check for updates** shows progress and an explicit result; repeat immediately and verify the manual check is not blocked by the successful 24-hour automatic throttle.
+- With Internet unavailable but local STR Wi-Fi connected, manual check fails visibly without disrupting local STR control; after recovery a new manual request succeeds. No hanging progress or silent failure.
+- Automatic production checks remain best-effort, limited by the last successful 24-hour window and without intrusive errors; debug `.poc` builds allow metadata diagnostics only and never offer a production APK upgrade.
+- When a **genuinely newer** stable signed GitHub APK exists, confirm the production upgrade dialog links to the correct canonical public release. Do **not** invent a dummy release for testing. The positive signed-device case remains [deferred](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7).
 
-## 0.3.3 Ragutis / STR WebView insets — release candidate device gates
+The specific earlier v0.3.3→v0.3.4 online/offline/signed QA outcomes are [dated release evidence](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md), not current pending gates.
+
+## Ragutis native WebView insets — retained regression criteria (introduced in 0.3.3)
 
 - CI for exact candidate source must confirm build/lint/JVM tests and doc-consistency/anti-harvesting, but does not constitute real-device acceptance. Source `08ca3d5c3025fbce7df5130fa8961a00713fa954`: push and PR runs passed on 2026-11-01.
 - Verify DE and EN launcher label **Ragutis STR**, compact Devices toolbar **Ragutis STR** next to tappable About, and **full Ragutis Remote for SoundTouch Reborn** in About. Check bilingual trademark/unofficial statement, update dialog and feedback draft version label.
@@ -138,7 +140,7 @@ The CI documentation-consistency tool checks tracked `/doc/**/*.md` text for une
 - Test Android API 30+ on current physical device with both gesture and 3-button navigation, portrait/landscape, screen cutout, light/dark; toggle keyboard/IME repeatedly and ensure no ghost bottom inset. Test API 26–29 legacy inset dispatch separately or document device unavailability as **NOT TESTED**, not PASS.
 - Verify no dependency on `#dev`, `#powerBtn` or a forced `10px` header injection remains. CI Android build/lint/unit checks do not certify physical-device layout.
 - Check updated GitHub release checker accepts new Ragutis APK name and both historical names, but rejects mismatched asset-version/draft/prerelease; check signed release script creates Ragutis artifact from clean code with existing app signing identity when authorized.
-- Keep the Play Store work paused: an old 0.3.3 candidate from draft PR #12 must not be uploaded/merged instead of the validated Ragutis build.
+- Historical old Play-only drafts PR #10/#12 are superseded and must not be uploaded. Current Play work is governed by [Play preparation](PLAY_STORE_PREPARATION.md).
 
 ## 0.3.3 explicit model selection and hint alignment (owner-signed-smoke PASS; granular cases pending)
 

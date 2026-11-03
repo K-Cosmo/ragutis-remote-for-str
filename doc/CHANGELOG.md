@@ -2,11 +2,10 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
-## Unreleased — 0.3.5 Play internal-test readiness
+## Unreleased — 0.3.5 (Play internal-test candidate)
 
-- Stage `versionName=0.3.5` / `versionCode=16` so Google Play can offer a genuine versionCode upgrade over existing GitHub v0.3.4/code15 installations while keeping `app.strremote.android` and the historical original app-signing identity.
-- Expose **Privacy policy / Datenschutzhinweise** directly from native About as a public rendered link to the current bilingual [privacy policy](PRIVACY.md), without adding SDKs, permissions or secret data.
-- Play AAB signing must use the **distinct registered upload key**; Google Play delivery signing must match the original GitHub **app-signing** key. No AAB, Play track, v0.3.5 public GitHub release or on-device signed acceptance has occurred.
+- Advance `versionName` to `0.3.5` and `versionCode` to `16` for a future Google-Play-managed in-place upgrade over public GitHub 0.3.4/code15, without changing the `app.strremote.android` identity.
+- Add an explicit DE/EN **Datenschutzhinweise / Privacy policy** action to native About that opens the [public bilingual privacy document](PRIVACY.md) in the external browser. No new Android permissions, SDKs or backend.
 
 ## 0.3.4 — 2026-11-03 (Ragutis public GitHub release)
 

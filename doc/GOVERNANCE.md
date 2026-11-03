@@ -51,6 +51,20 @@ There must be one canonical copy of each normative subject.
 
 When a convenient public entry point is useful, prefer a short link/pointer over copied text.
 
+## Semantic documentation ownership review
+
+For each documentation-only or release-related PR, explicitly check **meaning as well as syntax**:
+
+- public root `README.md`: current product overview, install/support entry points and a link to the canonical changelog; **no per-release change narrative, provenance log or duplicate policy**;
+- `STATUS.md`: current verified state and narrowly scoped evidence references, not a competing changelog or work plan;
+- `PLANNED.md`: future execution order and dependencies; completed release history belongs in `CHANGELOG.md` / `RELEASE_GATES.md` / dated QA;
+- `BACKLOG.md`: open/deferred work items; do not retain completed implementation as a second change history;
+- `BLOCKERS.md`: current blockers only, with explicit scope (GitHub release versus Play rollout);
+- `ARCHITECTURE.md` / `API_CONTRACTS.md`: **current** design and contracts, not archived candidate status; `SECURITY.md` / `PRIVACY.md` own their distinct trust/data disclosures;
+- `TESTS.md` describes regression criteria, `RELEASE_GATES.md` tracks acceptance, and `evidence/qa/` retains dated execution proof.
+
+Remove duplicate normative paragraphs and ambiguous status words (`planned`, `staged`, `merged`, `verified`, `released`) when they refer to different states. Use links to the authoritative topic instead of copying its text; preserve history in dated evidence/decision records. A green automated link/version check does **not** replace this semantic review.
+
 ## Automated documentation consistency gate
 
 `tools/verify-doc-consistency.ps1` is the deterministic drift gate for facts that can be checked mechanically.

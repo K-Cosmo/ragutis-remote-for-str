@@ -34,9 +34,11 @@ These contracts describe what the Android wrapper currently relies on. They are 
 
 ## Embedded STR WebUI layout
 
-The **published 0.3.1/0.3.2 wrapper** recognized private DOM selectors (`body > header`, `#dev`, `#powerBtn`) and injected a guarded `10px` header override. The upstream STR WebUI normally defines `calc(16px + env(safe-area-inset-top))`. The maintainer's 2026-11-01 diagnosis found the native Android root had already used system insets but forwarded them to WebView, producing duplicate CSS safe-area padding. The **unreleased 0.3.3 implementation** removes the DOM/CSS override and instead zeroes native-handled insets before reaching WebView, retaining WebView IME delivery.
+The current v0.3.3+ Android integration owns native system-bar/cutout padding **exactly once**. Modern handled `WindowInsets` types are zeroed before being forwarded to the WebView while IME insets remain available; older Android releases consume the handled legacy insets. The embedded STR web app retains its normal CSS, without private DOM selectors, `10px` header injection or a JavaScript bridge.
 
-STR has **no agreed, released, documented Android embedding CSS contract** for this client. The maintainer offered possible future variables `--str-safe-top` and `--str-safe-bottom`, defaulting to `env()`, only if native-only insets do not prove sufficient on real devices. Do not inject undocumented CSS properties or private DOM overrides. See [STR-022](PLANNED.md#str-022--maintainer-confirmed-inset-root-cause-upstream-css-fallback-only-if-needed) and [D-047](DECISIONS.md).
+The STR maintainer explicitly accepted this solution on 2026-11-03 and linked the app in the official [Community Apps FAQ](https://st-reborn.de/de/#faq-q48); see [current Status](STATUS.md). This acceptance is specific to the presented embedding implementation, not a general permission to alter STR's DOM or a Bose trademark license.
+
+No separate documented upstream CSS hook is necessary for the verified implementation. Earlier proposals for `--str-safe-top` and `--str-safe-bottom` remain **unimplemented alternatives**, not a live public CSS API. See [D-047](DECISIONS.md).
 
 ## Compatibility rule
 
