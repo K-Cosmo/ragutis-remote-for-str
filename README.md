@@ -4,7 +4,6 @@
 
 **Current release:** 0.3.4 · **Ragutis Remote for SoundTouch Reborn** · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
 
-> **Released on 2026-11-03:** v0.3.4 adds manual GitHub update checking with clear progress, offline/retry and current-version feedback. It passed the owner's **six signed-device smoke categories** including in-place upgrade/data preservation. Historical v0.3.3/v0.3.2 artifacts remain unchanged.
 
 ## Features
 
@@ -21,7 +20,7 @@
 2. Connect the phone to the same Wi-Fi network as the STR-enabled speaker.
 3. Download and install the signed APK from [GitHub Releases](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/latest). Existing installations update in place **when signed by the same original key**; do not uninstall first.
 
-> **Existing v0.3.2 users:** The old app may stop showing GitHub update notifications after the repository rename because it does not follow the old API URL's redirect. Check the new Releases page manually for later signed versions; install over the existing app, without uninstalling it. **Ragutis 0.3.4 is published and available to download manually.**
+> **Upgrading an older release:** If the in-app update check does not find the current version, download it directly from GitHub Releases and install it **over the existing app without uninstalling**. See [known legacy update limitations](doc/STATUS.md).
 4. Open the installed app and select a discovered speaker. Manual host entry is available if discovery does not find it.
 
 ## Privacy and safety
