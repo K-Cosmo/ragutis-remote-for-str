@@ -17,6 +17,12 @@
 
 **Deferred:** A live prompt for a **strictly newer public release** cannot be verified against latest GitHub v0.3.3 from installed candidate 0.3.4. No dummy release will be made solely for that test. Broad API/device/accessibility and raw-byte reinspection are not certified by the six-case report. **Public GitHub v0.3.4 released after distinct express owner approval; latest stable is now v0.3.4.** No Google Play track action has occurred. The positive notification for a genuinely newer version remains deferred.
 
+## Google Play Console — PREPARATION ONLY (2026-11-03)
+
+**State:** GitHub v0.3.4 is the current accepted public APK, but **no Play AAB has been built/uploaded**, no Play internal/closed release has been verified, and no Google Play public listing is established by repository evidence. Play Console account/package availability and PEPK app-signing/upload certificate matches were **owner-reported on 2026-10-31**, documented in historical drafts [PR #10](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/10) and [PR #12](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/12). Both old branches are stale and must not be merged/uploaded as an independent 0.3.3 candidate.
+
+**Current preparation:** [Play Store checklist](PLAY_STORE_PREPARATION.md) records the app-signing/upload separation, next `versionCode>15` internal candidate for a real Play update over currently installed GitHub v0.3.4, and P0 missing in-app Privacy link, current privacy/Android backup and WebView owner-permission review, DE/EN listing/media, internal/closed test and owner's separate upload authorization. The current 0.3.4 app/source remains unchanged. Google Play's current account/configuration evidence cannot be independently inspected in this repository.
+
 ## Ragutis 0.3.3 — RELEASED / ACCEPTED FOR VERIFIED SCOPE (2026-11-01)
 
 **Actual GitHub repository:** [K-Cosmo/ragutis-remote-for-str](https://github.com/K-Cosmo/ragutis-remote-for-str), renamed by the owner on 2026-11-01. **Source merge completed:** PR #13 into `main` as `f821602e1b45172610a7735f6e0830de4bfdee79`, [post-merge CI PASS](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41315289069). This does not authorize or prove an APK publication.

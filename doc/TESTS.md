@@ -39,6 +39,12 @@ Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
 
+## Google Play internal candidate — separate distribution QA (OPEN)
+
+Before a first Play test-track AAB upload, re-check live **app signing** and **upload** certificate fingerprints against the original GitHub signer and recorded separate Play upload key; verify the signed AAB using `jarsigner` and `keytool -printcert -jarfile`, not `apksigner`. Inspect merged Play manifest permissions, Android backups, embedded STR WebView, public/privacy link in About and data-safety declarations.
+
+After owner-authorized internal Play rollout, install the **Play-delivered** app over a previously installed GitHub signed version with a **lower versionCode** and preserve speaker/room data, then verify installed app certificate SHA-256 is the original GitHub/Play **app-signing** cert (not the upload cert), normal STR control, manual update-check channel UX, DE/EN, restart and live device/room state. A fresh Play install alone is **not sufficient** evidence of cross-channel in-place upgrade. If current GitHub v0.3.4 has code 15, plan a distinct Play candidate code **16+**. See [Play preparation](PLAY_STORE_PREPARATION.md).
+
 ## Accepted regression matrix — Discovery & Network Resilience (BUILD-0007 / 0.1.1)
 
 These cases remain regression coverage:

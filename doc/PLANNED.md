@@ -10,7 +10,7 @@ The new 0.3.3 source already adopts canonical GitHub URLs and standard HTTPS red
 
 ## 0.3.4 GitHub release completed; Google Play internal-test preparation next (2026-11-03)
 
-Owner-authorized [Ragutis v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) is **public stable latest**. Original signer/6-of-6 signed phone QA from [dated evidence](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md); exact signed app source `c68f65f12902e4c484745e004c6af8af87cd85bd`; GitHub tag, APK SHA-256 and checksum asset verified. The historic v0.3.3 and 0.3.2 releases remain untouched. The next workstream is **Google Play Console**: reconcile old on-hold docs PR #10 against current brand/source, preserve app-signing key continuity vs separate upload key, build signed AAB, validate internal install, store/data-safety/permission/WebView disclosures, and recruit closed testers. No Play AAB upload or rollout has yet been completed or authorized as an automatic side effect of the GitHub release.
+Owner-authorized [Ragutis v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) is **public stable latest**. Original signer/6-of-6 signed phone QA from [dated evidence](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md); exact signed app source `c68f65f12902e4c484745e004c6af8af87cd85bd`; GitHub tag, APK SHA-256 and checksum asset verified. The historic v0.3.3 and 0.3.2 releases remain untouched. The next workstream is **Google Play Console**: use the current [Play preparation guide](PLAY_STORE_PREPARATION.md) (do not merge historical drafts PR #10/#12); confirm existing app-signing/upload fingerprints, fix in-app privacy-policy access and privacy/backups disclosure, review WebView permission and external update link, build signed AAB from an explicitly versioned candidate, verify internal install, and recruit closed testers. No Play AAB upload or rollout is implied by the GitHub release.
 
 ## Updater diagnostics / manual check (0.3.4 shipped)
 
@@ -22,10 +22,11 @@ The released v0.3.4 implements user-controlled About update checks with progress
 
 | Item | Priority | Next action |
 |---|---|---|
-| **STR-035 / STR-036** | P0 | **GitHub v0.3.3 released and independently verified**; signed 7/7 smoke PASS; exhaustive edge-case and legacy-device QA separately deferred |
+| **PLAY-001** | P0 | [Google Play preparation](PLAY_STORE_PREPARATION.md): certificate continuity, in-app privacy link, correct public policy, data-safety/WebView audit, Play AAB/code bump and internal track. No Play upload yet |
+| **STR-035 / STR-036** | P0 | **GitHub v0.3.4 current released**; original v0.3.3 naming/inset fixes accepted, signed 0.3.4 6/6 smoke PASS; legacy-device/edge-case QA separately deferred |
 | **STR-037 / STR-038** | P1 | Signed smoke includes feedback and room picker PASS; granular negative paths, TalkBack and full model/room permutations not separately certified |
 | **STR-022** | P1 | Test native inset zeroing first; request documented upstream `--str-safe-top` / `--str-safe-bottom` only if still needed |
-| **STR-025** | P1 | Send the prepared German email with the now-verified [v0.3.3 GitHub Release](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.3); request upstream Community Apps label update. Owner confirms the release email was sent on 2026-11-01; await upstream response and verify listing before claiming it changed |
+| **STR-025** | P1 | Owner confirms he sent the original Ragutis release email to STR maintainer; await an independently verified listing under the full Ragutis name and request/retain explicit embedding permission needed for Play policy review |
 | **STR-023** | P1 | Set up federated community support: upstream discovery thread, app Issues and optional email |
 | **STR-027** | P1 | Run explicitly deferred negative-path QA and validate future positive release-update notification |
 | **STR-024** | P1 | Follow up on residual GitHub-managed historical PR references and caches |

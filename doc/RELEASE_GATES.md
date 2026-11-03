@@ -2,6 +2,22 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## Google Play first internal test — P0 GATES (NOT UPLOADED)
+
+- [x] **Current GitHub baseline:** public original-signer v0.3.4/code 15, owner-reported signed 6/6 device QA and public release/asset digest verified. Google Play is a separate distribution workflow, not automatically released.
+- [x] **Historical owner-reported Play certificates:** app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` matched public APK signer; separate registered upload SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`. These checks were reported in the old #12 candidate; **re-check live Console certificates**.
+- [ ] Confirm Play app exists for `app.strremote.android`, current developer verification and both *live* Play cert digests. Do not change the enrolled app-signing identity, reupload PEPK or assume old app package registration without Console evidence.
+- [ ] Update public privacy policy truth and add **explicit About-screen privacy link in the app**; confirm public non-editable browser URL accessible worldwide, no login; audit OS backup/retention, STR WebView third-party requests and declared permissions.
+- [ ] Record evidence of STR website owner permission/official authorized app listing for the WebView use and review Google Play policy. Confirm target audience, age rating, ads, Data safety and actual AAB merged manifest; no unsupported or overbroad privacy statements.
+- [ ] Create a separate reviewed Play internal-test candidate with **higher versionCode than GitHub v0.3.4/code15** if a real Play-managed upgrade over installed v0.3.4 is required; proposed code 16 / versionName 0.3.5. No changes to signed GitHub v0.3.4 source, signer or tag.
+- [ ] Sign AAB **locally using only registered Play upload key**, verify `jarsigner`, embedded upload cert and bundle SHA-256. No credentials in git, chat, Gradle sources or issue logs.
+- [ ] **Separate owner approval before first Google Play AAB upload/internal-track rollout**. Then confirm Play's delivered APK is signed by original **app-signing** certificate; test genuine GitHub→Play installation/versionCode upgrade and saved rooms/speakers/STR control.
+- [ ] Store assets and DE/EN listing reviewed; 12 continuously opted-in closed testers for at least 14 days (if personal account created after 2023-11-13), then separate production-access application and owner production rollout approval. No tester counts, review or production availability claimed yet.
+
+[Full Play checklist and DE/EN draft listing](PLAY_STORE_PREPARATION.md).
+
+---
+
 ## 0.3.4 updater status/UX — SIGNED DEVICE QA ACCEPTED; GITHUB RELEASE VERIFIED
 
 - [x] Root-cause source review: v0.3.3 calls the GitHub updater only on startup, caches successful checks 24h, and shows UI only for a strictly **newer** public stable release with a recognized APK. The v0.3.3 GitHub latest tag equals installed v0.3.3, so silence is expected; failures are also silent. No evidence of an actual positive-update failure on v0.3.3 yet.
