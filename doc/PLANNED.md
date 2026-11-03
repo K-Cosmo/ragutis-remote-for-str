@@ -4,7 +4,7 @@ This document describes **sequence and dependencies**, not release history or a 
 
 ## Next sequence — Google Play internal test
 
-1. Verify `githubDebug` and `playDebug` routing and DE/EN privacy/STR regressions on real devices for the current [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), then review the separate original-signer production test; **no PR merge without express owner approval**.
+1. After owner-reported PASS for both debug flavors, inspect the merged GitHub/Play **release manifests** and complete a separate **original-signer production** smoke test on a spare device; review [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21). **No merge without express owner approval**.
 2. Complete [PLAY-006](BACKLOG.md) device/manifest acceptance, then check live Play Console app-signing/upload certificates, public policy URL, Android backup and truthful embedded-WebView/Data safety disclosures. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.
 3. Create and verify a locally signed AAB with the separate upload key. Obtain explicit approval **before** uploading or starting an internal Play track.
 4. Test a genuine Google-Play-delivered in-place update over GitHub 0.3.4/code15 with the original app-signing identity and retained speaker/room data.

@@ -39,9 +39,9 @@ Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
 
-## Product-flavor distribution QA — new source change (OPEN)
+## Product-flavor distribution QA — debug owner PASS, release gates OPEN
 
-The staged 0.3.5 code adds `github` and `play` Gradle flavors **after** the prior owner-reported 6/6 debug pass of `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. That record remains historical evidence for the earlier unflavored debug candidate; it does **not** verify the new channel routing. Re-run on a real device for the current source:
+The staged 0.3.5 code adds `github` and `play` Gradle flavors **after** the prior owner-reported 6/6 debug pass of `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. For the later exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner reported **both debug flavor builds show the requested behavior, content and links**; [dated dual-flavor QA](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). The following is the targeted test scope, not proof of every unreported negative-path or signed production case:
 
 1. **githubDebug** (`app.strremote.android.poc`): About manual GitHub check retains visible current/failure status; automatic GitHub check is not enabled on the debug package; links, DE/EN privacy, STR control, room management and browser Back remain functional.
 2. **playDebug** (same `.poc` debug package; install it **after** the Github debug trial): About shows **Updates in Google Play öffnen / Open updates in Google Play**, and does not expose the GitHub check button, GitHub APK update dialog or request a Github update on startup. The Play URL points to `app.strremote.android`; without tester entitlement it may show the unpublished listing as unavailable. Confirm the app returns normally and STR/rooms and privacy/source/feedback still work.

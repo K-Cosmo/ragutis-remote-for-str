@@ -6,7 +6,7 @@ This register contains **unfinished or explicitly deferred work**. Completed rel
 |---|---|---:|---|
 | PLAY-001 | Confirm live Play Console app record, app-signing and separate upload fingerprints | P0 | OPEN — verify in the Console before upload |
 | PLAY-002 | Validate the in-app privacy link, merged manifest, backups, STR WebView traffic and Data safety | P0 | PARTIAL — public policy corrected, source staged and [6/6 owner-reported debug-device QA](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md) PASS; **production-signed/Play QA, PR merge and audits open** |
-| PLAY-006 | Channel-safe update UX for GitHub and Google Play variants | P0 | IMPLEMENTED IN SOURCE / QA OPEN — product flavors stage separated About/auto-update routing; CI and signed/real-device validation open. [Play runbook](PLAY_STORE_PREPARATION.md#google-play-channel-ux-source-implemented-p0-qa-before-distribution) |
+| PLAY-006 | Channel-safe update UX for GitHub and Google Play variants | P0 | SOURCE + CI + OWNER-REPORTED BOTH DEBUG FLAVORS PASS; **merged release manifest, original-signer and real Play-delivered upgrade QA OPEN**. [Play runbook](PLAY_STORE_PREPARATION.md#google-play-channel-ux-source-implemented-p0-qa-before-distribution) |
 | PLAY-003 | Produce and verify first signed Play internal-test AAB | P0 | PENDING — code16/0.3.5 staged in draft PR #21; separate upload key and approval required |
 | PLAY-004 | Internal Play GitHub-to-Play in-place update, original signer and data preservation | P0 | PENDING — no track upload/test yet; owner authorization required |
 | PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |

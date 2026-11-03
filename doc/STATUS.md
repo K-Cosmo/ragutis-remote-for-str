@@ -4,14 +4,14 @@
 
 **Development version:** 0.3.5
 **Latest public release:** 0.3.4
-**Status:** DEBUG DEVICE QA 6/6 PASS (OWNER-REPORTED); PRODUCTION/PLAY GATES OPEN
+**Status:** BOTH DISTRIBUTION DEBUG FLAVORS OWNER-REPORTED PASS; PRODUCTION/PLAY GATES OPEN
 **Date:** 2026-11-03
 
 **Implemented in draft [PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21):** `versionName=0.3.5` / `versionCode=16` and the unchanged production `app.strremote.android` identity, a native DE/EN [privacy-policy](PRIVACY.md) link and **two distribution flavors**. The `github` flavor retains the original GitHub APK updater; the `play` flavor disables GitHub update checks and links to the Play listing instead. Both keep shared STR behavior and persisted-data schema. The source adds no permission, SDK, backend or WebView bridge. Signing continuity requires distinct on-device/Play evidence.
 
 **Debug QA (2026-11-03):** The owner reports **6/6 PASS** on the separately installable `app.strremote.android.poc` debug build from exact application-source commit `8ccb4564ee0d08a83527ecb391a1a514dc451d46`: DE/EN privacy links, browser-back navigation, source/Issues/email actions, STR controls and room assignment, and preservation of the separately installed regular v0.3.4/data. [Dated scoped device evidence](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md). Neither an original-signer production APK nor the cross-channel Play upgrade has passed this gate.
 
-**New changes after prior debug acceptance:** The distribution flavor implementation and conditional update UI were introduced **after** the owner-reported debug 6/6 QA from commit `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. This earlier PASS is retained for provenance but **cannot validate either new flavor**; new DE/EN, GitHub/Play updater routing, device and signed-source QA are OPEN. [Architecture](ARCHITECTURE.md) specifies the channel behavior; [Tests](TESTS.md) and [Release gates](RELEASE_GATES.md) define acceptance.
+**Current distribution QA (2026-11-03):** After the prior 6/6 unflavored debug acceptance, two product flavors were introduced. For exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner then reported that **both `githubDebug` and `playDebug` show their requested behavior, content and links**. This supports the scoped dual-flavor UI QA; see [dated owner-reported evidence](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). Earlier 6/6 QA is separate, not retroactively attributed to these builds. Productive signature, full merged-manifest/Data safety review and actual Play delivery remain OPEN; see [Tests](TESTS.md) and [Release gates](RELEASE_GATES.md).
 
 **Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks, merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
 

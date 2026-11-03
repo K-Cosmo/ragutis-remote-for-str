@@ -4,6 +4,8 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current unreleased Play candidate — debug evidence only
 
+- [2026-11-03 Ragutis 0.3.5 GitHub/Play flavor QA — both owner-reported PASS](2026-11-03-ragutis-0.3.5-flavor-device-qa.md) — exact source and CI, expected channel behavior/content/links, with signed and Play-delivered cases still OPEN.
+
 - [2026-11-03 Ragutis 0.3.5/code16 owner-reported 6/6 debug-device QA PASS](2026-11-03-ragutis-0.3.5-debug-device-qa.md) — exact tested source, bilingual privacy links, native navigation, STR/regression and isolation from public 0.3.4. Production-signed candidate, Play upgrade and policy gates remain open.
 
 ## Current signed build and public release evidence

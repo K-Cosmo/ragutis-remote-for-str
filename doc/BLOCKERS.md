@@ -11,7 +11,7 @@ No known open gate blocks the **already published** signed release. Its accepted
 The following gates remain **open** and must be checked before the corresponding Play action:
 
 - Live Play Console identity and app-signing/upload certificate verification.
-- Current source `github`/`play` flavor routing (**PLAY-006**) requires real-device verification and merged-manifest checks. The previous debug 6/6 acceptance predates the flavor change.
+- Current `github`/`play` flavor routing (**PLAY-006**) has owner-reported **both debug variants PASS** ([QA record](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md)); **merged release-manifest, original-signer production and actual Play-delivery verification remain open**.
 - DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
 - Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.
 - Explicit owner approval for the Play upload and rollout.
