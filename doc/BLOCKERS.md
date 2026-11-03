@@ -1,19 +1,26 @@
 # Blockers
 
-## Current state
+This document records **current unresolved release blockers**, not completed releases or the general backlog. Authoritative release disposition: [Release gates](RELEASE_GATES.md). Sequencing: [Planned](PLANNED.md).
 
-**Remote for STR 0.3.1 is published and accepted.** No outstanding issue is known to block the already published signed release. The signed-APK device smoke test, unchanged package identity, CI, annotated tag and public APK checksum are recorded in [release gates](RELEASE_GATES.md) and [release evidence](evidence/qa/2026-10-31-release-0.3.1.md).
+## Public GitHub v0.3.4
 
-## Open follow-ups — not release blockers
+No known open gate blocks the **already published** signed release. Its accepted scope, original source and device-QA limitations are recorded in [Status](STATUS.md) and [Release gates](RELEASE_GATES.md). Deferred tests are not retroactive failures and are not considered passed.
 
-- **STR-022 / [F-028](FINDINGS.md):** current 10px header-spacing workaround depends on private STR DOM; request a supported upstream embedding/CSS hook. The presently tested layout works but future upstream markup may change.
-- **[STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7):** the owner explicitly deferred negative tests (no email app, rejected WLAN permissions, network failure/timeout and unverified hardware) plus the positive update-alert test for a later release. **Deferred does not mean tested.**
-- **STR-024:** ordinary Git history was cleaned; residual GitHub-managed old PR refs/caches may retain old objects. See [Git history provenance](GIT_HISTORY_PROVENANCE.md). This is a privacy-maintenance concern, not a runtime-failure claim.
+## First Google Play test-track upload
 
-## Non-blocking observations
+The following gates remain **open** and must be checked before the corresponding Play action:
 
-- Chromium/WebView may log hidden-API and Bluetooth-permission warnings without a native Bluetooth feature.
-- PackageManager may emit alignment warnings despite successful signed-APK alignment verification.
-- The upstream STR WebUI may log transient API fetch failures; escalate only if they cause a reproducible user-visible fault.
+- Live Play Console identity and app-signing/upload certificate verification.
+- DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
+- Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.
+- Explicit owner approval for the Play upload and rollout.
 
-Do not add unrelated Android permissions or speculative workarounds just to silence logs. Forward planned compatibility and maintenance work to [Backlog](BACKLOG.md) / [Planned](PLANNED.md), and maintain release identity only in [Status](STATUS.md).
+The STR maintainer's acceptance of the native embedding and the official Community Apps listing are now confirmed; see [Status](STATUS.md). These are no longer an outstanding **STR-owner permission** request. They do **not** replace Google's separate platform policy review or Bose trademark restrictions.
+
+## Non-blocking follow-ups
+
+- [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7): deferred negative-path hardware, permissions and future positive-update tests remain **NOT TESTED**.
+- [STR-024](GIT_HISTORY_PROVENANCE.md): residual historical GitHub-managed PR refs/caches need a separate privacy-maintenance review.
+- Transient Chromium/WebView, Bluetooth-permission and upstream API warnings are only defects if a reproducible user-visible failure is established. Do not add speculative permissions or workarounds to silence logs.
+
+Detailed tasks belong in [Backlog](BACKLOG.md); security policies in [Security](SECURITY.md).
