@@ -4,7 +4,7 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current unreleased Play candidate — certificate, merged manifest and debug evidence
 
-- [2026-11-03 actual unsigned Play AAB bundletool manifest inspection — owner-reported PASS](2026-11-03-play-aab-bundletool-manifest-qa.md) — identity, version, SDK, 9 permissions, activities; AAB SHA-256 and packed maxSdk/networkConfig still OPEN.
+- [2026-11-03 actual unsigned Play AAB bundletool manifest inspection — owner-reported PASS](2026-11-03-play-aab-bundletool-manifest-qa.md) — identity, version, SDK, nine permissions, activities, AAB SHA-256 and packed location maxSdk/networkConfig ALL PASS.
 
 - [2026-11-03 unsigned Play AAB basic ZIP structure — owner-reported 4/4 PASS](2026-11-03-play-aab-zip-structure-qa.md) — packaged protobuf manifest and file SHA-256 not yet reported.
 
