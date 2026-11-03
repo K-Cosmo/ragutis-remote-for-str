@@ -1,6 +1,6 @@
 # Privacy policy / Datenschutzhinweise — Ragutis Remote for SoundTouch Reborn
 
-**Current app: Ragutis STR / Ragutis Remote for SoundTouch Reborn, public GitHub version 0.3.4 (2026-11-03).** Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
+**Scope:** Ragutis STR / Ragutis Remote for SoundTouch Reborn (Android application ID `app.strremote.android`), including GitHub and intended Google Play test distribution. Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
 
 ## Deutsch
 
