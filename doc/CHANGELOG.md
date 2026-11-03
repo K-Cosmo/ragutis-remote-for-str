@@ -2,11 +2,11 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
-## Unreleased — 0.3.4 manual update check UX
+## 0.3.4 — 2026-11-03 (Ragutis public GitHub release)
 
 - Add manual **Check for updates / Auf Updates prüfen** to About, with visible progress, separate no-new-version and failed-request feedback, and localized DE/EN messages. Manual check bypasses the 24-hour success cache; background automatic check retains its existing best-effort schedule. A newer stable release opens a GitHub Release dialog in the signed production app; debug builds allow status-only checks, never an incompatible production upgrade. There is no automatic installer.
-- Stage `versionName=0.3.4` / `versionCode=15` on a separate **unreleased** branch. Production v0.3.3 APK/annotated tag/asset and app ID are unchanged. Existing v0.3.2 redirect limitation cannot be repaired retrospectively.
-- Add JVM regression tests for failed/current/newer outcomes and identical installed vs published GitHub v0.3.3. On-device DE/EN result/failure QA and a future actual newer-release notification test remain open; no new GitHub APK or Play release is claimed.
+- Release `versionName=0.3.4` / `versionCode=15` from exact signed app source `c68f65f12902e4c484745e004c6af8af87cd85bd` after owner-reported **6/6 signed phone smoke PASS**. The stable [GitHub v0.3.4 release](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) and original signer preserve in-place installation. Verified public APK SHA-256 `7563764c09fe15f5bfe122a05d37964929cb905f7c1a92bf05e896775a5f17f7`; no Google Play AAB/track publication. Earlier 0.3.3 artifacts unchanged; legacy 0.3.2 redirect issue cannot be repaired retrospectively.
+- Add JVM regression tests for failed/current/newer outcomes and identical installed vs published GitHub v0.3.3. Owner reports signed 0.3.4 in-place data, online, immediate retry, offline recovery, DE/EN and STR 6/6 PASS. The *future* positive newer-version notification remains deferred; no Google Play AAB or track release has occurred.
 
 ## 0.3.3 — 2026-11-01 (Ragutis public GitHub release)
 
