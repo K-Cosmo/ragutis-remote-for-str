@@ -65,7 +65,7 @@ The native root owns Android system-bar insets. Toolbar/device-list spacing is c
 - `PendingBoseStore`: local, independent original-firmware speaker records (device identity, optional verified IP, room). These are never saved STR endpoints.
 - `DiscoveryCycleGuard`, `SpeakerTapPolicy`: JVM-testable policies for finite probing and predictable behavior of STR-enabled versus Bose-only rows.
 
-The production APK shares the original `app.strremote.android` package ID to permit upgrades from 0.2.1. Android 8/9 continue to use the existing STR features, while the Bose setup activity is only reachable from Android 10+. Browser installation guidance opens the upstream STR website.
+The production APK retains the original `app.strremote.android` package identity for signed in-place updates. Android 8/9 continue to use the existing STR features, while the Bose setup activity is only reachable from Android 10+. Browser installation guidance opens the upstream STR website.
 
 
 ## Update checking and release channel
