@@ -1,17 +1,21 @@
 # Status
 
-## Ragutis 0.3.4 — manual update checker usability (IN DEVELOPMENT / UNRELEASED)
+## Ragutis 0.3.4 — signed six-case device smoke PASS / NOT PUBLISHED
 
 **Development version:** 0.3.4
 **Latest public release:** 0.3.3
-**Status:** IN DEVELOPMENT / DEVICE QA PENDING
-**Date:** 2026-11-01
+**Status:** SIGNED DEVICE QA 6/6 PASS (OWNER-REPORTED) / PUBLICATION NOT APPROVED
+**Date:** 2026-11-03
 
 **Observed/report:** Owner reports that the update checker in the signed v0.3.3 does not appear to work. Source review finds an **automatic-only** startup check (24-hour successful-result throttle), no manual check and no UI feedback if GitHub returns the installed version or the request fails. On 2026-11-01 GitHub `releases/latest` is stable v0.3.3, identical to signed installed v0.3.3, so **no automatic prompt is expected**. This does **not** prove the future-version path on a physical device. Published old v0.3.2 cannot follow redirects after the repo rename; manual install is its recovery path.
 
 **0.3.4 candidate:** Add a visible user-initiated **Check for updates / Auf Updates prüfen** action near version information in About. It bypasses the 24h background throttle and gives distinct localized progress, **no newer GitHub release** and **request failed** messages; newer complete public stable release still opens the existing confirm-to-open-release dialog. A manual check does not install APKs or change trust/network permissions. Debug `.poc` builds may perform the manual check as **read-only diagnostics**, but must not offer an incompatible production APK as an upgrade; automatic checks remain production-only. Preserve the existing background auto-check and its 24h throttle. Release identity remains `app.strremote.android`, next candidate `0.3.4/15` (no release signed or authorized).
 
-**Evidence update (owner, 2026-11-01):** [post-merge CI 41340497573](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41340497573) PASS. On the 0.3.4 debug-device build, the user confirms **the update-check control is visible and returns the expected result**. This is a **focused manual-check QA PASS**, not a signed release or an exhaustive functional test. [QA note](evidence/qa/2026-11-01-ragutis-0.3.4-manual-updater.md). Repeated manual requests, disconnected/local-only Wi-Fi failure and recovery, complete DE/EN checks, and an original-key-signed 0.3.3→0.3.4 upgrade remain unreported. A positive newer-release prompt remains untestable against GitHub latest v0.3.3 without a real future release; do not create a dummy release. No v0.3.4 tag, GitHub Release, or Play upload has been authorized.
+**Development and initial debug QA (2026-11-01):** [Post-merge CI 41340497573](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/41340497573) PASS. The owner confirmed that the manual update control was visible in the 0.3.4 debug app and displayed the expected result; [focused debug QA](evidence/qa/2026-11-01-ragutis-0.3.4-manual-updater.md).
+
+**Signed final candidate build and device acceptance (2026-11-03):** Exact production APK source `c68f65f12902e4c484745e004c6af8af87cd85bd`, local `Ragutis-Remote-for-SoundTouch-Reborn-0.3.4.apk`, owner-reported SHA-256 `7563764c09fe15f5bfe122a05d37964929cb905f7c1a92bf05e896775a5f17f7` plus checksum companion. The original GitHub app-signing certificate and zipalign are enforced by the successfully completed local build script; APK bytes and raw signing/ADB logs were not independently provided. **Owner-reported signed-device smoke: 6/6 PASS** — signed in-place update with data retained, online manual check, immediate repeat, offline failure and recovery, German and English UI, STR control. [Detailed build and signed QA](evidence/qa/2026-11-03-ragutis-0.3.4-local-signed-build.md).
+
+**Deferred:** A live prompt for a **strictly newer public release** cannot be verified against latest GitHub v0.3.3 from installed candidate 0.3.4. No dummy release will be made solely for that test. Broad API/device/accessibility and raw-byte reinspection are not certified by the six-case report. **Public v0.3.4 publication remains BLOCKED until a distinct express owner approval; latest stable is v0.3.3.** No v0.3.4 tag/Release, APK upload or Google Play track action has occurred.
 
 ## Ragutis 0.3.3 — RELEASED / ACCEPTED FOR VERIFIED SCOPE (2026-11-01)
 
