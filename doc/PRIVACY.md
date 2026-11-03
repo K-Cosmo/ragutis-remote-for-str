@@ -1,57 +1,69 @@
-# Privacy
+# Privacy policy / Datenschutzhinweise — Ragutis Remote for SoundTouch Reborn
 
-Ragutis Remote for SoundTouch Reborn does not operate a server, create user accounts, collect analytics or transmit telemetry.
+**Current app: Ragutis STR / Ragutis Remote for SoundTouch Reborn, public GitHub version 0.3.4 (2026-11-03).** Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
 
-The app accesses the local network to discover and connect to SoundTouch Reborn speakers. The embedded STR web application may perform its own network requests required by STR features; Ragutis Remote for SoundTouch Reborn does not collect those requests.
+## Deutsch
 
-Ragutis Remote for SoundTouch Reborn stores local data in Android app-private preferences. Persisted metadata can include:
+### Verantwortlicher und Kontakt
 
-- the last successful speaker endpoint;
-- explicitly saved speaker host/port/display/model/discovery metadata;
-- optional built-in or custom room assignment;
-- local UI preferences such as whether the device-management help hint was dismissed.
+Ragutis Remote for SoundTouch Reborn wird als eigenständiges Community-Projekt veröffentlicht. Ein optionaler Kontakt per E-Mail kann **innerhalb der App im Info-Dialog** vom Nutzer selbst gestartet werden. Alternativ steht der [öffentliche GitHub-Issue-Bereich](https://github.com/K-Cosmo/ragutis-remote-for-str/issues) zur Verfügung. Für eine künftige Google-Play-Veröffentlichung sind die dort angegebenen Entwickler-/Kontaktinformationen maßgeblich. Wir veröffentlichen hier keine vollständige Feedback-Mailadresse als Klartext.
 
-A custom room name is stored exactly as local user-entered text. Room/UI metadata is presentation-only and is not used for speaker authentication, WebView security or playback behavior.
+### Gespeicherte Informationen und Zweck
 
-Saved-speaker, room and UI-preference data is not uploaded or cloud-synced by Ragutis Remote for SoundTouch Reborn.
+Die App sucht STR-Lautsprecher im lokalen WLAN und zeigt deren vorhandene Fernbedienungsoberfläche. Lokal in Androids App-Speicher können der zuletzt verbundene Lautsprecher, IP-/Hostname und Port, Geräte- und Modellbezeichnungen, ausgewählte oder selbst eingegebene Raumnamen, Kennungen und Zustände noch nicht auf STR umgestellter Bose-Geräte sowie Anzeigeeinstellungen gespeichert sein. Diese Daten dienen Geräteauswahl, Wiederverbindung und Anzeige und werden **nicht durch einen Ragutis-eigenen Server synchronisiert oder für Analytics verwendet**. Es gibt keinen Ragutis-Benutzeraccount und keine eingebauten Werbe- oder Tracking-SDKs.
 
-Removing application data or uninstalling Ragutis Remote for SoundTouch Reborn removes this app-private metadata.
+**Android-Systembackup:** Die veröffentlichte App hat derzeit `android:allowBackup="true"`. Abhängig von Android-Version und Backup-/Geräteübertragungseinstellungen können geeignete lokal gespeicherte App-Daten durch **Androids Systembackup oder Geräteübertragung** gesichert und wiederhergestellt werden. Daher versprechen wir nicht, dass diese Daten das Telefon unter allen Umständen niemals verlassen. Die genau betroffenen Dateien und Google-Play-Datensicherheitsangaben sind vor einer Play-Veröffentlichung gesondert zu prüfen.
 
+### Netzwerkzugriffe und Geräte
 
-## Bose Wi-Fi setup (since 0.3.0)
+Die STR-Weboberfläche wird vom ausgewählten Lautsprecher bzw. STR-Server im lokalen Netz geladen, gewöhnlich über **unverschlüsseltes HTTP**. Das angezeigte, von STR bereitgestellte WebView kann eigene Medien- oder andere Netzwerkzugriffe ausführen. Inhalte und deren weitere Datenübertragungen liegen nicht vollständig unter Kontrolle des Ragutis-Android-Clients; maßgeblich ist daneben die jeweilige STR-Konfiguration.
 
-The optional setup assistant uses the phone's Android-approved connection to the temporary Bose setup Wi-Fi. The selected SSID and password are passed directly from this app to the speaker's **original Bose firmware** over local, unencrypted HTTP. They are not sent to Ragutis Remote for SoundTouch Reborn servers or analytics services; Ragutis Remote for SoundTouch Reborn runs no such servers. The Wi-Fi password is kept only for the active attempt and is not written to preferences or logs.
+Bei der optionalen WLAN-Ersteinrichtung überträgt die App die vom Nutzer eingegebene SSID und das Passwort direkt an die **Bose-Original-Firmware** im temporären Einrichtungsnetz – ebenfalls über **unverschlüsseltes HTTP**. Das Passwort wird nicht dauerhaft in Ragutis-Einstellungen oder Protokollen gespeichert; es wird für den konkreten Einrichtungsvorgang benötigt. Diese Funktion sollte nur in einer vertrauenswürdigen Netzwerkumgebung verwendet werden.
 
-After the attempt, this app may locally retain a Bose device identifier, verified local IP address, setup status and user-assigned room to display the speaker separately from STR-enabled devices until STR becomes reachable. The selected Wi-Fi password is never part of that record. Other platform-level backup policies remain governed by Android settings.
+### GitHub-Versionsprüfung
 
+Die App kann beim Start und nach Nutzerwahl über „Auf Updates prüfen“ die öffentliche GitHub-Releases-API per **HTTPS** kontaktieren. GitHub erhält dabei die üblichen Verbindungsdaten, etwa IP-Adresse und HTTP-User-Agent. Ragutis überträgt hierfür weder WLAN-Passwort noch Lautsprecher-ID oder Raumnamen. Ein Zeitpunkt der letzten erfolgreichen automatischen Abfrage kann lokal gespeichert werden. Es findet **kein automatischer Download und keine automatische Installation** einer APK statt.
 
-## GitHub release update check (released in 0.3.1)
+### Freiwillige Rückmeldungen
 
-The released Android app can query GitHub's **public** `api.github.com/repos/K-Cosmo/ragutis-remote-for-str/releases/latest` endpoint over HTTPS on app start, at most once per 24 h after a successful response. This requires a direct request to GitHub: GitHub can observe the requesting IP address, standard network information and the minimal `STR-Remote-Android` User-Agent. The app sends no speaker identifier, Wi-Fi SSID, password, usage analytics, account ID or device telemetry. The result is only used to show a local release notification; the last successful check timestamp is kept in app-private preferences. The app does not fetch or install APK files automatically.
+Nur auf ausdrücklichen Klick öffnet die App eine **nicht abgesendete E-Mail-Vorlage** im installierten E-Mail-Programm, gegebenenfalls mit Modellbezeichnung, manuell gewähltem Testergebnis und App-/Android-Version. Der Nutzer kann Inhalt, Empfänger und Versand vor dem Absenden prüfen. Falls eine Nachricht versendet wird, verarbeiten E-Mail-Anbieter und der Empfänger die üblichen E-Mail-Daten; Ragutis sendet keine Nachricht im Hintergrund.
 
+### Aufbewahrung und Löschung
 
-## Optional model feedback by email (released in 0.3.1)
+Lautsprecher-/Raumdaten verbleiben in der Regel bis zum Entfernen innerhalb der App oder zum Löschen der App-Daten über Android-Einstellungen. Eine Deinstallation entfernt normalerweise lokale App-Daten; **gegebenenfalls vorhandene Betriebssystem-Backups** können davon unabhängig bestehen und unterliegen den Backup-/Kontoeinstellungen des Geräts. E-Mails, die der Nutzer selbst versendet, sind beim verwendeten E-Mail-Anbieter bzw. Empfänger zu verwalten. Für Rückfragen kann der oben genannte Kontaktweg genutzt werden.
 
-On choosing “Anderes SoundTouch-Modell”, a voluntary form asks for the model name and a manually selected success/failure response (no default answer). As the user types, suggestions come from a local static historic Bose catalog; no typed text is sent to a remote service for matching. The model remains freely editable.
+## English
 
-Only after the user taps **“Feedback als E-Mail vorbereiten”** does Android open an installed email app with a draft addressed to the app's fixed project-feedback mailbox. The draft includes the entered model, selected outcome, installed Ragutis Remote for SoundTouch Reborn version (with a Debug qualifier when applicable), and Android version/API level. This version information is shared only as part of the draft, not uploaded silently. Users review and send the message themselves; no GitHub account is required.
+### Operator and contact
 
-No Wi-Fi SSID or password, Bose device ID, IP/MAC address, diagnostic trace, attachment, Google account or any other identifier is automatically included. The user’s email client/provider and recipient process normal email metadata (including the sender address) if the user actually sends. No email address, message or selected model is saved by Ragutis Remote for SoundTouch Reborn as an analytics record.
+Ragutis Remote for SoundTouch Reborn is published as an independent, unofficial community project. Users can open a voluntary support **email draft** from the app's About screen or contact the project using [GitHub Issues](https://github.com/K-Cosmo/ragutis-remote-for-str/issues). Any future Google Play developer/support contact information is displayed in the Play listing. No complete feedback mailbox is printed in this public repository.
 
-## Scope and deferred cases
+### Locally saved information and purpose
 
-The public 0.3.1 release contains the update checker and voluntary feedback functionality described above. No-email-client handling, WLAN-permission refusal and network-failure paths were not included in the six positive signed-APK acceptance checks; they remain [explicitly deferred](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7), **not verified**. See [Release status](STATUS.md) for current evidence.
+The Android app discovers STR speakers on the local Wi-Fi network and displays the existing STR remote. Android app-private storage may contain the last connected speaker, host/IP and port, device and model labels, built-in/custom room labels, temporary original-firmware Bose device setup status/identity and local UI choices. These are used for device selection and reconnection. **Ragutis does not run its own sync server, user account, advertising or analytics backend or SDK.**
 
-## Released in 0.3.2 — historic recipient handling
+**System backup:** The currently published Android app has `android:allowBackup="true"`. Eligible saved app data may be included in **Android system/cloud backups or device transfers**, subject to OS and user settings. We therefore do not promise that locally saved data can never leave a device. Exact data inclusion and any corresponding Play disclosures require a separate review of the delivered app.
 
-Published 0.3.2 centralized the project-feedback recipient for both About and SoundTouch setup mail drafts, reconstructed at runtime from reversible character codes rather than committed as a complete plaintext address. This does not prevent extraction from a client APK and does not change user-controlled, explicit sending, network disclosure or the email provider's handling of ordinary sender metadata. No backend is introduced.
+### LAN communication, STR WebView and setup
 
-## Ragutis branding and WebView insets (0.3.3 candidate, not released)
+The selected STR speaker/server provides the remote over local **unencrypted HTTP**. The embedded STR website can make its own media or network requests; its behavior may depend on the owner's STR setup and is not fully controlled by the Android wrapper.
 
-The planned Ragutis name and native WebView inset correction do **not** introduce additional analytics, server data collection, tracking or a new account. The same existing update-check GitHub endpoint and optional user-triggered email flow remain. Version 0.3.3 changes the future public APK asset basename and keeps historical naming compatibility. Native layout propagation is corrected without injecting private upstream CSS selectors. Platform-level Android backup remains governed by the device's backup policies; changing the display name does not reset app-private data.
+The optional Wi-Fi wizard sends the user-supplied network SSID and password directly to **original Bose firmware** over **unencrypted HTTP** on a temporary setup Wi-Fi network. The password is used only for the active setup request and is not intentionally persisted in app preferences or logs. Perform setup only in a trusted environment.
 
-## 0.3.3 new optional feedback recipient and room presentation (not released)
+### GitHub update checks
 
-The owner has replaced the dedicated feedback mailbox used by the app. The in-development Ragutis 0.3.3 candidate changes the *same centralized, reversible runtime-decoded recipient* for both user-triggered About and SoundTouch model-feedback drafts. The chosen mail application shows the resolved recipient and sends **only after a user confirms**; no new network endpoint, telemetry or backend has been added. The complete mailbox is intentionally not printed in public documentation or committed code. Historical APKs cannot be retroactively changed.
+At startup or after a manual check, Ragutis may contact GitHub's public Releases API using **HTTPS**. GitHub may receive ordinary request metadata including the public IP address and HTTP User-Agent, but not local speaker identifiers, rooms or Wi-Fi passwords. The most recent successful automatic check time may be kept in app-private preferences. The app does not silently download or install other APKs.
 
-The new room picker is presentation-only: preset and custom room assignments remain in the same Android app-private storage and are not transmitted by the picker. The design now highlights the current selection and adds accessible DE/EN text; it does not change speaker identity, STR remote behavior or network permissions. The existing Android platform-backup caveat still applies.
+### Optional feedback email
+
+Only after a user requests feedback does the app open a **draft** in an external email client. It may contain a user-entered speaker model, chosen result, and app/Android version. The user can review/edit/cancel; nothing is sent in the background. If sent, the user's email service and the recipient process ordinary email metadata.
+
+### Retention and deletion
+
+Local speaker/room preferences normally remain until removed within the app or cleared using Android's app-storage settings. Uninstalling usually removes local app data, **but OS-managed backup copies may exist separately** and can be controlled in the device/account backup settings. Messages sent through an external email client are managed by that provider and recipient. Use the contact methods above for privacy questions.
+
+---
+
+**Project source:** https://github.com/K-Cosmo/ragutis-remote-for-str
+
+**Scope:** This describes Ragutis's own Android functionality and identified third-party interactions. Any Google Play Data safety answers must be audited against the actual AAB, STR WebView traffic, current permissions and Android backup policy before submission.
