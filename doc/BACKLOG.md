@@ -5,7 +5,7 @@ This register contains **unfinished or explicitly deferred work**. Completed rel
 | ID | Work item | Priority | State / next gate |
 |---|---|---:|---|
 | PLAY-001 | Confirm live Play Console app record, app-signing and separate upload fingerprints | P0 | OPEN — verify in the Console before upload |
-| PLAY-002 | Validate the in-app privacy link, merged manifest, backups, STR WebView traffic and Data safety | P0 | PARTIAL — privacy content corrected; DE/EN link + code16 staged in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), device QA/merge and audits open |
+| PLAY-002 | Validate the in-app privacy link, merged manifest, backups, STR WebView traffic and Data safety | P0 | PARTIAL — public policy corrected, source staged and [6/6 owner-reported debug-device QA](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md) PASS; **production-signed/Play QA, PR merge and audits open** |
 | PLAY-003 | Produce and verify first signed Play internal-test AAB | P0 | PENDING — code16/0.3.5 staged in draft PR #21; separate upload key and approval required |
 | PLAY-004 | Internal Play GitHub-to-Play in-place update, original signer and data preservation | P0 | PENDING — no track upload/test yet; owner authorization required |
 | PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |

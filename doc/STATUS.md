@@ -4,12 +4,14 @@
 
 **Development version:** 0.3.5
 **Latest public release:** 0.3.4
-**Status:** IN DEVELOPMENT / PLAY TEST QA PENDING
+**Status:** DEBUG DEVICE QA 6/6 PASS (OWNER-REPORTED); PRODUCTION/PLAY GATES OPEN
 **Date:** 2026-11-03
 
 **Implemented in draft [PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21):** `versionName=0.3.5` / `versionCode=16`, original `app.strremote.android` identity, and a localized native About link to the [public bilingual privacy policy](PRIVACY.md). The Android app-signing identity, existing local speaker/room persistence and STR control are unchanged by this source change. It introduces no new permission, tracking SDK, backend or WebView scripting.
 
-**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source is **not device accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The test must verify the DE/EN privacy link, source compatibility and data retention; live Play certificate checks, merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
+**Debug QA (2026-11-03):** The owner reports **6/6 PASS** on the separately installable `app.strremote.android.poc` debug build from exact application-source commit `8ccb4564ee0d08a83527ecb391a1a514dc451d46`: DE/EN privacy links, browser-back navigation, source/Issues/email actions, STR controls and room assignment, and preservation of the separately installed regular v0.3.4/data. [Dated scoped device evidence](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md). Neither an original-signer production APK nor the cross-channel Play upgrade has passed this gate.
+
+**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks, merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
 
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
 

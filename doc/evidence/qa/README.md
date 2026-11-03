@@ -2,6 +2,10 @@
 
 Store build logs, lint reports/summaries, relevant Logcat excerpts and concise real-device test records here. Evidence files must identify the source version/build and test date. Do not fabricate or backfill missing evidence.
 
+## Current unreleased Play candidate — debug evidence only
+
+- [2026-11-03 Ragutis 0.3.5/code16 owner-reported 6/6 debug-device QA PASS](2026-11-03-ragutis-0.3.5-debug-device-qa.md) — exact tested source, bilingual privacy links, native navigation, STR/regression and isolation from public 0.3.4. Production-signed candidate, Play upgrade and policy gates remain open.
+
 ## Current signed build and public release evidence
 
 - [2026-11-03 Ragutis 0.3.4 signed build and 6/6 device smoke PASS](2026-11-03-ragutis-0.3.4-local-signed-build.md) — original-signer/source/SHA-256 and six-case QA reported by owner; **public GitHub v0.3.4 released, tag/asset digest independently verified**; future positive update notification untested.
