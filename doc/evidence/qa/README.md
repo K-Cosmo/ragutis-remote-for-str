@@ -4,6 +4,8 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current unreleased Play candidate — signed AAB, certificates, merged manifest and debug evidence
 
+- [2026-11-03 signed AAB attached to first Play Console internal test release editor](2026-11-03-play-console-internal-release-editor.md) — uploaded and parsed as 0.3.5/code16, no rollout shown.
+
 - [2026-11-03 signed Play AAB 0.3.5 — owner-reported PASS](2026-11-03-play-aab-upload-signing-qa.md) — local upload signature and SHA-256 verified, not uploaded.
 
 - [2026-11-03 actual unsigned Play AAB bundletool manifest inspection — owner-reported PASS](2026-11-03-play-aab-bundletool-manifest-qa.md) — identity, version, SDK, nine permissions, activities, AAB SHA-256 and packed location maxSdk/networkConfig ALL PASS.
