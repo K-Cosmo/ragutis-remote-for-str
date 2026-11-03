@@ -213,7 +213,7 @@
 
 **Action:** Shorten root README to public essentials, correct current canonical documents, retain dated QA/work notes and decision chronology, document upstream CSS hook only as a STR-022 proposal, and broaden current-doc link/ID consistency checks. See [dated review matrix](evidence/qa/2026-10-31-documentation-review.md).
 
-**State:** REVIEW IMPLEMENTED on documentation-only branch; final CI verification required before acceptance.
+**State:** HISTORICAL REVIEW COMPLETED; the follow-up release and documentation CI were accepted. New 2026-11-03 drift is independently tracked in F-033. This is not an open gate for the current release.
 
 ## F-033 — November documentation convergence: stale state and overlapping ownership
 
