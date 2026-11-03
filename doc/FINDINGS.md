@@ -183,7 +183,7 @@
 **Evidence:** upstream STR maintainer review of draft PR #5 on 2026-10-30.
 **Observed:** `body > header`, `#dev` and `#powerBtn` are internal markup selectors and not a stable extension API. The visible 10px spacing was approved on device but future STR markup can break injection.
 **Action:** discuss the desired safe-area adjustment with STR maintainer and prefer an explicit supported hook; retain compatibility regression testing until resolved. Track in STR-022.
-**State (2026-10-31):** OPEN upstream compatibility risk in *published 0.3.1*, not a defect reproduced in the tested setup. See [STR-022](PLANNED.md#str-022--stable-str-webui-embedding-interface-proposal).
+**State (2026-10-31):** OPEN upstream compatibility risk in *published 0.3.1*, not a defect reproduced in the tested setup. This was the historical 2026-10-31 state; current [STR-022 disposition](BACKLOG.md#closed-upstream-integration-items) supersedes it.
 
 ## F-029 — 0.3.0 accepted release status contradicted by legacy tail line
 
