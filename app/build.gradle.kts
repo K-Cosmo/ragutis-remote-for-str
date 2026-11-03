@@ -14,6 +14,23 @@ android {
         versionName = "0.3.5"
     }
 
+    // One application ID; distribution channels differ only in update routing.
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("github") {
+            dimension = "distribution"
+            buildConfigField("boolean", "GITHUB_UPDATES", "true")
+        }
+        create("play") {
+            dimension = "distribution"
+            buildConfigField("boolean", "GITHUB_UPDATES", "false")
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         debug {
             // Separate package for pre-release validation beside the signed production app.

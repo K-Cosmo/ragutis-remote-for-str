@@ -1149,10 +1149,13 @@ class MainActivity : Activity() {
         paragraph(getString(R.string.app_name), emphasized = true)
         paragraph(getString(R.string.about_version_format, version), emphasized = true)
 
+        // Only the GitHub flavor may offer GitHub APK release updates.
+        // Play builds have no GitHub update check or external APK prompt.
+        var aboutDialog: AlertDialog? = null
+        if (BuildConfig.GITHUB_UPDATES) {
         // A user-initiated check is never throttled by the automatic 24h cache.
         // Show a clear result even when the installed version is already current
         // or GitHub is unavailable on a local-only speaker Wi-Fi network.
-        var aboutDialog: AlertDialog? = null
         val updateStatus = TextView(this).apply {
             textSize = 14f
             setPadding(0, dp(4), 0, dp(12))
@@ -1216,6 +1219,14 @@ class MainActivity : Activity() {
             ViewGroup.LayoutParams.WRAP_CONTENT, dp(24)
         ).apply { gravity = Gravity.CENTER_HORIZONTAL })
         layout.addView(updateStatus)
+        } else {
+            linkButton(R.string.update_open_play) {
+                // HTTPS opens via Play Store or the browser, when available.
+                openExternalUri(Uri.parse(
+                    "https://play.google.com/store/apps/details?id=app.strremote.android"
+                ))
+            }
+        }
         paragraph(getString(R.string.about_community_notice))
         paragraph(getString(R.string.about_trademark_notice))
         paragraph(getString(R.string.about_support_heading), emphasized = true)
@@ -1257,7 +1268,7 @@ class MainActivity : Activity() {
     }
 
     private fun showAppUpdateDialog(update: AvailableAppUpdate) {
-        if (isFinishing || isDestroyed) return
+        if (!BuildConfig.GITHUB_UPDATES || isFinishing || isDestroyed) return
         AlertDialog.Builder(this)
             .setTitle(R.string.update_available_title)
             .setMessage(getString(R.string.update_available_message, update.version))
@@ -1269,8 +1280,9 @@ class MainActivity : Activity() {
     }
 
     private fun checkForAppUpdate() {
-        // Debug uses a separate .poc package and must not offer the production APK.
-        if (packageName != "app.strremote.android") return
+        // Play builds never check GitHub for APK upgrades. The debug .poc package
+        // cannot offer the incompatible production-signed APK as an upgrade.
+        if (!BuildConfig.GITHUB_UPDATES || packageName != "app.strremote.android") return
 
         val checkPrefs = getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
         val now = System.currentTimeMillis()

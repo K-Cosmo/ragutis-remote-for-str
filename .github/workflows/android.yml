@@ -51,10 +51,10 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew --version
-          ./gradlew clean :app:assembleDebug :app:lintDebug :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --stacktrace
+          ./gradlew clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assemblePlayDebug :app:lintPlayDebug :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:lintGithubRelease :app:bundlePlayRelease :app:lintPlayRelease --stacktrace
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: remote-for-str-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ragutis-github-debug
+          path: app/build/outputs/apk/github/debug/app-github-debug.apk
