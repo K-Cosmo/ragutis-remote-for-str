@@ -10,7 +10,7 @@ No known open gate blocks the **already published** signed release. Its accepted
 
 The following gates remain **open** and must be checked before the corresponding Play action:
 
-- **P0 Play app-signing compatibility BLOCKED:** Owner screenshot explicitly labels `F2DCDD5F…` as **in-use** app signer; reported quantum-ready classic `D0FDE60F…`/PQC `803406BF…` also do not equal original public GitHub APK `3CC2E727…`. The original PEPK key import is owner-reported but not independently tied to accepted certificate. Console Digital Asset Links confirms package `app.strremote.android`; separate **local** upload JKS correctly matches `41BFFC71…`, new Play app upload registration still unverified. Inspect *Schlüssel ändern*, verify original private signing keystore, resolve with Google before **any AAB upload/rollout**. [Runbook](PLAY_STORE_PREPARATION.md).
+- **PLAY-001 resolved:** 2026-11-03 owner-reported live Play Console app-signing `3CC2E727…` and upload `41BFFC71…` both PASS; certificate enrollment is no longer a Play blocker. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). Remaining blockers below are separate.
 - Current `github`/`play` flavor routing (**PLAY-006**) has owner-reported **both debug variants PASS** ([QA record](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md)); **merged release-manifest, original-signer production and actual Play-delivery verification remain open**.
 - DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
 - Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.

@@ -2,7 +2,9 @@
 
 Store build logs, lint reports/summaries, relevant Logcat excerpts and concise real-device test records here. Evidence files must identify the source version/build and test date. Do not fabricate or backfill missing evidence.
 
-## Current unreleased Play candidate — debug evidence only
+## Current unreleased Play candidate — certificate and debug evidence
+
+- [2026-11-03 Play certificate enrollment — both owner-reported live PASS](2026-11-03-play-signing-acceptance.md) — PLAY-001 closed; AAB/release/upgrade QA remains OPEN.
 
 - [2026-11-03 Ragutis 0.3.5 GitHub/Play flavor QA — both owner-reported PASS](2026-11-03-ragutis-0.3.5-flavor-device-qa.md) — exact source and CI, expected channel behavior/content/links, with signed and Play-delivered cases still OPEN.
 

@@ -4,7 +4,7 @@
 
 **Development version:** 0.3.5
 **Latest public release:** 0.3.4
-**Status:** BOTH DISTRIBUTION DEBUG FLAVORS OWNER-REPORTED PASS; PRODUCTION/PLAY GATES OPEN
+**Status:** PLAY-001 CERTIFICATES PASS; BOTH DISTRIBUTION DEBUG FLAVORS PASS; PRODUCTION/PLAY GATES OPEN
 **Date:** 2026-11-03
 
 **Implemented in draft [PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21):** `versionName=0.3.5` / `versionCode=16` and the unchanged production `app.strremote.android` identity, a native DE/EN [privacy-policy](PRIVACY.md) link and **two distribution flavors**. The `github` flavor retains the original GitHub APK updater; the `play` flavor disables GitHub update checks and links to the Play listing instead. Both keep shared STR behavior and persisted-data schema. The source adds no permission, SDK, backend or WebView bridge. Signing continuity requires distinct on-device/Play evidence.
@@ -13,11 +13,9 @@
 
 **Current distribution QA (2026-11-03):** After the prior 6/6 unflavored debug acceptance, two product flavors were introduced. For exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner then reported that **both `githubDebug` and `playDebug` show their requested behavior, content and links**. This supports the scoped dual-flavor UI QA; see [dated owner-reported evidence](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). Earlier 6/6 QA is separate, not retroactively attributed to these builds. Productive signature, full merged-manifest/Data safety review and actual Play delivery remain OPEN; see [Tests](TESTS.md) and [Release gates](RELEASE_GATES.md).
 
-**Google Play signing inspection (2026-11-03):** Owner created the listing **Ragutis Remote for STR** and reports importing prepared original private-key PEPK ZIP and public upload PEM. Local `remote-str-upload` certificate matches expected SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`. The **Play Console screenshot labels in-use signing SHA-256 as `F2DCDD5F6B016D2F2E8B02B108249EF05D6A427636176C801E8E43EA37F03E69`**; previously used quantum-ready classical `D0FDE60F…` and post-quantum `803406BF…` are also not the original GitHub `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`. The Google screenshot's Digital Asset Links snippet confirms package `app.strremote.android`. **P0 HOLD:** original source signing keystore vs accepted imported PEPK identity and live separate upload certificate need verification before any AAB upload, PR merge or Play rollout. [Play runbook](PLAY_STORE_PREPARATION.md).
+**PLAY-001 signing acceptance (owner-reported, 2026-11-03):** The Play Console's **in-use app-signing SHA-256** is now `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`, equal to the GitHub APK and original local PKCS12 `key0`; the **Play upload SHA-256** is `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`, equal to separate local `remote-str-upload`. Package `app.strremote.android`; Play title **Ragutis Remote for STR**. [Certificate evidence](evidence/qa/2026-11-03-play-signing-acceptance.md) preserves earlier F2DC/PEPK troubleshooting. **Signing enrollment gate CLOSED**, but genuine Play-delivered GitHub v0.3.4 → 0.3.5/data-retaining upgrade not yet tested.
 
-**Latest signature clue (owner-reported 2026-11-03):** Console-provided Digital Asset Links JSON now lists package `app.strremote.android` and the exact original GitHub app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`. This is a favorable sign, but does not independently verify the **current** in-use Play delivery signer (earlier screenshot showed `F2DCDD5F…`) or the live upload certificate. **P0 signing status remains open pending those two fresh Console readings.** [Play runbook](PLAY_STORE_PREPARATION.md).
-
-**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks, merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
+**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks are now PASS; merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate OPEN gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
 
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
 
@@ -34,7 +32,7 @@
 
 ## Google Play Console — PREPARATION ONLY (2026-11-03)
 
-**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **No Google Play AAB has been built or uploaded**, and no internal/closed/production track rollout has been verified. Play Console account/package and both key fingerprints were previously **owner-reported**, not independently rechecked live.
+**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **No Google Play AAB has been built or uploaded**, and no internal/closed/production track rollout has been verified. Play Console account/package and both **live** certificate fingerprints were reconfirmed by the owner on 2026-11-03, not accessed directly through a Console integration.
 
 **Current work:** [Play Store preparation](PLAY_STORE_PREPARATION.md) is the sole operational runbook. The distinct 0.3.5/code16 privacy-link candidate is staged **only** in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21); no device acceptance, merge, signed AAB or Play upload is implied. Current release/deployment gates are in [Release gates](RELEASE_GATES.md).
 
