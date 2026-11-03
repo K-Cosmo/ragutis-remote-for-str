@@ -22,7 +22,7 @@ Bei der optionalen WLAN-Ersteinrichtung überträgt die App die vom Nutzer einge
 
 ### GitHub-Versionsprüfung
 
-Die App kann beim Start und nach Nutzerwahl über „Auf Updates prüfen“ die öffentliche GitHub-Releases-API per **HTTPS** kontaktieren. GitHub erhält dabei die üblichen Verbindungsdaten, etwa IP-Adresse und HTTP-User-Agent. Ragutis überträgt hierfür weder WLAN-Passwort noch Lautsprecher-ID oder Raumnamen. Ein Zeitpunkt der letzten erfolgreichen automatischen Abfrage kann lokal gespeichert werden. Es findet **kein automatischer Download und keine automatische Installation** einer APK statt.
+In der **GitHub-Vertriebsvariante** kann die App beim Start und nach Nutzerwahl über „Auf Updates prüfen“ die öffentliche GitHub-Releases-API per **HTTPS** kontaktieren. Die **Google-Play-Variante** führt diese GitHub-Updateabfrage nicht aus und verweist für Updates stattdessen auf den Play Store. Andere ausdrücklich gewählte GitHub-Quellcode-/Support-Links bleiben nutzbar. GitHub erhält dabei die üblichen Verbindungsdaten, etwa IP-Adresse und HTTP-User-Agent. Ragutis überträgt hierfür weder WLAN-Passwort noch Lautsprecher-ID oder Raumnamen. Ein Zeitpunkt der letzten erfolgreichen automatischen Abfrage kann lokal gespeichert werden. Es findet **kein automatischer Download und keine automatische Installation** einer APK statt.
 
 ### Freiwillige Rückmeldungen
 
@@ -52,7 +52,7 @@ The optional Wi-Fi wizard sends the user-supplied network SSID and password dire
 
 ### GitHub update checks
 
-At startup or after a manual check, Ragutis may contact GitHub's public Releases API using **HTTPS**. GitHub may receive ordinary request metadata including the public IP address and HTTP User-Agent, but not local speaker identifiers, rooms or Wi-Fi passwords. The most recent successful automatic check time may be kept in app-private preferences. The app does not silently download or install other APKs.
+In the **GitHub-distributed variant**, Ragutis may contact GitHub's public Releases API using **HTTPS** on startup or after a manual check. The **Google Play variant** does not make these GitHub *update* requests and instead links to its Play Store listing for updates. Voluntary GitHub source/support links remain available. GitHub may receive ordinary request metadata including the public IP address and HTTP User-Agent, but not local speaker identifiers, rooms or Wi-Fi passwords. The most recent successful automatic check time may be kept in app-private preferences. The app does not silently download or install other APKs.
 
 ### Optional feedback email
 

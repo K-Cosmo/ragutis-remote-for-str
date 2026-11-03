@@ -11,6 +11,7 @@ No known open gate blocks the **already published** signed release. Its accepted
 The following gates remain **open** and must be checked before the corresponding Play action:
 
 - Live Play Console identity and app-signing/upload certificate verification.
+- Current source `github`/`play` flavor routing (**PLAY-006**) requires real-device verification and merged-manifest checks. The previous debug 6/6 acceptance predates the flavor change.
 - DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
 - Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.
 - Explicit owner approval for the Play upload and rollout.

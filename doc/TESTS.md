@@ -19,7 +19,7 @@ When application source/resources/build configuration changed:
 
 ```powershell
 .\gradlew.bat --version
-.\gradlew.bat clean :app:assembleDebug :app:lintDebug :app:assembleRelease --stacktrace
+.\gradlew.bat clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assemblePlayDebug :app:lintPlayDebug :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:lintGithubRelease :app:bundlePlayRelease :app:lintPlayRelease --stacktrace
 ```
 
 Use `./gradlew` on POSIX systems.
@@ -38,6 +38,15 @@ Real-device verification is required when runtime/user-visible behavior changed.
 Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
+
+## Product-flavor distribution QA — new source change (OPEN)
+
+The staged 0.3.5 code adds `github` and `play` Gradle flavors **after** the prior owner-reported 6/6 debug pass of `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. That record remains historical evidence for the earlier unflavored debug candidate; it does **not** verify the new channel routing. Re-run on a real device for the current source:
+
+1. **githubDebug** (`app.strremote.android.poc`): About manual GitHub check retains visible current/failure status; automatic GitHub check is not enabled on the debug package; links, DE/EN privacy, STR control, room management and browser Back remain functional.
+2. **playDebug** (same `.poc` debug package; install it **after** the Github debug trial): About shows **Updates in Google Play öffnen / Open updates in Google Play**, and does not expose the GitHub check button, GitHub APK update dialog or request a Github update on startup. The Play URL points to `app.strremote.android`; without tester entitlement it may show the unpublished listing as unavailable. Confirm the app returns normally and STR/rooms and privacy/source/feedback still work.
+3. CI must compile/lint/test **both** flavors and assemble `githubRelease` plus **unsigned** `playRelease` AAB. Verify generated **production** `applicationId=app.strremote.android`, debug `.poc`, `versionCode=16`, Android permissions/merged manifests and intended update-channel flags. No signing keys or Play uploads in CI.
+4. **Original-signer GitHub release smoke** and a later **Play-delivered** cross-channel in-place upgrade are **separate, still-open tests**. Preserve an untouched signed GitHub v0.3.4/code15/data baseline for Play. The Play bundle is to be signed with the **distinct** registered Play upload key, not the APK signer.
 
 ## Google Play internal candidate — separate distribution QA (OPEN)
 
