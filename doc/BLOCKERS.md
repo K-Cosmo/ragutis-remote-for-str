@@ -10,7 +10,7 @@ No known open gate blocks the **already published** signed release. Its accepted
 
 The following gates remain **open** and must be checked before the corresponding Play action:
 
-- Live Play Console identity and app-signing/upload certificate verification.
+- **P0: actual app-signing certificate mismatch reported 2026-11-03.** The new Play app shows SHA-256 `F2DCDD5F…`, whereas v0.3.4 GitHub uses `3CC2E727…`. Local upload key correctly matches `41BFFC710…`; live Play upload registration still needs checking. **Do not upload any AAB** until original app-signing key configuration is corrected and both live certs/package are verified. [Runbook](PLAY_STORE_PREPARATION.md).
 - Current `github`/`play` flavor routing (**PLAY-006**) has owner-reported **both debug variants PASS** ([QA record](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md)); **merged release-manifest, original-signer production and actual Play-delivery verification remain open**.
 - DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
 - Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.
