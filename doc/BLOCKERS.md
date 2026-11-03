@@ -11,9 +11,9 @@ No known open gate blocks the **already published** signed release. Its accepted
 The following gates remain **open** and must be checked before the corresponding Play action:
 
 - **PLAY-001 resolved:** 2026-11-03 owner-reported live Play Console app-signing `3CC2E727…` and upload `41BFFC71…` both PASS; certificate enrollment is no longer a Play blocker. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). Remaining blockers below are separate.
-- Current `github`/`play` flavor routing (**PLAY-006**) has owner-reported **both debug variants PASS** ([QA record](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md)); **merged release-manifest, original-signer production and actual Play-delivery verification remain open**.
+- Current `github`/`play` flavor routing (**PLAY-006**) has owner-reported **both debug variants PASS** ([QA record](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md)); **merged release-manifest consistency PASS; original-signer production and actual Play-delivery verification remain open**.
 - DE/EN in-app privacy link tested in the actual Play candidate, plus truthful backup, embedded-WebView, permissions and Data safety review.
-- Signed AAB built from reviewed exact source and verified with the **separate** registered upload key.
+- **PLAY-003 resolved:** owner-reported signed AAB local verification and Play-registered upload cert match PASS. [Evidence](evidence/qa/2026-11-03-play-aab-upload-signing-qa.md). No Play upload; privacy, device and owner-approval gates remain separate.
 - Explicit owner approval for the Play upload and rollout.
 
 The STR maintainer's acceptance of the native embedding and the official Community Apps listing are now confirmed; see [Status](STATUS.md). These are no longer an outstanding **STR-owner permission** request. They do **not** replace Google's separate platform policy review or Bose trademark restrictions.
