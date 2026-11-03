@@ -4,7 +4,7 @@
 
 **Development version:** 0.3.5
 **Latest public release:** 0.3.4
-**Status:** PLAY-001 CERTIFICATES PASS; BOTH DISTRIBUTION DEBUG FLAVORS PASS; PRODUCTION/PLAY GATES OPEN
+**Status:** PLAY-001 CERTIFICATES PASS; MERGED MANIFEST COMPARISON PASS; BOTH DEBUG FLAVORS PASS; PRODUCTION/PLAY GATES OPEN
 **Date:** 2026-11-03
 
 **Implemented in draft [PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21):** `versionName=0.3.5` / `versionCode=16` and the unchanged production `app.strremote.android` identity, a native DE/EN [privacy-policy](PRIVACY.md) link and **two distribution flavors**. The `github` flavor retains the original GitHub APK updater; the `play` flavor disables GitHub update checks and links to the Play listing instead. Both keep shared STR behavior and persisted-data schema. The source adds no permission, SDK, backend or WebView bridge. Signing continuity requires distinct on-device/Play evidence.
@@ -15,7 +15,9 @@
 
 **PLAY-001 signing acceptance (owner-reported, 2026-11-03):** The Play Console's **in-use app-signing SHA-256** is now `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`, equal to the GitHub APK and original local PKCS12 `key0`; the **Play upload SHA-256** is `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`, equal to separate local `remote-str-upload`. Package `app.strremote.android`; Play title **Ragutis Remote for STR**. [Certificate evidence](evidence/qa/2026-11-03-play-signing-acceptance.md) preserves earlier F2DC/PEPK troubleshooting. **Signing enrollment gate CLOSED**, but genuine Play-delivered GitHub v0.3.4 → 0.3.5/data-retaining upgrade not yet tested.
 
-**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks are now PASS; merged-manifest/Data safety audit, signed AAB and Play-delivered in-place update remain separate OPEN gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
+**Merged release manifest QA (2026-11-03):** Owner executed both Gradle release-manifest processing tasks successfully and provided the parsed `githubRelease` / `playRelease` manifests. Both had identical `app.strremote.android`, 9 permissions, backup/cleartext/security configuration and exactly the two expected activity export settings. **Scoped manifest consistency PASS**, with [dated evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md). Source review separately confirms local speaker/room preferences may participate in Android backup and runtime LAN permission is requested on Android 17; these are **not** final backup/Data safety or real device test acceptance.
+
+**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not signed-production accepted, not merged, not an APK/AAB release and not uploaded to Google Play**. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks and merged-manifest consistency are now PASS; backup/Data safety audit, packaged signed AAB and Play-delivered in-place update remain separate OPEN gates. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
 
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
 
