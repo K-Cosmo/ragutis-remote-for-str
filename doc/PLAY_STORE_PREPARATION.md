@@ -50,9 +50,11 @@ On 2026-11-03 the STR maintainer **accepted the current Ragutis 0.3.3+ native We
 
 Google's [WebView spam policy](https://support.google.com/googleplay/android-developer/answer/9899034?hl=en) remains an **independent Play-platform review**: document the Android-owned discovery, device/room management and Bose original-firmware setup, and make the third-party STR WebView attribution clear. The STR maintainer's integration approval is **not** Bose trademark authorization, Play approval or an endorsement of the independent Ragutis project. Preserve the unofficial/no-affiliation notices and avoid unlicensed Bose branding.
 
-### Google Play channel UX (REVIEW)
+### Google Play channel UX (P0 — resolve before Play distribution)
 
-The existing in-app updater points to **GitHub Releases**, regardless of distribution channel. Determine whether Play-installed builds should instead direct users to Google Play or suppress external APK update prompts. Do not silently redirect Play users to an off-store installation without clear product decision. Keep the GitHub release app behavior unchanged unless a separate design/source change is reviewed.
+The current in-app updater queries **GitHub Releases** and can open a GitHub page offering an APK, **regardless of how the app was installed**. It does not itself download or install packages. However, Google's [Developer Program Policy — Device and Network Abuse](https://support.google.com/googleplay/android-developer/answer/18265346) states that a **Play-distributed app must not update itself by a mechanism other than Google Play**. A link inviting the user to a potentially installable GitHub APK creates a distribution-channel risk even if no APK installation is performed directly by Ragutis; do not assume it is policy-approved.
+
+**P0 before a Play test-track upload:** Decide and implement a **Play-safe channel-aware update experience**, with reliable install-source handling or a separately reviewed Play build flavor. For Play-origin installations, use a Play-managed update/open-the-Play-listing path or suppress external APK upgrade prompts; retain the approved GitHub updater for GitHub-distributed APKs. Verify fresh Play install, GitHub→Play upgrade, manual/automatic update checks and failure behavior in real devices. No solution is claimed implemented in PR #21, and no Google Play approval is implied by internal QA. Prefer a minimal, documented design; do not add unnecessary permissions or speculative hacks.
 
 ## 4. Store presence — proposed content, not yet submitted
 

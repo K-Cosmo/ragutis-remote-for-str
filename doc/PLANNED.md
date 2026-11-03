@@ -5,7 +5,7 @@ This document describes **sequence and dependencies**, not release history or a 
 ## Next sequence — Google Play internal test
 
 1. Continue [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21) on the converged documentation baseline, complete the distinct **original-signer production**/link QA after the owner-reported 6/6 debug tests, review, and merge **only after separate approval**.
-2. Check live Play Console app-signing and upload certificates, published policy URL, merged manifest/backup behavior, and truthful Data safety declarations. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.
+2. Resolve the Play-distributed app's channel-safe update behavior ([PLAY-006](BACKLOG.md)) before Play upload; check live Play Console app-signing/upload certificates, policy URL, merged manifest/backup behavior and truthful Data safety declarations. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.
 3. Create and verify a locally signed AAB with the separate upload key. Obtain explicit approval **before** uploading or starting an internal Play track.
 4. Test a genuine Google-Play-delivered in-place update over GitHub 0.3.4/code15 with the original app-signing identity and retained speaker/room data.
 5. Finalize DE/EN store text/media, organize real closed testers via STR community, and fulfill the applicable test/production-access gates. Production requires a separate decision.
