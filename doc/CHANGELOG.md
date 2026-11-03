@@ -2,6 +2,12 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
+## Unreleased — 0.3.5 Play internal-test readiness
+
+- Stage `versionName=0.3.5` / `versionCode=16` so Google Play can offer a genuine versionCode upgrade over existing GitHub v0.3.4/code15 installations while keeping `app.strremote.android` and the historical original app-signing identity.
+- Expose **Privacy policy / Datenschutzhinweise** directly from native About as a public rendered link to the current bilingual [privacy policy](PRIVACY.md), without adding SDKs, permissions or secret data.
+- Play AAB signing must use the **distinct registered upload key**; Google Play delivery signing must match the original GitHub **app-signing** key. No AAB, Play track, v0.3.5 public GitHub release or on-device signed acceptance has occurred.
+
 ## 0.3.4 — 2026-11-03 (Ragutis public GitHub release)
 
 - Add manual **Check for updates / Auf Updates prüfen** to About, with visible progress, separate no-new-version and failed-request feedback, and localized DE/EN messages. Manual check bypasses the 24-hour success cache; background automatic check retains its existing best-effort schedule. A newer stable release opens a GitHub Release dialog in the signed production app; debug builds allow status-only checks, never an incompatible production upgrade. There is no automatic installer.
