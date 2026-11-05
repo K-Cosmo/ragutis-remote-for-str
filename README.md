@@ -1,5 +1,13 @@
 # Ragutis Remote for SoundTouch Reborn
 
+## 🧪 Closed beta testers wanted — Google Play
+
+**Help test Ragutis Remote for STR on Android!** Version **0.3.5** is available through a **closed Google Play test**. To participate, first [join the Ragutis tester group](https://groups.google.com/g/ragutis-closed-beta), then [opt in to the Play test](https://play.google.com/apps/testing/app.strremote.android) and [install the app](https://play.google.com/store/apps/details?id=app.strremote.android) using the **same Google account**. Group membership may require approval.
+
+➡️ **[Read the full beta invitation and testing instructions](community/CLOSED_BETA_TESTERS_WANTED.md)** · [Report feedback](https://github.com/K-Cosmo/ragutis-remote-for-str/issues)
+
+This is the **closed beta**, not a public Play Store release. The latest public GitHub APK remains **v0.3.4**. Existing users should **install the Play update over their current app without uninstalling it**, to help test whether their speakers and rooms are preserved.
+
 **Ragutis Remote for SoundTouch Reborn** (launcher **Ragutis STR**) is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
 
 **Current release:** 0.3.4 · **Ragutis Remote for SoundTouch Reborn** · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
