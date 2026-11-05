@@ -223,4 +223,4 @@
 
 **Resolution proposed:** Restore one topic per normative document, cross-link authoritative state/history/quality records, retain immutable published release/source identity and historical QA, and correct outdated consent/privacy wording. No Android code or Play deployment changes. [Dated convergence review](evidence/qa/2026-11-03-documentation-convergence-str-owner.md).
 
-**State:** REMEDIATION STAGED in [PR #22](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/22). Exact-head CI and semantic-review evidence are maintained on that PR; final acceptance/merge requires separate owner approval. This finding is not an unresolved Android runtime defect.
+**State:** CLOSED — documentation convergence was accepted and merged in [PR #22](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/22) after successful exact-head CI and semantic review on 2026-11-03. New drift must be tracked separately.

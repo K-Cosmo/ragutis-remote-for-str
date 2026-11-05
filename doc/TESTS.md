@@ -19,7 +19,7 @@ When application source/resources/build configuration changed:
 
 ```powershell
 .\gradlew.bat --version
-.\gradlew.bat clean :app:assembleDebug :app:lintDebug :app:assembleRelease --stacktrace
+.\gradlew.bat clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assemblePlayDebug :app:lintPlayDebug :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:lintGithubRelease :app:bundlePlayRelease :app:lintPlayRelease --stacktrace
 ```
 
 Use `./gradlew` on POSIX systems.
@@ -39,9 +39,20 @@ Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
 
+## Product-flavor distribution QA — debug owner PASS, release gates OPEN
+
+The staged 0.3.5 code adds `github` and `play` Gradle flavors **after** the prior owner-reported 6/6 debug pass of `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. For the later exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner reported **both debug flavor builds show the requested behavior, content and links**; [dated dual-flavor QA](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). The following is the targeted test scope, not proof of every unreported negative-path or signed production case:
+
+1. **githubDebug** (`app.strremote.android.poc`): About manual GitHub check retains visible current/failure status; automatic GitHub check is not enabled on the debug package; links, DE/EN privacy, STR control, room management and browser Back remain functional.
+2. **playDebug** (same `.poc` debug package; install it **after** the Github debug trial): About shows **Updates in Google Play öffnen / Open updates in Google Play**, and does not expose the GitHub check button, GitHub APK update dialog or request a Github update on startup. The Play URL points to `app.strremote.android`; without tester entitlement it may show the unpublished listing as unavailable. Confirm the app returns normally and STR/rooms and privacy/source/feedback still work.
+3. CI must compile/lint/test **both** flavors and assemble `githubRelease` plus **unsigned** `playRelease` AAB. Verify generated **production** `applicationId=app.strremote.android`, debug `.poc`, `versionCode=16`, Android permissions/merged manifests and intended update-channel flags. No signing keys or Play uploads in CI.
+4. **Original-signer GitHub release smoke** and a later **Play-delivered** cross-channel in-place upgrade are **separate, still-open tests**. Preserve an untouched signed GitHub v0.3.4/code15/data baseline for Play. The Play bundle is to be signed with the **distinct** registered Play upload key, not the APK signer.
+
 ## Google Play internal candidate — separate distribution QA (OPEN)
 
-Before a first Play test-track AAB upload, re-check live **app signing** and **upload** certificate fingerprints against the original GitHub signer and recorded separate Play upload key; verify the signed AAB using `jarsigner` and `keytool -printcert -jarfile`, not `apksigner`. Inspect merged Play manifest permissions, Android backups, embedded STR WebView, public/privacy link in About and data-safety declarations.
+**PR #21 / 0.3.5-code16 focused QA:** On an actual Android device, verify native About shows **Datenschutzhinweise** in DE and **Privacy policy** in EN; the action must open the correct readable public [privacy policy](PRIVACY.md) in an external browser without authentication, and Android Back must return to Ragutis without data loss. Reopen About and verify source/issues/email actions still behave normally. Preserve and exercise STR connection, stored speaker/room data and normal playback. A debug `.poc` build verifies UI/navigation only; a distinct original-signer signed production candidate is needed for real installed upgrade/data preservation QA. When no external browser can handle a link, show the localized failure message and keep external WebView navigation blocked. Offline failure must not be recorded as a successful page load. The six categories **reported PASS on the debug client** are documented in [dated 0.3.5 debug QA](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md); they do **not** satisfy the distinct original-signer/Play delivery and untested negative cases below.
+
+The live Play **app-signing** and **upload** certificate fingerprints were owner-reported PASS on 2026-11-03; [dated PLAY-001 evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). The locally signed AAB was owner-reported verified by `jarsigner` and `keytool -printcert -jarfile`, matching registered upload certificate ([signed QA](evidence/qa/2026-11-03-play-aab-upload-signing-qa.md)); actual Play delivery remains untested. The owner-reported locally generated `githubRelease`/`playRelease` merged manifests have matching permissions/package/backup/cleartext/activity export values ([dated evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md)); review **signed/packaged Play AAB**, actual Android backups, embedded STR WebView and Play Data safety declarations separately.
 
 After owner-authorized internal Play rollout, install the **Play-delivered** app over a previously installed GitHub signed version with a **lower versionCode** and preserve speaker/room data, then verify installed app certificate SHA-256 is the original GitHub/Play **app-signing** cert (not the upload cert), normal STR control, manual update-check channel UX, DE/EN, restart and live device/room state. A fresh Play install alone is **not sufficient** evidence of cross-channel in-place upgrade. If current GitHub v0.3.4 has code 15, plan a distinct Play candidate code **16+**. See [Play preparation](PLAY_STORE_PREPARATION.md).
 

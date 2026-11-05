@@ -2,6 +2,13 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
+## Unreleased — 0.3.5 (Play internal-test candidate)
+
+- Advance `versionName` to `0.3.5` and `versionCode` to `16` for a future Google-Play-managed in-place upgrade over public GitHub 0.3.4/code15, without changing the `app.strremote.android` identity.
+- Add an explicit DE/EN **Datenschutzhinweise / Privacy policy** action to native About that opens the [public bilingual privacy document](PRIVACY.md) in the external browser. No new Android permissions, SDKs or backend.
+- Show a localized failure message when Android cannot launch an external link; blocked WebView navigation stays blocked.
+- Add `github`/`play` build flavors with compile-time channel routing on the unchanged app ID: GitHub retains release checks and manual APK-link dialog; Play disables GitHub update checks and offers the Play listing instead. CI compiles/tests/lints both; the signed GitHub APK script only selects the GitHub artifact. Neither release channel has been published for 0.3.5.
+
 ## 0.3.4 — 2026-11-03 (Ragutis public GitHub release)
 
 - Add manual **Check for updates / Auf Updates prüfen** to About, with visible progress, separate no-new-version and failed-request feedback, and localized DE/EN messages. Manual check bypasses the 24-hour success cache; background automatic check retains its existing best-effort schedule. A newer stable release opens a GitHub Release dialog in the signed production app; debug builds allow status-only checks, never an incompatible production upgrade. There is no automatic installer.

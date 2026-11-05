@@ -145,17 +145,13 @@ try {
     & $gradlew --version
     if ($LASTEXITCODE -ne 0) { throw "Gradle --version failed ($LASTEXITCODE)." }
 
-    & $gradlew clean :app:assembleDebug :app:lintDebug :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --stacktrace
+    & $gradlew clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assembleGithubRelease :app:lintGithubRelease --stacktrace
     if ($LASTEXITCODE -ne 0) { throw "Final Gradle build failed ($LASTEXITCODE)." }
 
-    $releaseDir = Join-Path $ProjectRoot "app\build\outputs\apk\release"
-    $unsigned = Get-ChildItem $releaseDir -Filter "*.apk" -File |
-        Sort-Object `
-            @{ Expression = { if ($_.Name -match 'unsigned') { 0 } else { 1 } }; Ascending = $true }, `
-            @{ Expression = { $_.LastWriteTime }; Descending = $true } |
-        Select-Object -First 1
-
-    if (-not $unsigned) { throw "No release APK found under $releaseDir." }
+    $releaseDir = Join-Path $ProjectRoot "app\build\outputs\apk\github\release"
+    # Explicitly select ONLY the GitHub release. Never pick a Play artifact.
+    $unsigned = Get-Item -LiteralPath (Join-Path $releaseDir "app-github-release-unsigned.apk") -ErrorAction SilentlyContinue
+    if (-not $unsigned) { throw "Unsigned GitHub release APK missing under $releaseDir." }
 
     $distDir = Join-Path $ProjectRoot "dist"
     New-Item -ItemType Directory -Path $distDir -Force | Out-Null

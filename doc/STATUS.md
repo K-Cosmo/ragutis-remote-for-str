@@ -1,8 +1,31 @@
 # Status
 
+## Ragutis 0.3.5 — PLAY INTERNAL CANDIDATE (UNRELEASED)
+
+**Development version:** 0.3.5
+**Latest public release:** 0.3.4
+**Status:** PLAY-001 CERTIFICATES PASS; MERGED MANIFEST COMPARISON PASS; BOTH DEBUG FLAVORS PASS; PRODUCTION/PLAY GATES OPEN
+**Date:** 2026-11-03
+
+**Implemented in draft [PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21):** `versionName=0.3.5` / `versionCode=16` and the unchanged production `app.strremote.android` identity, a native DE/EN [privacy-policy](PRIVACY.md) link and **two distribution flavors**. The `github` flavor retains the original GitHub APK updater; the `play` flavor disables GitHub update checks and links to the Play listing instead. Both keep shared STR behavior and persisted-data schema. The source adds no permission, SDK, backend or WebView bridge. Signing continuity requires distinct on-device/Play evidence.
+
+**Debug QA (2026-11-03):** The owner reports **6/6 PASS** on the separately installable `app.strremote.android.poc` debug build from exact application-source commit `8ccb4564ee0d08a83527ecb391a1a514dc451d46`: DE/EN privacy links, browser-back navigation, source/Issues/email actions, STR controls and room assignment, and preservation of the separately installed regular v0.3.4/data. [Dated scoped device evidence](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md). Neither an original-signer production APK nor the cross-channel Play upgrade has passed this gate.
+
+**Current distribution QA (2026-11-03):** After the prior 6/6 unflavored debug acceptance, two product flavors were introduced. For exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner then reported that **both `githubDebug` and `playDebug` show their requested behavior, content and links**. This supports the scoped dual-flavor UI QA; see [dated owner-reported evidence](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). Earlier 6/6 QA is separate, not retroactively attributed to these builds. Productive signature, full merged-manifest/Data safety review and actual Play delivery remain OPEN; see [Tests](TESTS.md) and [Release gates](RELEASE_GATES.md).
+
+**PLAY-001 signing acceptance (owner-reported, 2026-11-03):** The Play Console's **in-use app-signing SHA-256** is now `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`, equal to the GitHub APK and original local PKCS12 `key0`; the **Play upload SHA-256** is `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`, equal to separate local `remote-str-upload`. Package `app.strremote.android`; Play title **Ragutis Remote for STR**. [Certificate evidence](evidence/qa/2026-11-03-play-signing-acceptance.md) preserves earlier F2DC/PEPK troubleshooting. **Signing enrollment gate CLOSED**, but genuine Play-delivered GitHub v0.3.4 → 0.3.5/data-retaining upgrade not yet tested.
+
+**Merged release manifest QA (2026-11-03):** Owner executed both Gradle release-manifest processing tasks successfully and provided the parsed `githubRelease` / `playRelease` manifests. Both had identical `app.strremote.android`, 9 permissions, backup/cleartext/security configuration and exactly the two expected activity export settings. **Scoped manifest consistency PASS**, with [dated evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md). Source review separately confirms local speaker/room preferences may participate in Android backup and runtime LAN permission is requested on Android 17; these are **not** final backup/Data safety or real device test acceptance.
+
+**Unsigned Play bundle build (2026-11-03):** Owner ran `:app:bundlePlayRelease` locally and reported `BUILD SUCCESSFUL in 19s` (49 actionable tasks: 38 executed, 8 cached, 3 up-to-date). This is **an unsigned Gradle build PASS**, not independent inspection or verification of its output path/content/hash, not production signing, and not a Play Console upload. Subsequent owner-reported ZIP entry inspection found `BundleConfig.pb`, `base/manifest/AndroidManifest.xml`, `base/dex/classes.dex` and `base/resources.pb` (**4/4 PASS**, [evidence](evidence/qa/2026-11-03-play-aab-zip-structure-qa.md)). Owner then reported **bundletool 1.18.3 successfully dumped the packaged base manifest** from `app-play-release.aab` (1,160,743 bytes): package/code/name/minSdk/targetSdk, all nine permission names, backup/cleartext and exported activities matched expectations. [Dated compiled-manifest QA](evidence/qa/2026-11-03-play-aab-bundletool-manifest-qa.md). The Protobuf `sun.misc.Unsafe` warning was nonfatal. **Final follow-up unsigned AAB checks PASS:** SHA-256 `15BA556123614F926EF78AE163F43F89843157E18661187083FE57D1F997DA5E`, compiled `networkSecurityConfig="@xml/network_security_config"` and `maxSdkVersion=32` on both coarse/fine location permissions owner-confirmed. **Unsigned AAB verified; locally signed Play upload-key AAB also owner-reported PASS:** `Ragutis-0.3.5-play-signed.aab`, 1,165,897 bytes, SHA-256 `7B94567B796D13A8747A2184DEE073C4FC7EFD0F89838414306D9DFC03EB33B8`, `jarsigner` PASS, and upload certificate `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791` matched Play Console. [Signed QA](evidence/qa/2026-11-03-play-aab-upload-signing-qa.md). **Privacy, production device and Play-delivered upgrade QA remain OPEN.**
+
+**Play Console internal-release editor (owner screenshot 2026-11-03):** User uploaded/attached `Ragutis-0.3.5-play-signed.aab`; Console shows structured AAB `16 (0.3.5)`, API >=26, target SDK37, four screen layouts, all ABIs, three required features. **This is an upload to the draft release editor, not an internal-track rollout or Play review acceptance.** Release notes are still placeholder; tester distribution and privacy/device gates remain OPEN. [Dated screenshot record](evidence/qa/2026-11-03-play-console-internal-release-editor.md).
+
+**Distribution boundary:** Current public GitHub version is still [v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) (code 15). This 0.3.5 source has **debug-device acceptance only**; it is **not accepted on a signed-production test device, not merged or publicly released; signed AAB is now attached in the Play **internal release editor** but not distributed**; locally signed upload-key AAB is ready. The next checks concern production-signed operation and genuine cross-channel data retention; live Play certificate checks and merged-manifest consistency are now PASS; backup/Data safety audit and Play-delivered in-place update remain separate OPEN gates; local signed AAB verification has passed. See [Release gates](RELEASE_GATES.md) and [Play runbook](PLAY_STORE_PREPARATION.md).
+
 ## Ragutis 0.3.4 — RELEASED ON GITHUB / SIGNED 6/6 SMOKE PASS
 
-**Development version:** 0.3.4
+**Released version:** 0.3.4
 **Latest public release:** 0.3.4
 **Status:** RELEASED / SIGNED DEVICE QA 6/6 PASS (OWNER-REPORTED)
 **Date:** 2026-11-03
@@ -15,9 +38,9 @@
 
 ## Google Play Console — PREPARATION ONLY (2026-11-03)
 
-**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **No Google Play AAB has been built or uploaded**, and no internal/closed/production track rollout has been verified. Play Console account/package and both key fingerprints were previously **owner-reported**, not independently rechecked live.
+**State:** GitHub v0.3.4/code15 remains the latest accepted public APK. **Signed AAB is now shown as uploaded into Play Console's internal-release editor; no release rollout or tester delivery confirmed**, and no internal/closed/production track rollout has been verified. Play Console account/package and both **live** certificate fingerprints were reconfirmed by the owner on 2026-11-03, not accessed directly through a Console integration.
 
-**Current work:** [Play Store preparation](PLAY_STORE_PREPARATION.md) is the sole operational runbook. The distinct 0.3.5/code16 privacy-link candidate is staged **only** in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21); no device acceptance, merge, signed AAB or Play upload is implied. Current release/deployment gates are in [Release gates](RELEASE_GATES.md).
+**Current work:** [Play Store preparation](PLAY_STORE_PREPARATION.md) is the sole operational runbook. The distinct 0.3.5/code16 privacy-link candidate is staged **only** in [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21); no signed-production device acceptance, merge or Play upload is implied; a locally signed Play upload-key AAB is documented above. Current release/deployment gates are in [Release gates](RELEASE_GATES.md).
 
 ## STR upstream integration — MAINTAINER ACCEPTANCE AND LISTING CONFIRMED (2026-11-03)
 

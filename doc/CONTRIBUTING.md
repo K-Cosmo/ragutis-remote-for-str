@@ -22,7 +22,7 @@ git diff --check
 Android gate when code/resources/build configuration changed:
 
 ```powershell
-.\gradlew.bat clean :app:assembleDebug :app:lintDebug :app:assembleRelease --stacktrace
+.\gradlew.bat clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assemblePlayDebug :app:lintPlayDebug :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:bundlePlayRelease --stacktrace
 ```
 
 Use `./gradlew` on POSIX systems.
