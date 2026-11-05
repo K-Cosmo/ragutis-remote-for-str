@@ -4,6 +4,8 @@ Hi everyone! 👋
 
 I'd like to introduce **Ragutis Remote for SoundTouch Reborn**, an open-source Android companion app developed for the SoundTouch Reborn (STR) community.
 
+**[Discuss the closed beta in the STR Show & Tell thread](https://github.com/JRpersonal/streborn/discussions/1738)**.
+
 The idea is simple: discover, manage and control STR-enabled SoundTouch speakers from an Android phone.
 
 **Ragutis v0.3.5 is now available in a closed Google Play beta**, and I'm looking for community members who would like to help test it.
