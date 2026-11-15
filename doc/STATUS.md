@@ -1,5 +1,18 @@
 # Status
 
+## Ragutis 0.3.6 — DRAFT BUGFIX CANDIDATE (NOT RELEASED)
+
+**Development version:** 0.3.6
+**Latest public release:** 0.3.4
+**Status:** SOURCE STAGED; CI / DEVICE / SIGNING / MERGE / RELEASE GATES OPEN
+**Date:** 2026-11-15
+
+The 0.3.6/code17 candidate is based on the still-draft 0.3.5 code16 GitHub/Play-flavor PR #21. The owner reports that v0.3.5 is active in the Google Play **closed test**; public GitHub latest remains v0.3.4. This candidate fixes three device-list issues: delete action missing for unsaved discovered STR speakers, no live reachability coloring before room assignment, and saved offline devices incorrectly becoming online after resetting their room. There is no app ID, signing-key, preference schema or update-channel change.
+
+**No v0.3.6 artifact has yet been signed, owner-device tested, merged or released.** Independent v0.3.5 integration QA, original-signer GitHub QA, Play-delivered update tests and separate owner approvals are required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).
+
+## Historical 0.3.5 candidate snapshot (as recorded on 2026-11-03)
+
 ## Ragutis 0.3.5 — PLAY INTERNAL CANDIDATE (UNRELEASED)
 
 **Development version:** 0.3.5
