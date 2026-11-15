@@ -1796,6 +1796,25 @@ class MainActivity : Activity() {
         showRoomPicker(row.saved?.room) { room -> saveSpeakerWithRoom(endpoint, room) }
     }
 
+    private fun confirmHideDiscoveredSpeaker(row: SpeakerRow) {
+        AlertDialog.Builder(this)
+            .setTitle(row.candidate.friendlyName)
+            .setMessage(R.string.remove_discovered_speaker_confirm)
+            .setPositiveButton(R.string.remove) { _, _ ->
+                // The device might have been saved while the confirmation was open.
+                val key = findRowKey(row.candidate) ?: return@setPositiveButton
+                val current = speakers[key] ?: return@setPositiveButton
+                if (current.saved != null || current.pendingBose) return@setPositiveButton
+                // Ignore repeated discovery announcements until the next scan.
+                hiddenSpeakerKeys.addAll(speakerVisibilityKeys(current.candidate))
+                speakers.remove(key)
+                updateList()
+                Toast.makeText(this, R.string.speaker_discovered_removed, Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton(R.string.cancel, null)
+            .show()
+    }
+
     private fun confirmRemoveSavedSpeaker(row: SpeakerRow) {
         val saved = row.saved ?: return
 
@@ -1949,13 +1968,16 @@ class MainActivity : Activity() {
         speakers[key] = if (existing == null) {
             SpeakerRow(
                 candidate = candidateFromEndpoint(endpoint),
-                endpoint = endpoint,
-                probeFinished = true,
+                endpoint = null,
+                probeFinished = false,
                 saved = saved,
-                discovered = false
+                discovered = false,
+                lastReachable = prefs.loadReachability(endpoint)
             )
         } else {
-            existing.copy(saved = saved, endpoint = existing.endpoint ?: endpoint)
+            // A saved host is not a verified *live* endpoint.
+            // Keep probeFinished, lastReachable and endpoint unchanged on room edits.
+            existing.withSavedMetadata(saved)
         }
 
         updateList()
@@ -2024,17 +2046,15 @@ class MainActivity : Activity() {
         return speakerMatches(current, rowEndpoint)
     }
 
-    private fun reachabilityForDisplay(row: SpeakerRow): Boolean? {
-        if (row.saved == null) {
-            return if (row.endpoint != null) true else null
-        }
-        if (!hasWifiTransport()) return false
-        return if (row.probeFinished) {
-            row.endpoint != null
-        } else {
-            row.lastReachable
-        }
-    }
+    private fun reachabilityForDisplay(row: SpeakerRow): Boolean? =
+        SpeakerRowPolicy.reachability(
+            hasWifiTransport = hasWifiTransport(),
+            hasEndpoint = row.endpoint != null,
+            probeFinished = row.probeFinished,
+            lastReachable = row.lastReachable,
+            saved = row.saved != null,
+            pendingBose = row.pendingBose
+        )
 
     private fun markSavedSpeakersUnreachable() {
         prefs.loadSavedSpeakers().forEach { saved ->
@@ -2119,18 +2139,6 @@ class MainActivity : Activity() {
     }
 
     private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
-
-    private data class SpeakerRow(
-        val candidate: SpeakerCandidate,
-        val endpoint: SpeakerEndpoint?,
-        val probeFinished: Boolean,
-        val saved: SavedSpeaker? = null,
-        val discovered: Boolean = true,
-        val lastReachable: Boolean? = null,
-        val pendingBose: Boolean = false,
-        val pendingBoseVerified: Boolean = false,
-        val pendingRoom: RoomAssignment? = null
-    )
 
     private data class SpeakerRowViewHolder(
         val container: LinearLayout,
@@ -2285,7 +2293,7 @@ class MainActivity : Activity() {
                 } else {
                 row.candidate.model?.let(::add)
 
-                if (row.saved != null) {
+                if (row.saved != null || row.endpoint != null || !hasWifiTransport()) {
                     add(
                         getString(
                             when (reachabilityForDisplay(row)) {
@@ -2326,36 +2334,38 @@ class MainActivity : Activity() {
                 assignRoomForRow(row)
             }
 
-            holder.deleteButton.visibility =
-                if (row.saved != null || row.pendingBose) View.VISIBLE else View.GONE
+            holder.deleteButton.visibility = View.VISIBLE
             holder.deleteButton.contentDescription = getString(
-                if (row.pendingBose) R.string.bose_remove_pending else R.string.remove_saved_speaker
+                when (SpeakerRowPolicy.removalAction(row.saved != null, row.pendingBose)) {
+                    SpeakerRemovalAction.REMOVE_PENDING -> R.string.bose_remove_pending
+                    SpeakerRemovalAction.REMOVE_SAVED -> R.string.remove_saved_speaker
+                    SpeakerRemovalAction.HIDE_DISCOVERED -> R.string.remove_discovered_speaker
+                }
             )
             holder.deleteButton.setOnClickListener {
-                if (row.pendingBose) {
-                    pendingBose.remove(row.candidate.key)
-                    speakers.entries.removeAll { it.value.pendingBose && it.value.candidate.key == row.candidate.key }
-                    updateList()
-                } else confirmRemoveSavedSpeaker(row)
+                when (SpeakerRowPolicy.removalAction(row.saved != null, row.pendingBose)) {
+                    SpeakerRemovalAction.REMOVE_PENDING -> {
+                        pendingBose.remove(row.candidate.key)
+                        speakers.entries.removeAll {
+                            it.value.pendingBose && it.value.candidate.key == row.candidate.key
+                        }
+                        updateList()
+                    }
+                    SpeakerRemovalAction.REMOVE_SAVED -> confirmRemoveSavedSpeaker(row)
+                    SpeakerRemovalAction.HIDE_DISCOVERED -> confirmHideDiscoveredSpeaker(row)
+                }
             }
 
             holder.container.setOnClickListener {
                 connectSpeakerRow(row)
             }
 
-            val savedReachability = reachabilityForDisplay(row)
+            val deviceReachability = reachabilityForDisplay(row)
             val cardColors = when {
                 row.pendingBose -> "#F0F1F3" to "#B7BEC7"
-                row.saved != null && savedReachability == true ->
-                    "#D8F8E4" to "#159447"
-                row.saved != null && savedReachability == false ->
-                    "#FFE0E4" to "#D92D3A"
-                row.saved != null ->
-                    "#FFFFFF" to "#D7E1EC"
-                isCurrent(row) ->
-                    "#D8F8E4" to "#159447"
-                else ->
-                    "#FFFFFF" to "#D7E1EC"
+                deviceReachability == true -> "#D8F8E4" to "#159447"
+                deviceReachability == false -> "#FFE0E4" to "#D92D3A"
+                else -> "#FFFFFF" to "#D7E1EC"
             }
             holder.container.background = createPanelBackground(
                 fillColor = cardColors.first,

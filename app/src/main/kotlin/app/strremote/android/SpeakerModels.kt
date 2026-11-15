@@ -51,6 +51,22 @@ internal data class SavedSpeaker(
     val room: RoomAssignment? = null
 )
 
+/** UI row data, separate from persisted room metadata and the live HTTP probe. */
+internal data class SpeakerRow(
+    val candidate: SpeakerCandidate,
+    val endpoint: SpeakerEndpoint?,
+    val probeFinished: Boolean,
+    val saved: SavedSpeaker? = null,
+    val discovered: Boolean = true,
+    val lastReachable: Boolean? = null,
+    val pendingBose: Boolean = false,
+    val pendingBoseVerified: Boolean = false,
+    val pendingRoom: RoomAssignment? = null
+) {
+    /** Never upgrade a stored endpoint to a live endpoint merely because a room changed. */
+    fun withSavedMetadata(updated: SavedSpeaker): SpeakerRow = copy(saved = updated)
+}
+
 internal fun speakerIdentity(endpoint: SpeakerEndpoint): String =
     endpoint.key?.takeIf { it.isNotBlank() } ?: "host:${endpoint.host.lowercase()}"
 

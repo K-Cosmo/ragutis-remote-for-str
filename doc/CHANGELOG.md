@@ -2,7 +2,14 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
-## Unreleased — 0.3.5 (Play internal-test candidate)
+## Unreleased — 0.3.6 (GitHub APK and Play closed-test AAB bugfix candidate)
+
+- Stage `versionName=0.3.6` / `versionCode=17` on both distribution flavors, preserving production application ID, keys and speaker/room data format. No 0.3.6 APK/AAB has been signed or published.
+- Show the delete icon on newly discovered, unsaved speakers; after confirmation remove the row from the current scan, without altering its network settings or preventing rediscovery on the next scan.
+- Set green/red card status after a successful/failed STR endpoint probe even before room assignment. Unknown/probing stays neutral and original-firmware Bose setup stays visually distinct.
+- Keep stored endpoint metadata separate from the live verified endpoint when changing/clearing room assignments, so offline devices cannot become online merely by selecting “No room.” Add JVM regression coverage and bilingual strings.
+
+## Unreleased — 0.3.5 (historical Play closed-test candidate)
 
 - Advance `versionName` to `0.3.5` and `versionCode` to `16` for a future Google-Play-managed in-place upgrade over public GitHub 0.3.4/code15, without changing the `app.strremote.android` identity.
 - Add an explicit DE/EN **Datenschutzhinweise / Privacy policy** action to native About that opens the [public bilingual privacy document](PRIVACY.md) in the external browser. No new Android permissions, SDKs or backend.

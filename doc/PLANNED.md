@@ -2,7 +2,15 @@
 
 This document describes **sequence and dependencies**, not release history or a second backlog. Current state: [Status](STATUS.md). Individual work items and priorities: [Backlog](BACKLOG.md). Verification requirements: [Release gates](RELEASE_GATES.md). Completed changes: [Changelog](CHANGELOG.md).
 
-## Next sequence — Google Play internal test
+## Next sequence — 0.3.6 GitHub + Play closed-test bugfix
+
+1. Complete review and both-flavor CI of the separate 0.3.6/code17 bugfix branch stacked on [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21). Keep GitHub public v0.3.4/code15 and Google Play closed-test v0.3.5/code16 unchanged during review.
+2. Execute real-device bug reproductions/regressions (new device delete/online/offline, saved offline room reset), DE/EN, pending Bose and genuine persisted-data upgrade tests; record source SHA and evidence.
+3. Merge PR #21 and the subsequent 0.3.6 bugfix only after independent review, CI and explicit owner merge approval.
+4. Separately approve, sign, inspect and publish the original-signer GitHub APK and the Play upload-key-signed AAB for **v0.3.6/code17**. Update the **existing Play closed test**, not Play production; verify actual Play-delivered v0.3.5→0.3.6 update preserves devices and rooms.
+5. Continue community beta testing and monitor feedback/Android Vitals. Store tester counts and actual production-access gates remain distinct.
+
+## Historical 0.3.5 Play preparation (recorded 2026-11-03)
 
 1. **PLAY-001 complete:** 2026-11-03 live Play certificates owner-confirmed PASS (original app signer `3CC2E727…`, upload signer `41BFFC71…`); no key changes necessary. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md).
 2. GitHub/Play merged release manifest **consistency owner-reported PASS** (2026-11-03, [evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md)); complete separate **original-signer production** smoke on a spare device; review [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), with **no merge without express owner approval**. Complete [PLAY-006](BACKLOG.md) device/manifest acceptance, public privacy URL, Android backup and truthful embedded-WebView/Data safety disclosures. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.

@@ -2,7 +2,15 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
-## Google Play first internal test — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
+## 0.3.6 GitHub / Google Play closed-test bugfix — NEW OPEN GATES
+
+- [ ] Verify both flavor builds, lint, unit tests, doc gate and versionCode17/versionName0.3.6.
+- [ ] On-device German/English QA: delete new unsaved rows before assigning a room; new discovered rows turn green/red automatically after STR probe; clearing rooms never makes offline devices online. Confirm saved/pending-Bose negative cases and re-discovery timing.
+- [ ] No changes to production application ID, signer continuity, permission set, local data schema or Play-vs-GitHub update routing; review manifests/privacy and PR #21 integration.
+- [ ] Original-signer GitHub signed APK in-place over v0.3.4/code15 with persisted data; Play-upload-key-signed AAB and actual Play-delivered v0.3.5/code16→0.3.6/code17 upgrade with retained data and original Play **app-signing** identity.
+- [ ] Explicit owner merge authorization, then independent GitHub signed-release authorization and Google Play **closed test** rollout approval. No Play production release or new keys.
+
+## Historical 0.3.5 internal-test preparation — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
 
 - [x] **Current GitHub baseline:** public original-signer v0.3.4/code 15, owner-reported signed 6/6 device QA and public release/asset digest verified. Google Play is a separate distribution workflow, not automatically released.
 - [x] **PLAY-001 certificate continuity PASS (owner-reported 2026-11-03, live Play Console):** In-use app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` matches published GitHub APK/local PKCS12 alias `key0`; registered Play upload SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791` matches local separate `remote-str-upload`; package `app.strremote.android`. Earlier incompatible fingerprint/PEPK rejection are historic, not current blockers. [Dated acceptance evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). No AAB upload/release authorized.
