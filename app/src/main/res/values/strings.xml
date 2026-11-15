@@ -45,6 +45,9 @@
     <string name="save_speaker">Save speaker</string>
     <string name="change_room">Change room</string>
     <string name="remove_saved_speaker">Remove saved speaker</string>
+    <string name="remove_discovered_speaker">Remove discovered speaker from list</string>
+    <string name="remove_discovered_speaker_confirm">Remove this speaker from the list until the next search? This does not change its settings.</string>
+    <string name="speaker_discovered_removed">Speaker removed from list</string>
     <string name="save_requires_reachable">The speaker must be reachable before it can be saved.</string>
     <string name="speaker_saved">Speaker saved</string>
     <string name="speaker_removed">Saved speaker removed</string>
@@ -54,7 +57,7 @@
     <string name="speaker_status_unknown">Unknown</string>
     <string name="remote_connecting">Checking connection to the speaker…</string>
     <string name="remote_device_unreachable">Wi-Fi is connected, but the speaker is not reachable yet. Wait a moment and try again.</string>
-    <string name="speaker_management_hint">Tap a speaker to connect. Use Room to assign it; this also saves the speaker. Saved speakers can be removed with the trash icon.</string>
+    <string name="speaker_management_hint">Tap a speaker to connect. Use Room to assign it; this also saves the speaker. Saved and new speakers can be removed with the trash icon. Newly discovered devices may return on the next scan.</string>
     <string name="current_speaker_format">● %1$s</string>
     <string name="room_speaker_format">%1$s · %2$s</string>
     <string name="room_title">Assign room</string>
