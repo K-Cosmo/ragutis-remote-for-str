@@ -1977,7 +1977,7 @@ class MainActivity : Activity() {
         } else {
             // A saved host is not a verified *live* endpoint.
             // Keep probeFinished, lastReachable and endpoint unchanged on room edits.
-            existing.copy(saved = saved)
+            existing.withSavedMetadata(saved)
         }
 
         updateList()
@@ -2139,18 +2139,6 @@ class MainActivity : Activity() {
     }
 
     private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
-
-    private data class SpeakerRow(
-        val candidate: SpeakerCandidate,
-        val endpoint: SpeakerEndpoint?,
-        val probeFinished: Boolean,
-        val saved: SavedSpeaker? = null,
-        val discovered: Boolean = true,
-        val lastReachable: Boolean? = null,
-        val pendingBose: Boolean = false,
-        val pendingBoseVerified: Boolean = false,
-        val pendingRoom: RoomAssignment? = null
-    )
 
     private data class SpeakerRowViewHolder(
         val container: LinearLayout,
