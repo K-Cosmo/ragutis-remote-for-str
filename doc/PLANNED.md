@@ -8,7 +8,7 @@ This document describes **sequence and dependencies**, not release history or a 
 2. Execute real-device bug reproductions/regressions (new device delete/online/offline, saved offline room reset), DE/EN, pending Bose and genuine persisted-data upgrade tests; record source SHA and evidence.
 3. Merge PR #21 and the subsequent 0.3.6 bugfix only after independent review, CI and explicit owner merge approval.
 4. Separately approve, sign, inspect and publish the original-signer GitHub APK and the Play upload-key-signed AAB for **v0.3.6/code17**. Update the **existing Play closed test**, not Play production; verify actual Play-delivered v0.3.5→0.3.6 update preserves devices and rooms.
-5. Continue community beta testing and monitor feedback/Android Vitals. Store tester counts and actual production-access gates remain distinct.
+5. Continue community beta testing and monitor feedback/Android Vitals. The owner reports **fewer than 12** opted-in testers; the applicable 12/14-day Play production gate remains open. Keep Android backup enabled for restoration while auditing its actual content and Play Data safety. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
 ## Historical 0.3.5 Play preparation (recorded 2026-11-03)
 

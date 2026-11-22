@@ -7,6 +7,8 @@
 **Status:** SOURCE STAGED; CI / DEVICE / SIGNING / MERGE / RELEASE GATES OPEN
 **Date:** 2026-11-15
 
+**Updated Play baseline (2026-11-22, owner-reported):** Google Play automatically upgraded an existing GitHub Ragutis installation on the owner's device without uninstall; **all saved speakers and rooms, STR control, Play update link and privacy link work**. Android backup remains intentionally allowed for restoration; fewer than 12 testers are enrolled. This is not an installed certificate/version or 0.3.6 release verification. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+
 The 0.3.6/code17 candidate is based on the still-draft 0.3.5 code16 GitHub/Play-flavor PR #21. The owner reports that v0.3.5 is active in the Google Play **closed test**; public GitHub latest remains v0.3.4. This candidate fixes three device-list issues: delete action missing for unsaved discovered STR speakers, no live reachability coloring before room assignment, and saved offline devices incorrectly becoming online after resetting their room. There is no app ID, signing-key, preference schema or update-channel change.
 
 **No v0.3.6 artifact has yet been signed, owner-device tested, merged or released.** Independent v0.3.5 integration QA, original-signer GitHub QA, Play-delivered update tests and separate owner approvals are required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).

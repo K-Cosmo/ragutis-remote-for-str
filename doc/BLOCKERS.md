@@ -6,7 +6,13 @@ This document records **current unresolved release blockers**, not completed rel
 
 No known open gate blocks the **already published** signed release. Its accepted scope, original source and device-QA limitations are recorded in [Status](STATUS.md) and [Release gates](RELEASE_GATES.md). Deferred tests are not retroactive failures and are not considered passed.
 
-## First Google Play test-track upload
+## Current Google Play closed-test and production gates (2026-11-22)
+
+The owner reports active Google Play closed-test distribution and a successful automatic GitHub→Play upgrade with **saved speakers/rooms and STR control retained**; Play/privacy links work. The old editor-only status below is historical. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+
+**Still open:** exact installed Play version/signature and AAB provenance, embedded STR WebView / Android backup Data safety audit, accepted source/merge gates, and production eligibility. The owner intentionally keeps Android backup enabled. **Fewer than 12 testers** are enrolled; applicable continuous 12-tester/14-day test and Play production approval are not yet satisfied. Any 0.3.6 GitHub/Play release requires distinct approval.
+
+## Historical first Google Play test-track upload (2026-11-03)
 
 The following gates remain **open** and must be checked before the corresponding Play action:
 

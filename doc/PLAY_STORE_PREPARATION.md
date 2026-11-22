@@ -1,6 +1,6 @@
 # Google Play — Ragutis Remote for STR
 
-**Stand: 2026-11-03. Play signed AAB attached to first internal-test release editor; no internal/closed/production rollout or public listing confirmed.**
+**Current state (2026-11-22):** Owner confirms active Google Play **closed-test** delivery and automatic in-place GitHub→Play update with saved rooms/speakers and STR control intact; Play/privacy links work. Fewer than 12 closed testers are opted in. No public Play production release is claimed. [Owner device QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). The original 2026-11-03 editor/build passages below are historical evidence, not current rollout status.
 
 This is the current **proposed** runbook, derived from current repository code and the previously owner-reported Google Play signing checks recorded in historical drafts [PR #10](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/10) and [PR #12](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/12). Those PRs are historical/superseded and **must not be merged or uploaded unchanged**. Official Play Console state is not independently accessible through this repository. Avoid claiming that a private-account configuration step, Play asset, tester count or production permission has been completed without new Console evidence.
 
@@ -15,7 +15,7 @@ This is the current **proposed** runbook, derived from current repository code a
 | Original GitHub and Google Play **in-use app-signing** certificate | SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`; **owner-reported live Play Console PASS (2026-11-03)** |
 | Separate Google Play **registered upload** certificate | SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`; **owner-reported Play Console and local JKS PASS (2026-11-03)** |
 | Previous key alias | `remote-str-upload` for the separate upload JKS, owner-local (never commit/store keystore/passwords/PEPK export) |
-| Public Google Play artifact | **None verified**; first AAB/track still to prepare |
+| Play closed-test artifact | **Owner reports active distribution**; installed versionCode/signer and source/AAB provenance remain unverified in this review |
 
 **PLAY-001 CLOSED — live Play certificates now MATCH the established GitHub/install and upload identities (owner-reported, 2026-11-03).** App-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` matches original public GitHub APK and production keystore PKCS12 alias `key0`; Play upload SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791` matches local separate `remote-str-upload`. Package `app.strremote.android` confirmed. **No more key imports, PEPK exports or key rotation.** The earlier F2DC/PEPK rejection is historical; see [dated evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). This is **not** an AAB-signing, Play-upload, or installed Play upgrade approval.
 
@@ -153,6 +153,8 @@ Compare the public certificate digests locally. Never send private JKS, PEPK exp
 3. **Production:** Requires completed store/declaration tasks, enough real closed testers and a subsequent approved production-access application. Only a **separate owner-authorized rollout** can publish the app publicly in Play.
 
 ## 7. Scope / operational hand-off
+
+**2026-11-22 update:** The owner confirms successful in-place GitHub→Play update with local speakers/rooms preserved and both Play/privacy links operational. Android backup remains intentionally enabled for restoring preferences, not yet verified with a true restore test. Fewer than 12 testers are enrolled; public Play production remains gated. The 2026-11-03 OPEN/HOLD summary below is a dated historical snapshot, not the current Play delivery state.
 
 **DONE:** public GitHub Ragutis 0.3.4, exact app source, owner-reported six signed device smoke PASS, current public APK digest independently verified; prior owner-reported Play key enrollment fingerprints are documented historically.
 
