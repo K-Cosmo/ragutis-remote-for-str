@@ -873,7 +873,7 @@ class MainActivity : Activity() {
             updateList()
             // This service can announce repeatedly during a single scan.
             // Never restart a completed or still-in-flight STR HTTP probe.
-            if (discoveryGuard.claimProbe(candidate.host)) {
+            if (discoveryGuard.claimProbe(speakerVisibilityKey(candidate))) {
                 probeCandidate(candidate, discoveryGeneration)
             }
         }
@@ -1661,34 +1661,14 @@ class MainActivity : Activity() {
     )
 
     private fun findRowKey(candidate: SpeakerCandidate): String? {
-        val candidateEndpoint = SpeakerEndpoint(
-            host = candidate.host,
-            port = candidate.advertisedPort,
-            name = candidate.friendlyName,
-            model = candidate.model,
-            key = candidate.key
-        )
         return speakers.entries.firstOrNull { (_, row) ->
-            val rowEndpoint = row.endpoint ?: row.saved?.endpoint
-            if (rowEndpoint != null) {
-                speakerMatches(rowEndpoint, candidateEndpoint)
-            } else {
-                row.candidate.key == candidate.key ||
-                    row.candidate.host.equals(candidate.host, ignoreCase = true)
-            }
+            speakerRowMatchesCandidate(row, candidate)
         }?.key
     }
 
     private fun findRowKey(endpoint: SpeakerEndpoint): String? =
         speakers.entries.firstOrNull { (_, row) ->
-            val rowEndpoint = row.endpoint ?: row.saved?.endpoint ?: SpeakerEndpoint(
-                host = row.candidate.host,
-                port = row.candidate.advertisedPort,
-                name = row.candidate.friendlyName,
-                model = row.candidate.model,
-                key = row.candidate.key
-            )
-            speakerMatches(rowEndpoint, endpoint)
+            speakerRowMatchesEndpoint(row, endpoint)
         }?.key
 
     private fun probeSavedSpeaker(
@@ -2010,15 +1990,11 @@ class MainActivity : Activity() {
         Toast.makeText(this, R.string.speaker_removed, Toast.LENGTH_SHORT).show()
     }
 
-    private fun speakerVisibilityKeys(endpoint: SpeakerEndpoint): Set<String> = buildSet {
-        endpoint.key?.takeIf { it.isNotBlank() }?.let { add("key:${it.lowercase()}") }
-        add("host:${endpoint.host.lowercase()}")
-    }
+    private fun speakerVisibilityKeys(endpoint: SpeakerEndpoint): Set<String> =
+        setOf(speakerVisibilityKey(endpoint))
 
-    private fun speakerVisibilityKeys(candidate: SpeakerCandidate): Set<String> = buildSet {
-        candidate.key.takeIf { it.isNotBlank() }?.let { add("key:${it.lowercase()}") }
-        add("host:${candidate.host.lowercase()}")
-    }
+    private fun speakerVisibilityKeys(candidate: SpeakerCandidate): Set<String> =
+        setOf(speakerVisibilityKey(candidate))
 
     private fun roomLabel(room: RoomAssignment?): String? {
         if (room == null) return null
