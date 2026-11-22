@@ -9,7 +9,9 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [x] All saved speakers, room assignments and STR control survived the update.
 - [x] Installed Play update link and native privacy link work.
 - [x] Owner explicitly retains `allowBackup=true` for restoring local speaker/room preferences.
-- [ ] Capture exact Play-installed versionCode/versionName, installed app-signing certificate, source/AAB provenance.
+- [x] **Installed version reported via adb (owner):** `versionCode=16`, `versionName=0.3.5`, `targetSdk=37`; consistent with the previously checked Play 0.3.5 AAB metadata.
+- [ ] **Investigate installed `minSdk=32` vs AAB/Gradle `minSdk=26`:** bundletool can generate API-specific APK variants and inject per-variant minSdk, but the exact installed variant/Play device-catalog compatibility down to API 26 is not independently verified.
+- [ ] Confirm installed app-signing certificate and exact source/AAB provenance; an in-place update and matching version alone are not a binary hash/signature proof.
 - [ ] Review actual Android backup payload, embedded STR WebView traffic and Play Data safety declarations. A working upgrade is not a tested cloud restore.
 - [ ] **Fewer than 12 closed testers** currently opted in; satisfy applicable 12 continuous testers / 14 days and distinct production-approval gates.
 - [ ] Separate source/merge, GitHub APK and Play distribution approvals remain required. No automatic publication.
