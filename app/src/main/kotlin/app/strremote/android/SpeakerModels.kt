@@ -67,6 +67,59 @@ internal data class SpeakerRow(
     fun withSavedMetadata(updated: SavedSpeaker): SpeakerRow = copy(saved = updated)
 }
 
+
+
+// The discovery key may be a real device ID or a synthesized fallback
+// (serviceName@host / host:host). Only real IDs may override host equality.
+internal fun stableSpeakerKey(key: String?, host: String): String? {
+    val id = key?.takeIf { it.isNotBlank() } ?: return null
+    return id.takeUnless {
+        it.equals("host:$host", ignoreCase = true) ||
+            it.endsWith("@$host", ignoreCase = true)
+    }
+}
+
+internal fun speakerCandidateMatches(first: SpeakerCandidate, second: SpeakerCandidate): Boolean =
+    speakerIdentityMatches(
+        stableSpeakerKey(first.key, first.host), first.host,
+        stableSpeakerKey(second.key, second.host), second.host
+    )
+
+internal fun speakerCandidateMatchesEndpoint(
+    candidate: SpeakerCandidate, endpoint: SpeakerEndpoint
+): Boolean = speakerIdentityMatches(
+    stableSpeakerKey(candidate.key, candidate.host), candidate.host,
+    stableSpeakerKey(endpoint.key, endpoint.host), endpoint.host
+)
+
+private fun speakerIdentityMatches(
+    firstKey: String?, firstHost: String, secondKey: String?, secondHost: String
+): Boolean =
+    if (firstKey != null && secondKey != null) firstKey == secondKey
+    else firstHost.equals(secondHost, ignoreCase = true)
+
+internal fun speakerVisibilityKey(candidate: SpeakerCandidate): String =
+    stableSpeakerKey(candidate.key, candidate.host)?.let { "key:${it.lowercase()}" }
+        ?: "host:${candidate.host.lowercase()}"
+
+internal fun speakerVisibilityKey(endpoint: SpeakerEndpoint): String =
+    stableSpeakerKey(endpoint.key, endpoint.host)?.let { "key:${it.lowercase()}" }
+        ?: "host:${endpoint.host.lowercase()}"
+
+internal fun speakerRowMatchesCandidate(row: SpeakerRow, candidate: SpeakerCandidate): Boolean {
+    // A saved *unkeyed* endpoint may match by host, but it must not erase
+    // a different real key already established by a discovery announcement.
+    if (!speakerCandidateMatches(row.candidate, candidate)) return false
+    val endpoint = row.endpoint ?: row.saved?.endpoint ?: return true
+    return speakerCandidateMatchesEndpoint(candidate, endpoint)
+}
+
+internal fun speakerRowMatchesEndpoint(row: SpeakerRow, endpoint: SpeakerEndpoint): Boolean {
+    if (!speakerCandidateMatchesEndpoint(row.candidate, endpoint)) return false
+    val existing = row.endpoint ?: row.saved?.endpoint ?: return true
+    return speakerMatches(existing, endpoint)
+}
+
 internal fun speakerIdentity(endpoint: SpeakerEndpoint): String =
     endpoint.key?.takeIf { it.isNotBlank() } ?: "host:${endpoint.host.lowercase()}"
 
