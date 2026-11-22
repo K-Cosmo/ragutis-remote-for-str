@@ -2,7 +2,14 @@
 
 This document describes **sequence and dependencies**, not release history or a second backlog. Current state: [Status](STATUS.md). Individual work items and priorities: [Backlog](BACKLOG.md). Verification requirements: [Release gates](RELEASE_GATES.md). Completed changes: [Changelog](CHANGELOG.md).
 
-## Next sequence — Google Play internal test
+## Current sequence — close Play evidence and 0.3.6 readiness (2026-11-22)
+
+1. Preserve the already functioning closed-test Play build; document the owner-verified GitHub→Play upgrade and backup decision. Capture exact installed version/signer/source provenance when available; audit Android Auto Backup and Play Data safety.
+2. Conclude review of draft PR #21 with updated documentation and separate owner merge authorization. Keep the released GitHub v0.3.4 artifact immutable.
+3. Complete stacked PR #25 identity/reachability fix review, regression tests and real-device QA before any 0.3.6 signing or release.
+4. Recruit genuine closed testers: currently **fewer than 12**; meet the applicable 12 continuous opt-ins / 14 days before requesting Play production access. Production remains separately gated.
+
+## Historical planned first internal test (2026-11-03)
 
 1. **PLAY-001 complete:** 2026-11-03 live Play certificates owner-confirmed PASS (original app signer `3CC2E727…`, upload signer `41BFFC71…`); no key changes necessary. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md).
 2. GitHub/Play merged release manifest **consistency owner-reported PASS** (2026-11-03, [evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md)); complete separate **original-signer production** smoke on a spare device; review [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), with **no merge without express owner approval**. Complete [PLAY-006](BACKLOG.md) device/manifest acceptance, public privacy URL, Android backup and truthful embedded-WebView/Data safety disclosures. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.

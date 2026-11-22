@@ -1,5 +1,18 @@
 # Status
 
+## Ragutis 0.3.5 — ACTIVE PLAY CLOSED TEST (OWNER-REPORTED 2026-11-22)
+
+**Development version:** 0.3.5
+**Latest public release:** 0.3.4
+**Status:** CLOSED-TEST PLAY DELIVERY + IN-PLACE GITHUB UPGRADE PASS ON OWNER DEVICE; PRODUCTION NOT RELEASED
+**Date:** 2026-11-22
+
+The owner reports an **automatic GitHub→Google Play in-place upgrade** on their device. All speakers and room assignments survived, STR control remains functional, and Play update/privacy links work. The active closed test has **fewer than 12 testers**. Android system backup is intentionally allowed for restoring device/room settings. Source/installed-version/signing provenance, Auto Backup restore, Play Data safety and public-production eligibility are separate open gates. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+
+GitHub v0.3.4/code15 remains the latest public GitHub release. Draft PR #21 is still unmerged; existing Play delivery does not retroactively authorize a merge or establish exact delivered source SHA.
+
+## Historical 2026-11-03 staging snapshot — not the current Play distribution state
+
 ## Ragutis 0.3.5 — PLAY INTERNAL CANDIDATE (UNRELEASED)
 
 **Development version:** 0.3.5

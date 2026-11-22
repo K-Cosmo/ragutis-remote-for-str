@@ -39,6 +39,10 @@ Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
 
+## Current closed-test Play upgrade — scoped device QA (owner-reported 2026-11-22)
+
+The owner reports automatic Google Play installation over an existing GitHub version **without uninstall**, all saved speakers and room assignments intact, STR control working, and both Play/privacy links operational. [Dated evidence](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). This is a **real-device cross-channel functional PASS**, but not independent exact installed APK signature/version proof, an Android cloud-backup restoration test, full Data safety acceptance or 0.3.6 signed-device QA.
+
 ## Product-flavor distribution QA — debug owner PASS, release gates OPEN
 
 The staged 0.3.5 code adds `github` and `play` Gradle flavors **after** the prior owner-reported 6/6 debug pass of `8ccb4564ee0d08a83527ecb391a1a514dc451d46`. For the later exact functional source `c17f6a00a5028a49e72321d8e4e21dd5d6f64698`, the owner reported **both debug flavor builds show the requested behavior, content and links**; [dated dual-flavor QA](evidence/qa/2026-11-03-ragutis-0.3.5-flavor-device-qa.md). The following is the targeted test scope, not proof of every unreported negative-path or signed production case:

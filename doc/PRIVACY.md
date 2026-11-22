@@ -1,6 +1,6 @@
 # Privacy policy / Datenschutzhinweise — Ragutis Remote for SoundTouch Reborn
 
-**Scope:** Ragutis STR / Ragutis Remote for SoundTouch Reborn (Android application ID `app.strremote.android`), including GitHub and intended Google Play test distribution. Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
+**Scope:** Ragutis STR / Ragutis Remote for SoundTouch Reborn (Android application ID `app.strremote.android`), including GitHub and active Google Play closed-test distribution (owner-reported 2026-11-22). Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
 
 ## Deutsch
 
@@ -12,7 +12,7 @@ Ragutis Remote for SoundTouch Reborn wird als eigenständiges Community-Projekt 
 
 Die App sucht STR-Lautsprecher im lokalen WLAN und zeigt deren vorhandene Fernbedienungsoberfläche. Lokal in Androids App-Speicher können der zuletzt verbundene Lautsprecher, IP-/Hostname und Port, Geräte- und Modellbezeichnungen, ausgewählte oder selbst eingegebene Raumnamen, Kennungen und Zustände noch nicht auf STR umgestellter Bose-Geräte sowie Anzeigeeinstellungen gespeichert sein. Diese Daten dienen Geräteauswahl, Wiederverbindung und Anzeige und werden **nicht durch einen Ragutis-eigenen Server synchronisiert oder für Analytics verwendet**. Es gibt keinen Ragutis-Benutzeraccount und keine eingebauten Werbe- oder Tracking-SDKs.
 
-**Android-Systembackup:** Die veröffentlichte App hat derzeit `android:allowBackup="true"`. Abhängig von Android-Version und Backup-/Geräteübertragungseinstellungen können geeignete lokal gespeicherte App-Daten durch **Androids Systembackup oder Geräteübertragung** gesichert und wiederhergestellt werden. Daher versprechen wir nicht, dass diese Daten das Telefon unter allen Umständen niemals verlassen. Die genau betroffenen Dateien und Google-Play-Datensicherheitsangaben sind vor einer Play-Veröffentlichung gesondert zu prüfen.
+**Android-Systembackup:** Die App lässt die Systemsicherung bewusst aktiviert (`android:allowBackup="true"`), damit Lautsprecher- und Raumeinstellungen bei einer Wiederherstellung verfügbar sein können. Abhängig von Android-Version und Backup-/Geräteübertragungseinstellungen können geeignete lokal gespeicherte App-Daten durch **Androids Systembackup oder Geräteübertragung** gesichert und wiederhergestellt werden. Daher versprechen wir nicht, dass diese Daten das Telefon unter allen Umständen niemals verlassen. Die genau betroffenen Dateien und Google-Play-Datensicherheitsangaben sind vor einer Play-Veröffentlichung gesondert zu prüfen.
 
 ### Netzwerkzugriffe und Geräte
 
@@ -42,7 +42,7 @@ Ragutis Remote for SoundTouch Reborn is published as an independent, unofficial 
 
 The Android app discovers STR speakers on the local Wi-Fi network and displays the existing STR remote. Android app-private storage may contain the last connected speaker, host/IP and port, device and model labels, built-in/custom room labels, temporary original-firmware Bose device setup status/identity and local UI choices. These are used for device selection and reconnection. **Ragutis does not run its own sync server, user account, advertising or analytics backend or SDK.**
 
-**System backup:** The currently published Android app has `android:allowBackup="true"`. Eligible saved app data may be included in **Android system/cloud backups or device transfers**, subject to OS and user settings. We therefore do not promise that locally saved data can never leave a device. Exact data inclusion and any corresponding Play disclosures require a separate review of the delivered app.
+**System backup:** Android backup is intentionally enabled (`android:allowBackup="true"`) so saved speaker and room settings may be restorable. Eligible saved app data may be included in **Android system/cloud backups or device transfers**, subject to OS and user settings. We therefore do not promise that locally saved data can never leave a device. Exact data inclusion and any corresponding Play disclosures require a separate review of the delivered app.
 
 ### LAN communication, STR WebView and setup
 

@@ -2,6 +2,20 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass.
 
+## Play distribution state — owner-reported acceptance 2026-11-22
+
+- [x] Owner confirms an active **closed-test** Play delivery, not Play production.
+- [x] Play automatically installed an update **over an existing GitHub installation** without uninstalling.
+- [x] All saved speakers, room assignments and STR control survived the update.
+- [x] Installed Play update link and native privacy link work.
+- [x] Owner explicitly retains `allowBackup=true` for restoring local speaker/room preferences.
+- [ ] Capture exact Play-installed versionCode/versionName, installed app-signing certificate, source/AAB provenance.
+- [ ] Review actual Android backup payload, embedded STR WebView traffic and Play Data safety declarations. A working upgrade is not a tested cloud restore.
+- [ ] **Fewer than 12 closed testers** currently opted in; satisfy applicable 12 continuous testers / 14 days and distinct production-approval gates.
+- [ ] Separate source/merge, GitHub APK and Play distribution approvals remain required. No automatic publication.
+
+[Owner device QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). Dated 2026-11-03 editor-only checklists below are historical snapshots and no longer describe the present delivery state.
+
 ## Google Play first internal test — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
 
 - [x] **Current GitHub baseline:** public original-signer v0.3.4/code 15, owner-reported signed 6/6 device QA and public release/asset digest verified. Google Play is a separate distribution workflow, not automatically released.
