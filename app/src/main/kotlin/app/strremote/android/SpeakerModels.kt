@@ -106,6 +106,16 @@ internal fun speakerVisibilityKey(endpoint: SpeakerEndpoint): String =
     stableSpeakerKey(endpoint.key, endpoint.host)?.let { "key:${it.lowercase()}" }
         ?: "host:${endpoint.host.lowercase()}"
 
+
+/** An unkeyed stored host must not become the saved room of two different keyed rows. */
+internal fun savedSpeakerClaimedByDifferentIdentity(
+    rows: Collection<SpeakerRow>, saved: SavedSpeaker, candidate: SpeakerCandidate
+): Boolean = rows.any { row ->
+    val attached = row.saved ?: return@any false
+    speakerMatches(attached.endpoint, saved.endpoint) &&
+        !speakerCandidateMatches(row.candidate, candidate)
+}
+
 internal fun speakerRowMatchesCandidate(row: SpeakerRow, candidate: SpeakerCandidate): Boolean {
     // A saved *unkeyed* endpoint may match by host, but it must not erase
     // a different real key already established by a discovery announcement.

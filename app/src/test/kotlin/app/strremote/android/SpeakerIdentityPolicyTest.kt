@@ -69,6 +69,21 @@ class SpeakerIdentityPolicyTest {
         assertEquals("host:192.0.2.15", speakerVisibilityKey(candidate("host:192.0.2.15")))
     }
 
+    @Test fun unkeyedSavedHostIsNotClaimedByTwoDifferentKeyedRows() {
+        val manual = SavedSpeaker(endpoint(null))
+        val claimed = SpeakerRow(candidate("device-A"), null, false, saved = manual)
+        assertTrue(savedSpeakerClaimedByDifferentIdentity(
+            listOf(claimed), manual, candidate("device-B")
+        ))
+        assertFalse(savedSpeakerClaimedByDifferentIdentity(
+            listOf(claimed), manual, candidate("device-A")
+        ))
+        assertFalse(savedSpeakerClaimedByDifferentIdentity(
+            listOf(SpeakerRow(candidate("host:192.0.2.15"), null, false, saved = manual)),
+            manual, candidate("device-A")
+        ))
+    }
+
     @Test fun distinctKeysOnOneHostMayBothStartProbes() {
         val guard = DiscoveryCycleGuard()
         val first = speakerVisibilityKey(candidate("device-A"))

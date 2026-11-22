@@ -852,7 +852,7 @@ class MainActivity : Activity() {
 
             val existingKey = findRowKey(candidate)
             val existing = existingKey?.let(speakers::get)
-            val saved = existing?.saved ?: prefs.findSavedSpeaker(candidate.key, candidate.host)
+            val saved = existing?.saved ?: findUnclaimedSavedSpeaker(candidate)
 
             if (existingKey != null && existingKey != candidate.key) {
                 speakers.remove(existingKey)
@@ -929,7 +929,7 @@ class MainActivity : Activity() {
         val existingKey = findRowKey(candidate)
         val rowKey = existingKey ?: candidate.key
         val existing = existingKey?.let(speakers::get)
-        val saved = existing?.saved ?: prefs.findSavedSpeaker(candidate.key, candidate.host)
+        val saved = existing?.saved ?: findUnclaimedSavedSpeaker(candidate)
         speakers[rowKey] = (existing ?: SpeakerRow(candidate, null, false, saved, true)).copy(
             candidate = candidate,
             probeFinished = false,
@@ -1659,6 +1659,11 @@ class MainActivity : Activity() {
         model = endpoint.model,
         version = null
     )
+
+    private fun findUnclaimedSavedSpeaker(candidate: SpeakerCandidate): SavedSpeaker? =
+        prefs.findSavedSpeaker(candidate.key, candidate.host)?.takeUnless { saved ->
+            savedSpeakerClaimedByDifferentIdentity(speakers.values, saved, candidate)
+        }
 
     private fun findRowKey(candidate: SpeakerCandidate): String? {
         return speakers.entries.firstOrNull { (_, row) ->
