@@ -11,7 +11,8 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [x] Owner explicitly retains `allowBackup=true` for restoring local speaker/room preferences.
 - [x] **Installed version reported via adb (owner):** `versionCode=16`, `versionName=0.3.5`, `targetSdk=37`; consistent with the previously checked Play 0.3.5 AAB metadata.
 - [ ] **Investigate installed `minSdk=32` vs AAB/Gradle `minSdk=26`:** bundletool can generate API-specific APK variants and inject per-variant minSdk, but the exact installed variant/Play device-catalog compatibility down to API 26 is not independently verified.
-- [ ] Confirm installed app-signing certificate and exact source/AAB provenance; an in-place update and matching version alone are not a binary hash/signature proof.
+- [x] **Installed Google Play APK certificate continuity PASS (owner-reported 2026-11-22):** extracted the installed `base.apk` using ADB and checked it with `apksigner verify --print-certs` plus the project certificate parser; SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` exactly matches the established GitHub/Play in-use app-signing certificate, not the separate Play upload key. Raw APK bytes not independently inspected; [dated owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+- [ ] Confirm exact Play uploaded-AAB and source-commit provenance for the delivered 0.3.5/code16 release; the matching installed signature proves certificate continuity, not exact source identity.
 - [ ] Review actual Android backup payload, embedded STR WebView traffic and Play Data safety declarations. A working upgrade is not a tested cloud restore.
 - [ ] **Fewer than 12 closed testers** currently opted in; satisfy applicable 12 continuous testers / 14 days and distinct production-approval gates.
 - [ ] Separate source/merge, GitHub APK and Play distribution approvals remain required. No automatic publication.

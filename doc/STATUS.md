@@ -7,7 +7,7 @@
 **Status:** CLOSED-TEST PLAY DELIVERY + IN-PLACE GITHUB UPGRADE PASS ON OWNER DEVICE; PRODUCTION NOT RELEASED
 **Date:** 2026-11-22
 
-The owner reports an **automatic GitHub→Google Play in-place upgrade** on their device. All speakers and room assignments survived, STR control remains functional, and Play update/privacy links work. The active closed test has **fewer than 12 testers**. Android system backup is intentionally allowed for restoring device/room settings. Source/installed-version/signing provenance, Auto Backup restore, Play Data safety and public-production eligibility are separate open gates. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+The owner reports an **automatic GitHub→Google Play in-place upgrade** on their device. All speakers and room assignments survived, STR control remains functional, and Play update/privacy links work. The active closed test has **fewer than 12 testers**. Android system backup is intentionally allowed for restoring device/room settings. Installed version 0.3.5/code16/target SDK 37 and **installed APK app-signing certificate continuity** are now owner-reported PASS, with the installed certificate SHA-256 matching the original GitHub signer. Exact Play AAB/source revision provenance, Auto Backup restore, API-26 device compatibility, Play Data safety and public-production eligibility are separate open gates. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
 GitHub v0.3.4/code15 remains the latest public GitHub release. Draft PR #21 is still unmerged; existing Play delivery does not retroactively authorize a merge or establish exact delivered source SHA.
 
