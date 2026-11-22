@@ -18,6 +18,7 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 
 ## 0.3.6 GitHub / Google Play closed-test bugfix — NEW OPEN GATES
 
+- [ ] Close F-034 identity isolation on the final source head: same-host/different keyed devices, unkeyed saved-speaker claim, hide/re-scan, and late probe callbacks. JVM tests are necessary but real-device behavior remains separately gated.
 - [ ] Verify both flavor builds, lint, unit tests, doc gate and versionCode17/versionName0.3.6.
 - [ ] On-device German/English QA: delete new unsaved rows before assigning a room; new discovered rows turn green/red automatically after STR probe; clearing rooms never makes offline devices online. Confirm saved/pending-Bose negative cases and re-discovery timing.
 - [ ] No changes to production application ID, signer continuity, permission set, local data schema or Play-vs-GitHub update routing; review manifests/privacy and PR #21 integration.

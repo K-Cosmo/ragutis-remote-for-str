@@ -224,3 +224,11 @@
 **Resolution proposed:** Restore one topic per normative document, cross-link authoritative state/history/quality records, retain immutable published release/source identity and historical QA, and correct outdated consent/privacy wording. No Android code or Play deployment changes. [Dated convergence review](evidence/qa/2026-11-03-documentation-convergence-str-owner.md).
 
 **State:** CLOSED — documentation convergence was accepted and merged in [PR #22](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/22) after successful exact-head CI and semantic review on 2026-11-03. New drift must be tracked separately.
+
+## F-034 — Keyed device identity can collide through host-only discovery/hide paths (2026-11-22)
+
+**Observed by static review of draft PR #25:** `findRowKey(candidate)` previously matched otherwise-unprobed rows by host even with **different keyed identities**; `speakerVisibilityKeys` hid both the removed device key *and* its host; `DiscoveryCycleGuard` deduplicated probes solely by host. A manually stored unkeyed endpoint could also be attached to two different keyed discovery rows sharing that host. This contradicts the existing [API contract](API_CONTRACTS.md) that different keyed speakers must never merge solely because their host matches. A physical hardware reproduction is **not** claimed.
+
+**Corrective source in draft PR #25:** Explicit IDs take priority over host fallback in row lookup, visibility and scan probe guards. Synthesized `host:host` and `serviceName@host` discovery keys retain unkeyed host fallback. Unkeyed saved metadata may be claimed by one keyed device but cannot be silently reused for a different simultaneously discovered keyed identity. Focused JVM tests exercise same-host/different-ID, same-ID/IP change, unkeyed/manual fallback, hide isolation and per-key probing; Android real-device QA remains a separate gate.
+
+**State:** IMPLEMENTED IN DRAFT, NOT OWNER-DEVICE VERIFIED. The implementation requires CI PASS on its final head and real-device/DE-EN/Bose regression evidence before acceptance; see [Tests](TESTS.md) and [0.3.6 gates](RELEASE_GATES.md).

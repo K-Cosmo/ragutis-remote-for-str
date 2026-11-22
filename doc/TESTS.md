@@ -64,6 +64,8 @@ After owner-authorized internal Play rollout, install the **Play-delivered** app
 
 JVM policy regression tests: unsaved deletion action, neutral while probing, reachable green/unreachable red after probe, saved cached reachability, no Wi-Fi, and pending-Bose isolation. These tests **cannot** replace Android UI QA.
 
+Additional **identity isolation** regression: two different real device IDs sharing an IP/host must remain separate rows, separate hide actions and independently probeable candidates. A manually entered/unkeyed saved endpoint may match by host only until claimed by a keyed device; it must not be assigned concurrently to a second differently keyed speaker. Synthesized mDNS fallback keys still use host matching. Keep Bose-pending rows distinct. Confirm on device where practical; unit policy tests do not simulate Android UI/mDNS callbacks end-to-end.
+
 1. A previously unknown STR speaker has its delete icon immediately, with no room assignment. Cancel keeps it. Confirm removes only its list card for this discovery session; an outstanding mDNS announcement cannot re-add it, but the next user-started scan can.
 2. Newly found STR cards start neutral during the HTTP probe, then automatically become green (STR reachable) or red (STR unreachable) without tapping or assigning a room. Confirm the appropriate DE/EN text and accessible delete label.
 3. Offline/red saved STR device: choose No room, a preset room and a custom room; it must remain red/offline throughout, even across screen refresh. Restart and verify room data and reachability. Only a successful connection probe can turn it green.
