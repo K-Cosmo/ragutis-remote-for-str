@@ -41,7 +41,7 @@ Documentation-only changes do not require a new Android APK when they do not cha
 
 ## Current closed-test Play upgrade — scoped device QA (owner-reported 2026-11-22)
 
-The owner reports automatic Google Play installation over an existing GitHub version **without uninstall**, all saved speakers and room assignments intact, STR control working, and both Play/privacy links operational. [Dated evidence](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). This is a **real-device cross-channel functional PASS**, but not independent exact installed APK signature/version proof, an Android cloud-backup restoration test, full Data safety acceptance or 0.3.6 signed-device QA.
+The owner reports automatic Google Play installation over an existing GitHub version **without uninstall**, all saved speakers and room assignments intact, STR control working, and both Play/privacy links operational. [Dated evidence](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). This is a **real-device cross-channel functional PASS**. Owner follow-up `dumpsys package` shows installed 0.3.5/code16/targetSdk37, and their `apksigner verify --print-certs` check of the ADB-extracted Play `base.apk` returned the matching app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` (**installed signer PASS, owner-reported**). Still not proof of exact uploaded AAB/source SHA, cloud-backup restoration, API-26 Play device compatibility, Play Data safety or 0.3.6 signed-device QA.
 
 ## Product-flavor distribution QA — debug owner PASS, release gates OPEN
 
