@@ -60,7 +60,11 @@ The live Play **app-signing** and **upload** certificate fingerprints were owner
 
 After owner-authorized internal Play rollout, install the **Play-delivered** app over a previously installed GitHub signed version with a **lower versionCode** and preserve speaker/room data, then verify installed app certificate SHA-256 is the original GitHub/Play **app-signing** cert (not the upload cert), normal STR control, manual update-check channel UX, DE/EN, restart and live device/room state. A fresh Play install alone is **not sufficient** evidence of cross-channel in-place upgrade. If current GitHub v0.3.4 has code 15, plan a distinct Play candidate code **16+**. See [Play preparation](PLAY_STORE_PREPARATION.md).
 
-## 0.3.6 bugfix candidate — NEW OPEN REAL-DEVICE QA
+## 0.3.6 owner debug-device acceptance — scoped PASS (2026-11-22)
+
+Exact tested PR #25 source `f8f95d1e1929cc882daad77cdc7c209455a7c197` passed both-flavor CI, and the owner reported **12 PASS / 0 FAIL / 2 N/A**: T01–T11 and T14 PASS; T12 original-firmware Bose and T13 manual-IP are **NOT TESTED**. [Full dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). The original three reported bugs and standard discovery/room/multi-device regressions were verified. Exceptional same-IP/different-key F-034 interactions were covered by JVM policy tests but not reproduced on hardware; signed GitHub and Play update smoke requires separately created release artifacts and approvals.
+
+## 0.3.6 bugfix candidate — REAL-DEVICE QA MATRIX (T12/T13 STILL OPEN)
 
 JVM policy regression tests: unsaved deletion action, neutral while probing, reachable green/unreachable red after probe, saved cached reachability, no Wi-Fi, and pending-Bose isolation. These tests **cannot** replace Android UI QA.
 

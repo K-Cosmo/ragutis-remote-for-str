@@ -4,8 +4,8 @@ This document describes **sequence and dependencies**, not release history or a 
 
 ## Next sequence — 0.3.6 GitHub + Play closed-test bugfix
 
-1. Complete review and both-flavor CI of the separate 0.3.6/code17 bugfix branch stacked on [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21). Keep GitHub public v0.3.4/code15 and Google Play closed-test v0.3.5/code16 unchanged during review.
-2. Execute real-device bug reproductions/regressions (new device delete/online/offline, saved offline room reset), DE/EN, pending Bose and genuine persisted-data upgrade tests; record source SHA and evidence.
+1. **Done at tested source:** both-flavor CI PASS for `f8f95d1e1929cc882daad77cdc7c209455a7c197`; owner debug-device QA **12 PASS / 0 FAIL / 2 N/A** including all three original bug fixes, standard discovery and DE/EN/Play routing. [Exact-scoped evidence](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). Keep GitHub public v0.3.4/code15 and Google Play closed-test v0.3.5/code16 unchanged during review.
+2. **Remaining before full signed release acceptance:** T12 original Bose setup and T13 manual-IP path were N/A; determine whether to test or explicitly defer them. The identical-IP/different-key F-034 hardware edge case is not physically tested. Prepare separately signed in-place GitHub/Play upgrade QA; never treat debug smoke as signed-release verification.
 3. Merge PR #21 and the subsequent 0.3.6 bugfix only after independent review, CI and explicit owner merge approval.
 4. Separately approve, sign, inspect and publish the original-signer GitHub APK and the Play upload-key-signed AAB for **v0.3.6/code17**. Update the **existing Play closed test**, not Play production; verify actual Play-delivered v0.3.5→0.3.6 update preserves devices and rooms.
 5. Continue community beta testing and monitor feedback/Android Vitals. The owner reports **fewer than 12** opted-in testers; the applicable 12/14-day Play production gate remains open. Keep Android backup enabled for restoration while auditing its actual content and Play Data safety. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
