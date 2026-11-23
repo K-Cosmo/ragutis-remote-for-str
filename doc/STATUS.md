@@ -1,19 +1,23 @@
 # Status
 
-## Ragutis 0.3.6 — DRAFT BUGFIX CANDIDATE (NOT RELEASED)
+## Ragutis 0.3.6 — SOURCE MERGED / RELEASE CANDIDATE (NOT PUBLISHED)
 
 **Development version:** 0.3.6
 **Latest public release:** 0.3.4
-**Status:** SOURCE AND CI PASS; OWNER DEBUG-DEVICE QA 12 PASS / 0 FAIL / 2 NOT TESTED; SIGNED UPGRADE / MERGE / RELEASE GATES OPEN
-**Date:** 2026-11-22
+**Status:** SOURCE MERGED TO MAIN; PR-HEAD CI PASS; DEBUG-DEVICE QA 12 PASS / 0 FAIL / 2 NOT TESTED; SIGNED UPGRADES / DISTRIBUTION GATES OPEN
+**Date:** 2026-11-23
+
+**Source merge acceptance (2026-11-23):** The owner explicitly approved, and GitHub verified three normal **merge-commit** merges in the requested sequence: [#26](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/26) at `13ad2e1689c509d1bb521622ec99a88f33efddf4`, [#21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21) at `0c83810d63452974165623cfdc4c4929e5f90415`, and [#25](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/25) at final `main` `2bcdf023e67eb6f06a7d37f9add3a233711938c7`. All PR heads had **successful CI**; the owner-device 0.3.6 debug QA remains tied to the tested application commit, not a newly signed artifact. [Dated source-merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md). The final post-merge `main` CI has a separate gate; the first intermediate main build hit an external Maven Central HTTP 429 dependency-download failure (no code failure established).
+
+**Distribution boundary:** Public GitHub latest stays **v0.3.4/code15**, active owner-reported Play **closed test stays v0.3.5/code16**. Merging 0.3.6/code17 source neither signs nor publishes a new APK/AAB, updates a tester installation, nor grants Play production access.
 
 **0.3.6 owner debug-device QA (2026-11-22):** On exact tested source `f8f95d1e1929cc882daad77cdc7c209455a7c197`, both GitHub Actions runs succeeded, and the owner reported **T01–T11 and T14 PASS, T12/T13 N/A (not tested), zero FAIL**. All three original bug reports passed on device: immediate delete for new speakers, correct online/offline changes without room assignment, and no false online state after clearing/changing a room. Re-discovery, normal multiple-speaker handling and DE/EN Play-debug routing passed. **Original-firmware Bose setup, manual IP path and same-host/different-key integration remain outside the verified physical scope.** [Dated acceptance](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
 
 **Updated Play baseline (2026-11-22, owner-reported):** Google Play automatically upgraded an existing GitHub Ragutis installation on the owner's device without uninstall; **all saved speakers and rooms, STR control, Play update link and privacy link work**. Android backup remains intentionally allowed for restoration; fewer than 12 testers are enrolled. Installed 0.3.5/code16/targetSdk37 and **original GitHub/Play app-signing certificate SHA-256 matching** are now owner-reported PASS by ADB/apksigner. This does not verify exact uploaded-AAB/source SHA, API-26 Play compatibility or a 0.3.6 release. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
-The 0.3.6/code17 candidate is based on the still-draft 0.3.5 code16 GitHub/Play-flavor PR #21. The owner reports that v0.3.5 is active in the Google Play **closed test**; public GitHub latest remains v0.3.4. This candidate fixes three device-list issues: delete action missing for unsaved discovered STR speakers, no live reachability coloring before room assignment, and saved offline devices incorrectly becoming online after resetting their room. There is no app ID, signing-key, preference schema or update-channel change.
+The 0.3.6/code17 candidate now builds on the merged 0.3.5 GitHub/Play distribution source from PR #21. The owner reports that v0.3.5 is active in the Google Play **closed test**; public GitHub latest remains v0.3.4. This candidate fixes three device-list issues: delete action missing for unsaved discovered STR speakers, no live reachability coloring before room assignment, and saved offline devices incorrectly becoming online after resetting their room. There is no app ID, signing-key, preference schema or update-channel change.
 
-**No v0.3.6 production artifact has yet been signed, merged or released.** The scoped **debug-device QA is PASS** (12/14 assessed PASS, 2 NOT TESTED); original-signer GitHub and Play-delivered signed upgrade tests and separate owner approvals remain required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).
+**No v0.3.6 production artifact has yet been signed or released.** The scoped **debug-device QA is PASS** (12/14 assessed PASS, 2 NOT TESTED); original-signer GitHub and Play-delivered signed upgrade tests and separate **distribution** approvals remain required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).
 
 ## Historical 0.3.5 candidate snapshot (as recorded on 2026-11-03)
 

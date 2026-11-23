@@ -2,13 +2,13 @@
 
 This document describes **sequence and dependencies**, not release history or a second backlog. Current state: [Status](STATUS.md). Individual work items and priorities: [Backlog](BACKLOG.md). Verification requirements: [Release gates](RELEASE_GATES.md). Completed changes: [Changelog](CHANGELOG.md).
 
-## Next sequence — 0.3.6 GitHub + Play closed-test bugfix
+## Next sequence — verify and distribute merged 0.3.6 source
 
-1. **Done at tested source:** both-flavor CI PASS for `f8f95d1e1929cc882daad77cdc7c209455a7c197`; owner debug-device QA **12 PASS / 0 FAIL / 2 N/A** including all three original bug fixes, standard discovery and DE/EN/Play routing. [Exact-scoped evidence](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). Keep GitHub public v0.3.4/code15 and Google Play closed-test v0.3.5/code16 unchanged during review.
-2. **Remaining before full signed release acceptance:** T12 original Bose setup and T13 manual-IP path were N/A; determine whether to test or explicitly defer them. The identical-IP/different-key F-034 hardware edge case is not physically tested. Prepare separately signed in-place GitHub/Play upgrade QA; never treat debug smoke as signed-release verification.
-3. Merge PR #21 and the subsequent 0.3.6 bugfix only after independent review, CI and explicit owner merge approval.
-4. Separately approve, sign, inspect and publish the original-signer GitHub APK and the Play upload-key-signed AAB for **v0.3.6/code17**. Update the **existing Play closed test**, not Play production; verify actual Play-delivered v0.3.5→0.3.6 update preserves devices and rooms.
-5. Continue community beta testing and monitor feedback/Android Vitals. The owner reports **fewer than 12** opted-in testers; the applicable 12/14-day Play production gate remains open. Keep Android backup enabled for restoration while auditing its actual content and Play Data safety. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
+1. **Confirm final post-merge CI** on `main` source `2bcdf023e67eb6f06a7d37f9add3a233711938c7` (not just earlier green PR heads). The first intermediate `main` run after #26 failed on an external Maven Central **HTTP 429** when downloading Gradle dependencies. Distinguish transient external throttling from code/test failures; do not alter dependencies without evidence. [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
+2. Decide whether to physically test or expressly defer **T12 Bose-original-firmware setup**, **T13 manual IP** and **F-034 same-host/different-key integration**. The recorded owner debug-device scope is 12 PASS / 0 FAIL / 2 N/A; do not convert N/A to PASS.
+3. With a separate owner approval, create and inspect the **original-signer GitHub v0.3.6/code17 APK**. Perform an actual signed in-place update over GitHub v0.3.4/code15 with saved rooms/speakers and playback retained; record SHA-256, source SHA and certificate.
+4. Independently authorize, sign (registered **upload** key), inspect and distribute the v0.3.6/code17 **Play closed-test AAB**, then verify a true Play-managed v0.3.5/code16→v0.3.6/code17 in-place update with saved data and unchanged Play **app-signing** certificate. Do not roll out to Play production.
+5. Continue genuine closed-tester recruitment and reconcile Android backup, embedded STR WebView and Play Data safety disclosures. The owner reported fewer than 12 enrolled closed testers; production permission remains separate.
 
 ## Historical 0.3.5 Play preparation (recorded 2026-11-03)
 

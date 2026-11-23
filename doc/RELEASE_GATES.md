@@ -15,19 +15,22 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [ ] Confirm exact Play uploaded-AAB and source-commit provenance for the delivered 0.3.5/code16 release; the matching installed signature proves certificate continuity, not exact source identity.
 - [ ] Review actual Android backup payload, embedded STR WebView traffic and Play Data safety declarations. A working upgrade is not a tested cloud restore.
 - [ ] **Fewer than 12 closed testers** currently opted in; satisfy applicable 12 continuous testers / 14 days and distinct production-approval gates.
-- [ ] Separate source/merge, GitHub APK and Play distribution approvals remain required. No automatic publication.
+- [x] Owner-authorized source merges #26 → #21 → #25 completed 2026-11-23; final `main` source SHA `2bcdf023e67eb6f06a7d37f9add3a233711938c7`. [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
+- [ ] New GitHub-signed APK and Play closed-test bundle/upgrades require their own separate release authorizations. No automatic publication.
 
 [Owner device QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). Dated 2026-11-03 editor-only checklists below are historical snapshots and no longer describe the present delivery state.
 
-## 0.3.6 GitHub / Google Play closed-test bugfix — NEW OPEN GATES
+## 0.3.6 GitHub / Google Play closed-test bugfix — SOURCE MERGED, RELEASE GATES OPEN
 
 - [ ] **F-034 partial closure:** normal multi-device and discovery/hide/regeneration tests T03/T10/T11 PASS; policy JVM regressions and both-flavor CI PASS on source `f8f95d1e1929cc882daad77cdc7c209455a7c197`. The identical-IP/different-device-ID, unkeyed host-claim conflict and late-callback integration cases are **not physically tested**. Decide whether to add targeted device/integration QA or explicitly accept the residual scope before full F-034 closure. [Dated QA](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
 - [x] **Exact tested source `f8f95d1e1929cc882daad77cdc7c209455a7c197`:** both-flavor build, lint, unit tests and docs CI PASS ([push](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45053384306), [PR](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45053391742)); staged `versionName=0.3.6` / `versionCode=17`. Any subsequent documentation-only commit needs fresh exact-head CI, not new Android hardware evidence.
+- [ ] **Post-merge main CI** on `2bcdf023e67eb6f06a7d37f9add3a233711938c7`: verify the complete Android/doc workflow; the intermediate #26 `main` run failed on external Maven Central HTTP 429 throttling (not proven source defect). [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
 - [x] **Scoped owner-reported debug-device QA: T01–T11, T14 PASS; 0 FAIL.** Confirmed immediate delete without room, hide/rediscovery, automatic green/red status, offline state preserved across clearing/reassigning room, recovery, no duplicates, normal multi-speaker handling and DE/EN/Play debug routing. [Test matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
 - [ ] **Excluded from this physical QA:** T12 original-firmware Bose setup and T13 manual-IP connection (**N/A / NOT TESTED**), plus identical-IP/different-key F-034 exceptional integration; do not present the 14-case matrix as 14/14 PASS.
 - [ ] No changes to production application ID, signer continuity, permission set, local data schema or Play-vs-GitHub update routing; review manifests/privacy and PR #21 integration.
 - [ ] Original-signer GitHub signed APK in-place over v0.3.4/code15 with persisted data; Play-upload-key-signed AAB and actual Play-delivered v0.3.5/code16→0.3.6/code17 upgrade with retained data and original Play **app-signing** identity.
-- [ ] Explicit owner merge authorization, then independent GitHub signed-release authorization and Google Play **closed test** rollout approval. No Play production release or new keys.
+- [x] **Source merges #26, #21, #25:** separately owner-authorized and completed as normal merge commits; no release action implied. [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
+- [ ] **Separate owner approvals** for original-key signed GitHub v0.3.6 release and Google Play v0.3.6 **closed-test** upload/rollout. No Play production release or new keys.
 
 ## Historical 0.3.5 internal-test preparation — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
 
