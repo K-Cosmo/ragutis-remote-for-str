@@ -23,3 +23,11 @@ GitHub's `main` branch HEAD was explicitly re-fetched and matched `2bcdf023e67eb
 - Pending: exact final-main CI, original-key signed GitHub 0.3.6 update test, independently signed Play AAB and real 0.3.5→0.3.6 update, owner approval for each release channel; T12/T13 and the exceptional same-host/different-key F-034 hardware case remain untested.
 
 See [Status](../../STATUS.md), [Release gates](../../RELEASE_GATES.md) and [Planned](../../PLANNED.md).
+
+## Post-capture CI completion (2026-11-23)
+
+After the above initial in-progress snapshot, GitHub Actions completed both later normal `main` builds successfully:
+- [Post-#21 main CI run 45200779186](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45200779186): **success** on `0c83810d63452974165623cfdc4c4929e5f90415`.
+- [Post-#25 final main CI run 45200951905](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45200951905): **success** on exact merged `main` `2bcdf023e67eb6f06a7d37f9add3a233711938c7`.
+
+Thus **source merge + final post-merge Android/documentation CI PASS**. The earlier #26 failure remains a dated infrastructure/dependency-download **HTTP 429**, not a hidden PASS or reproducible code defect. These successful builds do not confer signed APK, AAB or Play release approval.
