@@ -43,6 +43,21 @@ jobs:
             throw "PowerShell history-rewrite script syntax errors"
           }
 
+      - name: Parse-check original-key GitHub signing script (NO execution)
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            "tools/build-signed-release.ps1",
+            [ref]$tokens,
+            [ref]$parseErrors
+          ) | Out-Null
+          if ($parseErrors.Count -gt 0) {
+            $parseErrors | ForEach-Object { Write-Error $_.Message }
+            throw "GitHub signing script syntax errors"
+          }
+
       - name: Check documentation/version/release consistency
         shell: pwsh
         run: ./tools/verify-doc-consistency.ps1
@@ -51,10 +66,16 @@ jobs:
         run: |
           chmod +x ./gradlew
           ./gradlew --version
-          ./gradlew clean :app:assembleDebug :app:lintDebug :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --stacktrace
+          ./gradlew clean :app:assembleGithubDebug :app:lintGithubDebug :app:testGithubDebugUnitTest :app:assemblePlayDebug :app:lintPlayDebug :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:lintGithubRelease :app:bundlePlayRelease :app:lintPlayRelease --stacktrace
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v7.0.1
         with:
-          name: remote-for-str-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: ragutis-github-debug
+          path: app/build/outputs/apk/github/debug/app-github-debug.apk
+
+      - name: Upload Play-channel debug APK (QA only; not an AAB)
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: ragutis-play-debug
+          path: app/build/outputs/apk/play/debug/app-play-debug.apk

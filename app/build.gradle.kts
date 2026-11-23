@@ -10,8 +10,25 @@ android {
         applicationId = "app.strremote.android"
         minSdk = 26
         targetSdk = 37
-        versionCode = 15
-        versionName = "0.3.4"
+        versionCode = 16
+        versionName = "0.3.5"
+    }
+
+    // One application ID; distribution channels differ only in update routing.
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("github") {
+            dimension = "distribution"
+            buildConfigField("boolean", "GITHUB_UPDATES", "true")
+        }
+        create("play") {
+            dimension = "distribution"
+            buildConfigField("boolean", "GITHUB_UPDATES", "false")
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

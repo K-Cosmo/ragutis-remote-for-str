@@ -1149,79 +1149,97 @@ class MainActivity : Activity() {
         paragraph(getString(R.string.app_name), emphasized = true)
         paragraph(getString(R.string.about_version_format, version), emphasized = true)
 
-        // A user-initiated check is never throttled by the automatic 24h cache.
-        // Show a clear result even when the installed version is already current
-        // or GitHub is unavailable on a local-only speaker Wi-Fi network.
+        // Only the GitHub flavor may offer GitHub APK release updates.
+        // Play builds have no GitHub update check or external APK prompt.
         var aboutDialog: AlertDialog? = null
-        val updateStatus = TextView(this).apply {
-            textSize = 14f
-            setPadding(0, dp(4), 0, dp(12))
-            visibility = View.GONE
-        }
-        val updateProgress = ProgressBar(this).apply {
-            isIndeterminate = true
-            visibility = View.GONE
-        }
-        val checkUpdatesButton = Button(this).apply {
-            text = getString(R.string.update_check_now)
-            isAllCaps = false
-            setOnClickListener {
-                val signedRelease = packageName == "app.strremote.android"
-                val installedVersion = version
-                if (installedVersion == "?") {
-                    updateStatus.setText(R.string.update_check_failed)
-                    updateStatus.visibility = View.VISIBLE
-                    return@setOnClickListener
-                }
-                manualUpdateCheckRequested = true
-                isEnabled = false
-                updateStatus.setText(R.string.update_check_in_progress)
-                updateStatus.visibility = View.VISIBLE
-                updateProgress.visibility = View.VISIBLE
-                Thread({
-                    val result = AppUpdateChecker.fetch(installedVersion)
-                    if (result != null && signedRelease) {
-                        getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
-                            .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
+        if (BuildConfig.GITHUB_UPDATES) {
+            // A user-initiated check is never throttled by the automatic 24h cache.
+            // Show a clear result even when the installed version is already current
+            // or GitHub is unavailable on a local-only speaker Wi-Fi network.
+            val updateStatus = TextView(this).apply {
+                textSize = 14f
+                setPadding(0, dp(4), 0, dp(12))
+                visibility = View.GONE
+            }
+            val updateProgress = ProgressBar(this).apply {
+                isIndeterminate = true
+                visibility = View.GONE
+            }
+            val checkUpdatesButton = Button(this).apply {
+                text = getString(R.string.update_check_now)
+                isAllCaps = false
+                setOnClickListener {
+                    val signedRelease = packageName == "app.strremote.android"
+                    val installedVersion = version
+                    if (installedVersion == "?") {
+                        updateStatus.setText(R.string.update_check_failed)
+                        updateStatus.visibility = View.VISIBLE
+                        return@setOnClickListener
                     }
-                    runOnUiThread {
-                        if (isFinishing || isDestroyed || aboutDialog?.isShowing != true) {
-                            return@runOnUiThread
+                    manualUpdateCheckRequested = true
+                    isEnabled = false
+                    updateStatus.setText(R.string.update_check_in_progress)
+                    updateStatus.visibility = View.VISIBLE
+                    updateProgress.visibility = View.VISIBLE
+                    Thread({
+                        val result = AppUpdateChecker.fetch(installedVersion)
+                        if (result != null && signedRelease) {
+                            getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
+                                .edit().putLong("last_success_ms", System.currentTimeMillis()).apply()
                         }
-                        isEnabled = true
-                        updateProgress.visibility = View.GONE
-                        when (updateStatusFor(result)) {
-                            AppUpdateStatus.FAILED -> updateStatus.setText(R.string.update_check_failed)
-                            AppUpdateStatus.CURRENT -> updateStatus.text =
-                                getString(R.string.update_already_current, installedVersion)
-                            AppUpdateStatus.UPDATE_AVAILABLE -> {
-                                if (!signedRelease) {
-                                    // Debug QA may inspect real GitHub status but must not
-                                    // offer an incompatible production APK as an upgrade.
-                                    updateStatus.setText(R.string.update_release_only)
-                                } else {
-                                    updateStatus.setText(R.string.update_found)
-                                    result?.available?.let { showAppUpdateDialog(it) }
+                        runOnUiThread {
+                            if (isFinishing || isDestroyed || aboutDialog?.isShowing != true) {
+                                return@runOnUiThread
+                            }
+                            isEnabled = true
+                            updateProgress.visibility = View.GONE
+                            when (updateStatusFor(result)) {
+                                AppUpdateStatus.FAILED -> updateStatus.setText(R.string.update_check_failed)
+                                AppUpdateStatus.CURRENT -> updateStatus.text =
+                                    getString(R.string.update_already_current, installedVersion)
+                                AppUpdateStatus.UPDATE_AVAILABLE -> {
+                                    if (!signedRelease) {
+                                        // Debug QA may inspect real GitHub status but must not
+                                        // offer an incompatible production APK as an upgrade.
+                                        updateStatus.setText(R.string.update_release_only)
+                                    } else {
+                                        updateStatus.setText(R.string.update_found)
+                                        result?.available?.let { showAppUpdateDialog(it) }
+                                    }
                                 }
                             }
                         }
-                    }
-                }, "RagutisUpdateCheckManual").start()
+                    }, "RagutisUpdateCheckManual").start()
+                }
+            }
+            layout.addView(checkUpdatesButton, LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
+            ))
+            layout.addView(updateProgress, LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, dp(24)
+            ).apply { gravity = Gravity.CENTER_HORIZONTAL })
+            layout.addView(updateStatus)
+        } else {
+            linkButton(R.string.update_open_play) {
+                // HTTPS opens via Play Store or the browser, when available.
+                openExternalUri(Uri.parse(
+                    "https://play.google.com/store/apps/details?id=app.strremote.android"
+                ))
             }
         }
-        layout.addView(checkUpdatesButton, LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
-        ))
-        layout.addView(updateProgress, LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT, dp(24)
-        ).apply { gravity = Gravity.CENTER_HORIZONTAL })
-        layout.addView(updateStatus)
         paragraph(getString(R.string.about_community_notice))
         paragraph(getString(R.string.about_trademark_notice))
         paragraph(getString(R.string.about_support_heading), emphasized = true)
 
         linkButton(R.string.about_source_link) {
             openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str"))
+        }
+        // Public Play privacy policy link: visible inside the app, opens a
+        // rendered, readable public webpage rather than an APK/file download.
+        linkButton(R.string.about_privacy_link) {
+            openExternalUri(Uri.parse(
+                "https://github.com/K-Cosmo/ragutis-remote-for-str/blob/main/doc/PRIVACY.md"
+            ))
         }
         linkButton(R.string.about_issues_link) {
             openExternalUri(Uri.parse("https://github.com/K-Cosmo/ragutis-remote-for-str/issues"))
@@ -1250,7 +1268,7 @@ class MainActivity : Activity() {
     }
 
     private fun showAppUpdateDialog(update: AvailableAppUpdate) {
-        if (isFinishing || isDestroyed) return
+        if (!BuildConfig.GITHUB_UPDATES || isFinishing || isDestroyed) return
         AlertDialog.Builder(this)
             .setTitle(R.string.update_available_title)
             .setMessage(getString(R.string.update_available_message, update.version))
@@ -1262,8 +1280,9 @@ class MainActivity : Activity() {
     }
 
     private fun checkForAppUpdate() {
-        // Debug uses a separate .poc package and must not offer the production APK.
-        if (packageName != "app.strremote.android") return
+        // Play builds never check GitHub for APK upgrades. The debug .poc package
+        // cannot offer the incompatible production-signed APK as an upgrade.
+        if (!BuildConfig.GITHUB_UPDATES || packageName != "app.strremote.android") return
 
         val checkPrefs = getSharedPreferences("str_remote_update_check", MODE_PRIVATE)
         val now = System.currentTimeMillis()
@@ -1300,6 +1319,9 @@ class MainActivity : Activity() {
             startActivity(Intent(Intent.ACTION_VIEW, uri))
             true
         } catch (_: Exception) {
+            // A disallowed WebView navigation must remain handled even when no
+            // external browser is available; explain the failure instead.
+            Toast.makeText(this, R.string.external_link_unavailable, Toast.LENGTH_LONG).show()
             true
         }
     }

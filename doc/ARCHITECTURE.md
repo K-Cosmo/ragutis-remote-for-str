@@ -70,12 +70,13 @@ The production APK retains the original `app.strremote.android` package identity
 
 ## Update checking and release channel
 
-- `AppUpdatePolicy` compares stable GitHub version numbers and matches recognized release APK filenames, including legacy names.
-- `AppUpdateChecker` makes a bounded HTTPS request to the canonical Ragutis GitHub Releases API. The production app checks in the background on startup with a 24-hour throttle after successful checks.
-- The native About dialog also permits an explicit, immediate manual check with a visible progress/current-version/failure result, regardless of that throttle. A newer stable signed GitHub release can be opened through a confirmation dialog; no APK is silently downloaded or installed.
-- Separately installable `.poc` debug builds may check metadata read-only but must not offer a production upgrade.
+One `main` source tree builds `github` and `play` product flavors, both using production `app.strremote.android` and the same app-local storage schema. The build-time `BuildConfig.GITHUB_UPDATES` flag is true only for the `github` flavor; it is not inferred from an Android installer package. Debug variants keep the isolated `.poc` application ID.
 
-The **Play-specific distribution-channel updater UX** is not yet decided; see [Play preparation](PLAY_STORE_PREPARATION.md).
+- **GitHub flavor:** `AppUpdatePolicy` compares strict GitHub stable versions and approved APK asset names. `AppUpdateChecker` queries the canonical Releases HTTPS API automatically at app start (24-hour success throttle), and the About dialog exposes a manual, immediate check with visible success/current/failure results. A later public release opens an external browser link only on a production package; no silent APK installation. Debug performs metadata checks only.
+- **Play flavor:** startup **does not call the GitHub updater**; About instead offers a direct external `https://play.google.com/store/apps/details?id=app.strremote.android` link. Google Play owns installation/update delivery. GitHub source, issue and privacy/support links remain as voluntary informational actions and are not APK update prompts.
+- Neither flavor adds a permission, SDK, runtime updater service or backend. Both production flavors must be verified with correct signing keys: the GitHub APK uses the original app key; a Play AAB uses a **separate registered upload key** and must be delivered with the original matching app-signing certificate.
+
+The flavor split is **implemented but not production/Play-device accepted**; see [Tests](TESTS.md), [Release gates](RELEASE_GATES.md) and [Play preparation](PLAY_STORE_PREPARATION.md).
 
 ## Optional feedback and model lookup
 

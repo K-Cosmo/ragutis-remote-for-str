@@ -2,14 +2,20 @@
 
 This document describes **sequence and dependencies**, not release history or a second backlog. Current state: [Status](STATUS.md). Individual work items and priorities: [Backlog](BACKLOG.md). Verification requirements: [Release gates](RELEASE_GATES.md). Completed changes: [Changelog](CHANGELOG.md).
 
-## Next sequence — Google Play internal test
+## Current sequence — close Play evidence and 0.3.6 readiness (2026-11-22)
 
-1. Finish the isolated documentation-convergence review and confirm CI; do not modify published release artifacts.
-2. Return to [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21): reconcile it with the documentation baseline, verify the 0.3.5/code16 privacy link in DE/EN on a device, review, and merge **only after separate approval**.
-3. Check live Play Console app-signing and upload certificates, published policy URL, merged manifest/backup behavior, and truthful Data safety declarations. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.
-4. Create and verify a locally signed AAB with the separate upload key. Obtain explicit approval **before** uploading or starting an internal Play track.
-5. Test a genuine Google-Play-delivered in-place update over GitHub 0.3.4/code15 with the original app-signing identity and retained speaker/room data.
-6. Finalize DE/EN store text/media, organize real closed testers via STR community, and fulfill the applicable test/production-access gates. Production requires a separate decision.
+1. Preserve the already functioning closed-test Play build; document the owner-verified GitHub→Play upgrade and backup decision. Capture exact installed version/signer/source provenance when available; audit Android Auto Backup and Play Data safety.
+2. Conclude review of draft PR #21 with updated documentation and separate owner merge authorization. Keep the released GitHub v0.3.4 artifact immutable.
+3. Complete stacked PR #25 identity/reachability fix review, regression tests and real-device QA before any 0.3.6 signing or release.
+4. Recruit genuine closed testers: currently **fewer than 12**; meet the applicable 12 continuous opt-ins / 14 days before requesting Play production access. Production remains separately gated.
+
+## Historical planned first internal test (2026-11-03)
+
+1. **PLAY-001 complete:** 2026-11-03 live Play certificates owner-confirmed PASS (original app signer `3CC2E727…`, upload signer `41BFFC71…`); no key changes necessary. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md).
+2. GitHub/Play merged release manifest **consistency owner-reported PASS** (2026-11-03, [evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md)); complete separate **original-signer production** smoke on a spare device; review [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), with **no merge without express owner approval**. Complete [PLAY-006](BACKLOG.md) device/manifest acceptance, public privacy URL, Android backup and truthful embedded-WebView/Data safety disclosures. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.
+3. Owner reported successful unsigned Play AAB Gradle build (2026-11-03). ZIP structure 4/4 PASS (2026-11-03 owner report). `bundletool` packaged-manifest identity/version/SDK/permission/export checks PASS (2026-11-03; 1,160,743-byte AAB), [evidence](evidence/qa/2026-11-03-play-aab-bundletool-manifest-qa.md). Outstanding unsigned AAB checks PASS: SHA-256 `15BA556123614F926EF78AE163F43F89843157E18661187083FE57D1F997DA5E`, packed location maxSdk=32 and networkSecurityConfig confirmed by owner. **PLAY-003 owner-reported signed AAB PASS** (`jarsigner`, registered upload certificate, SHA-256 `7B94567B796D13A8747A2184DEE073C4FC7EFD0F89838414306D9DFC03EB33B8`; [evidence](evidence/qa/2026-11-03-play-aab-upload-signing-qa.md)). Signed AAB is now attached in the internal-release editor (not rolled out; [screenshot](evidence/qa/2026-11-03-play-console-internal-release-editor.md)); remaining work is to save draft, configure internal tester list, complete policy/production smoke and obtain explicit separate approval **before rollout**. Obtain explicit approval **before** uploading or starting an internal Play track.
+4. Test a genuine Google-Play-delivered in-place update over GitHub 0.3.4/code15 with the original app-signing identity and retained speaker/room data.
+5. Finalize DE/EN store text/media, organize real closed testers via STR community, and fulfill the applicable test/production-access gates. Production requires a separate decision.
 
 Detailed procedures and policy checks belong only in [Play Store preparation](PLAY_STORE_PREPARATION.md) and [Tests](TESTS.md).
 
