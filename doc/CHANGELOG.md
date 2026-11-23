@@ -4,7 +4,7 @@ Only implemented changes belong here. Verification/acceptance evidence remains i
 
 ## Unreleased — 0.3.6 (GitHub APK and Play closed-test AAB bugfix candidate)
 
-- Merge `versionName=0.3.6` / `versionCode=17` source on both distribution flavors into `main`, preserving production application ID, keys and speaker/room data format. No 0.3.6 APK/AAB has been signed or published.
+- Merge `versionName=0.3.6` / `versionCode=17` source on both distribution flavors into `main`, preserving production application ID, keys and speaker/room data format. The original-key GitHub 0.3.6 APK has been signed **locally for QA only** ([dated evidence](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md)); no GitHub 0.3.6 release or Play 0.3.6 AAB has been published or rolled out.
 - Show the delete icon on newly discovered, unsaved speakers; after confirmation remove the row from the current scan, without altering its network settings or preventing rediscovery on the next scan.
 - Set green/red card status after a successful/failed STR endpoint probe even before room assignment. Unknown/probing stays neutral and original-firmware Bose setup stays visually distinct.
 - Keep stored endpoint metadata separate from the live verified endpoint when changing/clearing room assignments, so offline devices cannot become online merely by selecting “No room.” Add JVM regression coverage and bilingual strings.
