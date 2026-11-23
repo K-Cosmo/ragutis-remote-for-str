@@ -9,6 +9,7 @@ This register contains **unfinished or explicitly deferred work**. Completed rel
 | PLAY-004 | Internal Play GitHub-to-Play in-place update, original signer and data preservation | P0 | IN PROGRESS — AAB attached in internal-test release editor; no rollout or real in-place update; rollout approval pending |
 | PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |
 | STR-023 | Publish STR upstream Show-and-tell thread and maintain independent GitHub Issues/voluntary email support | P1 | OPEN — maintainer requested thread; no published discussion verified |
+| STR-039 | Device-list sorting by reachability, device name or room; ascending or descending | P2 | REQUEST RECORDED, separate feature; out of scope for the 0.3.6 bugfix candidate |
 | STR-027 | [Deferred negative-path QA and future positive version alert](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7) | P1 | DEFERRED, NOT TESTED; do not infer coverage |
 | STR-024 | Review residual GitHub-managed old PR refs/caches after historical address cleanup | P1 | PARTIALLY RESOLVED — see [Git history provenance](GIT_HISTORY_PROVENANCE.md) |
 | STR-012 | Additional STR remote/control compatibility across other hardware | P2 | BACKLOG; separate from Bose provisioning |

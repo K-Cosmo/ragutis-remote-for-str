@@ -10,7 +10,13 @@ No known open gate blocks the **already published** signed release. Its accepted
 
 The owner reports active Google Play closed-test distribution and a successful automatic GitHub→Play upgrade with **saved speakers/rooms and STR control retained**; Play/privacy links work. The old editor-only status below is historical. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
-**Still open:** exact installed Play version/signature and AAB provenance, embedded STR WebView / Android backup Data safety audit, accepted source/merge gates, and production eligibility. The owner intentionally keeps Android backup enabled. **Fewer than 12 testers** are enrolled; applicable continuous 12-tester/14-day test and Play production approval are not yet satisfied. Any 0.3.6 GitHub/Play release requires distinct approval.
+**Still open:** exact Play uploaded-AAB/source provenance (installed 0.3.5/code16 and its matching app-signing SHA-256 were owner-verified), embedded STR WebView / Android backup Data safety audit, accepted source/merge gates, and production eligibility. The owner intentionally keeps Android backup enabled. **Fewer than 12 testers** are enrolled; applicable continuous 12-tester/14-day test and Play production approval are not yet satisfied. Any 0.3.6 GitHub/Play release requires distinct approval.
+
+## 0.3.6 candidate — remaining release gates (2026-11-22)
+
+**Complete in scoped owner QA:** all three original device-list bugs and normal discovery/room regressions PASS; `12 PASS / 0 FAIL / 2 N/A` on exact source `f8f95d1e1929cc882daad77cdc7c209455a7c197`. Both flavor CI workflows PASS. [Dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
+
+**Still open:** T12 Bose-original-firmware setup and T13 manual-IP path are N/A (untested); F-034 special shared-host identity case lacks physical integration QA. Signed original-key GitHub update, Play-delivered 0.3.5→0.3.6 upgrade, exact AAB/build provenance and separate merge/release authorizations remain open. This is not Play production eligibility.
 
 ## Historical first Google Play test-track upload (2026-11-03)
 

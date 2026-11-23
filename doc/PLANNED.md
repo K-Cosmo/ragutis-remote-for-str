@@ -2,14 +2,15 @@
 
 This document describes **sequence and dependencies**, not release history or a second backlog. Current state: [Status](STATUS.md). Individual work items and priorities: [Backlog](BACKLOG.md). Verification requirements: [Release gates](RELEASE_GATES.md). Completed changes: [Changelog](CHANGELOG.md).
 
-## Current sequence — close Play evidence and 0.3.6 readiness (2026-11-22)
+## Next sequence — 0.3.6 GitHub + Play closed-test bugfix
 
-1. Preserve the already functioning closed-test Play build; document the owner-verified GitHub→Play upgrade and backup decision. Capture exact installed version/signer/source provenance when available; audit Android Auto Backup and Play Data safety.
-2. Conclude review of draft PR #21 with updated documentation and separate owner merge authorization. Keep the released GitHub v0.3.4 artifact immutable.
-3. Complete stacked PR #25 identity/reachability fix review, regression tests and real-device QA before any 0.3.6 signing or release.
-4. Recruit genuine closed testers: currently **fewer than 12**; meet the applicable 12 continuous opt-ins / 14 days before requesting Play production access. Production remains separately gated.
+1. **Done at tested source:** both-flavor CI PASS for `f8f95d1e1929cc882daad77cdc7c209455a7c197`; owner debug-device QA **12 PASS / 0 FAIL / 2 N/A** including all three original bug fixes, standard discovery and DE/EN/Play routing. [Exact-scoped evidence](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). Keep GitHub public v0.3.4/code15 and Google Play closed-test v0.3.5/code16 unchanged during review.
+2. **Remaining before full signed release acceptance:** T12 original Bose setup and T13 manual-IP path were N/A; determine whether to test or explicitly defer them. The identical-IP/different-key F-034 hardware edge case is not physically tested. Prepare separately signed in-place GitHub/Play upgrade QA; never treat debug smoke as signed-release verification.
+3. Merge PR #21 and the subsequent 0.3.6 bugfix only after independent review, CI and explicit owner merge approval.
+4. Separately approve, sign, inspect and publish the original-signer GitHub APK and the Play upload-key-signed AAB for **v0.3.6/code17**. Update the **existing Play closed test**, not Play production; verify actual Play-delivered v0.3.5→0.3.6 update preserves devices and rooms.
+5. Continue community beta testing and monitor feedback/Android Vitals. The owner reports **fewer than 12** opted-in testers; the applicable 12/14-day Play production gate remains open. Keep Android backup enabled for restoration while auditing its actual content and Play Data safety. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
-## Historical planned first internal test (2026-11-03)
+## Historical 0.3.5 Play preparation (recorded 2026-11-03)
 
 1. **PLAY-001 complete:** 2026-11-03 live Play certificates owner-confirmed PASS (original app signer `3CC2E727…`, upload signer `41BFFC71…`); no key changes necessary. [Evidence](evidence/qa/2026-11-03-play-signing-acceptance.md).
 2. GitHub/Play merged release manifest **consistency owner-reported PASS** (2026-11-03, [evidence](evidence/qa/2026-11-03-merged-release-manifest-qa.md)); complete separate **original-signer production** smoke on a spare device; review [draft PR #21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21), with **no merge without express owner approval**. Complete [PLAY-006](BACKLOG.md) device/manifest acceptance, public privacy URL, Android backup and truthful embedded-WebView/Data safety disclosures. The STR maintainer's accepted WebView integration and official Community Apps listing are [documented in Status](STATUS.md); Google Play's independent policy review remains open.

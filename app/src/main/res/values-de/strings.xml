@@ -45,6 +45,9 @@
     <string name="save_speaker">Lautsprecher speichern</string>
     <string name="change_room">Raum ändern</string>
     <string name="remove_saved_speaker">Gespeicherten Lautsprecher entfernen</string>
+    <string name="remove_discovered_speaker">Gefundenen Lautsprecher aus Liste entfernen</string>
+    <string name="remove_discovered_speaker_confirm">Diesen Lautsprecher bis zur nächsten Suche aus der Liste entfernen? Die Geräteeinstellungen bleiben unverändert.</string>
+    <string name="speaker_discovered_removed">Lautsprecher aus Liste entfernt</string>
     <string name="save_requires_reachable">Der Lautsprecher muss erreichbar sein, bevor er gespeichert werden kann.</string>
     <string name="speaker_saved">Lautsprecher gespeichert</string>
     <string name="speaker_removed">Gespeicherten Lautsprecher entfernt</string>
@@ -54,7 +57,7 @@
     <string name="speaker_status_unknown">Unbekannt</string>
     <string name="remote_connecting">Verbindung zum Lautsprecher wird geprüft…</string>
     <string name="remote_device_unreachable">WLAN ist verbunden, aber der Lautsprecher ist noch nicht erreichbar. Bitte kurz warten und erneut versuchen.</string>
-    <string name="speaker_management_hint">Tippe auf einen Lautsprecher zum Verbinden. Mit Raum ordnest du ihn zu; dabei wird er automatisch gespeichert. Gespeicherte Lautsprecher entfernst du über das Löschsymbol.</string>
+    <string name="speaker_management_hint">Tippe auf einen Lautsprecher zum Verbinden. Mit Raum ordnest du ihn zu; dabei wird er automatisch gespeichert. Gespeicherte und neue Lautsprecher entfernst du über das Löschsymbol. Neue Geräte können bei der nächsten Suche wieder erscheinen.</string>
     <string name="current_speaker_format">● %1$s</string>
     <string name="room_speaker_format">%1$s · %2$s</string>
     <string name="room_title">Raum zuordnen</string>

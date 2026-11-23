@@ -19,7 +19,17 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 
 [Owner device QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). Dated 2026-11-03 editor-only checklists below are historical snapshots and no longer describe the present delivery state.
 
-## Google Play first internal test — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
+## 0.3.6 GitHub / Google Play closed-test bugfix — NEW OPEN GATES
+
+- [ ] **F-034 partial closure:** normal multi-device and discovery/hide/regeneration tests T03/T10/T11 PASS; policy JVM regressions and both-flavor CI PASS on source `f8f95d1e1929cc882daad77cdc7c209455a7c197`. The identical-IP/different-device-ID, unkeyed host-claim conflict and late-callback integration cases are **not physically tested**. Decide whether to add targeted device/integration QA or explicitly accept the residual scope before full F-034 closure. [Dated QA](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
+- [x] **Exact tested source `f8f95d1e1929cc882daad77cdc7c209455a7c197`:** both-flavor build, lint, unit tests and docs CI PASS ([push](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45053384306), [PR](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45053391742)); staged `versionName=0.3.6` / `versionCode=17`. Any subsequent documentation-only commit needs fresh exact-head CI, not new Android hardware evidence.
+- [x] **Scoped owner-reported debug-device QA: T01–T11, T14 PASS; 0 FAIL.** Confirmed immediate delete without room, hide/rediscovery, automatic green/red status, offline state preserved across clearing/reassigning room, recovery, no duplicates, normal multi-speaker handling and DE/EN/Play debug routing. [Test matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
+- [ ] **Excluded from this physical QA:** T12 original-firmware Bose setup and T13 manual-IP connection (**N/A / NOT TESTED**), plus identical-IP/different-key F-034 exceptional integration; do not present the 14-case matrix as 14/14 PASS.
+- [ ] No changes to production application ID, signer continuity, permission set, local data schema or Play-vs-GitHub update routing; review manifests/privacy and PR #21 integration.
+- [ ] Original-signer GitHub signed APK in-place over v0.3.4/code15 with persisted data; Play-upload-key-signed AAB and actual Play-delivered v0.3.5/code16→0.3.6/code17 upgrade with retained data and original Play **app-signing** identity.
+- [ ] Explicit owner merge authorization, then independent GitHub signed-release authorization and Google Play **closed test** rollout approval. No Play production release or new keys.
+
+## Historical 0.3.5 internal-test preparation — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
 
 - [x] **Current GitHub baseline:** public original-signer v0.3.4/code 15, owner-reported signed 6/6 device QA and public release/asset digest verified. Google Play is a separate distribution workflow, not automatically released.
 - [x] **PLAY-001 certificate continuity PASS (owner-reported 2026-11-03, live Play Console):** In-use app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` matches published GitHub APK/local PKCS12 alias `key0`; registered Play upload SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791` matches local separate `remote-str-upload`; package `app.strremote.android`. Earlier incompatible fingerprint/PEPK rejection are historic, not current blockers. [Dated acceptance evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). No AAB upload/release authorized.

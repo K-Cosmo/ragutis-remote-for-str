@@ -60,6 +60,25 @@ The live Play **app-signing** and **upload** certificate fingerprints were owner
 
 After owner-authorized internal Play rollout, install the **Play-delivered** app over a previously installed GitHub signed version with a **lower versionCode** and preserve speaker/room data, then verify installed app certificate SHA-256 is the original GitHub/Play **app-signing** cert (not the upload cert), normal STR control, manual update-check channel UX, DE/EN, restart and live device/room state. A fresh Play install alone is **not sufficient** evidence of cross-channel in-place upgrade. If current GitHub v0.3.4 has code 15, plan a distinct Play candidate code **16+**. See [Play preparation](PLAY_STORE_PREPARATION.md).
 
+## 0.3.6 owner debug-device acceptance — scoped PASS (2026-11-22)
+
+Exact tested PR #25 source `f8f95d1e1929cc882daad77cdc7c209455a7c197` passed both-flavor CI, and the owner reported **12 PASS / 0 FAIL / 2 N/A**: T01–T11 and T14 PASS; T12 original-firmware Bose and T13 manual-IP are **NOT TESTED**. [Full dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). The original three reported bugs and standard discovery/room/multi-device regressions were verified. Exceptional same-IP/different-key F-034 interactions were covered by JVM policy tests but not reproduced on hardware; signed GitHub and Play update smoke requires separately created release artifacts and approvals.
+
+## 0.3.6 bugfix candidate — REAL-DEVICE QA MATRIX (T12/T13 STILL OPEN)
+
+JVM policy regression tests: unsaved deletion action, neutral while probing, reachable green/unreachable red after probe, saved cached reachability, no Wi-Fi, and pending-Bose isolation. These tests **cannot** replace Android UI QA.
+
+Additional **identity isolation** regression: two different real device IDs sharing an IP/host must remain separate rows, separate hide actions and independently probeable candidates. A manually entered/unkeyed saved endpoint may match by host only until claimed by a keyed device; it must not be assigned concurrently to a second differently keyed speaker. Synthesized mDNS fallback keys still use host matching. Keep Bose-pending rows distinct. Confirm on device where practical; unit policy tests do not simulate Android UI/mDNS callbacks end-to-end.
+
+1. A previously unknown STR speaker has its delete icon immediately, with no room assignment. Cancel keeps it. Confirm removes only its list card for this discovery session; an outstanding mDNS announcement cannot re-add it, but the next user-started scan can.
+2. Newly found STR cards start neutral during the HTTP probe, then automatically become green (STR reachable) or red (STR unreachable) without tapping or assigning a room. Confirm the appropriate DE/EN text and accessible delete label.
+3. Offline/red saved STR device: choose No room, a preset room and a custom room; it must remain red/offline throughout, even across screen refresh. Restart and verify room data and reachability. Only a successful connection probe can turn it green.
+4. Online saved device retains correct green state while changing room. No phantom connection or duplicate entries; deleting saved speaker still clears its metadata after confirmation.
+5. Original-firmware Bose setup entries stay distinct and retain their current room and delete behavior. Verify discovery/reconnection/STR remote control and the manual-address path.
+6. Both `githubDebug` and `playDebug` pass DE/EN smoke and app update routing. Verify identical `app.strremote.android`, version 0.3.6/code17 and unchanged merged permissions/backup configuration in release artifacts.
+7. Original GitHub signer + real in-place update from v0.3.4/code15 to v0.3.6/code17 preserves speakers, rooms, state and playback. Independently, Play-delivered in-place v0.3.5/code16 → v0.3.6/code17 preserves data; the Play-delivered APK uses the original app-signing cert while the AAB upload uses the separate registered upload key. Never uninstall the baseline first.
+8. Save exact CI commit, production-signed artifact hashes, certificate identity, phone test evidence and separate release authorizations **before** publishing GitHub v0.3.6 and starting the Play closed-track v0.3.6 rollout. A green CI alone is not a release gate.
+
 ## Accepted regression matrix — Discovery & Network Resilience (BUILD-0007 / 0.1.1)
 
 These cases remain regression coverage:
