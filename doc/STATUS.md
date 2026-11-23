@@ -4,7 +4,7 @@
 
 **Development version:** 0.3.6
 **Latest public release:** 0.3.4
-**Status:** SOURCE MERGED TO MAIN; PR-HEAD CI PASS; DEBUG-DEVICE QA 12 PASS / 0 FAIL / 2 NOT TESTED; SIGNED UPGRADES / DISTRIBUTION GATES OPEN
+**Status:** SOURCE MERGED / FINAL MAIN CI PASS; ORIGINAL-KEY GITHUB 0.3.6 APK LOCALLY SIGNED (OWNER-REPORTED); DEBUG QA 12 PASS / 0 FAIL / 2 NOT TESTED; SIGNED DEVICE UPDATE / DISTRIBUTION GATES OPEN
 **Date:** 2026-11-23
 
 **Source merge acceptance (2026-11-23):** The owner explicitly approved, and GitHub verified three normal **merge-commit** merges in the requested sequence: [#26](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/26) at `13ad2e1689c509d1bb521622ec99a88f33efddf4`, [#21](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/21) at `0c83810d63452974165623cfdc4c4929e5f90415`, and [#25](https://github.com/K-Cosmo/ragutis-remote-for-str/pull/25) at final `main` `2bcdf023e67eb6f06a7d37f9add3a233711938c7`. All PR heads had **successful CI**; the owner-device 0.3.6 debug QA remains tied to the tested application commit, not a newly signed artifact. [Dated source-merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md). The final post-merge `main` CI on `2bcdf023e67eb6f06a7d37f9add3a233711938c7` has now **PASSED** ([Actions run 45200951905](https://github.com/K-Cosmo/ragutis-remote-for-str/actions/runs/45200951905)). The intermediate first `main` run following #26 failed due to external Maven Central HTTP 429 dependency throttling, but subsequent main runs following #21 and #25 succeeded with no source change to address that transient failure.
@@ -17,7 +17,7 @@
 
 The 0.3.6/code17 candidate now builds on the merged 0.3.5 GitHub/Play distribution source from PR #21. The owner reports that v0.3.5 is active in the Google Play **closed test**; public GitHub latest remains v0.3.4. This candidate fixes three device-list issues: delete action missing for unsaved discovered STR speakers, no live reachability coloring before room assignment, and saved offline devices incorrectly becoming online after resetting their room. There is no app ID, signing-key, preference schema or update-channel change.
 
-**No v0.3.6 production artifact has yet been signed or released.** The scoped **debug-device QA is PASS** (12/14 assessed PASS, 2 NOT TESTED); original-signer GitHub and Play-delivered signed upgrade tests and separate **distribution** approvals remain required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).
+**The original-key GitHub v0.3.6 production APK has been built and signed locally (owner-reported 2026-11-23), but is **NOT** published.** Build, lint/JVM tests, v2/v3 signature verification, original application certificate and zipalign passed. The reported APK SHA-256 is `cf1d33fcd2f29210fc9250619b53f169a64add60334fe49e96e2d5c4dd0527b3` from exact source `2bcdf023e67eb6f06a7d37f9add3a233711938c7`. The raw APK and binary manifest have **not** been independently inspected; signed in-place GitHub upgrade QA remains open. [Signed-build evidence](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md). The scoped **debug-device QA is PASS** (12/14 assessed PASS, 2 NOT TESTED); original-signer GitHub and Play-delivered signed upgrade tests and separate **distribution** approvals remain required. Sorting by reachability/name/room in ascending or descending order is a *separate deferred feature request* (Backlog STR-039).
 
 ## Historical 0.3.5 candidate snapshot (as recorded on 2026-11-03)
 
