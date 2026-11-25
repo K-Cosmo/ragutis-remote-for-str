@@ -79,6 +79,10 @@ Exact tested PR #25 source `f8f95d1e1929cc882daad77cdc7c209455a7c197` passed bot
 
 Owner reports R01–R07 all PASS on Pixel 9a AVD Android 17/API 37.1 (16 KB page-size system image), using the original-key signed 0.3.6 candidate over 0.3.4. See [dated QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md) for exact source/artifact identity, test cases and limitations. This complements but does not replace physical debug QA or prove a physical signed-upgrade, full Bose WLAN setup or newer-release download. Apply the risk-based regression selection above; existing requirements are not silently waived.
 
+## 0.3.6 positive GitHub online update — scoped PASS (2026-11-25)
+
+See [dated evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md) for screenshot-supported positive version detection, release navigation, download, Android package-manager update and owner-reported retained data/STR operation. Prior signed AVD smoke remains separate; physical and negative-path limitations remain unchanged.
+
 ## 0.3.6 bugfix candidate — REAL-DEVICE QA MATRIX (T12/T13 STILL OPEN)
 
 JVM policy regression tests: unsaved deletion action, neutral while probing, reachable green/unreachable red after probe, saved cached reachability, no Wi-Fi, and pending-Bose isolation. These tests **cannot** replace Android UI QA.

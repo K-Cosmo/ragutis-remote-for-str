@@ -2,9 +2,9 @@
 
 Only implemented changes belong here. Verification/acceptance evidence remains in `STATUS.md`, `RELEASE_GATES.md` and dated QA records.
 
-## Unreleased — 0.3.6 (GitHub APK and Play closed-test AAB bugfix candidate)
+## 0.3.6 — 2026-11-25 (GitHub public release; Play update pending)
 
-- Merge `versionName=0.3.6` / `versionCode=17` source on both distribution flavors into `main`, preserving production application ID, keys and speaker/room data format. The original-key GitHub 0.3.6 APK has been signed **locally for QA only** ([dated evidence](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md)); no GitHub 0.3.6 release or Play 0.3.6 AAB has been published or rolled out.
+- Release `versionName=0.3.6` / `versionCode=17` as the [public signed GitHub APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.6), preserving application ID, original signing identity and speaker/room data format. Incorporates the 0.3.5 distribution-channel and privacy changes for GitHub users. Play 0.3.6 remains pending.
 - Show the delete icon on newly discovered, unsaved speakers; after confirmation remove the row from the current scan, without altering its network settings or preventing rediscovery on the next scan.
 - Set green/red card status after a successful/failed STR endpoint probe even before room assignment. Unknown/probing stays neutral and original-firmware Bose setup stays visually distinct.
 - Keep stored endpoint metadata separate from the live verified endpoint when changing/clearing room assignments, so offline devices cannot become online merely by selecting “No room.” Add JVM regression coverage and bilingual strings.

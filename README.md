@@ -6,11 +6,11 @@
 
 ➡️ **[Read the full beta invitation and testing instructions](community/CLOSED_BETA_TESTERS_WANTED.md)** · [Join the STR Show & Tell discussion](https://github.com/JRpersonal/streborn/discussions/1738) · [Report feedback](https://github.com/K-Cosmo/ragutis-remote-for-str/issues)
 
-This is the **closed beta**, not a public Play Store release. The latest public GitHub APK remains **v0.3.4**. Existing users should **install the Play update over their current app without uninstalling it**, to help test whether their speakers and rooms are preserved.
+This is the **closed beta**, not a public Play Store release. The latest public GitHub APK is **v0.3.6**. Existing GitHub 0.3.4 users may join the Play upgrade test without uninstalling; GitHub 0.3.6 (code17) cannot be upgraded to the older Play 0.3.5 (code16). Wait for a newer Play build instead of downgrading or clearing data.
 
 **Ragutis Remote for SoundTouch Reborn** (launcher **Ragutis STR**) is an independent Android companion for [SoundTouch Reborn (STR)](https://github.com/JRpersonal/streborn). It discovers STR-enabled Bose SoundTouch speakers on the local Wi-Fi network and displays STR's existing phone remote in an Android app. Playback and streaming features are provided by STR.
 
-**Current release:** 0.3.4 · **Ragutis Remote for SoundTouch Reborn** · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
+**Current release:** 0.3.6 · **Ragutis Remote for SoundTouch Reborn** · [Download signed APK](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.6) · **Android 8.0+** (Android 10+ for Wi-Fi setup)
 
 
 ## Features

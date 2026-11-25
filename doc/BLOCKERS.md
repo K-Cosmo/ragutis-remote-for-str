@@ -2,7 +2,7 @@
 
 This document records **current unresolved release blockers**, not completed releases or the general backlog. Authoritative release disposition: [Release gates](RELEASE_GATES.md). Sequencing: [Planned](PLANNED.md).
 
-## Public GitHub v0.3.4
+## Public GitHub v0.3.6
 
 No known open gate blocks the **already published** signed release. Its accepted scope, original source and device-QA limitations are recorded in [Status](STATUS.md) and [Release gates](RELEASE_GATES.md). Deferred tests are not retroactive failures and are not considered passed.
 
@@ -10,13 +10,13 @@ No known open gate blocks the **already published** signed release. Its accepted
 
 The owner reports active Google Play closed-test distribution and a successful automatic GitHub→Play upgrade with **saved speakers/rooms and STR control retained**; Play/privacy links work. The old editor-only status below is historical. [Owner QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md).
 
-**Still open:** exact Play uploaded-AAB/source provenance (installed 0.3.5/code16 and its matching app-signing SHA-256 were owner-verified), embedded STR WebView / Android backup Data safety audit, signed-source-to-artifact verification, and production eligibility. The owner intentionally keeps Android backup enabled. **Fewer than 12 testers** are enrolled; applicable continuous 12-tester/14-day test and Play production approval are not yet satisfied. Any 0.3.6 GitHub/Play release requires distinct approval.
+**Still open:** exact Play uploaded-AAB/source provenance (installed 0.3.5/code16 and its matching app-signing SHA-256 were owner-verified), embedded STR WebView / Android backup Data safety audit, signed-source-to-artifact verification, and production eligibility. The owner intentionally keeps Android backup enabled. **Fewer than 12 testers** are enrolled; applicable continuous 12-tester/14-day test and Play production approval are not yet satisfied. Play 0.3.6 requires distinct approval; GitHub 0.3.6 is published.
 
-## 0.3.6 candidate — remaining release gates (2026-11-22)
+## 0.3.6 — remaining coverage and Play gates
 
 **Complete in scoped owner QA:** all three original device-list bugs and normal discovery/room regressions PASS; `12 PASS / 0 FAIL / 2 N/A` on exact source `f8f95d1e1929cc882daad77cdc7c209455a7c197`. Both flavor CI workflows PASS. [Dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md).
 
-**Still open:** T12 Bose-original-firmware setup and T13 manual-IP path are N/A (untested); F-034 special shared-host identity case lacks physical integration QA. Owner-reported **local original-key 0.3.6 GitHub APK build/signature/zipalign PASS** (SHA-256 `cf1d33fcd2f29210fc9250619b53f169a64add60334fe49e96e2d5c4dd0527b3`; [evidence](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md)), and **signed emulator in-place update R01–R07 PASS** ([QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md)). Physical signed-upgrade coverage and the positive post-publication online update path remain untested; the latter cannot be exercised before publication. Scoped GitHub release QA residual risk accepted by owner on 2026-11-25 (see [Release gates](RELEASE_GATES.md)); package/permission/routing review and publication approval remain open. Play-delivered 0.3.5→0.3.6 upgrade, exact Play AAB/source provenance and separate **release/rollout** authorizations remain open. Source PRs #26, #21 and #25 were already merged with owner approval; see [dated evidence](evidence/qa/2026-11-23-ragutis-source-merges.md). Final `main` CI **PASS** on the merged source; see [dated evidence](evidence/qa/2026-11-23-ragutis-source-merges.md). This is not Play production eligibility.
+**Residual nonblocking GitHub coverage:** T12 full Bose WLAN setup, T13 physical manual IP, F-034 exceptional identity integration, pending-Bose removal integration and physical signed upgrade remain unverified; owner accepted the scoped release risk. Public GitHub update flow completed ([evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md)). **Play blockers:** signed 0.3.6 AAB verification, separate closed-track approval, genuine Play 0.3.5→0.3.6 upgrade and Play-specific review above.
 
 ## Historical first Google Play test-track upload (2026-11-03)
 
@@ -32,7 +32,7 @@ The STR maintainer's acceptance of the native embedding and the official Communi
 
 ## Non-blocking follow-ups
 
-- [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7): deferred negative-path hardware, permissions and future positive-update tests remain **NOT TESTED**.
+- [STR-027](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7): deferred negative-path hardware and permissions remain **NOT TESTED**; positive GitHub 0.3.4→0.3.6 emulator path is now verified within its scope.
 - [STR-024](GIT_HISTORY_PROVENANCE.md): residual historical GitHub-managed PR refs/caches need a separate privacy-maintenance review.
 - Transient Chromium/WebView, Bluetooth-permission and upstream API warnings are only defects if a reproducible user-visible failure is established. Do not add speculative permissions or workarounds to silence logs.
 

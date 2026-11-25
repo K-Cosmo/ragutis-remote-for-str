@@ -66,9 +66,9 @@ The app can also prepare an optional feedback email through your installed email
 ## Open source and other downloads
 
 - **[Ragutis source code and documentation](https://github.com/K-Cosmo/ragutis-remote-for-str)**
-- **[Latest public GitHub APK: v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4)**
+- **[Latest public GitHub APK: v0.3.6](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.6)**
 
-Google Play currently provides the **v0.3.5 closed beta**; the public GitHub APK is **v0.3.4**.
+Google Play currently provides the **v0.3.5 closed beta**; the public GitHub APK is **v0.3.6** (code17). If you already have GitHub 0.3.6, wait for a compatible newer Play release; do not downgrade or uninstall to join the older code16 test.
 
 Ragutis is an **independent, unofficial community project**. It is not affiliated with or endorsed by Bose Corporation or the SoundTouch Reborn project. Bose and SoundTouch are trademarks of Bose Corporation.
 
