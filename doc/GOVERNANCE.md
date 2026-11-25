@@ -10,6 +10,10 @@ Small maintenance/correctness/documentation changes may use:
 
 `Smallest scoped change → Consistency/Tests → Evidence → Acceptance`
 
+## Regression scope and acceptance
+
+Use the risk-based selection rules in [Tests](TESTS.md) to define manual regression scope before acceptance. Record exact evidence and any explicit owner-approved, release-specific deferral in [Release gates](RELEASE_GATES.md); never convert an untested case into PASS or bypass automated gates. A documentation-only change does not invalidate an already verified artifact when its application inputs are unchanged. Source merge, artifact acceptance, publication and post-publication verification are distinct decisions.
+
 ## Status model
 
 `PLANNED → IMPLEMENTED → VERIFIED → ACCEPTED`
