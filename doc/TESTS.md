@@ -39,6 +39,17 @@ Store applicable evidence under `doc/evidence/qa/`.
 
 Documentation-only changes do not require a new Android APK when they do not change application source/resources/build configuration. GitHub Actions remains an Android build/lint/release-assembly check only.
 
+## Risk-based regression selection and release smoke
+
+For each candidate, record the last accepted baseline, exact tested source and candidate source. Compare Git blobs and diffs for source, resources, manifests, dependencies, toolchain, flavors and build configuration. Trace changed behavior through shared callers, storage, permissions, networking and external contracts; byte-identical files alone do not establish unchanged integration or generated binaries.
+
+- Always run the minimum maintenance gate and, for application changes, the full automated Android gate above. Test changed behavior and affected integration/negative paths on physical hardware wherever the behavior depends on real network, speaker, permissions or device characteristics.
+- Reuse dated manual evidence only when its exact scope, relevant dependencies and environment remain applicable. Record selected tests, exclusions, justification, residual risk and owner acceptance. A deferred/untested case is never PASS. Expand coverage for uncertain impact, security/privacy changes, migrations, toolchain changes or regressions.
+- Use the physical debug app for STR/network behavior, a dedicated signed GitHub AVD for install/update/data retention and release smoke, and a physical Play installation for genuine Play-delivered updates. An emulator is not proof of physical Wi-Fi association, mDNS behavior, or all supported Android versions. Keep the prior signed baseline and saved data (snapshot when available); verify exact artifact hash, signer, package/version, restart, retained data, relevant changed behavior and channel routing. Never uninstall or clear data during an upgrade test.
+- Separate pre-publication no-newer-release checking from the positive public update/download/install test after publication. Verify the published asset digest against the accepted artifact. No artificial public release for testing.
+
+See [Release gates](RELEASE_GATES.md) for acceptance and [Governance](GOVERNANCE.md) for approval boundaries.
+
 ## Current closed-test Play upgrade — scoped device QA (owner-reported 2026-11-22)
 
 The owner reports automatic Google Play installation over an existing GitHub version **without uninstall**, all saved speakers and room assignments intact, STR control working, and both Play/privacy links operational. [Dated evidence](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). This is a **real-device cross-channel functional PASS**. Owner follow-up `dumpsys package` shows installed 0.3.5/code16/targetSdk37, and their `apksigner verify --print-certs` check of the ADB-extracted Play `base.apk` returned the matching app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` (**installed signer PASS, owner-reported**). Still not proof of exact uploaded AAB/source SHA, cloud-backup restoration, API-26 Play device compatibility, Play Data safety or 0.3.6 signed-device QA.
@@ -63,6 +74,10 @@ After owner-authorized internal Play rollout, install the **Play-delivered** app
 ## 0.3.6 owner debug-device acceptance — scoped PASS (2026-11-22)
 
 Exact tested PR #25 source `f8f95d1e1929cc882daad77cdc7c209455a7c197` passed both-flavor CI, and the owner reported **12 PASS / 0 FAIL / 2 N/A**: T01–T11 and T14 PASS; T12 original-firmware Bose and T13 manual-IP are **NOT TESTED**. [Full dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). The original three reported bugs and standard discovery/room/multi-device regressions were verified. Exceptional same-IP/different-key F-034 interactions were covered by JVM policy tests but not reproduced on hardware; signed GitHub and Play update smoke requires separately created release artifacts and approvals.
+
+## 0.3.6 signed GitHub emulator acceptance — scoped PASS (2026-11-25)
+
+Owner reports R01–R07 all PASS on Pixel 9a AVD Android 17/API 37.1 (16 KB page-size system image), using the original-key signed 0.3.6 candidate over 0.3.4. See [dated QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md) for exact source/artifact identity, test cases and limitations. This complements but does not replace physical debug QA or prove a physical signed-upgrade, full Bose WLAN setup or newer-release download. Apply the risk-based regression selection above; existing requirements are not silently waived.
 
 ## 0.3.6 bugfix candidate — REAL-DEVICE QA MATRIX (T12/T13 STILL OPEN)
 
