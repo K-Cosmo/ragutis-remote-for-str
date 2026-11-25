@@ -64,6 +64,10 @@ After owner-authorized internal Play rollout, install the **Play-delivered** app
 
 Exact tested PR #25 source `f8f95d1e1929cc882daad77cdc7c209455a7c197` passed both-flavor CI, and the owner reported **12 PASS / 0 FAIL / 2 N/A**: T01–T11 and T14 PASS; T12 original-firmware Bose and T13 manual-IP are **NOT TESTED**. [Full dated matrix](evidence/qa/2026-11-22-ragutis-036-owner-debug-device-acceptance.md). The original three reported bugs and standard discovery/room/multi-device regressions were verified. Exceptional same-IP/different-key F-034 interactions were covered by JVM policy tests but not reproduced on hardware; signed GitHub and Play update smoke requires separately created release artifacts and approvals.
 
+## 0.3.6 signed GitHub emulator acceptance — scoped PASS (2026-11-25)
+
+Owner reports R01–R07 all PASS on Pixel 9a AVD Android 17/API 37.1 (16 KB page-size system image), using the original-key signed 0.3.6 candidate over 0.3.4. See [dated QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md) for exact source/artifact identity, test cases and limitations. This complements but does not replace physical debug QA or prove a physical signed-upgrade, full Bose WLAN setup or newer-release download. The proposed change-impact approach to future manual regression coverage requires separate governance review; existing requirements are not silently waived.
+
 ## 0.3.6 bugfix candidate — REAL-DEVICE QA MATRIX (T12/T13 STILL OPEN)
 
 JVM policy regression tests: unsaved deletion action, neutral while probing, reachable green/unreachable red after probe, saved cached reachability, no Wi-Fi, and pending-Bose isolation. These tests **cannot** replace Android UI QA.
