@@ -1,18 +1,18 @@
 # Privacy policy / Datenschutzhinweise — Ragutis Remote for SoundTouch Reborn
 
-**Scope:** Ragutis STR / Ragutis Remote for SoundTouch Reborn (Android application ID `app.strremote.android`), including GitHub and active Google Play closed-test distribution (owner-reported 2026-11-22). Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
+**Scope:** Ragutis STR / Ragutis Remote for SoundTouch Reborn (Android application ID `app.strremote.android`), including GitHub and active Google Play closed-test distribution (owner-reported 2026-11-26). Independent/unofficial companion app, not operated by Bose Corporation or the STR project. This document describes the app's observable design and known third-party boundaries. It does **not** pre-certify Google Play's Data safety questionnaire, which needs its own shipped-bundle/embedded-content review.
 
 ## Deutsch
 
 ### Verantwortlicher und Kontakt
 
-Ragutis Remote for SoundTouch Reborn wird als eigenständiges Community-Projekt veröffentlicht. Ein optionaler Kontakt per E-Mail kann **innerhalb der App im Info-Dialog** vom Nutzer selbst gestartet werden. Alternativ steht der [öffentliche GitHub-Issue-Bereich](https://github.com/K-Cosmo/ragutis-remote-for-str/issues) zur Verfügung. Für eine künftige Google-Play-Veröffentlichung sind die dort angegebenen Entwickler-/Kontaktinformationen maßgeblich. Wir veröffentlichen hier keine vollständige Feedback-Mailadresse als Klartext.
+Ragutis Remote for SoundTouch Reborn wird als eigenständiges Community-Projekt veröffentlicht. Ein optionaler Kontakt per E-Mail kann **innerhalb der App im Info-Dialog** vom Nutzer selbst gestartet werden. Alternativ steht der [öffentliche GitHub-Issue-Bereich](https://github.com/K-Cosmo/ragutis-remote-for-str/issues) zur Verfügung. Für die Google-Play-Vertriebsvariante sind die dort angegebenen Entwickler-/Kontaktinformationen maßgeblich. Wir veröffentlichen hier keine vollständige Feedback-Mailadresse als Klartext.
 
 ### Gespeicherte Informationen und Zweck
 
 Die App sucht STR-Lautsprecher im lokalen WLAN und zeigt deren vorhandene Fernbedienungsoberfläche. Lokal in Androids App-Speicher können der zuletzt verbundene Lautsprecher, IP-/Hostname und Port, Geräte- und Modellbezeichnungen, ausgewählte oder selbst eingegebene Raumnamen, Kennungen und Zustände noch nicht auf STR umgestellter Bose-Geräte sowie Anzeigeeinstellungen gespeichert sein. Diese Daten dienen Geräteauswahl, Wiederverbindung und Anzeige und werden **nicht durch einen Ragutis-eigenen Server synchronisiert oder für Analytics verwendet**. Es gibt keinen Ragutis-Benutzeraccount und keine eingebauten Werbe- oder Tracking-SDKs.
 
-**Android-Systembackup:** Die App lässt die Systemsicherung bewusst aktiviert (`android:allowBackup="true"`), damit Lautsprecher- und Raumeinstellungen bei einer Wiederherstellung verfügbar sein können. Abhängig von Android-Version und Backup-/Geräteübertragungseinstellungen können geeignete lokal gespeicherte App-Daten durch **Androids Systembackup oder Geräteübertragung** gesichert und wiederhergestellt werden. Daher versprechen wir nicht, dass diese Daten das Telefon unter allen Umständen niemals verlassen. Die genau betroffenen Dateien und Google-Play-Datensicherheitsangaben sind vor einer Play-Veröffentlichung gesondert zu prüfen.
+**Android-Systembackup:** Die App lässt die Systemsicherung bewusst aktiviert (`android:allowBackup="true"`), damit Lautsprecher- und Raumeinstellungen bei einer Wiederherstellung verfügbar sein können. Abhängig von Android-Version und Backup-/Geräteübertragungseinstellungen können geeignete lokal gespeicherte App-Daten durch **Androids Systembackup oder Geräteübertragung** gesichert und wiederhergestellt werden. Daher versprechen wir nicht, dass diese Daten das Telefon unter allen Umständen niemals verlassen. Die genau betroffenen Dateien und Google-Play-Datensicherheitsangaben sind gesondert zu prüfen und vor einer weiteren Veröffentlichung abzugleichen.
 
 ### Netzwerkzugriffe und Geräte
 
@@ -36,7 +36,7 @@ Lautsprecher-/Raumdaten verbleiben in der Regel bis zum Entfernen innerhalb der 
 
 ### Operator and contact
 
-Ragutis Remote for SoundTouch Reborn is published as an independent, unofficial community project. Users can open a voluntary support **email draft** from the app's About screen or contact the project using [GitHub Issues](https://github.com/K-Cosmo/ragutis-remote-for-str/issues). Any future Google Play developer/support contact information is displayed in the Play listing. No complete feedback mailbox is printed in this public repository.
+Ragutis Remote for SoundTouch Reborn is published as an independent, unofficial community project. Users can open a voluntary support **email draft** from the app's About screen or contact the project using [GitHub Issues](https://github.com/K-Cosmo/ragutis-remote-for-str/issues). Google Play developer/support contact information is displayed in the Play listing. No complete feedback mailbox is printed in this public repository.
 
 ### Locally saved information and purpose
 

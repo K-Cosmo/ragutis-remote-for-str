@@ -8,7 +8,7 @@ I'd like to introduce **Ragutis Remote for SoundTouch Reborn**, an open-source A
 
 The idea is simple: discover, manage and control STR-enabled SoundTouch speakers from an Android phone.
 
-**Ragutis v0.3.5 is now available in a closed Google Play beta**, and I'm looking for community members who would like to help test it.
+**Ragutis v0.3.6 is now available in a closed Google Play beta**, and I'm looking for community members who would like to help test it.
 
 ## What does Ragutis do?
 
@@ -41,7 +41,7 @@ Open the link using the **same Google account** you used to join the group and u
 
 👉 **[Install Ragutis from Google Play](https://play.google.com/store/apps/details?id=app.strremote.android)**
 
-The closed beta is **v0.3.5**. If you already use a GitHub release, **please do not uninstall it first**. Installing the Play version over the existing installation lets us test whether saved speakers, rooms and settings survive the update. Back up any important setup details beforehand.
+The closed beta is **v0.3.6**. If you already use a GitHub release, **please do not uninstall it first**. Installing the Play version over the existing installation lets us test whether saved speakers, rooms and settings survive the update. Back up any important setup details beforehand.
 
 It may take some time for Google Play tester access to propagate after joining the group and opting in.
 
@@ -66,9 +66,9 @@ The app can also prepare an optional feedback email through your installed email
 ## Open source and other downloads
 
 - **[Ragutis source code and documentation](https://github.com/K-Cosmo/ragutis-remote-for-str)**
-- **[Latest public GitHub APK: v0.3.4](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.4)**
+- **[Latest public GitHub APK: v0.3.6](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.6)**
 
-Google Play currently provides the **v0.3.5 closed beta**; the public GitHub APK is **v0.3.4**.
+Google Play closed beta and public GitHub APK are both v0.3.6 (code17). A same-version channel switch is not a guaranteed upgrade; keep your installed data and wait for a higher versionCode if Play does not offer an update.
 
 Ragutis is an **independent, unofficial community project**. It is not affiliated with or endorsed by Bose Corporation or the SoundTouch Reborn project. Bose and SoundTouch are trademarks of Bose Corporation.
 
