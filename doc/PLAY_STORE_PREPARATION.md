@@ -15,7 +15,7 @@ This is the current **proposed** runbook, derived from current repository code a
 | Original GitHub and Google Play **in-use app-signing** certificate | SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`; **owner-reported live Play Console PASS (2026-11-03)** |
 | Separate Google Play **registered upload** certificate | SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791`; **owner-reported Play Console and local JKS PASS (2026-11-03)** |
 | Previous key alias | `remote-str-upload` for the separate upload JKS, owner-local (never commit/store keystore/passwords/PEPK export) |
-| Play closed-test artifact | 0.3.6/code17 delivery owner-confirmed; local signed AAB and upload signer verified; installed identity and post-update checks pending |
+| Play closed-test artifact | 0.3.6/code17 delivery owner-confirmed; local signed AAB and upload signer verified; general functional acceptance owner-confirmed; installed identity evidence pending |
 
 **PLAY-001 CLOSED — live Play certificates now MATCH the established GitHub/install and upload identities (owner-reported, 2026-11-03).** App-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32` matches original public GitHub APK and production keystore PKCS12 alias `key0`; Play upload SHA-256 `41BFFC7105A5345DF3F2C1C65CBB52595DB5048C4C80A24564C2863331FA7791` matches local separate `remote-str-upload`. Package `app.strremote.android` confirmed. **No more key imports, PEPK exports or key rotation.** The earlier F2DC/PEPK rejection is historical; see [dated evidence](evidence/qa/2026-11-03-play-signing-acceptance.md). This is **not** an AAB-signing, Play-upload, or installed Play upgrade approval.
 
@@ -39,7 +39,7 @@ Historical 0.3.5 build, signature and editor evidence is indexed in [dated QA](e
 
 ### Privacy policy in app and on Play (device/URL gate open)
 
-Google requires a public privacy policy in the app and listing. The bilingual [policy](PRIVACY.md) and native About link are shipped in 0.3.6; prior 0.3.5 Play and 0.3.6 GitHub link tests passed. Recheck the delivered Play 0.3.6 link and publicly readable URL; do not infer worldwide accessibility or policy acceptance. [Official privacy requirements](https://support.google.com/googleplay/android-developer/answer/9859455?hl=en).
+Google requires a public privacy policy in the app and listing. The bilingual [policy](PRIVACY.md) and native About link are shipped in 0.3.6; prior 0.3.5 Play and 0.3.6 GitHub link tests passed. The owner reports general Play functional acceptance; record individual link/public URL evidence separately; do not infer worldwide accessibility or policy acceptance. [Official privacy requirements](https://support.google.com/googleplay/android-developer/answer/9859455?hl=en).
 
 ### Data safety, network and user data (review remains open)
 
@@ -61,7 +61,7 @@ Google's [Developer Program Policy — Device and Network Abuse](https://support
 
 **Implemented and shipped:** One codebase now has `github` and `play` product flavors. The `github` build retains the existing bounded GitHub update check and manual About result. The `play` build **does not call** the GitHub updater at startup, does not expose the manual GitHub-update button, and instead offers **Updates in Google Play öffnen / Open updates in Google Play** linking to `https://play.google.com/store/apps/details?id=app.strremote.android` in the external browser/Play handler. No install-source heuristic, new SDK, permissions or alternate app ID is introduced. Regular voluntary GitHub **source/Issues/privacy** links are still available; they are not APK upgrade prompts. The listing may not be accessible before tester authorization.
 
-**Evidence:** both debug flavors passed; 0.3.5 Play link and cross-channel upgrade passed, 0.3.6 GitHub signed smoke passed, and 0.3.6 Play delivery is owner-confirmed. Recheck actual delivered 0.3.6 routing. See [Release gates](RELEASE_GATES.md). No future upload without owner authorization and applicable gates.
+**Evidence:** both debug flavors passed; 0.3.5 Play link and cross-channel upgrade passed, 0.3.6 GitHub signed smoke passed, and 0.3.6 Play delivery is owner-confirmed. General delivered Play functionality is owner-accepted; individual routing evidence is not separately reported. See [Release gates](RELEASE_GATES.md). No future upload without owner authorization and applicable gates.
 
 ## 4. Store presence — reference listing content (live text not independently inspected)
 

@@ -61,7 +61,7 @@ The owner reports automatic Google Play installation over an existing GitHub ver
 - Play AAB: verify registered upload signature and bundle validity. Play-delivered APK: verify original app-signing certificate, installed version, retained data, restart, STR control, Play/privacy links. A fresh install is not upgrade evidence.
 - Preserve distinct distribution authorization and actual delivery evidence. See [Release gates](RELEASE_GATES.md).
 
-The 0.3.6 Play delivery is owner-confirmed; post-update checks remain open. [Dated evidence](evidence/qa/2026-11-26-ragutis-036-play-delivery.md).
+The 0.3.6 Play delivery and general post-update functional acceptance are owner-confirmed; installed identity and individually recorded test outcomes remain open. [Dated evidence](evidence/qa/2026-11-26-ragutis-036-play-delivery.md).
 
 ## 0.3.6 owner debug-device acceptance — scoped PASS (2026-11-22)
 

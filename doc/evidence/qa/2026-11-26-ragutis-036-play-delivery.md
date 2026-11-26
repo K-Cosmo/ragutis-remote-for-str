@@ -10,3 +10,7 @@ Owner-reported evidence from local PowerShell and Play Console; raw AAB and Cons
 - Owner confirmed GitHub 0.3.6 AVD update baseline snapshot saved. No full Bose/negative-path retest claimed.
 
 Documentation review follows GOVERNANCE.md semantic ownership; no app/build changes. Future publication blocks should be noninteractive after explicit owner authorization, retaining automatic integrity gates and necessary secure password entry.
+
+## Owner acceptance follow-up — 2026-11-26
+
+Owner explicitly confirmed that everything is OK with the Play version after automatic update and requested repository cleanup and merge. General functional acceptance recorded; no individual PASS values inferred for data, restart, STR or link cases. Installed version/SDK, installed app-signing certificate and Console-side asset hash remain unverified. Issue #23 closed as completed; #7 narrowed to remaining negative paths and throttling; #24 sorting stays open.

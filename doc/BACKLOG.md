@@ -4,9 +4,9 @@ This register contains **unfinished or explicitly deferred work**. Completed rel
 
 | ID | Work item | Priority | State / next gate |
 |---|---|---:|---|
-| PLAY-002 | Verify delivered privacy link, backups, STR WebView traffic and Data safety | P0 | PARTIAL — local AAB manifest PASS, delivered 0.3.6 link and audits open |
-| PLAY-006 | Verify channel-safe update UX on delivered Play version | P0 | Implementation shipped; focused 0.3.6 Play link/routing check open |
-| PLAY-004 | Verify installed Play upgrade identity and data preservation | P0 | 0.3.5 cross-channel PASS; 0.3.6 automatic delivery reported; installed signer/version and retention check open |
+| PLAY-002 | Verify delivered privacy link, backups, STR WebView traffic and Data safety | P0 | PARTIAL — local AAB manifest PASS, general Play functional acceptance reported; individual link evidence and audits open |
+| PLAY-006 | Verify channel-safe update UX on delivered Play version | P0 | Implementation shipped; owner functional acceptance reported; individual link/routing evidence not separately recorded |
+| PLAY-004 | Verify installed Play upgrade identity and data preservation | P0 | 0.3.5 cross-channel PASS; 0.3.6 automatic delivery reported; general functional acceptance reported; installed signer/version evidence open |
 | PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |
 | STR-023 | Maintain independent support and STR community discussion | P1 | Follow-up; discussion linked from public README |
 | STR-039 | Device-list sorting by reachability, device name or room; ascending or descending | P2 | REQUEST RECORDED, separate feature; out of scope for 0.3.6 |

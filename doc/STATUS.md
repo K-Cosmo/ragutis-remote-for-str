@@ -4,11 +4,11 @@
 
 **Development version:** 0.3.6
 **Latest public release:** 0.3.6
-**Status:** GITHUB SCOPED QA COMPLETE; PLAY CLOSED-TEST UPDATE OWNER-CONFIRMED; PLAY POST-UPDATE CHECKS OPEN
+**Status:** GITHUB SCOPED QA COMPLETE; PLAY CLOSED-TEST FUNCTIONAL ACCEPTANCE OWNER-CONFIRMED; INSTALLED IDENTITY EVIDENCE OPEN
 **Date:** 2026-11-26
 
 - **GitHub:** [v0.3.6/code17](https://github.com/K-Cosmo/ragutis-remote-for-str/releases/tag/v0.3.6), published 2026-11-25. Exact application source `2bcdf023e67eb6f06a7d37f9add3a233711938c7`; published APK digest matches accepted signed candidate. Scoped physical debug 12 PASS/2 N/A, signed AVD R01–R07 PASS and positive online update with retained data/STR control PASS (owner-reported). Owner confirmed the 0.3.6 AVD baseline snapshot was saved. [Release evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md).
-- **Google Play:** 0.3.6/code17 closed-test delivery and automatic update confirmed by owner on 2026-11-26. Local signed AAB manifest, upload certificate and validation PASS; same exact source as GitHub. Installed version, app-signing certificate and post-update functional/data checks for this delivery still require evidence. [Play evidence](evidence/qa/2026-11-26-ragutis-036-play-delivery.md).
+- **Google Play:** 0.3.6/code17 closed-test delivery and automatic update confirmed by owner on 2026-11-26. Local signed AAB manifest, upload certificate and validation PASS; same exact source as GitHub. Owner subsequently confirmed that the Play version works satisfactorily and requested acceptance. This is general functional acceptance, not individually recorded test results or an installed version/certificate transcript. Installed identity and Console-side provenance evidence remain open. [Play evidence](evidence/qa/2026-11-26-ragutis-036-play-delivery.md).
 - **Production:** No public Play production rollout or production-access approval claimed. Last reported tester count was below the required threshold; current count not reconfirmed.
 - **Acceptance and remaining scope:** [Release gates](RELEASE_GATES.md), [Blockers](BLOCKERS.md), [Planned](PLANNED.md). Historical evidence and implemented changes belong in dated QA and [Changelog](CHANGELOG.md).
 

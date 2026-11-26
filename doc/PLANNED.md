@@ -4,7 +4,7 @@ This document describes **sequence and dependencies**, not release history or a 
 
 ## Next sequence
 
-1. Complete the focused Play-delivered 0.3.6 post-update checks in [Release gates](RELEASE_GATES.md); preserve installed data and the saved GitHub AVD baseline.
+1. Record the outstanding Play-delivered 0.3.6 installed identity/provenance evidence in [Release gates](RELEASE_GATES.md); preserve installed data and the saved GitHub AVD baseline.
 2. Reconcile Play artifact provenance, actual backup payload, embedded STR traffic and Data safety declarations; confirm current tester eligibility before any production-access application.
 3. Prioritize remaining work in [Backlog](BACKLOG.md), including the deferred hardware cases; no new release or production rollout implied.
 

@@ -5,7 +5,7 @@ This document records **current unresolved release blockers**, not completed rel
 ## Current release blockers
 
 - **GitHub:** no known blocking gate for the already published scoped 0.3.6 release.
-- **Play closed-test acceptance:** automatic 0.3.6 delivery owner-confirmed; installed version/signing identity, retained data and focused post-update functions remain to be verified. Console-side artifact provenance is not independently reconciled.
+- **Play closed-test acceptance:** automatic 0.3.6 delivery owner-confirmed; general owner functional acceptance confirmed; installed version/signing identity and separately itemized device checks remain undocumented. Console-side artifact provenance is not independently reconciled.
 - **Play production:** backup/WebView/Data safety review, actual Play device compatibility and current tester eligibility/production-access approval remain open. No production rollout authorized.
 
 See [Release gates](RELEASE_GATES.md) for the authoritative disposition and [Planned](PLANNED.md) for sequencing.

@@ -4,7 +4,7 @@ Store build logs, lint reports/summaries, relevant Logcat excerpts and concise r
 
 ## Current 0.3.6 distribution evidence
 
-- [2026-11-26 Play AAB and delivery](2026-11-26-ragutis-036-play-delivery.md) — local signed artifact checks PASS, automatic closed-test update reported; installed post-update checks open.
+- [2026-11-26 Play AAB and delivery](2026-11-26-ragutis-036-play-delivery.md) — local signed artifact checks PASS, automatic closed-test update and general functional acceptance reported; installed identity evidence open.
 - [2026-11-25 public GitHub release](2026-11-25-ragutis-036-public-release-acceptance.md) — scoped public update PASS; owner subsequently confirmed snapshot saved.
 
 ## Historical 0.3.5 Play preparation
