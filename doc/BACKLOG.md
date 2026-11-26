@@ -4,13 +4,13 @@ This register contains **unfinished or explicitly deferred work**. Completed rel
 
 | ID | Work item | Priority | State / next gate |
 |---|---|---:|---|
-| PLAY-002 | Validate the in-app privacy link, merged manifest, backups, STR WebView traffic and Data safety | P0 | PARTIAL — public policy corrected, source staged and [6/6 owner-reported debug-device QA](evidence/qa/2026-11-03-ragutis-0.3.5-debug-device-qa.md) PASS; **production-signed/Play QA, PR merge and audits open** |
-| PLAY-006 | Channel-safe update UX for GitHub and Google Play variants | P0 | SOURCE + CI + OWNER-REPORTED BOTH DEBUG FLAVORS PASS; **merged release manifest, original-signer and real Play-delivered upgrade QA OPEN**. [Play runbook](PLAY_STORE_PREPARATION.md#google-play-channel-ux-source-implemented-p0-qa-before-distribution) |
-| PLAY-004 | Internal Play GitHub-to-Play in-place update, original signer and data preservation | P0 | IN PROGRESS — AAB attached in internal-test release editor; no rollout or real in-place update; rollout approval pending |
+| PLAY-002 | Verify delivered privacy link, backups, STR WebView traffic and Data safety | P0 | PARTIAL — local AAB manifest PASS, delivered 0.3.6 link and audits open |
+| PLAY-006 | Verify channel-safe update UX on delivered Play version | P0 | Implementation shipped; focused 0.3.6 Play link/routing check open |
+| PLAY-004 | Verify installed Play upgrade identity and data preservation | P0 | 0.3.5 cross-channel PASS; 0.3.6 automatic delivery reported; installed signer/version and retention check open |
 | PLAY-005 | Store listing/media, real closed testers, test period and production-access application | P1 | PENDING — see [Play Store preparation](PLAY_STORE_PREPARATION.md) |
-| STR-023 | Publish STR upstream Show-and-tell thread and maintain independent GitHub Issues/voluntary email support | P1 | OPEN — maintainer requested thread; no published discussion verified |
-| STR-039 | Device-list sorting by reachability, device name or room; ascending or descending | P2 | REQUEST RECORDED, separate feature; out of scope for the 0.3.6 bugfix candidate |
-| STR-027 | [Deferred negative-path QA and future positive version alert](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7) | P1 | DEFERRED, NOT TESTED; do not infer coverage |
+| STR-023 | Maintain independent support and STR community discussion | P1 | Follow-up; discussion linked from public README |
+| STR-039 | Device-list sorting by reachability, device name or room; ascending or descending | P2 | REQUEST RECORDED, separate feature; out of scope for 0.3.6 |
+| STR-027 | [Deferred negative-path QA](https://github.com/K-Cosmo/ragutis-remote-for-str/issues/7) | P1 | Negative paths untested; positive GitHub AVD update complete |
 | STR-024 | Review residual GitHub-managed old PR refs/caches after historical address cleanup | P1 | PARTIALLY RESOLVED — see [Git history provenance](GIT_HISTORY_PROVENANCE.md) |
 | STR-012 | Additional STR remote/control compatibility across other hardware | P2 | BACKLOG; separate from Bose provisioning |
 | STR-026 | Bose original-firmware Wi-Fi provisioning on unverified models/firmware/router combinations | P2 | BACKLOG; community reports are not certification |

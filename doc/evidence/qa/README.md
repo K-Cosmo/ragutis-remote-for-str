@@ -2,7 +2,12 @@
 
 Store build logs, lint reports/summaries, relevant Logcat excerpts and concise real-device test records here. Evidence files must identify the source version/build and test date. Do not fabricate or backfill missing evidence.
 
-## Current unreleased Play candidate — signed AAB, certificates, merged manifest and debug evidence
+## Current 0.3.6 distribution evidence
+
+- [2026-11-26 Play AAB and delivery](2026-11-26-ragutis-036-play-delivery.md) — local signed artifact checks PASS, automatic closed-test update reported; installed post-update checks open.
+- [2026-11-25 public GitHub release](2026-11-25-ragutis-036-public-release-acceptance.md) — scoped public update PASS; owner subsequently confirmed snapshot saved.
+
+## Historical 0.3.5 Play preparation
 
 - [2026-11-03 signed AAB attached to first Play Console internal test release editor](2026-11-03-play-console-internal-release-editor.md) — uploaded and parsed as 0.3.5/code16, no rollout shown.
 

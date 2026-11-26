@@ -76,7 +76,7 @@ One `main` source tree builds `github` and `play` product flavors, both using pr
 - **Play flavor:** startup **does not call the GitHub updater**; About instead offers a direct external `https://play.google.com/store/apps/details?id=app.strremote.android` link. Google Play owns installation/update delivery. GitHub source, issue and privacy/support links remain as voluntary informational actions and are not APK update prompts.
 - Neither flavor adds a permission, SDK, runtime updater service or backend. Both production flavors must be verified with correct signing keys: the GitHub APK uses the original app key; a Play AAB uses a **separate registered upload key** and must be delivered with the original matching app-signing certificate.
 
-The flavor split is **implemented but not production/Play-device accepted**; see [Tests](TESTS.md), [Release gates](RELEASE_GATES.md) and [Play preparation](PLAY_STORE_PREPARATION.md).
+The flavor split is shipped in both distribution channels; current scoped acceptance and remaining delivered-device checks are tracked separately; see [Tests](TESTS.md), [Release gates](RELEASE_GATES.md) and [Play preparation](PLAY_STORE_PREPARATION.md).
 
 ## Optional feedback and model lookup
 

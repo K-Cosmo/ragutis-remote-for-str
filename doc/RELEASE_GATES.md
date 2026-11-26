@@ -2,7 +2,7 @@
 
 A release candidate may be marked final/ACCEPTED only when all applicable gates pass or a documented, owner-approved release-specific deferral applies to a nonmandatory residual test under [Tests](TESTS.md). Mandatory automated, artifact identity, security and distribution approval gates cannot be waived by regression selection. Post-publication tests remain explicitly pending until executed.
 
-## Play distribution state — owner-reported acceptance 2026-11-22
+## Historical Play 0.3.5 distribution evidence — 2026-11-22
 
 - [x] Owner confirms an active **closed-test** Play delivery, not Play production.
 - [x] Play automatically installed an update **over an existing GitHub installation** without uninstalling.
@@ -16,7 +16,7 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [ ] Review actual Android backup payload, embedded STR WebView traffic and Play Data safety declarations. A working upgrade is not a tested cloud restore.
 - [ ] **Fewer than 12 closed testers** currently opted in; satisfy applicable 12 continuous testers / 14 days and distinct production-approval gates.
 - [x] Owner-authorized source merges #26 → #21 → #25 completed 2026-11-23; final `main` source SHA `2bcdf023e67eb6f06a7d37f9add3a233711938c7`. [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
-- [ ] Play 0.3.6 closed-test bundle/upload requires separate authorization; GitHub v0.3.6 publication is recorded below.
+- [x] Subsequent 0.3.6 closed-test delivery owner-confirmed; see current gates below.
 
 [Owner device QA](evidence/qa/2026-11-22-play-closed-test-owner-qa.md). Dated 2026-11-03 editor-only checklists below are historical snapshots and no longer describe the present delivery state.
 
@@ -30,13 +30,16 @@ A release candidate may be marked final/ACCEPTED only when all applicable gates 
 - [x] **Scoped GitHub permission and compatibility review:** owner-local hash-verified 0.3.4 vs 0.3.6 `aapt2 dump permissions` comparison PASS (all nine permissions and reported attributes identical); source manifests, network-security config and preference stores blob-identical. Package, signer, persisted-data and GitHub routing evidence PASS. Play packaged AAB and privacy/Data safety review remain separate. [Evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md).
 - [x] **Local original-key GitHub 0.3.6/code17 APK built and signed (owner-reported, 2026-11-23):** exact merged source `2bcdf023e67eb6f06a7d37f9add3a233711938c7`, SHA-256 `cf1d33fcd2f29210fc9250619b53f169a64add60334fe49e96e2d5c4dd0527b3`, Gradle build/lint/unit tests PASS, `apksigner verify` v2/v3 PASS with original app-signing SHA-256 `3CC2E7272D8C2D1433A57C4462DF39ADFE5E8C1931A4A924710C0E4087AA1E32`, zipalign verification PASS. The uploaded build **log** was inspected, not raw APK contents. [Dated build evidence](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md).
 - [x] **Owner-local signed APK manifest and hash verification PASS:** Android Build Tools 37 `aapt2 dump badging` reports `app.strremote.android`, `versionCode=17`, `versionName=0.3.6`, `minSdkVersion=26`, `targetSdkVersion=37`. Owner reported hash verification before manifest inspection and a corrected `minSdkVersion` check after the first parser used the incorrect `sdkVersion` key. No re-sign/rebuild; exact owner-reported SHA-256 remains `cf1d33fcd2f29210fc9250619b53f169a64add60334fe49e96e2d5c4dd0527b3`. The assistant has not inspected raw APK bytes. [Dated QA](evidence/qa/2026-11-23-ragutis-036-local-github-signed-apk.md).
-- [x] **Original-signer GitHub signed in-place upgrade in emulator (owner-reported 2026-11-25): R01–R07 PASS** on Pixel 9a Android 17/API 37.1 AVD (16 KB page-size image). Installed 0.3.4/code15 → 0.3.6/code17, retained speakers/rooms and STR control, restart, no-newer-release check, privacy link and wizard open/cancel. [Dated QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md). No physical signed-upgrade claim; keep the physical Play 0.3.5 baseline intact.
+- [x] **Original-signer GitHub signed in-place upgrade in emulator (owner-reported 2026-11-25): R01–R07 PASS** on Pixel 9a Android 17/API 37.1 AVD (16 KB page-size image). Installed 0.3.4/code15 → 0.3.6/code17, retained speakers/rooms and STR control, restart, no-newer-release check, privacy link and wizard open/cancel. [Dated QA](evidence/qa/2026-11-25-ragutis-036-signed-emulator-qa.md). No physical GitHub signed-upgrade claim; the separate Play baseline has since received an automatic update.
 - [x] **Scoped GitHub 0.3.6 QA acceptance (owner agreement 2026-11-25):** combined physical debug 12 PASS/2 N/A and signed AVD R01–R07 PASS. Full Bose setup T12 deferred based on unchanged wizard implementation/resources; T13 physical manual-IP, F-034 exceptional identity integration, pending-Bose removal integration and physical signed upgrade remain unverified and are accepted residual coverage limits for this release only. No blanket waiver; retain follow-ups. GitHub package/permission/routing review completed separately; Play review remains open.
 - [x] **Positive public GitHub update flow (owner-reported and screenshot-supported 2026-11-25):** 0.3.4 offered 0.3.6, correct public release opened, APK downloaded, Android showed update and successful completion; owner confirms post-update checks. GitHub public asset digest matches accepted APK. No independent hash of the downloaded/installed emulator copy or raw ADB transcript; see [evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md).
-- [ ] Create registered **Play-upload-key-signed 0.3.6 AAB**, verify packaged manifest and upload-certificate/provenance; separately authorize closed-track rollout, then verify actual Play-delivered v0.3.5/code16→0.3.6/code17 upgrade with retained data and original Play **app-signing** identity.
+- [x] **Local Play 0.3.6 AAB:** exact source, build/lint, unsigned bundle structure/hash, packaged manifest/permissions, registered upload certificate, signature and signed bundle validation PASS (owner-reported). [Evidence](evidence/qa/2026-11-26-ragutis-036-play-delivery.md).
+- [x] **Play closed-test delivery:** owner reports Console release completed and automatic store update on 2026-11-26. Not independent Console inspection.
+- [ ] **Play post-update acceptance:** confirm installed code17/name0.3.6, original app-signing certificate, retained speaker/room data, restart, STR control and Play/privacy links; record installed SDK and reconcile actual uploaded artifact provenance.
+- [ ] Play backup/WebView/Data safety audit and production eligibility remain open.
 - [x] **Source merges #26, #21, #25:** separately owner-authorized and completed as normal merge commits; no release action implied. [Merge evidence](evidence/qa/2026-11-23-ragutis-source-merges.md).
 - [x] **GitHub publication executed by owner and API verified:** v0.3.6 latest stable, release ID 458483271, tag resolves to exact signed source, both assets uploaded. [Evidence](evidence/qa/2026-11-25-ragutis-036-public-release-acceptance.md).
-- [ ] Separate owner approval for Google Play 0.3.6 closed-test upload/rollout; no production release.
+- [x] Owner executed the closed-test rollout and confirmed delivery. No separate production authorization; prior approval timing not independently verified.
 
 ## Historical 0.3.5 internal-test preparation — P0 GATES (AAB IN RELEASE EDITOR; NOT ROLLED OUT)
 

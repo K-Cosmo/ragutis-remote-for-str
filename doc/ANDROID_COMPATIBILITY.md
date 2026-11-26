@@ -1,6 +1,6 @@
 # Android and build compatibility
 
-## Accepted 0.3.1 baseline
+## Current toolchain baseline (established with 0.3.1)
 
 | Item | Version / rule | State |
 |---|---|---|
@@ -40,7 +40,7 @@ POSIX shells:
 ./gradlew clean :app:assembleGithubDebug :app:assemblePlayDebug :app:testGithubDebugUnitTest :app:testPlayDebugUnitTest :app:assembleGithubRelease :app:bundlePlayRelease --stacktrace
 ```
 
-Both `github` and `play` flavors preserve the production `app.strremote.android` package and `versionName=0.3.5` / `versionCode=16` in the unreleased candidate. A flavor is **not** a separate permanent branch or signing key. CI checks the unsigned GitHub APK and Play AAB packaging; Android device and signature compatibility remain separate gates. For a signed **GitHub** release, use the existing `tools/build-signed-release.ps1`, now restricted to `app-github-release-unsigned.apk`. Never sign the Play bundle with the original GitHub APK key.
+Both `github` and `play` flavors preserve the production `app.strremote.android` package and share version metadata from the same application source; see [Status](STATUS.md) for current versions. A flavor is **not** a separate permanent branch or signing key. CI checks the unsigned GitHub APK and Play AAB packaging; Android device and signature compatibility remain separate gates. For a signed **GitHub** release, use the existing `tools/build-signed-release.ps1`, now restricted to `app-github-release-unsigned.apk`. Never sign the Play bundle with the original GitHub APK key.
 
 ## Upgrade policy
 
